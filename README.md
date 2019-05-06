@@ -8,4 +8,26 @@ Há 25 anos no mercado, a **Veus Technology** é uma empresa brasileira ligada a
 
 ## Desafio VS
 
-Write.
+Você deve implementar uma API utilizando *PHP* > 7.0. Nós recomendamos que você tente manter o seu códgo o mais simples possível. Se você precisar de qualquer informação adicional ou esclarecimento, você pode nos contatar pelo e-mail: **infraseg@veus.com.br**.
+
+Vamos imaginar que a sua empresa possua um e-commerce e venda alguns produtos para laboratórios e hospitais...
+
+Sua tarefa é implementar um serviço de buscas desses produtos. Um produto possui nome, marca, preço e quantidade em estoque.
+A API deve requerer autenticação e permitir __search query__ através do método **GET** e suportar filtros opcionais nos campos do produto.
+
+Por exemplo: Um cliente deve conseguir buscar todas as seringas da marca BUNZL fazendo a seguinte requisição:
+
+`https://example.com/api/v1/products?q=seringa&filter=brand:BUNZL`
+
+
+A API também deve suportar __pagination__, __versioning__ e __sorting__.
+
+Sinta-se livre para usar qualquer library ou framework da sua preferência mas a regra de negócio deve estar o mais desaclopada possível deles. 
+
+Bônus:
+* Docker
+* Unit Test
+* User Interface
+
+---
+Você será avaliado de acordo com a senioridade da posição a qual está aplicando. Ao finalizar o desafio você deve submeter o **Pull Request** com o seu código para a avaliação, após isso nos entrarem em contato com você através do e-mail passando um feedback do seu projeto.
