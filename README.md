@@ -21,7 +21,7 @@ Por exemplo: Um cliente deve conseguir buscar todas as seringas da marca BUNZL f
 
 A API também deve suportar __pagination__, __versioning__ e __sorting__.
 
-Sinta-se livre para usar qualquer library ou framework da sua preferência mas a regra de negócio deve estar o mais desaclopada possível deles. 
+Sinta-se livre para usar qualquer __library__ ou __framework__ da sua preferência mas a regra de negócio deve estar o mais desaclopada possível deles. 
 
 Bônus:
 * Docker
