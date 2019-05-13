@@ -18,12 +18,20 @@ class ProductTest extends TestCase
      * @return void
      */
 
+    /**
+     * Listing products
+     * @return void
+     */
     public function testProductIndex(){
         $header     = ['Content-type' => 'application/json' ];
         $response   = $this->json('GET', '/api/v1/products', [], $header);
         $response->assertStatus(200);
     }
-
+    /**
+     * Creating products
+     * 
+     * @return void
+     */
     public function testProductCreate(){
         $header         = [ 'Content-type' => 'application/json' ];
         $body_create    = ['name' => 'TEST', 'brand'=>'teste', 'price'=> '1.00', 'amount'=> 1];
@@ -31,6 +39,11 @@ class ProductTest extends TestCase
         $response->assertStatus(200);
     }
 
+    /**
+     * Updating an product
+     * 
+     * @return void
+     */
     public function testProductUpdate(){
         $header         = [ 'Content-type' => 'application/json' ];
         $body_create    = ['name' => 'TEST', 'brand'=>'teste', 'price'=> '1.00', 'amount'=> 1];
@@ -42,7 +55,12 @@ class ProductTest extends TestCase
         $response->assertStatus(200);
     }
 
-    public function testProductDate(){
+    /**
+     * Delete an product
+     * 
+     * @return void
+     */
+    public function testProductDelete(){
         $header         = [ 'Content-type' => 'application/json' ];
         $body_create    = ['name' => 'TEST', 'brand'=>'teste', 'price'=> '1.00', 'amount'=> 1];
         $response       = $this->json('POST', '/api/v1/products', $body_create, $header);

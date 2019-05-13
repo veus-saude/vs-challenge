@@ -1,0 +1,7 @@
+#1 -create vscommerce database
+
+#2 - Run migrations
+
+#3 - php artisan serve
+
+thanks
