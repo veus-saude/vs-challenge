@@ -1,27 +1,23 @@
-<p align="center">
-    <img src="https://i.imgur.com/2LUR2yy.png">
-</p>
+## Release Notes
 
-## Sobre a VEUS
+**1) ** executar o comando composer update
+**2) ** executar o comando php artisan migrate
+**3) ** executar o comando php artisan db:seed (irá popular a tabela de produtos)
+**4) ** executar o comando php artisan passport:install --force 
+**5) ** Executar apache
+**6) ** Criar usuário usando a seguinte requisição http://localhost:8000/api/auth/registro e efetuar um POST passando os seguintes parametros via json
 
-Há 25 anos no mercado, a **Veus Technology** é uma empresa brasileira ligada ao segmento de saúde com foco na inovação tecnológica. É responsável por vários projetos pioneiros e estratégicos na área laboratorial, médica e recentemente hospitalar.
+{
+  "name"  	  : "Teste de pessoa",
+  "email"     : "teste@teste.com.br",
+  "password"  : "teste123",
+  "password_confirmation"  : "teste123"
+}
 
-## Desafio VS
+**7) ** Efetuar o login para pegar o token de acesso http://localhost:8000/api/auth/login
+{
+  "email": "teste@teste.com.br",
+  "password": "teste123"
+}
 
-Você deve implementar uma API utilizando *PHP* > 7.0. Nós recomendamos que você tente manter o seu códgo o mais simples possível. Se você precisar de qualquer informação adicional ou esclarecimento, você pode nos contatar pelo e-mail: **sistemas@veus.com.br**.
-
-Vamos imaginar que a sua empresa possua um e-commerce e venda alguns produtos para laboratórios e hospitais...
-
-Sua tarefa é implementar um serviço de buscas desses produtos. Um produto possui nome, marca, preço e quantidade em estoque.
-A API deve requerer **autenticação** e permitir __search query__ através do método **GET** e suportar filtros opcionais nos campos do produto.
-
-Por exemplo: Um cliente deve conseguir buscar todas as seringas da marca BUNZL fazendo a seguinte requisição:
-
-`https://example.com/api/v1/products?q=seringa&filter=brand:BUNZL`
-
-A API também deve suportar __pagination__, __versioning__ e __sorting__.
-
-Sinta-se livre para usar qualquer library ou framework da sua preferência mas a regra de negócio deve estar o mais desaclopada possível deles.
-
----
-Você será avaliado de acordo com a senioridade da posição a qual está aplicando. Ao finalizar o desafio você deve submeter o **Pull Request** com o seu código para a avaliação, após isso nos entrarem em contato com você através do e-mail passando um feedback do seu projeto.
+**8) ** Utilize o token retornado no passo anterior para fazer as buscas através da url http://localhost:8000/api/v1/products?q=m&filter=brand:commodi
