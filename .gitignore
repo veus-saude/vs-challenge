@@ -4,6 +4,7 @@
 /storage/*.key
 /vendor
 .idea/
+.env
 /nbproject/private/
 /nbproject/
 .phpunit.result.cache
