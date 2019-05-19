@@ -1,0 +1,40 @@
+version: "3"
+networks:
+  application:
+    ipam:
+      config:
+        - subnet: 172.20.0.0/24
+services:
+    mysqldb:
+        image: mysql:5.7.22
+        restart: always
+        environment:
+            MYSQL_DATABASE: veus
+            MYSQL_USER: root
+            MYSQL_PASSWORD: minhasenha
+            MYSQL_ROOT_PASSWORD: minhasenha
+        volumes:
+            - "./mysqldb:/var/lib/mysql"
+            - "./schema:/docker-entrypoint-initdb.d"
+        command: --init-file /docker-entrypoint-initdb.d/1-schema.sql
+        networks:
+            application:
+                ipv4_address: 172.20.0.2
+        
+    api:
+        image: veus
+        restart: unless-stopped        
+        build:
+            context: .
+            dockerfile: Dockerfile
+        ports: 
+            - "9000:80"    
+        depends_on:
+          - mysqldb
+        links:
+          - mysqldb      
+        volumes:
+            - "./app:/var/www/html"
+        networks:
+            application:
+                ipv4_address: 172.20.0.3
