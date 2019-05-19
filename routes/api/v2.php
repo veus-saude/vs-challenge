@@ -15,6 +15,6 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('products', 'V1ProductController')->only([
+Route::resource('products', 'V2ProductController')->only([
     'index'
 ]);
