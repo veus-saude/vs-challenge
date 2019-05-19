@@ -22,7 +22,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Thales Nathan',
                 'email' => $mail,
                 'password' => bcrypt('V3u5T35t3'),
-                'api_token' => Str::random(60),
+                'api_token' => 'ipLdZcdPwqE9oY3VaoO336FQ4e0XtiJkKaH8kMa8eTxWUh0ADRNk7G6rqSwn',
             ]);
 
             factory(User::class, 9)->create();
