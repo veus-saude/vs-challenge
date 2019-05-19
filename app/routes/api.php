@@ -18,6 +18,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-Route::namespace('ApiV1')->prefix('v1')/*->middleware('auth:api')*/->group(function () {
+Route::namespace('ApiV1')->prefix('v1')->middleware('auth-api-v1')->group(function () {
 	Route::resource('products', 'ProductsController');
 });
