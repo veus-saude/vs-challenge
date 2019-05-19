@@ -118,7 +118,7 @@ abstract class ApiController extends Controller
             return $this->responseNotFound();
         endif;
 
-        $updated = $object->save($this->request->input());
+        $updated = $object->update($this->request->input());
 
         return $updated
             ? $this->responseSucess($object, "Updated!")
