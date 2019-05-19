@@ -15,8 +15,8 @@ class ProductsTableSeeder extends Seeder
             DB::table('products')->insert([
                 'name' => "Seringa $i",
                 'brand' => 'BUNZL',
-                'unit_price' => 6.66,
-                'quantity' => 666,
+                'unit_price' => 6.66 + $i,
+                'quantity' => 666 + $i,
             ]);
         }
 
