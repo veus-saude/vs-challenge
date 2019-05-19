@@ -15,6 +15,6 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('products', 'ProductController')->only([
+Route::resource('products', 'ApiProductController')->only([
     'index'
 ]);
