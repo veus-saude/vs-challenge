@@ -25,3 +25,29 @@ Sinta-se livre para usar qualquer library ou framework da sua preferência mas a
 
 ---
 Você será avaliado de acordo com a senioridade da posição a qual está aplicando. Ao finalizar o desafio você deve submeter o **Pull Request** com o seu código para a avaliação, após isso nos entrarem em contato com você através do e-mail passando um feedback do seu projeto.
+
+
+## Run
+
+	`php artisan migrate`
+
+	`php artisan db:seed`
+
+	`php artisan serve`
+
+## Run
+	Passar os parametros abaixo no Header.
+
+	- client-id = 1
+	- client-secret = 0lo3qhmbpnRPqfVqIMDUlX5q8RTBiWdX3hEIwIY92p6ECzEQ4kmKk3VoHzwZYNahYLxQN9JmlxgSxNUy1kCnPxLYO0kbw60Q58cc
+
+## Endpoints
+
+	- GET http://localhost:8000/api/v1/products?page=1&filter=brand:Metz%20Ltd&sort=quantity_stock:asc;price:desc
+	- GET http://localhost:8000/api/v1/products/52
+	- PUT http://localhost:8000/api/v1/products/52
+	- DELETE http://localhost:8000/api/v1/products/52
+
+
+
+
