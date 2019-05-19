@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Str;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
@@ -65,9 +66,19 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapApiRoutes()
     {
-        Route::prefix('api')
-             ->middleware('api')
-             ->namespace($this->namespace)
-             ->group(base_path('routes/api.php'));
+        /*
+         * Looping into route/api folder. The files must be named as 'vi.php', where i, should be the version of the api
+         * which have the routes specified into the them. This code automatically keeps the routes on, to disable them
+         * just remove the file from the route/api folder.
+         */
+        foreach (array_filter(array_diff(scandir(base_path('routes/api')), ['..', '.']), function ($value) {
+            return Str::contains($value, '.php');
+        }) as $api_routes_filename) {
+            $api_version = Str::before($api_routes_filename, '.php');
+            Route::prefix("api/$api_version")
+                ->middleware(['api', 'auth:api'])
+                ->namespace("{$this->namespace}\\Api\\" . strtoupper($api_version))
+                ->group(base_path("routes/api/$api_routes_filename"));
+        }
     }
 }
