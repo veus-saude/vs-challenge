@@ -5,7 +5,7 @@ class Response
 {
 	public function __construct($statusCode = 200)
 	{
-		if($statusCode) http_response_code($statusCode);
+		http_response_code($statusCode);
 	}
 	
 	public function json($content)
