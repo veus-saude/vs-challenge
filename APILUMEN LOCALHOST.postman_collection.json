@@ -1,0 +1,325 @@
+{
+	"info": {
+		"_postman_id": "51aa5512-2ef1-4f73-9667-e1a51723faf9",
+		"name": "APILUMEN LOCALHOST",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d728ee17-9d7f-49d1-af56-cbdd7285b5e3",
+						"exec": [
+							"if (pm.response.code === 200) {",
+							"   pm.environment.set(\"token\", pm.response.json().token);",
+							"}",
+							"",
+							"pm.test(\"Login Successful\", function () {",
+							"   pm.expect(pm.response.code).to.be.oneOf([200]);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "key",
+						"value": "{{key}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\":\"admin@admin.com.br\",\n\t\"password\":\"123456\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/V1/auth",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"V1",
+						"auth"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Products",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d728ee17-9d7f-49d1-af56-cbdd7285b5e3",
+						"exec": [
+							"if (pm.response.code === 200) {",
+							"   pm.environment.set(\"token\", pm.response.json().token);",
+							"}",
+							"",
+							"pm.test(\"Login Successful\", function () {",
+							"   pm.expect(pm.response.code).to.be.oneOf([200]);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "key",
+						"value": "{{key}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/V1/products?q=&filter=name:e,brand:BUNZL,value:5&orderBy=&sortedBy=asc",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"V1",
+						"products"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": ""
+						},
+						{
+							"key": "filter",
+							"value": "name:e,brand:BUNZL,value:5"
+						},
+						{
+							"key": "orderBy",
+							"value": ""
+						},
+						{
+							"key": "sortedBy",
+							"value": "asc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Brands",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d728ee17-9d7f-49d1-af56-cbdd7285b5e3",
+						"exec": [
+							"if (pm.response.code === 200) {",
+							"   pm.environment.set(\"token\", pm.response.json().token);",
+							"}",
+							"",
+							"pm.test(\"Login Successful\", function () {",
+							"   pm.expect(pm.response.code).to.be.oneOf([200]);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "key",
+						"value": "{{key}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\":\"admin@admin.com.br\",\n\t\"password\":\"123456\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/V1/brands",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"V1",
+						"brands"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Me",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "project",
+						"value": "{{project}}"
+					},
+					{
+						"key": "key",
+						"value": "{{key}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/V1/auth",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"V1",
+						"auth"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Logout",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "project",
+						"value": "{{project}}"
+					},
+					{
+						"key": "key",
+						"value": "{{key}}"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "{{url}}/V1/auth",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"V1",
+						"auth"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Refresh Token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "58da551e-0c4d-46cc-a68c-2308bb7feb95",
+						"exec": [
+							"if (pm.response.code === 200) {",
+							"   pm.environment.set(\"token\", pm.response.json().token);",
+							"}",
+							"",
+							"pm.test(\"Login Successful\", function () {",
+							"   pm.expect(pm.response.code).to.be.oneOf([200]);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "project",
+						"value": "{{project}}"
+					},
+					{
+						"key": "key",
+						"value": "{{key}}"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "{{url}}/V1/auth",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"V1",
+						"auth"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "c7570165-3738-4276-b78f-f3939fe5b32a",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "ceaa4675-d0cb-4889-acab-65d67f5f8eac",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "28369e25-3719-4cec-b7f4-83da625e2fc6",
+			"key": "url",
+			"value": "apilumen.localhost",
+			"type": "string"
+		}
+	]
+}
