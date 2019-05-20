@@ -52,5 +52,5 @@ Instalação
     Rodar no terminal o comando php artisan migrate --seed
     Rodar o comando php artisan serve para iniciar o servidor da aplicação ou configurar a aplicação para rodar encima de outro servidor, por exemplo nginx, xampp, wamp, etc
 
-Na raiz da aplicação há um arquivo para importar no Postman para realizar teste do consumo da API. No consumo da roda de busca de medicamentos, coloquei uma validação para sempre informar todos os campos de busca. Realizei dessa maneira apenas para mostrar um pouco de validação, mas poderia ter desenvolvido sem a necessidade de informar na url todos os campos de busca.
+Na raiz da aplicação há um arquivo para importar no Postman para realizar teste do consumo da API. No consumo da rota de busca de medicamentos, coloquei uma validação para sempre informar todos os campos de busca. Realizei dessa maneira apenas para mostrar um pouco de validação, mas poderia ter desenvolvido sem a necessidade de informar na url todos os campos de busca.
 
