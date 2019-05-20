@@ -1,0 +1,12 @@
+{
+    "autoload": {
+        "psr-4": {
+            "Api\\": "api/"
+        }
+    },
+    "require": {
+        "illuminate/database": "^5.8",
+        "illuminate/pagination": "^5.8",
+        "vlucas/phpdotenv": "^3.3"
+    }
+}
