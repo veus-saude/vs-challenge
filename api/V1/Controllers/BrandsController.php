@@ -2,6 +2,7 @@
 namespace Api\V1\Controllers;
 
 use Api\V1\Models\Brand;
+use Api\V1\Middlewares\CheckToken;
 
 class BrandsController extends BaseController
 {
@@ -9,6 +10,8 @@ class BrandsController extends BaseController
 
 	public function __construct()
 	{
+		(new CheckToken());
+	
 		parent::__construct();
 		
 		$this->brand = new Brand;
