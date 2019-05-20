@@ -3,7 +3,7 @@ use Api\V1\Controllers\{
 	BrandsController,
 	ProductsController
 };
-use Api\V1\Helpers\Response;
+use Api\Helpers\Response;
 
 switch($path) {
 	case 'brands':
@@ -13,6 +13,6 @@ switch($path) {
 		echo (new ProductsController)->index();
 		break;
 	default:
-		echo (new Response)->json('Rota não especificada');
+		echo (new Response(404))->plain('Rota não encontrada');
 		break;
 }
