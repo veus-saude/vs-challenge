@@ -3,7 +3,7 @@ namespace Api\V1\Helpers;
 
 class Response
 {
-	public function __construct($statusCode = null)
+	public function __construct($statusCode = 200)
 	{
 		if($statusCode) http_response_code($statusCode);
 	}
