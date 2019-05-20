@@ -17,6 +17,8 @@ class Response
 	
 	public function plain($content)
 	{
+		header('Content-Type: text/plain');
+	
 		return $content;
 	}
 }
