@@ -22,29 +22,29 @@ A API utiliza três pacotes:
 
 Elas são necessárias para a execução da API e são instaladas via Composer através do seguinte comando:
 
-*composer install*
+**_composer install_**
 
 <a href="https://getcomposer.org/download/">Baixar Composer</a>
 
 Feito isso, é necessário executar o seguinte comando para a inserção de tabelas e registros no banco de dados:
 
-*php import_dump.php*
+**_php import_dump.php_**
 
 Pronto! A API pode ser servida através do servidor web embutido do PHP.
 
-*php -S localhost:8000*
+**_php -S localhost:8000_**
 
 ## Autorização
 
 Para acesso a API, o token de um usuário deve ser informado através de uma requisição de cabeçalho.
 
-Exemplo: *curl http://localhost:8000/v1/products --header "api_token: token"*
+Exemplo: **_curl http://localhost:8000/v1/products --header "api_token: token"_**
 
 ## Endpoints
 
-/v1/products/ - Recupera todos os produtos
+"/v1/products/": Recupera todos os produtos
 
-/v1/brands/ - Recupera todas as marcas
+"/v1/brands/": Recupera todas as marcas
 
 ## Parâmetros
 
