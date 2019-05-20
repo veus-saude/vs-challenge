@@ -1,5 +1,5 @@
 <?php
-namespace Api\V1\Helpers;
+namespace Api\Helpers;
 
 class Response
 {

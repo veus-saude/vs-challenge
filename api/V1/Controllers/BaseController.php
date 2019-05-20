@@ -1,7 +1,7 @@
 <?php
 namespace Api\V1\Controllers;
 
-use Api\V1\Helpers\{Request, Response};
+use Api\Helpers\{Request, Response};
 
 class BaseController
 {
