@@ -16,7 +16,11 @@ class BrandsController extends BaseController
 
 	public function index()
 	{
-		$brands = $this->brand->search($this->request->get('q'))->sort($this->request->get('sort'), $this->request->get('sort_order'))->paginate()->getCollection();
+		$brands = $this->brand
+		->search($this->request->get('q'))
+		->sort($this->request->get('sort'), $this->request->get('sort_order', 'asc'))
+		->paginate()
+		->getCollection();
 		
 		return $this->response->json($brands);
 	}
