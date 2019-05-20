@@ -38,7 +38,7 @@ Pronto! A API pode ser servida através do servidor web embutido do PHP.
 
 Para acesso a API, o token de um usuário deve ser informado através de uma requisição de cabeçalho.
 
-Exemplo: *curl http://localhost:8000/v1/products --header "api_token: token"*
+Exemplo: curl http://localhost:8000/v1/products --header "api_token: token"
 
 ## Endpoints
 
