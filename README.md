@@ -6,22 +6,50 @@
 
 Há 25 anos no mercado, a **Veus Technology** é uma empresa brasileira ligada ao segmento de saúde com foco na inovação tecnológica. É responsável por vários projetos pioneiros e estratégicos na área laboratorial, médica e recentemente hospitalar.
 
-## Desafio VS
+## Configuração
 
-Você deve implementar uma API utilizando *PHP* > 7.0. Nós recomendamos que você tente manter o seu códgo o mais simples possível. Se você precisar de qualquer informação adicional ou esclarecimento, você pode nos contatar pelo e-mail: **sistemas@veus.com.br**.
+A API utiliza variáveis de ambiente através de um arquivo .env que pode ser criada a partir do arquivo .env.example.
 
-Vamos imaginar que a sua empresa possua um e-commerce e venda alguns produtos para laboratórios e hospitais...
+Para que a API consulte o banco de dados, se faz necessário informar as credencias de acesso neste arquivo.
 
-Sua tarefa é implementar um serviço de buscas desses produtos. Um produto possui nome, marca, preço e quantidade em estoque.
-A API deve requerer **autenticação** e permitir __search query__ através do método **GET** e suportar filtros opcionais nos campos do produto.
+## Instalação
 
-Por exemplo: Um cliente deve conseguir buscar todas as seringas da marca BUNZL fazendo a seguinte requisição:
+A API utiliza três pacotes:
 
-`https://example.com/api/v1/products?q=seringa&filter=brand:BUNZL`
+- illuminate/database
+- illuminate/pagination
+- vlucas/phpdotenv
 
-A API também deve suportar __pagination__, __versioning__ e __sorting__.
+Elas são necessárias para a execução da API e são instaladas via Composer através do seguinte comando:
 
-Sinta-se livre para usar qualquer library ou framework da sua preferência mas a regra de negócio deve estar o mais desaclopada possível deles.
+composer install
 
----
-Você será avaliado de acordo com a senioridade da posição a qual está aplicando. Ao finalizar o desafio você deve submeter o **Pull Request** com o seu código para a avaliação, após isso nos entrarem em contato com você através do e-mail passando um feedback do seu projeto.
+<a href="https://getcomposer.org/download/">Baixar Composer</a>
+
+Feito isso, é necessário executar o seguinte comando para a inserção de tabelas e registros no banco de dados:
+
+php import_dump.php
+
+Pronto! A API pode ser servida através do servidor web embutido do PHP.
+
+php -S localhost:8000
+
+## Autorização
+
+Para acesso a API, o token de um usuário deve ser informado através de uma requisição de cabeçalho.
+
+Exemplo: curl http://localhost:8000/v1/products --header "api_token: token"
+
+## Endpoints
+
+/v1/products/ - Recupera todos os produtos
+
+/v1/brands/ - Recupera todas as máquinas
+
+## Parâmetros
+
+"q": Pesquisa por string
+"q-column": Define a coluna a pesquisar
+"sort": Classifica o resultado por uma coluna
+"sort-order: Define a direção da classificação (asc ou desc)
+"filter": Filtra através de um relacionamento (exemplo: localhost:8000/v1/products/?filter=brand:EMS)
