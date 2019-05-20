@@ -10,11 +10,5 @@ class User extends Base implements AuthenticatableContract, AuthorizableContract
 {
     use Authenticatable, Authorizable;
 
-    protected $fillable = [
-        'name', 'email'
-    ];
-
-    protected $hidden = [
-        'api_token',
-    ];
+    protected $hidden = ['api_token'];
 }
