@@ -14,6 +14,7 @@ class V4ProductController extends Controller
      *
      * @param IndexProductGet $request
      * @return \Illuminate\Http\JsonResponse
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function index(IndexProductGet $request)
     {
