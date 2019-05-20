@@ -23,5 +23,7 @@ A API também deve suportar __pagination__, __versioning__ e __sorting__.
 
 Sinta-se livre para usar qualquer library ou framework da sua preferência mas a regra de negócio deve estar o mais desaclopada possível deles.
 
+Por favor, **não se esqueça** de providenciar uma pequena documentação de como levantar e testar o seu projeto.
+
 ---
 Você será avaliado de acordo com a senioridade da posição a qual está aplicando. Ao finalizar o desafio você deve submeter o **Pull Request** com o seu código para a avaliação, após isso nos entrarem em contato com você através do e-mail passando um feedback do seu projeto.
