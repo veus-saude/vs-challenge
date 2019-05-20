@@ -1,10 +1,14 @@
 <?php
 require 'vendor/autoload.php';
 
-$dotenv = Dotenv\Dotenv::create(__DIR__);
+use Dotenv\Dotenv;
+use Illuminate\Database\Capsule\Manager;
+use Api\Helpers\Response;
+
+$dotenv = Dotenv::create(__DIR__);
 $dotenv->load();
 
-$dbService = new Illuminate\Database\Capsule\Manager;
+$dbService = new Manager;
 $dbService->addConnection(require('config/database.php'));
 $dbService->bootEloquent();
 
@@ -16,8 +20,8 @@ if($version) {
 	if(file_exists($routePath)) {
 		require $routePath;
 	} else {
-		echo (new Api\Helpers\Response(404))->plain('Versão não encontrada');
+		echo (new Response(404))->plain('Versão não encontrada');
 	}
 } else {
-	echo (new Api\Helpers\Response(404))->plain('Versão não informada');
+	echo (new Response(404))->plain('Versão não informada');
 }
