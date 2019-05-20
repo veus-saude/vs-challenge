@@ -42,9 +42,9 @@ class V3ProductController extends Controller
             if (key_exists('max_unit_price', $filter))
                 $products->where('unit_price', '<=', "%{$filter['max_unit_price']}%");
             if (key_exists('min_quantity', $filter))
-                $products->where('unit_price', '>=', "%{$filter['min_quantity']}%");
+                $products->where('quantity', '>=', "%{$filter['min_quantity']}%");
             if (key_exists('max_quantity', $filter))
-                $products->where('unit_price', '<=', "%{$filter['max_quantity']}%");
+                $products->where('quantity', '<=', "%{$filter['max_quantity']}%");
         }
 
         if ($request->has('q')) {
