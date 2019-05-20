@@ -19,6 +19,6 @@ class Response
 	{
 		header('Content-Type: text/plain');
 	
-		return $content;
+		return $content . "\n";
 	}
 }
