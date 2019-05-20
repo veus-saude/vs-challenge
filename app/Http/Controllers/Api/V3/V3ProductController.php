@@ -27,10 +27,10 @@ class V3ProductController extends Controller
             \Validator::make($filter, [
                 'name' => 'sometimes|required|string|max:150',
                 'brand' => 'sometimes|required|string|max:150',
-                'min_unit_price' => "sometimes|required|numeric|digits_between:0,9999999$unit_price_lte",
-                'max_unit_price' => 'sometimes|required|numeric|digits_between:0,9999999',
-                'min_quantity' => "sometimes|required|integer|digits_between:0,999999999$quantity_lte",
-                'max_quantity' => 'sometimes|required|integer|digits_between:0,999999999',
+                'min_unit_price' => "sometimes|required|numeric|min:0|max:9999999$unit_price_lte",
+                'max_unit_price' => 'sometimes|required|numeric|min:0|max:9999999',
+                'min_quantity' => "sometimes|required|integer|min:0|max:999999999$quantity_lte",
+                'max_quantity' => 'sometimes|required|integer|min:0|max:999999999',
             ])->validate();
 
             if (key_exists('name', $filter))
@@ -38,13 +38,13 @@ class V3ProductController extends Controller
             if (key_exists('brand', $filter))
                 $products->where('brand', 'like', "%{$filter['brand']}%");
             if (key_exists('min_unit_price', $filter))
-                $products->where('unit_price', '>=', "%{$filter['min_unit_price']}%");
+                $products->where('unit_price', '>=', $filter['min_unit_price']);
             if (key_exists('max_unit_price', $filter))
-                $products->where('unit_price', '<=', "%{$filter['max_unit_price']}%");
+                $products->where('unit_price', '<=', $filter['max_unit_price']);
             if (key_exists('min_quantity', $filter))
-                $products->where('quantity', '>=', "%{$filter['min_quantity']}%");
+                $products->where('quantity', '>=', $filter['min_quantity']);
             if (key_exists('max_quantity', $filter))
-                $products->where('quantity', '<=', "%{$filter['max_quantity']}%");
+                $products->where('quantity', '<=', $filter['max_quantity']);
         }
 
         if ($request->has('q')) {
@@ -56,8 +56,8 @@ class V3ProductController extends Controller
             });
         }
 
-//        dump($products->toSql());
-//        dd($products->getBindings());
+        //dump($products->toSql());
+        //dd($products->getBindings());
 
         return response()->json($products->paginate());
     }
