@@ -3,7 +3,7 @@ require 'vendor/autoload.php';
 
 use Dotenv\Dotenv;
 use Illuminate\Database\Capsule\Manager;
-use Api\Helpers\Response;
+use Api\Helpers\{Response, URL};
 
 $dotenv = Dotenv::create(__DIR__);
 $dotenv->load();
@@ -12,7 +12,7 @@ $dbService = new Manager;
 $dbService->addConnection(require('config/database.php'));
 $dbService->bootEloquent();
 
-list($version, $path) = explode('/', trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/') . '/');
+list($version, $path) = URL::getSegments();
 
 if($version) {
 	$routePath = 'routes/' . $version . '.php';
