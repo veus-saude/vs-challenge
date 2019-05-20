@@ -50,10 +50,10 @@ Exemplo: curl http://localhost:8000/v1/products --header "api_token: token"
 
 "q": Pesquisa por string
 
-"q-column": Define a coluna a pesquisar
+"q_column": Define a coluna a pesquisar
 
 "sort": Classifica o resultado por uma coluna
 
-"sort-order: Define a direção da classificação (asc ou desc)
+"sort_order: Define a direção da classificação (asc ou desc)
 
 "filter": Filtra através de um relacionamento (exemplo: localhost:8000/v1/products/?filter=brand:EMS)
