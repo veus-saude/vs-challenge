@@ -25,7 +25,8 @@ class IndexProductGet extends FormRequest
     {
         return [
             'q' => 'sometimes|required|string',
-            'filter' => 'sometimes|required|array'
+            'filter' => 'sometimes|required|array',
+            'sort' => 'sometimes|required|in:name,brand,unit_price,quantity,created_at,updated_at',
         ];
     }
 
