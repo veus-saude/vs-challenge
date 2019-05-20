@@ -46,7 +46,7 @@
                 </div>
                 <!-- /.box-body -->
             </div>
-            <div style="display: flex; justify-content: center;">
+        <div style="display: flex; justify-content: center;">
                 {{ $products->links() }}
             </div>
         <!-- /.box -->
