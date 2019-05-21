@@ -1,0 +1,17 @@
+Orientações básicas
+
+
+Link inicial para maquina local:
+
+http://localhost/veus/sistema/index.php
+
+login: felipe
+senha:1234
+
+Filtro por metodo GET:
+
+http://localhost/veus/sistema/aplicacao/index.php?q=Seringa&filter=marca:BUNZL
+
+
+Criar Base dados com SQL damp:
+
