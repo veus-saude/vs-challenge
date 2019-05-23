@@ -1,0 +1,974 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Veus API",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/v1/brands": {
+            "get": {
+                "tags": [
+                    "Brands"
+                ],
+                "summary": "Buscar Brands",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Numero da Pagina",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "500": {
+                        "$ref": "#/components/responses/500"
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/401"
+                    },
+                    "409": {
+                        "description": "Usuário já cadastrado no sistema",
+                        "$ref": "#/components/responses/409"
+                    },
+                    "default": {
+                        "description": "An \"unexpected\" error"
+                    }
+                },
+                "security": [
+                    {
+                        "Token API": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Brands"
+                ],
+                "summary": "Criar Brand",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Nome da Brand",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "500": {
+                        "$ref": "#/components/responses/500"
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/401"
+                    },
+                    "409": {
+                        "description": "Usuário já cadastrado no sistema",
+                        "$ref": "#/components/responses/409"
+                    },
+                    "default": {
+                        "description": "An \"unexpected\" error"
+                    }
+                },
+                "security": [
+                    {
+                        "Token API": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/brands/{id}": {
+            "get": {
+                "tags": [
+                    "Brands"
+                ],
+                "summary": "Buscar Brand pelo id",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id da Brand",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "500": {
+                        "$ref": "#/components/responses/500"
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/401"
+                    },
+                    "409": {
+                        "description": "Usuário já cadastrado no sistema",
+                        "$ref": "#/components/responses/409"
+                    },
+                    "default": {
+                        "description": "An \"unexpected\" error"
+                    }
+                },
+                "security": [
+                    {
+                        "Token API": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Brands"
+                ],
+                "summary": "Atualizar Brand",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id da Brand",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Nome do Produto",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "500": {
+                        "$ref": "#/components/responses/500"
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/401"
+                    },
+                    "409": {
+                        "description": "Usuário já cadastrado no sistema",
+                        "$ref": "#/components/responses/409"
+                    },
+                    "default": {
+                        "description": "An \"unexpected\" error"
+                    }
+                },
+                "security": [
+                    {
+                        "Token API": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Brands"
+                ],
+                "summary": "Deletar Brand",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id da Brand",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "500": {
+                        "$ref": "#/components/responses/500"
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/401"
+                    },
+                    "409": {
+                        "description": "Usuário já cadastrado no sistema",
+                        "$ref": "#/components/responses/409"
+                    },
+                    "default": {
+                        "description": "An \"unexpected\" error"
+                    }
+                },
+                "security": [
+                    {
+                        "Token API": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/products": {
+            "get": {
+                "tags": [
+                    "Produtos"
+                ],
+                "summary": "Buscar Produtos",
+                "parameters": [
+                    {
+                        "name": "q",
+                        "in": "query",
+                        "description": "Tipo do produto",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "seringa"
+                    },
+                    {
+                        "name": "filter[]",
+                        "in": "query",
+                        "description": "Filtros do Produto",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "example": "brand:BUNZL"
+                            }
+                        }
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Numero da Pagina",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "500": {
+                        "$ref": "#/components/responses/500"
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/401"
+                    },
+                    "409": {
+                        "description": "Usuário já cadastrado no sistema",
+                        "$ref": "#/components/responses/409"
+                    },
+                    "default": {
+                        "description": "An \"unexpected\" error"
+                    }
+                },
+                "security": [
+                    {
+                        "Token API": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Produtos"
+                ],
+                "summary": "Criar Produtos",
+                "parameters": [
+                    {
+                        "name": "id_brand",
+                        "in": "query",
+                        "description": "Id da Marca",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "id_type",
+                        "in": "query",
+                        "description": "Id do Tipo",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Nome do Produto",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "500": {
+                        "$ref": "#/components/responses/500"
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/401"
+                    },
+                    "409": {
+                        "description": "Usuário já cadastrado no sistema",
+                        "$ref": "#/components/responses/409"
+                    },
+                    "default": {
+                        "description": "An \"unexpected\" error"
+                    }
+                },
+                "security": [
+                    {
+                        "Token API": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/products/{id}": {
+            "get": {
+                "tags": [
+                    "Produtos"
+                ],
+                "summary": "Buscar um produto pelo id",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id do Produto",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "500": {
+                        "$ref": "#/components/responses/500"
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/401"
+                    },
+                    "409": {
+                        "description": "Usuário já cadastrado no sistema",
+                        "$ref": "#/components/responses/409"
+                    },
+                    "default": {
+                        "description": "An \"unexpected\" error"
+                    }
+                },
+                "security": [
+                    {
+                        "Token API": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Produtos"
+                ],
+                "summary": "Atualizar Produtos",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id do Produto",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "id_brand",
+                        "in": "query",
+                        "description": "Id da Marca",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "id_type",
+                        "in": "query",
+                        "description": "Id do Tipo",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Nome do Produto",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "500": {
+                        "$ref": "#/components/responses/500"
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/401"
+                    },
+                    "409": {
+                        "description": "Usuário já cadastrado no sistema",
+                        "$ref": "#/components/responses/409"
+                    },
+                    "default": {
+                        "description": "An \"unexpected\" error"
+                    }
+                },
+                "security": [
+                    {
+                        "Token API": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Produtos"
+                ],
+                "summary": "Deletar Produtos",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id do Produto",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "500": {
+                        "$ref": "#/components/responses/500"
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/401"
+                    },
+                    "409": {
+                        "description": "Usuário já cadastrado no sistema",
+                        "$ref": "#/components/responses/409"
+                    },
+                    "default": {
+                        "description": "An \"unexpected\" error"
+                    }
+                },
+                "security": [
+                    {
+                        "Token API": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/types": {
+            "get": {
+                "tags": [
+                    "Types"
+                ],
+                "summary": "Buscar Tipos",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Numero da Pagina",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "500": {
+                        "$ref": "#/components/responses/500"
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/401"
+                    },
+                    "409": {
+                        "description": "Usuário já cadastrado no sistema",
+                        "$ref": "#/components/responses/409"
+                    },
+                    "default": {
+                        "description": "An \"unexpected\" error"
+                    }
+                },
+                "security": [
+                    {
+                        "Token API": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Types"
+                ],
+                "summary": "Criar Tipo",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Nome do Tipo",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "500": {
+                        "$ref": "#/components/responses/500"
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/401"
+                    },
+                    "409": {
+                        "description": "Usuário já cadastrado no sistema",
+                        "$ref": "#/components/responses/409"
+                    },
+                    "default": {
+                        "description": "An \"unexpected\" error"
+                    }
+                },
+                "security": [
+                    {
+                        "Token API": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/types/{id}": {
+            "get": {
+                "tags": [
+                    "Types"
+                ],
+                "summary": "Buscar um tipo pelo id",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id do Tipo",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "500": {
+                        "$ref": "#/components/responses/500"
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/401"
+                    },
+                    "409": {
+                        "description": "Usuário já cadastrado no sistema",
+                        "$ref": "#/components/responses/409"
+                    },
+                    "default": {
+                        "description": "An \"unexpected\" error"
+                    }
+                },
+                "security": [
+                    {
+                        "Token API": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Types"
+                ],
+                "summary": "Atualizar Tipo",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id do Tipo",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Nome do Produto",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "500": {
+                        "$ref": "#/components/responses/500"
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/401"
+                    },
+                    "409": {
+                        "description": "Usuário já cadastrado no sistema",
+                        "$ref": "#/components/responses/409"
+                    },
+                    "default": {
+                        "description": "An \"unexpected\" error"
+                    }
+                },
+                "security": [
+                    {
+                        "Token API": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Types"
+                ],
+                "summary": "Deletar Tipo",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id do Tipo",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "500": {
+                        "$ref": "#/components/responses/500"
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/401"
+                    },
+                    "409": {
+                        "description": "Usuário já cadastrado no sistema",
+                        "$ref": "#/components/responses/409"
+                    },
+                    "default": {
+                        "description": "An \"unexpected\" error"
+                    }
+                },
+                "security": [
+                    {
+                        "Token API": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/users": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Buscar Usuarios",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Numero da Pagina",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "500": {
+                        "$ref": "#/components/responses/500"
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/401"
+                    },
+                    "409": {
+                        "description": "Usuário já cadastrado no sistema",
+                        "$ref": "#/components/responses/409"
+                    },
+                    "default": {
+                        "description": "An \"unexpected\" error"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Criar Ususario",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Nome do Usuario",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "last_name",
+                        "in": "query",
+                        "description": "Sobrenome do Usuario",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "Email do Usuario",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "500": {
+                        "$ref": "#/components/responses/500"
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/401"
+                    },
+                    "409": {
+                        "description": "Usuário já cadastrado no sistema",
+                        "$ref": "#/components/responses/409"
+                    },
+                    "default": {
+                        "description": "An \"unexpected\" error"
+                    }
+                },
+                "security": [
+                    {
+                        "Token API": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/users/{id}": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Buscar usuario pelo id",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id do Usuario",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "500": {
+                        "$ref": "#/components/responses/500"
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/401"
+                    },
+                    "409": {
+                        "description": "Usuário já cadastrado no sistema",
+                        "$ref": "#/components/responses/409"
+                    },
+                    "default": {
+                        "description": "An \"unexpected\" error"
+                    }
+                },
+                "security": [
+                    {
+                        "Token API": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Atualizar Usuario",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id do Usuario",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Nome do Usuario",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "last_name",
+                        "in": "query",
+                        "description": "Sobrenome do Usuario",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "Email do Usuario",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "500": {
+                        "$ref": "#/components/responses/500"
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/401"
+                    },
+                    "409": {
+                        "description": "Usuário já cadastrado no sistema",
+                        "$ref": "#/components/responses/409"
+                    },
+                    "default": {
+                        "description": "An \"unexpected\" error"
+                    }
+                },
+                "security": [
+                    {
+                        "Token API": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Deletar Usuario",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id do Usuario",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "500": {
+                        "$ref": "#/components/responses/500"
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/401"
+                    },
+                    "409": {
+                        "description": "Usuário já cadastrado no sistema",
+                        "$ref": "#/components/responses/409"
+                    },
+                    "default": {
+                        "description": "An \"unexpected\" error"
+                    }
+                },
+                "security": [
+                    {
+                        "Token API": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Error": {
+                "title": "Error",
+                "properties": {
+                    "error": {
+                        "properties": {
+                            "code": {
+                                "description": "Error code",
+                                "type": "integer",
+                                "format": "int32",
+                                "example": 0
+                            },
+                            "message": {
+                                "description": "Error message",
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "responses": {
+            "400": {
+                "description": "Bad Request",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/Error"
+                        }
+                    }
+                }
+            },
+            "401": {
+                "description": "Unauthorized",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/Error"
+                        }
+                    }
+                }
+            },
+            "404": {
+                "description": "Not Found",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/Error"
+                        }
+                    }
+                }
+            },
+            "409": {
+                "description": "Conflict",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/Error"
+                        }
+                    }
+                }
+            },
+            "500": {
+                "description": "Internal Server Error",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/Error"
+                        }
+                    }
+                }
+            },
+            "503": {
+                "description": "Service Unavailable",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "securitySchemes": {
+            "Token API": {
+                "type": "http",
+                "name": "Authorization",
+                "in": "header",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
+            }
+        }
+    }
+}

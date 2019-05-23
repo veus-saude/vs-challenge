@@ -1,0 +1,43 @@
+version: '3'
+services:
+    app:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        image: php:7.2-fpm
+        container_name: app
+        restart: unless-stopped
+        tty: true
+        working_dir: /var/www
+        volumes:
+            - ./:/var/www
+        #command: composer install
+        networks:
+            - app-network
+
+    webserver:
+        image: nginx:alpine
+        container_name: webserver
+        restart: unless-stopped
+        tty: true
+        ports:
+            - "80:80"
+            - "443:443"
+        volumes:
+            - ./:/var/www
+            - ./nginx/conf.d/:/etc/nginx/conf.d/
+        networks:
+            - app-network
+
+    composer:
+        image: composer
+        container_name: composer
+        volumes:
+            - ./:/app
+        command: install
+        depends_on:
+            - app
+
+networks:
+    app-network:
+        driver: bridge

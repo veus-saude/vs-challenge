@@ -1,29 +1,74 @@
-<p align="center">
-    <img src="https://i.imgur.com/2LUR2yy.png">
-</p>
+#Teste Veus Joziel Reis
 
-## Sobre a VEUS
+###Metodos de executar o teste.
 
-Há 25 anos no mercado, a **Veus Technology** é uma empresa brasileira ligada ao segmento de saúde com foco na inovação tecnológica. É responsável por vários projetos pioneiros e estratégicos na área laboratorial, médica e recentemente hospitalar.
+####Docker
+Instale o Docker e o docker-compose para rodar o projeto.
+Utilize o comando na raiz do projeto:
 
-## Desafio VS
+    docker-compose up -d
 
-Você deve implementar uma API utilizando *PHP* > 7.0. Nós recomendamos que você tente manter o seu códgo o mais simples possível. Se você precisar de qualquer informação adicional ou esclarecimento, você pode nos contatar pelo e-mail: **sistemas@veus.com.br**.
+####PHP Server
 
-Vamos imaginar que a sua empresa possua um e-commerce e venda alguns produtos para laboratórios e hospitais...
+Requisitos para rodar o php server:
+- php 7
+- composer
+- extensão: pdo_sqlite
+- extensão: mbstring
 
-Sua tarefa é implementar um serviço de buscas desses produtos. Um produto possui nome, marca, preço e quantidade em estoque.
-A API deve requerer **autenticação** e permitir __search query__ através do método **GET** e suportar filtros opcionais nos campos do produto.
 
-Por exemplo: Um cliente deve conseguir buscar todas as seringas da marca BUNZL fazendo a seguinte requisição:
+Utilize o comando na raiz do projeto:
 
-`https://example.com/api/v1/products?q=seringa&filter=brand:BUNZL`
+    composer install
+    php -S localhost:8000 -t public
 
-A API também deve suportar __pagination__, __versioning__ e __sorting__.
 
-Sinta-se livre para usar qualquer library ou framework da sua preferência mas a regra de negócio deve estar o mais desaclopada possível deles.
+###Executando o Projeto.
 
-Por favor, **não se esqueça** de providenciar uma pequena documentação de como levantar e testar o seu projeto.
+O projeto utiliza o Swagger, para visualizar a API entre na Home do Projeto. exemplo:
 
----
-Você será avaliado de acordo com a senioridade da posição a qual está aplicando. Ao finalizar o desafio você deve submeter o **Pull Request** com o seu código para a avaliação, após isso nos entrarem em contato com você através do e-mail passando um feedback do seu projeto.
+    http://localhost
+
+O projeto utiliza como banco o SQLite, para executar as função é necessário o TOKEN do usuário.
+
+Para encontrar o TOKEN você pode utilizar a consulta no banco que se localiza na pasta:
+
+    ./storage/sqlite/veus.sqlite
+
+Ou você pode utilizar a API:
+
+    http://localhost/api/v1/users
+
+Essa Rota está liberada, não precisa utilizar o TOKEN para ser executada, porém o restante do projeto é necessário do TOKEN.
+
+####Como utilizar o TOKEN.
+
+O TOKEN deve ser utilizado na HEADER da requisição
+exemplo via CURL:
+
+    curl -X GET "http://localhost/api/v1/products?q=seringa&filter=brand:BUNZL" -H "accept: */*" -H "Authorization: Bearer {TOKEN API}
+
+
+####Testes Unitários
+Para os Testes foi Utilizado o PHPUnit, basta executar na raiz do projeto o comando:
+
+    php ./vendor/phpunit/phpunit/phpunit
+
+####Resetar base de dados
+Caso queria resetar o banco e alimentar ele com novos dados faça as seguintes ações:
+
+Delete o arquivo `http://localhost/api/v1/users` e recrieo com o mesmo nome.
+
+Utilize os commando em sequencia a seguir:
+
+    php artisan migrate
+    php artisan 
+    php artisan db:seed --class=UsersSeeder
+    php artisan db:seed --class=BrandsSeeder
+    php artisan db:seed --class=TypesSeeder
+    php artisan db:seed --class=ProductsSeeder
+    
+    
+
+#####Contato
+Para mais informações entre em contato via e-mail: joziel99@gmail.com
