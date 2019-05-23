@@ -48,18 +48,20 @@ exemplo via CURL:
 
     curl -X GET "http://localhost/api/v1/products?q=seringa&filter=brand:BUNZL" -H "accept: */*" -H "Authorization: Bearer {TOKEN API}
 
+A HEADER que dever ser utilizada é a “Authorization”, o valor dever iniciar com o “Bearer ” e em seguida o TOKEN
+
 
 #### Testes Unitários
-Para os Testes foi Utilizado o PHPUnit, basta executar na raiz do projeto o comando:
+Para os Testes foi utilizado o PHPUnit, basta executar na raiz do projeto o comando:
 
     php ./vendor/phpunit/phpunit/phpunit
 
-#### Resetar base de dados
-Caso queria resetar o banco e alimentar ele com novos dados faça as seguintes ações:
+#### Restar base de dados
+Caso queria restar o banco e alimentar ele com novos dados faça as seguintes ações:
 
-Delete o arquivo `http://localhost/api/v1/users` e recrieo com o mesmo nome.
+Delete o arquivo `http://localhost/api/v1/users` e recrie-o com o mesmo nome.
 
-Utilize os commando em sequencia a seguir:
+Utilize os comando em sequência a seguir:
 
     php artisan migrate
     php artisan 
@@ -72,3 +74,4 @@ Utilize os commando em sequencia a seguir:
 
 ##### Contato
 Para mais informações entre em contato via e-mail: joziel99@gmail.com
+
