@@ -1,14 +1,14 @@
-#Teste Veus Joziel Reis
+# Teste Veus Joziel Reis
 
-###Metodos de executar o teste.
+### Metodos de executar o teste.
 
-####Docker
+#### Docker
 Instale o Docker e o docker-compose para rodar o projeto.
 Utilize o comando na raiz do projeto:
 
     docker-compose up -d
 
-####PHP Server
+#### PHP Server
 
 Requisitos para rodar o php server:
 - php 7
@@ -23,7 +23,7 @@ Utilize o comando na raiz do projeto:
     php -S localhost:8000 -t public
 
 
-###Executando o Projeto.
+### Executando o Projeto.
 
 O projeto utiliza o Swagger, para visualizar a API entre na Home do Projeto. exemplo:
 
@@ -41,7 +41,7 @@ Ou você pode utilizar a API:
 
 Essa Rota está liberada, não precisa utilizar o TOKEN para ser executada, porém o restante do projeto é necessário do TOKEN.
 
-####Como utilizar o TOKEN.
+#### Como utilizar o TOKEN.
 
 O TOKEN deve ser utilizado na HEADER da requisição
 exemplo via CURL:
@@ -49,12 +49,12 @@ exemplo via CURL:
     curl -X GET "http://localhost/api/v1/products?q=seringa&filter=brand:BUNZL" -H "accept: */*" -H "Authorization: Bearer {TOKEN API}
 
 
-####Testes Unitários
+#### Testes Unitários
 Para os Testes foi Utilizado o PHPUnit, basta executar na raiz do projeto o comando:
 
     php ./vendor/phpunit/phpunit/phpunit
 
-####Resetar base de dados
+#### Resetar base de dados
 Caso queria resetar o banco e alimentar ele com novos dados faça as seguintes ações:
 
 Delete o arquivo `http://localhost/api/v1/users` e recrieo com o mesmo nome.
@@ -70,5 +70,5 @@ Utilize os commando em sequencia a seguir:
     
     
 
-#####Contato
+##### Contato
 Para mais informações entre em contato via e-mail: joziel99@gmail.com
