@@ -12,8 +12,8 @@ Você deve implementar uma API utilizando *PHP* > 7.0. Nós recomendamos que voc
 
 Vamos imaginar que a sua empresa possua um e-commerce e venda alguns produtos para laboratórios e hospitais...
 
-Sua tarefa é implementar um serviço de buscas desses produtos. Um produto possui nome, marca, preço e quantidade em estoque.
-A API deve requerer **autenticação** e permitir __search query__ através do método **GET** e suportar filtros opcionais nos campos do produto.
+Sua tarefa é desenvolver um **CRUD** de Produtos e implementar um serviço de buscas desses produtos. Um produto possui nome, marca, preço e quantidade em estoque.
+A API deve requerer **autenticação** e permitir __search query__ através do método **GET** e suportar filtros opcionais nos campos do produto.    A API deve requerer **autenticação** e permitir __search query__ através do método **GET** e suportar filtros opcionais nos campos do produto.
 
 Por exemplo: Um cliente deve conseguir buscar todas as seringas da marca BUNZL fazendo a seguinte requisição:
 
@@ -24,6 +24,11 @@ A API também deve suportar __pagination__, __versioning__ e __sorting__.
 Sinta-se livre para usar qualquer library ou framework da sua preferência mas a regra de negócio deve estar o mais desaclopada possível deles.
 
 Por favor, **não se esqueça** de providenciar uma pequena documentação de como levantar e testar o seu projeto.
+
+Bônus:
+* Docker
+* Unit Test
+* User Interface
 
 ---
 Você será avaliado de acordo com a senioridade da posição a qual está aplicando. Ao finalizar o desafio você deve submeter o **Pull Request** com o seu código para a avaliação, após isso nos entrarem em contato com você através do e-mail passando um feedback do seu projeto.
