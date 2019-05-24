@@ -1,5 +1,13 @@
 # Teste Veus Joziel Reis
 
+### Frameworks e Software
+
+- PHP 7
+- [Framework Lumen - Laravel](https://lumen.laravel.com/)
+- PHPUnit
+- SQLite
+- [Docker](https://docs.docker.com/) e [Docker Compose](https://docs.docker.com/compose/)
+
 ### Metodos de executar o teste.
 
 #### Docker
@@ -59,7 +67,7 @@ Para os Testes foi utilizado o PHPUnit, basta executar na raiz do projeto o coma
 #### Restar base de dados
 Caso queria restar o banco e alimentar ele com novos dados faça as seguintes ações:
 
-Delete o arquivo `http://localhost/api/v1/users` e recrie-o com o mesmo nome.
+Delete o arquivo `./storage/sqlite/veus.sqlite` e recrie-o com o mesmo nome.
 
 Utilize os comando em sequência a seguir:
 
