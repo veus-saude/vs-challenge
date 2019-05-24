@@ -1,0 +1,45 @@
+version: '2'
+
+services:
+  codebase:
+    container_name: vs_codebase
+    image: tianon/true
+    volumes:
+      - ./project:/var/www:delegated
+
+  workspace:
+    container_name: vs_workspace
+    build: ./docker/workspace
+    extra_hosts:
+      - 'dockerhost:10.0.75.1'
+    tty: true
+    volumes_from:
+      - codebase:rw
+
+  apache:
+    container_name: vs_apache
+    build: ./docker/apache
+    extra_hosts:
+      - 'dockerhost:10.0.75.1'
+    links:
+      - mysql
+    ports:
+      - 80:80
+    tty: true
+    volumes_from:
+      - codebase:rw
+
+  mysql:
+    container_name: vs_mysql
+    image: mysql:5.5
+    extra_hosts:
+      - 'dockerhost:10.0.75.1'
+    volumes:
+      - ./docker/data/mysql:/var/lib/mysql:delegated
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: vs_challenge@root
+      MYSQL_DATABASE: vs_challenge
+      MYSQL_USER: vs_challenge
+      MYSQL_PASSWORD: vs_challenge@secret
