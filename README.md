@@ -1,34 +1,96 @@
-<p align="center">
-    <img src="https://i.imgur.com/2LUR2yy.png">
-</p>
+## Configurando o Projeto para executar o Desafio Veus
 
-## Sobre a VEUS
+### Conceder permissão para a pasta de armazenamento
+```bash
+sudo chmod -R 777 storage/
+```
 
-Há 25 anos no mercado, a **Veus Technology** é uma empresa brasileira ligada ao segmento de saúde com foco na inovação tecnológica. É responsável por vários projetos pioneiros e estratégicos na área laboratorial, médica e recentemente hospitalar.
+### Como estou utilizando docker então é necessário criar a pasta volumes para ele armazenar nosso banco de dados.
 
-## Desafio VS
+```bash
+mkdir volumes
+```
 
-Você deve implementar uma API utilizando *PHP* > 7.0. Nós recomendamos que você tente manter o seu códgo o mais simples possível. Se você precisar de qualquer informação adicional ou esclarecimento, você pode nos contatar pelo e-mail: **sistemas@veus.com.br**.
+Copiar o arquivo .env.example.
 
-Vamos imaginar que a sua empresa possua um e-commerce e venda alguns produtos para laboratórios e hospitais...
+```bash
+cp .env.example .env
+```
 
-Sua tarefa é desenvolver um **CRUD** de Produtos e implementar um serviço de buscas desses produtos. Um produto possui nome, marca, preço e quantidade em estoque.
-A API deve requerer **autenticação** e permitir __search query__ através do método **GET** e suportar filtros opcionais nos campos do produto.    A API deve requerer **autenticação** e permitir __search query__ através do método **GET** e suportar filtros opcionais nos campos do produto.
+## Docker Levantar os containers
 
-Por exemplo: Um cliente deve conseguir buscar todas as seringas da marca BUNZL fazendo a seguinte requisição:
+```bash
+docker-compose up
+```
 
-`https://example.com/api/v1/products?q=seringa&filter=brand:BUNZL`
+## Configurando Banco de dados
 
-A API também deve suportar __pagination__, __versioning__ e __sorting__.
+### Para acessar o container do Mysql basta digitar no terminal.
 
-Sinta-se livre para usar qualquer library ou framework da sua preferência mas a regra de negócio deve estar o mais desaclopada possível deles.
+```bash
+docker exec -it mysql_veus bash
+```
 
-Por favor, **não se esqueça** de providenciar uma pequena documentação de como levantar e testar o seu projeto.
+Após isso temos que configurar nosso banco de dados e acessar o cliente do mysql para criar os databases.
 
-Bônus:
-* Docker
-* Unit Test
-* User Interface
 
----
-Você será avaliado de acordo com a senioridade da posição a qual está aplicando. Ao finalizar o desafio você deve submeter o **Pull Request** com o seu código para a avaliação, após isso nos entrarem em contato com você através do e-mail passando um feedback do seu projeto.
+```bash
+mysql -U -pA123456
+create database veus;
+create database veus_test;
+```
+
+
+## Inicialização do Projeto
+
+Entrar no bash do container apache_veus
+
+```bash
+docker exec -it apache_veus bash
+```
+
+Navegar até a pasta principal do projeto e instalar as dependências.
+
+```bash
+cd /var/www/html
+composer install --ignore-platform-reqs
+```
+
+Após isso é só executar os comandos do artisan para criar a estrutura das tabelas, popular a base com alguns registros, gerar chaves para a authenticação da api e iniciar o servidor.
+
+```bash
+php artisan migrate
+php artisan migrate --database=testing
+php artisan db:seed
+php artisan passport:install
+php artisan serve
+```
+  
+## Pegando IP que o Docker Gerou
+
+
+```bash
+docker inspect apache_veus | grep "IPAddress"
+```
+### Para acessar basta digitar http://{IP_QUE_DOCKER_GEROU}
+
+## Executando os testes
+### Para executar os testes basta entra no container do php e rodar o phpunit.
+
+```bash
+docker exec -it apache_veus bash
+
+cd /var/www/html
+
+./vendor/phpunit/phpunit//phpunit tests/
+```
+
+## Utilizando a API
+## Link para documentação da API
+
+```bash
+https://documenter.getpostman.com/view/183210/S1TR5zi4
+```
+
+Será necessário gerar um token e quando for utilizar uma requisição autenticada devera enviar o Header Authentication Bearer $TOKEN que a API irá prover.
+

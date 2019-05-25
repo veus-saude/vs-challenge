@@ -1,0 +1,29 @@
+version: "2"
+
+services:
+  apache:
+    image: webdevops/php-apache-dev:7.1
+    container_name: apache_veus
+    restart: always
+    volumes:
+      - ./:/var/www/html:cached
+    environment:
+      - WEB_DOCUMENT_ROOT=/var/www/html/public
+    ports:
+      - 80:80
+    links:
+      - mysql:mysql
+
+  mysql:
+    image: mysql:5.7
+    container_name: mysql_veus
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=A123456
+      - MYSQL_DATABASE=webadm
+      - MYSQL_USER=webadm
+      - MYSQL_PASSWORD=A123456
+      - MYSQL_ROOT_HOST=%
+    volumes:
+      - ./volumes/mysql:/var/lib/mysql
+      - ./volumes/mysql:/etc/mysql/mysql.conf.d

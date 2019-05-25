@@ -1,0 +1,196 @@
+{
+	"id": "15ca697b-5896-bfb3-3f1b-de156d5a710f",
+	"name": "Veus API",
+	"description": "",
+	"order": [
+		"a387e7ef-4f5b-bd2a-e55b-77fb9e836843",
+		"f0fe5571-d392-a5ce-e2ad-043969a56958",
+		"ded020c9-5d32-c221-4600-043a3b06912e",
+		"80b95b77-184b-81ad-9174-2d9dabe72a30"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1558742567319,
+	"owner": 0,
+	"public": false,
+	"requests": [
+		{
+			"id": "80b95b77-184b-81ad-9174-2d9dabe72a30",
+			"headers": "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6Ijk4OTRlYjAyMTJkOTZiYzI1MDIxZTdmNGY1OWNhNTljMjE5NGU2MjMyZjhhMWRiNzAyZGU1NGNiZTcxNTE0N2E1NWI5ZmE1MGMwMWY0ZmVlIn0.eyJhdWQiOiIxIiwianRpIjoiOTg5NGViMDIxMmQ5NmJjMjUwMjFlN2Y0ZjU5Y2E1OWMyMTk0ZTYyMzJmOGExZGI3MDJkZTU0Y2JlNzE1MTQ3YTU1YjlmYTUwYzAxZjRmZWUiLCJpYXQiOjE1NTg3NDM3ODksIm5iZiI6MTU1ODc0Mzc4OSwiZXhwIjoxNTkwMzY2MTg5LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.kPFxn1HsjU7gUZ_lSCwF2qy-zokVSHtbNr-eaoVgc26f6BfvSVrsVRzlg3SWtxsVvSAyaELy1RFkHu6amfzCXjBd_79fcnm_YBrtDmjsN5STNFEotLNESg3MxMBOdPcE7MrSqmwu9ZhX9415m1j2ozPxhIc-1wzJx6wPORHYUSrT7xWaPSURGLnq3_-lErELkoHoXY6ySo498EYmoaOv70I2UD9PTx_Wb10WaIYBUhyB3Zqs_-GOGHGvarP-0YA9mjsmbwQmeqSnIz1dNYpAiFKnMkXdIW707Ut3fpBa6Jqi8BrPcGz-C5yVjM1gG3rq84A3fvrKhuWU6r-FHwIQrnbDjbPgDFLBHp3PN3PeaSird3_IZezJdfL0syfb3HnS4oA8sRiQMFFU0wHtmT-lNDmQFvYbGlVq-mdViT2QXKC1lss3iSVe_Jwj5QiApnF90rI7tvs_PxKm32u3mX544xMv2WZcThR7glVo-KGVae-ur9RULvhoOfAT5cgFY0aMdxq9LiFxBbqo98z6fXXIAOwZCsZPh3-BVYdW6catIFv6-kySMrxzt4dS9V0ClZWb0R8G_2902T-LGsH6P5wn_ejh5ThWsH24TLoDaYzv6x5f9yi9QsFlyUpatOjGMaC3xvCQ0aSHjbMD69xMOo092SUROe_76gpOexuIxsjOpqw\nContent-Type: application/x-www-form-urlencoded\nAccept: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6Ijk4OTRlYjAyMTJkOTZiYzI1MDIxZTdmNGY1OWNhNTljMjE5NGU2MjMyZjhhMWRiNzAyZGU1NGNiZTcxNTE0N2E1NWI5ZmE1MGMwMWY0ZmVlIn0.eyJhdWQiOiIxIiwianRpIjoiOTg5NGViMDIxMmQ5NmJjMjUwMjFlN2Y0ZjU5Y2E1OWMyMTk0ZTYyMzJmOGExZGI3MDJkZTU0Y2JlNzE1MTQ3YTU1YjlmYTUwYzAxZjRmZWUiLCJpYXQiOjE1NTg3NDM3ODksIm5iZiI6MTU1ODc0Mzc4OSwiZXhwIjoxNTkwMzY2MTg5LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.kPFxn1HsjU7gUZ_lSCwF2qy-zokVSHtbNr-eaoVgc26f6BfvSVrsVRzlg3SWtxsVvSAyaELy1RFkHu6amfzCXjBd_79fcnm_YBrtDmjsN5STNFEotLNESg3MxMBOdPcE7MrSqmwu9ZhX9415m1j2ozPxhIc-1wzJx6wPORHYUSrT7xWaPSURGLnq3_-lErELkoHoXY6ySo498EYmoaOv70I2UD9PTx_Wb10WaIYBUhyB3Zqs_-GOGHGvarP-0YA9mjsmbwQmeqSnIz1dNYpAiFKnMkXdIW707Ut3fpBa6Jqi8BrPcGz-C5yVjM1gG3rq84A3fvrKhuWU6r-FHwIQrnbDjbPgDFLBHp3PN3PeaSird3_IZezJdfL0syfb3HnS4oA8sRiQMFFU0wHtmT-lNDmQFvYbGlVq-mdViT2QXKC1lss3iSVe_Jwj5QiApnF90rI7tvs_PxKm32u3mX544xMv2WZcThR7glVo-KGVae-ur9RULvhoOfAT5cgFY0aMdxq9LiFxBbqo98z6fXXIAOwZCsZPh3-BVYdW6catIFv6-kySMrxzt4dS9V0ClZWb0R8G_2902T-LGsH6P5wn_ejh5ThWsH24TLoDaYzv6x5f9yi9QsFlyUpatOjGMaC3xvCQ0aSHjbMD69xMOo092SUROe_76gpOexuIxsjOpqw",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://172.18.0.3/api/products?filter=name:Mr. Manuel Fadel",
+			"queryParams": [
+				{
+					"key": "filter",
+					"value": "name:Mr. Manuel Fadel",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1558749633717,
+			"name": "Search Products",
+			"description": "Get products ",
+			"collectionId": "15ca697b-5896-bfb3-3f1b-de156d5a710f",
+			"responses": []
+		},
+		{
+			"id": "a387e7ef-4f5b-bd2a-e55b-77fb9e836843",
+			"headers": "",
+			"headerData": [],
+			"url": "http://172.18.0.3/api/login",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "email",
+					"value": "charleycesar@gmail.com",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "12345678",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1558743790214,
+			"name": "Login",
+			"description": "Login an user and generate a token",
+			"collectionId": "15ca697b-5896-bfb3-3f1b-de156d5a710f",
+			"responses": []
+		},
+		{
+			"id": "ded020c9-5d32-c221-4600-043a3b06912e",
+			"headers": "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6Ijk4OTRlYjAyMTJkOTZiYzI1MDIxZTdmNGY1OWNhNTljMjE5NGU2MjMyZjhhMWRiNzAyZGU1NGNiZTcxNTE0N2E1NWI5ZmE1MGMwMWY0ZmVlIn0.eyJhdWQiOiIxIiwianRpIjoiOTg5NGViMDIxMmQ5NmJjMjUwMjFlN2Y0ZjU5Y2E1OWMyMTk0ZTYyMzJmOGExZGI3MDJkZTU0Y2JlNzE1MTQ3YTU1YjlmYTUwYzAxZjRmZWUiLCJpYXQiOjE1NTg3NDM3ODksIm5iZiI6MTU1ODc0Mzc4OSwiZXhwIjoxNTkwMzY2MTg5LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.kPFxn1HsjU7gUZ_lSCwF2qy-zokVSHtbNr-eaoVgc26f6BfvSVrsVRzlg3SWtxsVvSAyaELy1RFkHu6amfzCXjBd_79fcnm_YBrtDmjsN5STNFEotLNESg3MxMBOdPcE7MrSqmwu9ZhX9415m1j2ozPxhIc-1wzJx6wPORHYUSrT7xWaPSURGLnq3_-lErELkoHoXY6ySo498EYmoaOv70I2UD9PTx_Wb10WaIYBUhyB3Zqs_-GOGHGvarP-0YA9mjsmbwQmeqSnIz1dNYpAiFKnMkXdIW707Ut3fpBa6Jqi8BrPcGz-C5yVjM1gG3rq84A3fvrKhuWU6r-FHwIQrnbDjbPgDFLBHp3PN3PeaSird3_IZezJdfL0syfb3HnS4oA8sRiQMFFU0wHtmT-lNDmQFvYbGlVq-mdViT2QXKC1lss3iSVe_Jwj5QiApnF90rI7tvs_PxKm32u3mX544xMv2WZcThR7glVo-KGVae-ur9RULvhoOfAT5cgFY0aMdxq9LiFxBbqo98z6fXXIAOwZCsZPh3-BVYdW6catIFv6-kySMrxzt4dS9V0ClZWb0R8G_2902T-LGsH6P5wn_ejh5ThWsH24TLoDaYzv6x5f9yi9QsFlyUpatOjGMaC3xvCQ0aSHjbMD69xMOo092SUROe_76gpOexuIxsjOpqw\nContent-Type: application/x-www-form-urlencoded\nAccept: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6Ijk4OTRlYjAyMTJkOTZiYzI1MDIxZTdmNGY1OWNhNTljMjE5NGU2MjMyZjhhMWRiNzAyZGU1NGNiZTcxNTE0N2E1NWI5ZmE1MGMwMWY0ZmVlIn0.eyJhdWQiOiIxIiwianRpIjoiOTg5NGViMDIxMmQ5NmJjMjUwMjFlN2Y0ZjU5Y2E1OWMyMTk0ZTYyMzJmOGExZGI3MDJkZTU0Y2JlNzE1MTQ3YTU1YjlmYTUwYzAxZjRmZWUiLCJpYXQiOjE1NTg3NDM3ODksIm5iZiI6MTU1ODc0Mzc4OSwiZXhwIjoxNTkwMzY2MTg5LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.kPFxn1HsjU7gUZ_lSCwF2qy-zokVSHtbNr-eaoVgc26f6BfvSVrsVRzlg3SWtxsVvSAyaELy1RFkHu6amfzCXjBd_79fcnm_YBrtDmjsN5STNFEotLNESg3MxMBOdPcE7MrSqmwu9ZhX9415m1j2ozPxhIc-1wzJx6wPORHYUSrT7xWaPSURGLnq3_-lErELkoHoXY6ySo498EYmoaOv70I2UD9PTx_Wb10WaIYBUhyB3Zqs_-GOGHGvarP-0YA9mjsmbwQmeqSnIz1dNYpAiFKnMkXdIW707Ut3fpBa6Jqi8BrPcGz-C5yVjM1gG3rq84A3fvrKhuWU6r-FHwIQrnbDjbPgDFLBHp3PN3PeaSird3_IZezJdfL0syfb3HnS4oA8sRiQMFFU0wHtmT-lNDmQFvYbGlVq-mdViT2QXKC1lss3iSVe_Jwj5QiApnF90rI7tvs_PxKm32u3mX544xMv2WZcThR7glVo-KGVae-ur9RULvhoOfAT5cgFY0aMdxq9LiFxBbqo98z6fXXIAOwZCsZPh3-BVYdW6catIFv6-kySMrxzt4dS9V0ClZWb0R8G_2902T-LGsH6P5wn_ejh5ThWsH24TLoDaYzv6x5f9yi9QsFlyUpatOjGMaC3xvCQ0aSHjbMD69xMOo092SUROe_76gpOexuIxsjOpqw",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://172.18.0.3/api/details",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1558745845452,
+			"name": "Details User",
+			"description": "Get Details from user",
+			"collectionId": "15ca697b-5896-bfb3-3f1b-de156d5a710f",
+			"responses": []
+		},
+		{
+			"id": "f0fe5571-d392-a5ce-e2ad-043969a56958",
+			"headers": "",
+			"headerData": [],
+			"url": "http://172.18.0.3/api/register",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "name",
+					"value": "Charley",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "email",
+					"value": "charleycesar@gmail.com",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "12345678",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "c_password",
+					"value": "12345678",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1558743785464,
+			"name": "Register",
+			"description": "Register a new user",
+			"collectionId": "15ca697b-5896-bfb3-3f1b-de156d5a710f",
+			"responses": []
+		}
+	]
+}
