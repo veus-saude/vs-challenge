@@ -1,0 +1,358 @@
+{
+	"id": "fc901b0d-729f-63ec-ff70-d248c4023f31",
+	"name": "vs-challenge",
+	"description": "",
+	"order": [],
+	"folders": [
+		{
+			"name": "Products",
+			"description": "",
+			"collectionId": "fc901b0d-729f-63ec-ff70-d248c4023f31",
+			"order": [
+				"60eb08f3-4a1a-8991-a316-f52c7deefaeb"
+			],
+			"owner": "72492",
+			"folders_order": [],
+			"id": "62b2cc8f-0603-7f49-d5ab-b28c451a72e9"
+		},
+		{
+			"name": "Users",
+			"description": "",
+			"collectionId": "fc901b0d-729f-63ec-ff70-d248c4023f31",
+			"order": [
+				"66feeeaf-4f6d-5afe-f900-3bfc93b69c8b",
+				"e58fc182-0ec7-f83d-c2c8-6605d763ad49",
+				"b75e5871-c289-bf5c-51de-3d87b33b0e20",
+				"56d7263a-2ba8-ad33-261a-7f0c71bfece1",
+				"b9c491a2-5037-85bc-9e53-839b1388e42a",
+				"bd3bc244-9c7b-7236-eff8-5e2d9709582c"
+			],
+			"owner": "72492",
+			"folders_order": [],
+			"id": "34249859-e0de-63fa-3fa4-a7f2971d720d"
+		}
+	],
+	"folders_order": [
+		"34249859-e0de-63fa-3fa4-a7f2971d720d",
+		"62b2cc8f-0603-7f49-d5ab-b28c451a72e9"
+	],
+	"timestamp": 1558652735904,
+	"owner": "72492",
+	"public": false,
+	"requests": [
+		{
+			"id": "56d7263a-2ba8-ad33-261a-7f0c71bfece1",
+			"headers": "",
+			"headerData": [],
+			"url": "127.0.0.1:8000/api/login",
+			"folder": "34249859-e0de-63fa-3fa4-a7f2971d720d",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "email",
+					"value": "giane@gmail.com",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "123456",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1558655494480,
+			"name": "Efetuar Login na aplicação 2",
+			"description": "Realizar login na aplicação",
+			"collectionId": "fc901b0d-729f-63ec-ff70-d248c4023f31",
+			"responses": [],
+			"isFromCollection": true
+		},
+		{
+			"id": "60eb08f3-4a1a-8991-a316-f52c7deefaeb",
+			"headers": "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9yZWdpc3RlciIsImlhdCI6MTU1ODgxNjA0OSwiZXhwIjoxNTU4ODE5NjQ5LCJuYmYiOjE1NTg4MTYwNDksImp0aSI6InNybnQxTEpSeEJjdHlFcG8iLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.XDhr5MDt9FZQn4dSIueblxLaalgYwUzGIvs3J8OVPjo\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9yZWdpc3RlciIsImlhdCI6MTU1ODgxNjA0OSwiZXhwIjoxNTU4ODE5NjQ5LCJuYmYiOjE1NTg4MTYwNDksImp0aSI6InNybnQxTEpSeEJjdHlFcG8iLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.XDhr5MDt9FZQn4dSIueblxLaalgYwUzGIvs3J8OVPjo",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "127.0.0.1:8000/api/product?q=w&filter=brand:BUNZL",
+			"folder": "62b2cc8f-0603-7f49-d5ab-b28c451a72e9",
+			"queryParams": [
+				{
+					"key": "q",
+					"value": "w",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "filter",
+					"value": "brand:BUNZL",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "sortingFields",
+					"value": "name",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "sortingDirections",
+					"value": "desc",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "currentPage",
+					"value": "0\n",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "pageSize",
+					"value": "10",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1558816120834,
+			"name": "Listar produtos com paginação",
+			"description": "",
+			"collectionId": "fc901b0d-729f-63ec-ff70-d248c4023f31",
+			"responses": []
+		},
+		{
+			"id": "66feeeaf-4f6d-5afe-f900-3bfc93b69c8b",
+			"headers": "",
+			"headerData": [],
+			"url": "127.0.0.1:8000/api/register",
+			"folder": "34249859-e0de-63fa-3fa4-a7f2971d720d",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "name",
+					"value": "felipe",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "email",
+					"value": "felipe@gmail.com",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "123456",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password_confirmation",
+					"value": "123456",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1558815705955,
+			"name": "Cadastrar Usuário 1",
+			"description": "Adicionar um novo usuário",
+			"collectionId": "fc901b0d-729f-63ec-ff70-d248c4023f31",
+			"responses": []
+		},
+		{
+			"id": "b75e5871-c289-bf5c-51de-3d87b33b0e20",
+			"headers": "",
+			"headerData": [],
+			"url": "127.0.0.1:8000/api/login",
+			"folder": "34249859-e0de-63fa-3fa4-a7f2971d720d",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "email",
+					"value": "190190f@gmail.com",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "dprnss",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1558655551888,
+			"name": "Efetuar Login na aplicação 1",
+			"description": "Realizar login na aplicação",
+			"collectionId": "fc901b0d-729f-63ec-ff70-d248c4023f31",
+			"responses": []
+		},
+		{
+			"id": "b9c491a2-5037-85bc-9e53-839b1388e42a",
+			"headers": "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU1ODY1MzA3NiwiZXhwIjoxNTU4NjU2Njc2LCJuYmYiOjE1NTg2NTMwNzYsImp0aSI6IkFacjlaN3poRGNrODVqSWYiLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.5r55XFWGndeNsfce975RdxZrEtMn2DHjJSeHSzThDT8\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU1ODY1MzA3NiwiZXhwIjoxNTU4NjU2Njc2LCJuYmYiOjE1NTg2NTMwNzYsImp0aSI6IkFacjlaN3poRGNrODVqSWYiLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.5r55XFWGndeNsfce975RdxZrEtMn2DHjJSeHSzThDT8",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "127.0.0.1:8000/api/user",
+			"folder": "34249859-e0de-63fa-3fa4-a7f2971d720d",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1558655498493,
+			"name": "Usuario Logado 1",
+			"description": "Em Headers adicionar\n\nAuthorization: Bearer numero_do_token_gerado_no_login\n\n",
+			"collectionId": "fc901b0d-729f-63ec-ff70-d248c4023f31",
+			"responses": []
+		},
+		{
+			"id": "bd3bc244-9c7b-7236-eff8-5e2d9709582c",
+			"headers": "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU1ODY1NTM0MSwiZXhwIjoxNTU4NjU4OTQxLCJuYmYiOjE1NTg2NTUzNDEsImp0aSI6InZROWNMdVRObURkSWNzemIiLCJzdWIiOjIsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.p-4eBvBOqkDnSvvv8xERkETGTfm5VpzueCaMHzkVXR4\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU1ODY1NTM0MSwiZXhwIjoxNTU4NjU4OTQxLCJuYmYiOjE1NTg2NTUzNDEsImp0aSI6InZROWNMdVRObURkSWNzemIiLCJzdWIiOjIsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.p-4eBvBOqkDnSvvv8xERkETGTfm5VpzueCaMHzkVXR4",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "127.0.0.1:8000/api/user",
+			"folder": "34249859-e0de-63fa-3fa4-a7f2971d720d",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1558655479043,
+			"name": "Usuario Logado 2",
+			"description": "Em Headers adicionar\n\nAuthorization: Bearer numero_do_token_gerado_no_login\n\n",
+			"collectionId": "fc901b0d-729f-63ec-ff70-d248c4023f31",
+			"responses": []
+		},
+		{
+			"id": "e58fc182-0ec7-f83d-c2c8-6605d763ad49",
+			"headers": "",
+			"headerData": [],
+			"url": "127.0.0.1:8000/api/register",
+			"folder": "34249859-e0de-63fa-3fa4-a7f2971d720d",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "name",
+					"value": "giane",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "email",
+					"value": "giane@gmail.com",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "123456",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password_confirmation",
+					"value": "123456",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1558655249245,
+			"name": "Cadastrar Usuário 2",
+			"description": "Adicionar um novo usuário",
+			"collectionId": "fc901b0d-729f-63ec-ff70-d248c4023f31",
+			"responses": []
+		}
+	]
+}
