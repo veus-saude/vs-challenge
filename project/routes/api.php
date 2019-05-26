@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -13,8 +11,17 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::resource('products', 'API\v1\ProductController');
+use Illuminate\Support\Facades\Route;
+
+Route::post('v1/register', [
+	'as' => 'register', 
+	'uses' => 'API\v1\UserController@register'
+]);
+Route::post('v1/login', [
+	'as' => 'login',
+	'uses' => 'API\v1\UserController@login',
+]);
 
 Route::middleware('auth:api')->group(function () {
-
+    Route::resource('v1/products', 'API\v1\ProductController');
 });
