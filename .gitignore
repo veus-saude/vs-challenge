@@ -1,2 +1,4 @@
 .idea/
 /nbproject/
+/nbproject/private/
+/api/docker/var/
