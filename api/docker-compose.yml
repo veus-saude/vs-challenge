@@ -1,0 +1,45 @@
+version: '2'
+services:
+    db:
+        image: mysql:5.7
+        volumes:
+            - ./docker/mysql:/docker-entrypoint-initdb.d
+        command: ["--default-authentication-plugin=mysql_native_password"]
+        ports:
+            - "3306:3306"
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: backend
+            MYSQL_USER: homestead
+            MYSQL_PASSWORD: secret
+        networks:
+            - internal
+    php:
+        build: ./docker/php-fpm
+        ports:
+            - "9000:9000"
+        volumes:
+            - .:/var/www/api:cached
+            - ./docker/var/log/api:/var/www/api/var/log:cached
+        links:
+            - db
+        extra_hosts:
+            - "docker.host:127.0.0.1"
+        networks:
+            - internal
+    nginx:
+        build: ./docker/nginx
+        ports:
+            - "80:80"
+        links:
+            - php
+        volumes_from:
+            - php
+        volumes:
+            - ./docker/var/log/nginx/:/var/log/nginx:cached
+        networks:
+            - internal
+            
+networks:
+    internal:
+        driver: bridge
