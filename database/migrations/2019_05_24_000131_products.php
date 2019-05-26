@@ -17,6 +17,8 @@ class Products extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('brand');
+            $table->decimal('price',8,2);
+            $table->integer('qtd');
             $table->timestamps();
         });
     }
