@@ -17,11 +17,8 @@ use Illuminate\Http\Request;
 Route::post('register', 'UserController@register');
 Route::post('login', 'UserController@authenticate');
 
-Route::post('productSearch', 'ProductController@search');
-Route::resource('product', 'ProductController');
-
 Route::group(['middleware' => ['jwt.verify']], function() {
     Route::get('user', 'UserController@getAuthenticatedUser');
-    // Route::post('product', 'productSearch@search');
-    // Route::resource('product', 'ProductController');
+    Route::post('productSearch', 'ProductController@search');
+    Route::resource('product', 'ProductController');
 });

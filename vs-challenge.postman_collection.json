@@ -9,7 +9,12 @@
 			"description": "",
 			"collectionId": "fc901b0d-729f-63ec-ff70-d248c4023f31",
 			"order": [
-				"60eb08f3-4a1a-8991-a316-f52c7deefaeb"
+				"60eb08f3-4a1a-8991-a316-f52c7deefaeb",
+				"22b2ceb8-2e34-edf3-bd00-0c1e468849ca",
+				"77f1b428-5011-d4d0-4ad5-71ed2f955750",
+				"58c255a1-d40c-455c-0825-533cd447c58c",
+				"a37c57b5-d3eb-44cd-24a5-8ef3cc86d227",
+				"ea8c9c66-ac19-d9ef-db22-c9b758555b0d"
 			],
 			"owner": "72492",
 			"folders_order": [],
@@ -40,6 +45,36 @@
 	"owner": "72492",
 	"public": false,
 	"requests": [
+		{
+			"id": "22b2ceb8-2e34-edf3-bd00-0c1e468849ca",
+			"headers": "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU1ODg5NzU0NiwiZXhwIjoxNTU4OTAxMTQ2LCJuYmYiOjE1NTg4OTc1NDYsImp0aSI6IkhaTUFkZFlId3U5T0ZyUm0iLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.WX1kFpJP5vUUm-48AT_hKtXePQoG-6pJaMgrLQM_aKU\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU1ODg5NzU0NiwiZXhwIjoxNTU4OTAxMTQ2LCJuYmYiOjE1NTg4OTc1NDYsImp0aSI6IkhaTUFkZFlId3U5T0ZyUm0iLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.WX1kFpJP5vUUm-48AT_hKtXePQoG-6pJaMgrLQM_aKU",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "127.0.0.1:8000/api/product",
+			"folder": "62b2cc8f-0603-7f49-d5ab-b28c451a72e9",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1558902574806,
+			"name": "Listar todos os produtos",
+			"description": "",
+			"collectionId": "fc901b0d-729f-63ec-ff70-d248c4023f31",
+			"responses": []
+		},
 		{
 			"id": "56d7263a-2ba8-ad33-261a-7f0c71bfece1",
 			"headers": "",
@@ -80,22 +115,50 @@
 			"isFromCollection": true
 		},
 		{
-			"id": "60eb08f3-4a1a-8991-a316-f52c7deefaeb",
-			"headers": "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9yZWdpc3RlciIsImlhdCI6MTU1ODgxNjA0OSwiZXhwIjoxNTU4ODE5NjQ5LCJuYmYiOjE1NTg4MTYwNDksImp0aSI6InNybnQxTEpSeEJjdHlFcG8iLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.XDhr5MDt9FZQn4dSIueblxLaalgYwUzGIvs3J8OVPjo\n",
+			"id": "58c255a1-d40c-455c-0825-533cd447c58c",
+			"headers": "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU1ODg5NzU0NiwiZXhwIjoxNTU4OTAxMTQ2LCJuYmYiOjE1NTg4OTc1NDYsImp0aSI6IkhaTUFkZFlId3U5T0ZyUm0iLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.WX1kFpJP5vUUm-48AT_hKtXePQoG-6pJaMgrLQM_aKU\n",
 			"headerData": [
 				{
 					"key": "Authorization",
-					"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9yZWdpc3RlciIsImlhdCI6MTU1ODgxNjA0OSwiZXhwIjoxNTU4ODE5NjQ5LCJuYmYiOjE1NTg4MTYwNDksImp0aSI6InNybnQxTEpSeEJjdHlFcG8iLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.XDhr5MDt9FZQn4dSIueblxLaalgYwUzGIvs3J8OVPjo",
+					"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU1ODg5NzU0NiwiZXhwIjoxNTU4OTAxMTQ2LCJuYmYiOjE1NTg4OTc1NDYsImp0aSI6IkhaTUFkZFlId3U5T0ZyUm0iLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.WX1kFpJP5vUUm-48AT_hKtXePQoG-6pJaMgrLQM_aKU",
 					"description": "",
 					"enabled": true
 				}
 			],
-			"url": "127.0.0.1:8000/api/product?q=w&filter=brand:BUNZL",
+			"url": "127.0.0.1:8000/api/product/193",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1558902566520,
+			"name": "Listar um Produto",
+			"description": "",
+			"collectionId": "fc901b0d-729f-63ec-ff70-d248c4023f31",
+			"responses": []
+		},
+		{
+			"id": "60eb08f3-4a1a-8991-a316-f52c7deefaeb",
+			"headers": "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU1ODg5NzU0NiwiZXhwIjoxNTU4OTAxMTQ2LCJuYmYiOjE1NTg4OTc1NDYsImp0aSI6IkhaTUFkZFlId3U5T0ZyUm0iLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.WX1kFpJP5vUUm-48AT_hKtXePQoG-6pJaMgrLQM_aKU\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU1ODg5NzU0NiwiZXhwIjoxNTU4OTAxMTQ2LCJuYmYiOjE1NTg4OTc1NDYsImp0aSI6IkhaTUFkZFlId3U5T0ZyUm0iLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.WX1kFpJP5vUUm-48AT_hKtXePQoG-6pJaMgrLQM_aKU",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "127.0.0.1:8000/api/productSearch?q=seringa&filter=brand:BUNZL",
 			"folder": "62b2cc8f-0603-7f49-d5ab-b28c451a72e9",
 			"queryParams": [
 				{
 					"key": "q",
-					"value": "w",
+					"value": "seringa",
 					"equals": true,
 					"description": "",
 					"enabled": true
@@ -129,7 +192,7 @@
 				},
 				{
 					"key": "currentPage",
-					"value": "0\n",
+					"value": "2\n",
 					"description": "",
 					"type": "text",
 					"enabled": true
@@ -147,7 +210,7 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1558816120834,
+			"time": 1558902467206,
 			"name": "Listar produtos com paginação",
 			"description": "",
 			"collectionId": "fc901b0d-729f-63ec-ff70-d248c4023f31",
@@ -206,6 +269,71 @@
 			"responses": []
 		},
 		{
+			"id": "77f1b428-5011-d4d0-4ad5-71ed2f955750",
+			"headers": "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU1ODg5NzU0NiwiZXhwIjoxNTU4OTAxMTQ2LCJuYmYiOjE1NTg4OTc1NDYsImp0aSI6IkhaTUFkZFlId3U5T0ZyUm0iLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.WX1kFpJP5vUUm-48AT_hKtXePQoG-6pJaMgrLQM_aKU\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU1ODg5NzU0NiwiZXhwIjoxNTU4OTAxMTQ2LCJuYmYiOjE1NTg4OTc1NDYsImp0aSI6IkhaTUFkZFlId3U5T0ZyUm0iLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.WX1kFpJP5vUUm-48AT_hKtXePQoG-6pJaMgrLQM_aKU",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "127.0.0.1:8000/api/product/185",
+			"folder": "62b2cc8f-0603-7f49-d5ab-b28c451a72e9",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "DELETE",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1558902569528,
+			"name": "Excluir Produto",
+			"description": "",
+			"collectionId": "fc901b0d-729f-63ec-ff70-d248c4023f31",
+			"responses": []
+		},
+		{
+			"id": "a37c57b5-d3eb-44cd-24a5-8ef3cc86d227",
+			"headers": "Content-Type: application/json\nAuthorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU1ODg5NzU0NiwiZXhwIjoxNTU4OTAxMTQ2LCJuYmYiOjE1NTg4OTc1NDYsImp0aSI6IkhaTUFkZFlId3U5T0ZyUm0iLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.WX1kFpJP5vUUm-48AT_hKtXePQoG-6pJaMgrLQM_aKU\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU1ODg5NzU0NiwiZXhwIjoxNTU4OTAxMTQ2LCJuYmYiOjE1NTg4OTc1NDYsImp0aSI6IkhaTUFkZFlId3U5T0ZyUm0iLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.WX1kFpJP5vUUm-48AT_hKtXePQoG-6pJaMgrLQM_aKU",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "127.0.0.1:8000/api/product/193",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "PUT",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1558902563215,
+			"name": "Atualizar Produto",
+			"description": "",
+			"collectionId": "fc901b0d-729f-63ec-ff70-d248c4023f31",
+			"responses": [],
+			"rawModeData": "{\n    \"name\": \"seringa M0TLS alterado\",\n    \"brand\": \"BUNZL\",\n    \"price\": \"21.80\"\n}"
+		},
+		{
 			"id": "b75e5871-c289-bf5c-51de-3d87b33b0e20",
 			"headers": "",
 			"headerData": [],
@@ -219,14 +347,14 @@
 			"data": [
 				{
 					"key": "email",
-					"value": "190190f@gmail.com",
+					"value": "felipe@gmail.com",
 					"description": "",
 					"type": "text",
 					"enabled": true
 				},
 				{
 					"key": "password",
-					"value": "dprnss",
+					"value": "123456",
 					"description": "",
 					"type": "text",
 					"enabled": true
@@ -237,7 +365,7 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1558655551888,
+			"time": 1558898319509,
 			"name": "Efetuar Login na aplicação 1",
 			"description": "Realizar login na aplicação",
 			"collectionId": "fc901b0d-729f-63ec-ff70-d248c4023f31",
@@ -245,11 +373,11 @@
 		},
 		{
 			"id": "b9c491a2-5037-85bc-9e53-839b1388e42a",
-			"headers": "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU1ODY1MzA3NiwiZXhwIjoxNTU4NjU2Njc2LCJuYmYiOjE1NTg2NTMwNzYsImp0aSI6IkFacjlaN3poRGNrODVqSWYiLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.5r55XFWGndeNsfce975RdxZrEtMn2DHjJSeHSzThDT8\n",
+			"headers": "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU1ODg5NzU0NiwiZXhwIjoxNTU4OTAxMTQ2LCJuYmYiOjE1NTg4OTc1NDYsImp0aSI6IkhaTUFkZFlId3U5T0ZyUm0iLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.WX1kFpJP5vUUm-48AT_hKtXePQoG-6pJaMgrLQM_aKU\n",
 			"headerData": [
 				{
 					"key": "Authorization",
-					"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU1ODY1MzA3NiwiZXhwIjoxNTU4NjU2Njc2LCJuYmYiOjE1NTg2NTMwNzYsImp0aSI6IkFacjlaN3poRGNrODVqSWYiLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.5r55XFWGndeNsfce975RdxZrEtMn2DHjJSeHSzThDT8",
+					"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU1ODg5NzU0NiwiZXhwIjoxNTU4OTAxMTQ2LCJuYmYiOjE1NTg4OTc1NDYsImp0aSI6IkhaTUFkZFlId3U5T0ZyUm0iLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.WX1kFpJP5vUUm-48AT_hKtXePQoG-6pJaMgrLQM_aKU",
 					"description": "",
 					"enabled": true
 				}
@@ -266,7 +394,7 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1558655498493,
+			"time": 1558898316480,
 			"name": "Usuario Logado 1",
 			"description": "Em Headers adicionar\n\nAuthorization: Bearer numero_do_token_gerado_no_login\n\n",
 			"collectionId": "fc901b0d-729f-63ec-ff70-d248c4023f31",
@@ -353,6 +481,41 @@
 			"description": "Adicionar um novo usuário",
 			"collectionId": "fc901b0d-729f-63ec-ff70-d248c4023f31",
 			"responses": []
+		},
+		{
+			"id": "ea8c9c66-ac19-d9ef-db22-c9b758555b0d",
+			"headers": "Content-Type: application/json\nAuthorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU1ODg5NzU0NiwiZXhwIjoxNTU4OTAxMTQ2LCJuYmYiOjE1NTg4OTc1NDYsImp0aSI6IkhaTUFkZFlId3U5T0ZyUm0iLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.WX1kFpJP5vUUm-48AT_hKtXePQoG-6pJaMgrLQM_aKU\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU1ODg5NzU0NiwiZXhwIjoxNTU4OTAxMTQ2LCJuYmYiOjE1NTg4OTc1NDYsImp0aSI6IkhaTUFkZFlId3U5T0ZyUm0iLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.WX1kFpJP5vUUm-48AT_hKtXePQoG-6pJaMgrLQM_aKU",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "127.0.0.1:8000/api/product",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1558902556990,
+			"name": "Novo Produto",
+			"description": "",
+			"collectionId": "fc901b0d-729f-63ec-ff70-d248c4023f31",
+			"responses": [],
+			"rawModeData": "{\n    \"name\": \"novo produto 2\",\n    \"brand\": \"BUNZL\",\n    \"price\": \"21.80\",\n    \"qtd\": 30\n}"
 		}
 	]
 }
