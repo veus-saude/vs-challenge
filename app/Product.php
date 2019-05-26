@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class Product extends Model
 {
     protected $fillable = [
-        'name', 'brand'
+        'name', 'brand','price','qtd'
     ];
 
     public static function getSearchPaginatorOrderby(Request $request)
