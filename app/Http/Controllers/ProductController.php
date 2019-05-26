@@ -22,4 +22,16 @@ class ProductController extends Controller
         return response()->json(Product::all());
     }
 
+    public function destroy(int $id)
+    {
+        $product = Product::find($id);
+        if($product){
+            Product::destroy($id);
+            return Response()->json(true, 204);
+        }else{
+            $msg = 'Não existe o produto com id '.$id;
+            return Response()->json($msg,400);
+        }
+    }
+
 }
