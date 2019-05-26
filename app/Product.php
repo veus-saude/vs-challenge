@@ -16,14 +16,21 @@ class Product extends Model
 
         $filterName = $request->get('q');
         $filter = $request->get('filter');
-        $filter = explode(':',$filter);
 
-        $filterBrand = $filter[1];
+        if($filter){
+            $filter = explode(':',$filter);
 
-        $where = [
-            ['name', 'like',"%{$filterName}%"],
-            ['brand', '=',$filterBrand]
-        ];
+            $filterBrand = $filter[1];
+
+            $where = [
+                ['name', 'like',"%{$filterName}%"],
+                ['brand', '=',$filterBrand]
+            ];
+        }else{
+            $where = [
+                ['name', 'like',"%{$filterName}%"]
+            ];
+        }
 
         $query = self::where($where);
 
