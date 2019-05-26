@@ -1,21 +1,31 @@
-# Lumen PHP Framework
+## Comandos de execução
+```
+cd api
+docker run --rm -v $(pwd):/app prooph/composer:7.2 install
+cp .env.example .env
+docker-compose up -d
+```
 
-[![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)
-[![Total Downloads](https://poser.pugx.org/laravel/lumen-framework/d/total.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/lumen-framework/v/stable.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/lumen-framework/v/unstable.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![License](https://poser.pugx.org/laravel/lumen-framework/license.svg)](https://packagist.org/packages/laravel/lumen-framework)
+Endereço para acessar a aplicação: http://localhost/
 
-Laravel Lumen is a stunningly fast PHP micro-framework for building web applications with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Lumen attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as routing, database abstraction, queueing, and caching.
+## Endpoints
+```
+POST   | api/v1/users
+POST   | api/v1/users/auth
+GET    | api/v1/products            
+GET    | api/v1/products/{id}
+POST   | api/v1/products            
+PUT    | api/v1/products/{id}
+DELETE | api/v1/products/{id}
+```
 
-## Official Documentation
+## Swagger Authorization
+Crie um usuário `POST api/v1/users`
+Crie um token para esse usuário `POST api/v1/users/auth`
+Copie e cole o token gerado em `Available authorizations` (abrir popup clicando em `Authorize`) no campo `value`
 
-Documentation for the framework can be found on the [Lumen website](https://lumen.laravel.com/docs).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Lumen, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Lumen framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Unit Test
+Relatório de Testes pode ser consultado em: vs-challenge/api/report/html/index.html
+```
+./vendor/bin/phpunit
+```
