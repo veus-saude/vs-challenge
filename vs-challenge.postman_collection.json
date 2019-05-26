@@ -47,11 +47,11 @@
 	"requests": [
 		{
 			"id": "22b2ceb8-2e34-edf3-bd00-0c1e468849ca",
-			"headers": "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU1ODg5NzU0NiwiZXhwIjoxNTU4OTAxMTQ2LCJuYmYiOjE1NTg4OTc1NDYsImp0aSI6IkhaTUFkZFlId3U5T0ZyUm0iLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.WX1kFpJP5vUUm-48AT_hKtXePQoG-6pJaMgrLQM_aKU\n",
+			"headers": "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9yZWdpc3RlciIsImlhdCI6MTU1ODkwODU2NiwiZXhwIjoxNTU4OTEyMTY2LCJuYmYiOjE1NTg5MDg1NjYsImp0aSI6InBSZDd3Z0FNZGJhelpEZ1QiLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.O2sI-ywMesVvEE0I7gfzQhrgYQixfLe8aFmmg81GRhw\n",
 			"headerData": [
 				{
 					"key": "Authorization",
-					"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU1ODg5NzU0NiwiZXhwIjoxNTU4OTAxMTQ2LCJuYmYiOjE1NTg4OTc1NDYsImp0aSI6IkhaTUFkZFlId3U5T0ZyUm0iLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.WX1kFpJP5vUUm-48AT_hKtXePQoG-6pJaMgrLQM_aKU",
+					"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9yZWdpc3RlciIsImlhdCI6MTU1ODkwODU2NiwiZXhwIjoxNTU4OTEyMTY2LCJuYmYiOjE1NTg5MDg1NjYsImp0aSI6InBSZDd3Z0FNZGJhelpEZ1QiLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.O2sI-ywMesVvEE0I7gfzQhrgYQixfLe8aFmmg81GRhw",
 					"description": "",
 					"enabled": true
 				}
@@ -69,7 +69,7 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1558902574806,
+			"time": 1558909347611,
 			"name": "Listar todos os produtos",
 			"description": "",
 			"collectionId": "fc901b0d-729f-63ec-ff70-d248c4023f31",
@@ -116,16 +116,17 @@
 		},
 		{
 			"id": "58c255a1-d40c-455c-0825-533cd447c58c",
-			"headers": "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU1ODg5NzU0NiwiZXhwIjoxNTU4OTAxMTQ2LCJuYmYiOjE1NTg4OTc1NDYsImp0aSI6IkhaTUFkZFlId3U5T0ZyUm0iLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.WX1kFpJP5vUUm-48AT_hKtXePQoG-6pJaMgrLQM_aKU\n",
+			"headers": "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9yZWdpc3RlciIsImlhdCI6MTU1ODkwODU2NiwiZXhwIjoxNTU4OTEyMTY2LCJuYmYiOjE1NTg5MDg1NjYsImp0aSI6InBSZDd3Z0FNZGJhelpEZ1QiLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.O2sI-ywMesVvEE0I7gfzQhrgYQixfLe8aFmmg81GRhw\n",
 			"headerData": [
 				{
 					"key": "Authorization",
-					"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU1ODg5NzU0NiwiZXhwIjoxNTU4OTAxMTQ2LCJuYmYiOjE1NTg4OTc1NDYsImp0aSI6IkhaTUFkZFlId3U5T0ZyUm0iLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.WX1kFpJP5vUUm-48AT_hKtXePQoG-6pJaMgrLQM_aKU",
+					"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9yZWdpc3RlciIsImlhdCI6MTU1ODkwODU2NiwiZXhwIjoxNTU4OTEyMTY2LCJuYmYiOjE1NTg5MDg1NjYsImp0aSI6InBSZDd3Z0FNZGJhelpEZ1QiLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.O2sI-ywMesVvEE0I7gfzQhrgYQixfLe8aFmmg81GRhw",
 					"description": "",
 					"enabled": true
 				}
 			],
 			"url": "127.0.0.1:8000/api/product/193",
+			"folder": "62b2cc8f-0603-7f49-d5ab-b28c451a72e9",
 			"queryParams": [],
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -136,7 +137,7 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1558902566520,
+			"time": 1558909354201,
 			"name": "Listar um Produto",
 			"description": "",
 			"collectionId": "fc901b0d-729f-63ec-ff70-d248c4023f31",
@@ -144,11 +145,11 @@
 		},
 		{
 			"id": "60eb08f3-4a1a-8991-a316-f52c7deefaeb",
-			"headers": "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU1ODg5NzU0NiwiZXhwIjoxNTU4OTAxMTQ2LCJuYmYiOjE1NTg4OTc1NDYsImp0aSI6IkhaTUFkZFlId3U5T0ZyUm0iLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.WX1kFpJP5vUUm-48AT_hKtXePQoG-6pJaMgrLQM_aKU\n",
+			"headers": "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9yZWdpc3RlciIsImlhdCI6MTU1ODkwODU2NiwiZXhwIjoxNTU4OTEyMTY2LCJuYmYiOjE1NTg5MDg1NjYsImp0aSI6InBSZDd3Z0FNZGJhelpEZ1QiLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.O2sI-ywMesVvEE0I7gfzQhrgYQixfLe8aFmmg81GRhw\n",
 			"headerData": [
 				{
 					"key": "Authorization",
-					"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU1ODg5NzU0NiwiZXhwIjoxNTU4OTAxMTQ2LCJuYmYiOjE1NTg4OTc1NDYsImp0aSI6IkhaTUFkZFlId3U5T0ZyUm0iLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.WX1kFpJP5vUUm-48AT_hKtXePQoG-6pJaMgrLQM_aKU",
+					"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9yZWdpc3RlciIsImlhdCI6MTU1ODkwODU2NiwiZXhwIjoxNTU4OTEyMTY2LCJuYmYiOjE1NTg5MDg1NjYsImp0aSI6InBSZDd3Z0FNZGJhelpEZ1QiLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.O2sI-ywMesVvEE0I7gfzQhrgYQixfLe8aFmmg81GRhw",
 					"description": "",
 					"enabled": true
 				}
@@ -210,8 +211,8 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1558902467206,
-			"name": "Listar produtos com paginação",
+			"time": 1558908735932,
+			"name": "Pesquisar produtos com paginação | Usuário Autenticado | Authorization Bearer {token}",
 			"description": "",
 			"collectionId": "fc901b0d-729f-63ec-ff70-d248c4023f31",
 			"responses": []
@@ -270,11 +271,11 @@
 		},
 		{
 			"id": "77f1b428-5011-d4d0-4ad5-71ed2f955750",
-			"headers": "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU1ODg5NzU0NiwiZXhwIjoxNTU4OTAxMTQ2LCJuYmYiOjE1NTg4OTc1NDYsImp0aSI6IkhaTUFkZFlId3U5T0ZyUm0iLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.WX1kFpJP5vUUm-48AT_hKtXePQoG-6pJaMgrLQM_aKU\n",
+			"headers": "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9yZWdpc3RlciIsImlhdCI6MTU1ODkwODU2NiwiZXhwIjoxNTU4OTEyMTY2LCJuYmYiOjE1NTg5MDg1NjYsImp0aSI6InBSZDd3Z0FNZGJhelpEZ1QiLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.O2sI-ywMesVvEE0I7gfzQhrgYQixfLe8aFmmg81GRhw\n",
 			"headerData": [
 				{
 					"key": "Authorization",
-					"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU1ODg5NzU0NiwiZXhwIjoxNTU4OTAxMTQ2LCJuYmYiOjE1NTg4OTc1NDYsImp0aSI6IkhaTUFkZFlId3U5T0ZyUm0iLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.WX1kFpJP5vUUm-48AT_hKtXePQoG-6pJaMgrLQM_aKU",
+					"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9yZWdpc3RlciIsImlhdCI6MTU1ODkwODU2NiwiZXhwIjoxNTU4OTEyMTY2LCJuYmYiOjE1NTg5MDg1NjYsImp0aSI6InBSZDd3Z0FNZGJhelpEZ1QiLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.O2sI-ywMesVvEE0I7gfzQhrgYQixfLe8aFmmg81GRhw",
 					"description": "",
 					"enabled": true
 				}
@@ -292,7 +293,7 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1558902569528,
+			"time": 1558909351229,
 			"name": "Excluir Produto",
 			"description": "",
 			"collectionId": "fc901b0d-729f-63ec-ff70-d248c4023f31",
@@ -300,7 +301,7 @@
 		},
 		{
 			"id": "a37c57b5-d3eb-44cd-24a5-8ef3cc86d227",
-			"headers": "Content-Type: application/json\nAuthorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU1ODg5NzU0NiwiZXhwIjoxNTU4OTAxMTQ2LCJuYmYiOjE1NTg4OTc1NDYsImp0aSI6IkhaTUFkZFlId3U5T0ZyUm0iLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.WX1kFpJP5vUUm-48AT_hKtXePQoG-6pJaMgrLQM_aKU\n",
+			"headers": "Content-Type: application/json\nAuthorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9yZWdpc3RlciIsImlhdCI6MTU1ODkwODU2NiwiZXhwIjoxNTU4OTEyMTY2LCJuYmYiOjE1NTg5MDg1NjYsImp0aSI6InBSZDd3Z0FNZGJhelpEZ1QiLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.O2sI-ywMesVvEE0I7gfzQhrgYQixfLe8aFmmg81GRhw\n",
 			"headerData": [
 				{
 					"key": "Content-Type",
@@ -310,12 +311,13 @@
 				},
 				{
 					"key": "Authorization",
-					"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU1ODg5NzU0NiwiZXhwIjoxNTU4OTAxMTQ2LCJuYmYiOjE1NTg4OTc1NDYsImp0aSI6IkhaTUFkZFlId3U5T0ZyUm0iLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.WX1kFpJP5vUUm-48AT_hKtXePQoG-6pJaMgrLQM_aKU",
+					"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9yZWdpc3RlciIsImlhdCI6MTU1ODkwODU2NiwiZXhwIjoxNTU4OTEyMTY2LCJuYmYiOjE1NTg5MDg1NjYsImp0aSI6InBSZDd3Z0FNZGJhelpEZ1QiLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.O2sI-ywMesVvEE0I7gfzQhrgYQixfLe8aFmmg81GRhw",
 					"description": "",
 					"enabled": true
 				}
 			],
 			"url": "127.0.0.1:8000/api/product/193",
+			"folder": "62b2cc8f-0603-7f49-d5ab-b28c451a72e9",
 			"queryParams": [],
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -326,7 +328,7 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1558902563215,
+			"time": 1558909357015,
 			"name": "Atualizar Produto",
 			"description": "",
 			"collectionId": "fc901b0d-729f-63ec-ff70-d248c4023f31",
@@ -484,7 +486,7 @@
 		},
 		{
 			"id": "ea8c9c66-ac19-d9ef-db22-c9b758555b0d",
-			"headers": "Content-Type: application/json\nAuthorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU1ODg5NzU0NiwiZXhwIjoxNTU4OTAxMTQ2LCJuYmYiOjE1NTg4OTc1NDYsImp0aSI6IkhaTUFkZFlId3U5T0ZyUm0iLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.WX1kFpJP5vUUm-48AT_hKtXePQoG-6pJaMgrLQM_aKU\n",
+			"headers": "Content-Type: application/json\nAuthorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9yZWdpc3RlciIsImlhdCI6MTU1ODkwODU2NiwiZXhwIjoxNTU4OTEyMTY2LCJuYmYiOjE1NTg5MDg1NjYsImp0aSI6InBSZDd3Z0FNZGJhelpEZ1QiLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.O2sI-ywMesVvEE0I7gfzQhrgYQixfLe8aFmmg81GRhw\n",
 			"headerData": [
 				{
 					"key": "Content-Type",
@@ -494,12 +496,13 @@
 				},
 				{
 					"key": "Authorization",
-					"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU1ODg5NzU0NiwiZXhwIjoxNTU4OTAxMTQ2LCJuYmYiOjE1NTg4OTc1NDYsImp0aSI6IkhaTUFkZFlId3U5T0ZyUm0iLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.WX1kFpJP5vUUm-48AT_hKtXePQoG-6pJaMgrLQM_aKU",
+					"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9yZWdpc3RlciIsImlhdCI6MTU1ODkwODU2NiwiZXhwIjoxNTU4OTEyMTY2LCJuYmYiOjE1NTg5MDg1NjYsImp0aSI6InBSZDd3Z0FNZGJhelpEZ1QiLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.O2sI-ywMesVvEE0I7gfzQhrgYQixfLe8aFmmg81GRhw",
 					"description": "",
 					"enabled": true
 				}
 			],
 			"url": "127.0.0.1:8000/api/product",
+			"folder": "62b2cc8f-0603-7f49-d5ab-b28c451a72e9",
 			"queryParams": [],
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -510,12 +513,12 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1558902556990,
+			"time": 1558909360590,
 			"name": "Novo Produto",
 			"description": "",
 			"collectionId": "fc901b0d-729f-63ec-ff70-d248c4023f31",
 			"responses": [],
-			"rawModeData": "{\n    \"name\": \"novo produto 2\",\n    \"brand\": \"BUNZL\",\n    \"price\": \"21.80\",\n    \"qtd\": 30\n}"
+			"rawModeData": "{\n    \"name\": \"novo produto 3\",\n    \"brand\": \"BUNZL\",\n    \"price\": \"21.80\",\n    \"qtd\": 30\n}"
 		}
 	]
 }

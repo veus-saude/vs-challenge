@@ -31,8 +31,9 @@ $ php artisan serve
 ```
 Para testar as requisições
 ```
-No diretório /img_teste_postaman contém as imagens com testes no postman
 
 Import o arquivo vs-challenge.postman_collection.json para o postman
 
 ```
+
+No diretório /img_teste_postaman contém as imagens com testes no postman
