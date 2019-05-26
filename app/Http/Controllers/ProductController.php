@@ -56,4 +56,11 @@ class ProductController extends Controller
         }
     }
 
+    public function store(Request $request)
+    {
+        $obj = new Product($request->all());
+        $obj->save();
+        return response()->json($obj,200);
+    }
+
 }
