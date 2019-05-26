@@ -34,4 +34,15 @@ class ProductController extends Controller
         }
     }
 
+    public function show(int $id)
+    {
+        $product = Product::find($id);
+        if($product){
+            return Response()->json($product);
+        }else{
+            $msg = 'Não existe o produto com id '.$id;
+            return Response()->json($msg,400);
+        }
+    }
+
 }
