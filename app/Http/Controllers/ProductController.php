@@ -45,4 +45,15 @@ class ProductController extends Controller
         }
     }
 
+    public function update(Request $request, int $id)
+    {
+        $product = Product::find($id);
+        if($product){
+            return response()->json($product->update($request->all()),200);
+        }else{
+            $msg = 'Não existe o produto com id '.$id;
+            return Response()->json($msg,400);
+        }
+    }
+
 }
