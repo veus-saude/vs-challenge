@@ -5,7 +5,7 @@ FROM php:7.2-cli
 # Environment variables
 #------------------------
 ARG TIMEZONE=America/Sao_Paulo
-ARG PHP_MEMORY_LIMIT=2048M
+ARG PHP_MEMORY_LIMIT=512M
 ARG PHP_MAX_EXECUTION_TIME=360
 ARG PUID=1000
 ARG PGID=1000
@@ -113,6 +113,11 @@ RUN echo "date.timezone=${TIMEZONE}" >> /usr/local/etc/php/php.ini \
 RUN mkdir /home/developer/.composer \
  && chown developer:developers -R /home/developer
 
+
+COPY docker-entrypoint.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh \
+ && ln -s /usr/local/bin/docker-entrypoint.sh /
+
 USER developer
 
 ADD ./composer.json /home/developer/.composer/composer.json
@@ -123,7 +128,6 @@ RUN composer global install \
 
 USER root
 
-
 #------------------------
 # Cleanup
 #------------------------
@@ -133,4 +137,6 @@ USER developer
 
 WORKDIR /var/www
 
-ENTRYPOINT ["/bin/bash"]
+ENTRYPOINT ["docker-entrypoint.sh"]
+
+CMD ["/bin/bash"]

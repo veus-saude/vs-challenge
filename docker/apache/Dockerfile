@@ -47,6 +47,6 @@ RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf
 #------------------------
 RUN echo "date.timezone=${TIMEZONE}" >> /usr/local/etc/php/php.ini
 
-
 WORKDIR /var/www
+
 RUN chown -R www-data:www-data /var/www

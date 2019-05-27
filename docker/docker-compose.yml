@@ -5,11 +5,11 @@ services:
     container_name: vs_codebase
     image: tianon/true
     volumes:
-      - ./project:/var/www:delegated
+      - ../project:/var/www:delegated
 
   workspace:
     container_name: vs_workspace
-    build: ./docker/workspace
+    build: ./workspace
     extra_hosts:
       - 'dockerhost:10.0.75.1'
     tty: true
@@ -18,7 +18,7 @@ services:
 
   apache:
     container_name: vs_apache
-    build: ./docker/apache
+    build: ./apache
     extra_hosts:
       - 'dockerhost:10.0.75.1'
     links:
@@ -35,7 +35,7 @@ services:
     extra_hosts:
       - 'dockerhost:10.0.75.1'
     volumes:
-      - ./docker/data/mysql:/var/lib/mysql:delegated
+      - ./data/mysql:/var/lib/mysql:delegated
     ports:
       - 3306:3306
     environment:
