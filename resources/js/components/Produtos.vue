@@ -1,8 +1,5 @@
 <template>
   <div class="container">
-    <h2>Produtos</h2>
-
-    <hr>
     <nav aria-label="Page navigation example">
       <ul class="pagination">
         <li :class="[{ disabled: !pagination.prev_page_url }]" class="page-item">
@@ -107,7 +104,7 @@ export default {
     pegaMarcas() {
       const vm = this;
       axios
-        .get("api/marcas")
+        .get("api/auth/marcas")
         .then(res => {
           vm.marcas = res.data;
         })
@@ -115,7 +112,7 @@ export default {
     },
     pegaProdutos(page_url) {
       let vm = this;
-      page_url = page_url || "api/produtos";
+      page_url = page_url || "api/auth/produtos";
       fetch(page_url)
         .then(res => res.json())
         .then(res => {
@@ -136,7 +133,7 @@ export default {
     },
     apagarProduto(id) {
       if (confirm("Tem certeza?")) {
-        fetch(`api/produto/${id}`, {
+        fetch(`api/auth/produto/${id}`, {
           method: "delete"
         })
           .then(res => res.json())
