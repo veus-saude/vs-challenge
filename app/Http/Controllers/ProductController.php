@@ -16,8 +16,13 @@ class ProductController extends Controller
     {
         $filter = $request->query->get('filter');
         $sort = $request->query->get('sort');
+        $query = $request->query->get('q');
 
         $products = new Product;
+
+        if($query){
+            $products = $products->where('name','LIKE',"%{$query}%");
+        }
 
         if(strlen($sort)){
             @list($column, $order) = explode(':',$sort);
@@ -27,6 +32,7 @@ class ProductController extends Controller
                 $products = $products->orderBy($column, $order);
              } else {
                 list($relation, $column) = explode('.',$column);
+
                 $products = $products->select('products.*', \DB::raw(
                     '(SELECT ' . $column . ' from ' . \Str::plural($relation) . ' WHERE products.' . $relation . '_id = ' . \Str::plural($relation) . '.id) as ' . $relation .'_'. $column 
                 ))->orderBy($relation .'_'. $column);
@@ -65,7 +71,7 @@ class ProductController extends Controller
 
         // dd($products->toSql(), $products->getBindings());
 
-        $products = $products->with('brand')->paginate(5);
+        $products = $products->with('brand')->paginate(3);
 
         return response()->json($products);
     }
