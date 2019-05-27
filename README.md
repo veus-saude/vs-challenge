@@ -32,3 +32,32 @@ Bônus:
 
 ---
 Você será avaliado de acordo com a senioridade da posição a qual está aplicando. Ao finalizar o desafio você deve submeter o **Pull Request** com o seu código para a avaliação, após isso nos entrarem em contato com você através do e-mail passando um feedback do seu projeto.
+
+### Manual do Projeto
+
+#### Tecnologias usadas
+
+- PHP 7.2
+- Laravel 5.8
+- Docker e Docker Compose
+
+#### Iniciando o Projeto
+
+Dentro da pasta do projeto execute os comandos
+```shellscript
+cd docker 
+docker-compose up -d
+```
+
+Apenas isso fará com que todo o projeto seja configura e pronto para ser utilizado.
+
+Caso precise executar algum comando `artisan`, basta entrar no container `workspace`.
+```shellscript
+cd docker
+docker-compose exec workspace bash
+```
+Nesse container está com todas as dependencias necessárias para o projeto.
+
+#### API
+
+A documentação da API encontra-se clicando [aqui!](https://documenter.getpostman.com/view/175271/S1TR5zrz?version=latest)
