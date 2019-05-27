@@ -13,11 +13,11 @@ class ProductRepository
     }
 
     public function getAllProduct(){
-    	return $this->model->orderBy('product_id')->get();
+    	return $this->model->with(['brand'])->orderBy('product_id')->get();
     }
 
     public function getProduct($product_id){
-    	return $this->model->find($product_id);
+    	return $this->model->with(['brand'])->find($product_id);
     }
 
     public function createProduct($array){

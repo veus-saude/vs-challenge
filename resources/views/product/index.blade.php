@@ -7,7 +7,7 @@
 @stop
 
 @section('content_user')
-    <table id="product" class="display" style="width:100%">
+    <table id="product" style="width:100%">
         <thead>
             <tr>
                 <th>#ID</th>
@@ -18,18 +18,20 @@
                 <th>Editar</th>
                 <th>Remover</th>
             </tr>
+        </thead>
+        <tbody>            
             @foreach($products as $product)
             <tr>
                 <td>{{$product->product_id}}</td>
                 <td>{{$product->product_name}}</td>
-                <td>{{$product->product_brand}}</td>
+                <td>{{$product->brand->brand_name}}</td>
                 <td>{{$product->product_price}}</td>
                 <td>{{$product->product_qty}}</td>
                 <td><a href="edit/{{$product->product_id}}">Editar</a></td>
                 <td><a href="delete/{{$product->product_id}}">Remover</a></td>
             </tr>
             @endforeach
-        </thead>
+        </tbody>
     </table>
 @stop
 

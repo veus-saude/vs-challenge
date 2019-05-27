@@ -14,15 +14,23 @@ class BrandRepository
 
     public function getBrandList(){
     	return $this->model->orderBy('brand_id')->pluck('brand_name','brand_id')->toArray();
+    }   
+
+    public function getAllBrand(){
+        return $this->model->orderBy('brand_id')->get();
+    }
+
+    public function getBrand($brand_id){
+        return $this->model->find($brand_id);
     }
 
     public function createBrand($array){
-    	return $this->model->create($array);
+        return $this->model->create($array);
     }
 
     public function editBrand($brand_id,$array){
-    	$product=$this->model->find($brand_id);
-    	$product->fill($array);
-    	return $product->save();
+        $brand=$this->model->find($brand_id);
+        $brand->fill($array);
+        return $brand->save();
     }
 }

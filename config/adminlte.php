@@ -58,7 +58,7 @@ return [
     |
     */
 
-    'layout' => 'top-nav',
+    'layout' => null,
 
     /*
     |--------------------------------------------------------------------------
@@ -85,13 +85,13 @@ return [
     |
     */
 
-    'dashboard_url' => 'home',
+    'dashboard_url' => '/',
 
-    'logout_url' => 'logout',
+    'logout_url' => '',
 
-    'logout_method' => null,
+    'logout_method' => '',
 
-    'login_url' => 'login',
+    'login_url' => '',
 
     'register_url' => 'register',
 
@@ -108,7 +108,7 @@ return [
     */
 
     'menu' => [
-        'GERENCIAMENTO',
+        'PRODUTOS',
         [
             'text'    => 'Listagem',
             'icon'    => 'file',
@@ -117,6 +117,17 @@ return [
         [
             'text' => 'Adição',
             'url'  => '/add',
+            'icon_color' => 'green',
+        ],
+        'MARCAS',
+        [
+            'text'    => 'Listagem',
+            'icon'    => 'file',
+            'url'  => 'brand/',
+        ],
+        [
+            'text' => 'Adição',
+            'url'  => 'brand/add',
             'icon_color' => 'green',
         ]
     ],

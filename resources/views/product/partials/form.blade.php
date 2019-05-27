@@ -1,3 +1,12 @@
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 <div class="box box-primary">
 	<div class="box-body">
 		<div class="form-group">
@@ -5,12 +14,12 @@
 			{{Form::text('product_name', null, ['class'=>'form-control'])}}
 		</div>
 		<div class="form-group">
-			{{Form::label('product_brand', 'Marca')}}
-			{{Form::select('product_brand', $brand_list ,null, ['class'=>'form-control'])}}
+			{{Form::label('brand_id', 'Marca')}}
+			{{Form::select('brand_id', $brand_list ,null, ['class'=>'form-control'])}}
 		</div>
 		<div class="form-group">
 			{{Form::label('product_price', 'Preço')}}
-			{{Form::number('product_price', null, ['class'=>'form-control'])}}
+			{{Form::text('product_price', null, ['class'=>'form-control'])}}
 		</div>
 		<div class="form-group">
 			{{Form::label('product_qty', 'Quantidade')}}

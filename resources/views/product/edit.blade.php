@@ -7,8 +7,8 @@
 @stop
 
 @section('content_user')
-	{{ Form::Model($product,['url' => '/edit', 'method'=>'post']) }}
-	include('product.partials.form')
+	{{ Form::Model($product,['url' => '/edit/'.$product->product_id, 'method'=>'post']) }}
+	@include('product.partials.form')
 @stop
 
 
