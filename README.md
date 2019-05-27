@@ -32,3 +32,16 @@ Bônus:
 
 ---
 Você será avaliado de acordo com a senioridade da posição a qual está aplicando. Ao finalizar o desafio você deve submeter o **Pull Request** com o seu código para a avaliação, após isso nos entrarem em contato com você através do e-mail passando um feedback do seu projeto.
+
+
+
+## Para levantar projeto
+
+* git clone https://github.com/vitorapaiva/vs-challenge
+* composer install
+* Criar arquivo .env
+* php artisan key:generate
+* php artisan vendor:publish --provider="Tymon\JWTAuth\Providers\LaravelServiceProvider"
+* php artisan jwt:secret
+* Configurar informações de seu banco de dados no seu .env
+* php artisan migrate
