@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+
+echo "===> [Start] Install composer dependencies"
+composer install
+composer update
+echo "===> [End] Install composer dependencies"

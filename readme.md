@@ -4,11 +4,9 @@
 
 ```bash
 $ git clone https://github.com/DaviFreire/crud_api.git
-$ cd vs-challenge
+$ cd crud_api
 $ docker-compose up
 ```
-
-Espere até o container `app` iniciar o `php-fpm`.
 
 ## Criando token de acesso
 

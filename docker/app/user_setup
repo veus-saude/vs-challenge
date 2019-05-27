@@ -1,0 +1,20 @@
+#!/usr/bin/env sh
+
+user_setup () {
+  _USER=$1
+  echo "===> Setting up permissions"
+
+  # Workaround for permissions
+  HOST_UID=$(stat -c "%u" $PWD)
+  HOST_GID=$(stat -c "%g" $PWD)
+
+  usermod -u $HOST_UID $_USER
+  groupmod -g $HOST_GID $_USER
+
+  chgrp -R $@ storage
+  chmod -R 775 storage
+}
+
+echo "===> [Start] Setting up user"
+user_setup $@
+echo "===> [End] Setting up user"

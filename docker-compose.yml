@@ -1,0 +1,40 @@
+version: '3.7'
+
+networks:
+  backend:
+
+services:
+
+  app:
+    build: ./docker/app/
+    working_dir: /opt/veus
+    volumes:
+      - .:/opt/veus
+    depends_on:
+      - mysql
+    networks:
+      - backend
+
+  mysql:
+    image: mysql:5.7.25
+    ports:
+      - '3306:3306'
+    environment:
+      MYSQL_DATABASE: veus
+      MYSQL_USER: root
+      MYSQL_PASSWORD:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+    networks:
+      - backend
+  
+  nginx:
+    image: nginx:1.11.10-alpine
+    ports:
+      - '80:80'
+    depends_on:
+      - app
+    volumes:
+      - ./docker/nginx/conf.d:/etc/nginx/conf.d
+      - .:/opt/veus
+    networks:
+      - backend
