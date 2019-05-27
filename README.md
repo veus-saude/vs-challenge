@@ -1,34 +1,75 @@
-<p align="center">
-    <img src="https://i.imgur.com/2LUR2yy.png">
-</p>
+#Como rodar
 
-## Sobre a VEUS
+Executar o comando:
 
-Há 25 anos no mercado, a **Veus Technology** é uma empresa brasileira ligada ao segmento de saúde com foco na inovação tecnológica. É responsável por vários projetos pioneiros e estratégicos na área laboratorial, médica e recentemente hospitalar.
+`git submodule update docker && cd docker && docker-compose up -d`
 
-## Desafio VS
+Após os containers subirem:
 
-Você deve implementar uma API utilizando *PHP* > 7.0. Nós recomendamos que você tente manter o seu códgo o mais simples possível. Se você precisar de qualquer informação adicional ou esclarecimento, você pode nos contatar pelo e-mail: **sistemas@veus.com.br**.
+`docker-compose exec workspace composer install && docker-compose exec workspace php artisan migrate --seed` 
 
-Vamos imaginar que a sua empresa possua um e-commerce e venda alguns produtos para laboratórios e hospitais...
+A API possui os métodos GET, POST, PUT e DELETE. 
 
-Sua tarefa é desenvolver um **CRUD** de Produtos e implementar um serviço de buscas desses produtos. Um produto possui nome, marca, preço e quantidade em estoque.
-A API deve requerer **autenticação** e permitir __search query__ através do método **GET** e suportar filtros opcionais nos campos do produto.    A API deve requerer **autenticação** e permitir __search query__ através do método **GET** e suportar filtros opcionais nos campos do produto.
+**É necessário passar um input chamado `api_token` com qualquer valor para realizar a autentição.**
 
-Por exemplo: Um cliente deve conseguir buscar todas as seringas da marca BUNZL fazendo a seguinte requisição:
+**GET**
 
-`https://example.com/api/v1/products?q=seringa&filter=brand:BUNZL`
+url: http://localhost/api/v1/products/ID
 
-A API também deve suportar __pagination__, __versioning__ e __sorting__.
+e
 
-Sinta-se livre para usar qualquer library ou framework da sua preferência mas a regra de negócio deve estar o mais desaclopada possível deles.
+url: http://localhost/api/v1/products
 
-Por favor, **não se esqueça** de providenciar uma pequena documentação de como levantar e testar o seu projeto.
+Query Search: `q=STRING`
 
-Bônus:
-* Docker
-* Unit Test
-* User Interface
+Campos elegiveis para *sort* e *filter* `brand, quantity, price` no formato:
 
----
-Você será avaliado de acordo com a senioridade da posição a qual está aplicando. Ao finalizar o desafio você deve submeter o **Pull Request** com o seu código para a avaliação, após isso nos entrarem em contato com você através do e-mail passando um feedback do seu projeto.
+`filter=CAMPO:VALOR` e `sort=CAMPO:VALOR`
+
+Paginação: `page=NUMERO`
+
+Regras de validação para criação **POST**: 
+
+url: http://localhost/api/v1/products
+```php
+            'name' => 'required|string|max:255',
+            'brand' => 'required|string|max:255',
+            'description' => 'required|string|max:255',
+            'price' => 'required|numeric|between:0.01,9999.99',
+            'thumbnail' => 'required|string|max:255',
+            'quantity' => 'required|integer'
+```
+Regras de validação para edição **PUT**: 
+
+url: http://localhost/api/v1/products/ID
+```php
+            'name' => 'required|string|max:255',
+            'brand' => 'required|string|max:255',
+            'description' => 'required|string|max:255',
+            'price' => 'required|numeric|between:0.01,9999.99',
+            'thumbnail' => 'required|string|max:255',
+            'quantity' => 'required|integer'
+```
+**DELETE**:
+
+url: http://localhost/api/v1/products/ID
+###Testes:
+
+Rodar:
+`docker-compose exec workspace ./vendor/bin/phpunit`
+
+## Observações
+
+Utilizei o service container do lumen para versionar a api. O arquivo config/api.php define 
+as implementações para cada versão da api. Essas interfaces são utilizadas no controller.
+
+Uma problema que eu percebi assim que finalizei o projeto é a validação dos requests dentro
+do Controller. Uma vez que eu uso as interfaces para conseguir realizar o versionamento da api,
+percebi que a validação dos requests deveria seguir o mesmo processo, garantindo a re-usabilidade 
+dos controllers.
+
+Espero que goste e não ache overengineering. Abraços!
+
+
+
+
