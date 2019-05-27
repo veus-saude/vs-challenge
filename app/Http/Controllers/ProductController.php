@@ -46,6 +46,8 @@ class ProductController extends Controller
                 $operator = '=';
 
                 list($key, $value) = explode(':',$f);
+                
+                // TESTAMOS SE O OPERADOR É menor, maior, igual OU variantes
                 preg_match('/^[<>=]{1,2}/', $value, $m);
                 if($m){
                     $value = str_replace($m[0], '', $value);
@@ -53,7 +55,16 @@ class ProductController extends Controller
                 }
 
                 if($this->isColumn($key)) {
-                    $products = $products->where($key, $operator, $value);
+                    preg_match('/[,]/', $value, $n);
+                    if($n){
+                        $values = explode(',',$value);
+                        $values[0] .= $values[0] > 0 ? "00" : '';
+                        $values[1] .= "00";
+                        $products = $products->whereBetween($key, $values);
+                    } else {
+                        $products = $products->where($key, $operator, $value);
+                    }
+
                 } else {
                     if($key == 'brand'){
                         $column = 'name';
@@ -71,7 +82,7 @@ class ProductController extends Controller
 
         // dd($products->toSql(), $products->getBindings());
 
-        $products = $products->with('brand')->paginate(3);
+        $products = $products->with('brand')->paginate(5);
 
         return response()->json($products);
     }
