@@ -19,7 +19,7 @@
 		</div>
 		<div class="form-group">
 			{{Form::label('product_price', 'Preço')}}
-			{{Form::text('product_price', null, ['class'=>'form-control'])}}
+			{{Form::text('product_price', null, ['class'=>'form-control product_price','data-mask'=>'000000000000000.00','data-mask-reverse'=>'true'])}}
 		</div>
 		<div class="form-group">
 			{{Form::label('product_qty', 'Quantidade')}}
@@ -33,3 +33,12 @@
 	</div>
 </div>
 {{ Form::close() }}
+
+@push('js')
+<script type="text/javascript" src="js/jquery.mask.js"></script>
+<script>
+$(document).ready(function() {
+    $('.product_price').mask('000000000000000.00', {reverse: true});
+} );
+</script>
+@endpush

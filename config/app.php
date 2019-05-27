@@ -164,7 +164,9 @@ return [
 
         /*
          * Package Service Providers...
-         */
+         */        
+        JeroenNoten\LaravelAdminLte\ServiceProvider::class,
+        Collective\Html\HtmlServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -174,14 +176,6 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        /*
-        Admin LTE Template
-        */
-        JeroenNoten\LaravelAdminLte\ServiceProvider::class,
-        /*
-        Form Class Provider
-        */
-        Collective\Html\HtmlServiceProvider::class,
     ],
 
     /*
@@ -234,6 +228,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
+        'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,
 
     ],
 

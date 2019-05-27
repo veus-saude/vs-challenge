@@ -34,4 +34,11 @@ class ProductRepository
     	$product=$this->model->find($product_id);
     	return $product->delete();
     }
+
+    public function searchProduct(){
+        return $this->model
+                ->with(['brand'])
+                ->orderBy('product_id')
+                ->simplePaginate(15);
+    }
 }

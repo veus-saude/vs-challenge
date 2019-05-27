@@ -28,7 +28,7 @@
                 <td>{{$product->product_price}}</td>
                 <td>{{$product->product_qty}}</td>
                 <td><a href="edit/{{$product->product_id}}">Editar</a></td>
-                <td><a href="delete/{{$product->product_id}}">Remover</a></td>
+                <td><form method="post" action="delete/{{$product->product_id}}">@csrf<button type="submit">Remover</button></form></td>
             </tr>
             @endforeach
         </tbody>

@@ -12,14 +12,18 @@
 */
 
 $router->get('/', 'ProductController@home');
-$router->get('/add', 'ProductController@add');
-$router->post('/add', 'ProductController@addStore');
+$router->get('/add', 'ProductController@add')->name('add');
+$router->post('/add', 'ProductController@addStore')->name('add');
 $router->get('/edit/{product_id}', 'ProductController@edit')->name('edit');
 $router->post('/edit/{product_id}', 'ProductController@editStore')->name('edit');
-$router->get('/delete/{product_id}', 'ProductController@delete');
+$router->post('/delete/{product_id}', 'ProductController@delete')->name('delete');
 
 $router->get('brand/', 'BrandController@home');
 $router->get('brand/add', 'BrandController@add');
 $router->post('brand/add', 'BrandController@addStore');
 $router->get('brand/edit/{product_id}', 'BrandController@edit')->name('brand.edit');
 $router->post('brand/edit/{product_id}', 'BrandController@editStore')->name('brand.edit');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
