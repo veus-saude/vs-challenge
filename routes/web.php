@@ -17,4 +17,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::any('/register',function(){
+	return "O registro foi desabilitado";
+});
+
+
 Route::get('/home', 'HomeController@index')->name('home');
