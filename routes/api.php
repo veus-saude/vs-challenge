@@ -17,7 +17,10 @@ Route::group(['middleware'=>['auth:api'],'prefix'=>'v1'], function(){
 	Route::get('/user', function (Request $request) {
 	    return $request->user();
 	});
+	
 	Route::get('/products', 'ProductController@index');
+	Route::get('/product/{product}', 'ProductController@show');
+
 	Route::get('/brands', 'BrandController@index');
 });
 
