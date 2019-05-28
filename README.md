@@ -33,8 +33,6 @@ Bônus:
 ---
 Você será avaliado de acordo com a senioridade da posição a qual está aplicando. Ao finalizar o desafio você deve submeter o **Pull Request** com o seu código para a avaliação, após isso nos entrarem em contato com você através do e-mail passando um feedback do seu projeto.
 
-
-
 ## Para levantar projeto
 
 * git clone https://github.com/vitorapaiva/vs-challenge
@@ -45,3 +43,46 @@ Você será avaliado de acordo com a senioridade da posição a qual está aplic
 * php artisan jwt:secret
 * Configurar informações de seu banco de dados no seu .env
 * php artisan migrate
+* php artisan serve
+
+##Para acessar a pagina do projeto
+
+Acesse http://127.0.0.1:8000 (caso tenha utilizado o php artisan serve). Urls disponiveis:
+
+* http://127.0.0.1:8000/: homepage, com lista de produtos;
+* http://127.0.0.1:8000/add: criação de produto;
+* http://127.0.0.1:8000/edit/{product_id}: edição de produto;
+* http://127.0.0.1:8000/delete/{product_id}: remoção de produto;
+
+* http://127.0.0.1:8000/brand: lista de marcas;
+* http://127.0.0.1:8000/brand/add: criação de marca;
+* http://127.0.0.1:8000/brand/edit/{brand_id}: edição de marca;
+
+Para executar os testes, basta rodar vendor/bin/phpunit ou phpunit caso tenha ele instalado globalmente.
+
+## Para consultas na api, utilize: 
+
+* POST | api/auth/authenticate   
+* POST | api/auth/register       
+* GET  | api/product/search   
+
+### Parametros de busca aceitos:
+
+* product_id      - Id numero do produto
+* product         - Nome do produto
+* brand           - Nome da marca do produto
+* price_less_than - Busca por preco menor que o passado pelo usuario
+* price_more_than - Busca por preco maior que o passado pelo usuario
+* qty_less_than   - Busca por quantidade em estoque menor que o passado pelo usuario
+* qty_more_than   - Busca por quantidade em estoque maior que o passado pelo usuario
+* order_asc       - Orderna em ordem ascendente pelo nome do campo passado. Campos aceitos: product_id,brand_id,product_qty,product_price
+* order_desc      - Orderna em ordem decrescente pelo nome do campo passado. Campos aceitos: product_id,brand_id,product_qty,product_price
+
+### Parametros de paginacao aceitos:
+
+* page - Indica pagina a ser trazida de total de paginas
+
+O total de páginas, página atual e outras informações de paginação sao retornadas pelo sistema a cada requisição. Numa primeira busca, não é preciso passar page. Sistema assume 1 como padrão.
+
+
+
