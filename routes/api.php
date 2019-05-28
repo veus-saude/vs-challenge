@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::group(['middleware'=>['auth:api'],'prefix'=>'v1'], function(){
+Route::group(['middleware'=>['auth:api','cors'],'prefix'=>'v1'], function(){
 	Route::get('/user', function (Request $request) {
 	    return $request->user();
 	});
