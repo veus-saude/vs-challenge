@@ -3,3 +3,4 @@ vendor/
 volumes/
 .env
 docker-compose.yml
+tests/coverage
