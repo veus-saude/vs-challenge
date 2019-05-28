@@ -3,6 +3,7 @@
 namespace App\Http\Model\Product;
 
 use App\Http\Model\Product\ProductModel;
+use App\Support\QueryFilters;
 
 class ProductRepository
 {
@@ -35,10 +36,12 @@ class ProductRepository
     	return $product->delete();
     }
 
-    public function searchProduct(){
-        return $this->model
+    public function searchProduct(QueryFilters $filter){
+        $products = $this->model
                 ->with(['brand'])
-                ->orderBy('product_id')
-                ->simplePaginate(15);
+                ->filter($filter)
+                ->orderBy('product_id');
+
+        return $products->paginate(15);
     }
 }

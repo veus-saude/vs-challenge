@@ -2,10 +2,12 @@
 
 namespace App\Http\Model\Product;
 
+use App\Traits\Filterable;
 use Illuminate\Database\Eloquent\Model;
 
 class ProductModel extends Model
 {
+	use Filterable;
     protected $table = 'product';
     protected $primaryKey = 'product_id';
     protected $guarded = ['product_id'];
