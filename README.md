@@ -2,33 +2,57 @@
     <img src="https://i.imgur.com/2LUR2yy.png">
 </p>
 
-## Sobre a VEUS
+## VS Challenge  
 
-Há 25 anos no mercado, a **Veus Technology** é uma empresa brasileira ligada ao segmento de saúde com foco na inovação tecnológica. É responsável por vários projetos pioneiros e estratégicos na área laboratorial, médica e recentemente hospitalar.
+### Installation
 
-## Desafio VS
+- Copy
+    ````
+    cp -v .env.example .env
+    ````
+    ````
+    cp -v docker-compose.yml.example docker-compose.yml
+    ````
 
-Você deve implementar uma API utilizando *PHP* > 7.0. Nós recomendamos que você tente manter o seu códgo o mais simples possível. Se você precisar de qualquer informação adicional ou esclarecimento, você pode nos contatar pelo e-mail: **sistemas@veus.com.br**.
+- Then run
+    ````
+    docker-compose up -d
+    ````
 
-Vamos imaginar que a sua empresa possua um e-commerce e venda alguns produtos para laboratórios e hospitais...
+- In mysql container create databases veus and veus_test
 
-Sua tarefa é desenvolver um **CRUD** de Produtos e implementar um serviço de buscas desses produtos. Um produto possui nome, marca, preço e quantidade em estoque.
-A API deve requerer **autenticação** e permitir __search query__ através do método **GET** e suportar filtros opcionais nos campos do produto.    A API deve requerer **autenticação** e permitir __search query__ através do método **GET** e suportar filtros opcionais nos campos do produto.
+- Access the apache container
+    ````
+    docker exec -it apache-veus bash
+    ````
 
-Por exemplo: Um cliente deve conseguir buscar todas as seringas da marca BUNZL fazendo a seguinte requisição:
+- Install the dependencies:
+    ````
+    composer install --ignore-platform-reqs
+    ````
 
-`https://example.com/api/v1/products?q=seringa&filter=brand:BUNZL`
+- Run migrates:
+    ````
+    php artisan migrate --database=testing
+    php artisan migrate
+    php artisan db:seed
+    ````
 
-A API também deve suportar __pagination__, __versioning__ e __sorting__.
+### Testing
 
-Sinta-se livre para usar qualquer library ou framework da sua preferência mas a regra de negócio deve estar o mais desaclopada possível deles.
+After installing, run `./vendor/phpunit/phpunit//phpunit tests/`.
 
-Por favor, **não se esqueça** de providenciar uma pequena documentação de como levantar e testar o seu projeto.
+### Using
 
-Bônus:
-* Docker
-* Unit Test
-* User Interface
+To generate token you need send post localhost/auth/login:
+````
+{
+	"email": "master@veus.com.br",
+	"password" : "12345"
+}
+ ````
 
----
-Você será avaliado de acordo com a senioridade da posição a qual está aplicando. Ao finalizar o desafio você deve submeter o **Pull Request** com o seu código para a avaliação, após isso nos entrarem em contato com você através do e-mail passando um feedback do seu projeto.
+ After that its possible to use the api with token in Authorization header:
+ ````
+ localhost/api/v1/products
+  ````
