@@ -15,7 +15,8 @@ class AuthTest extends TestCase
      * Test registration
      */
     public function testRegister(){
-
+        
+        User::where('email','teste@gmail.com')->delete();
         //User's data
         $data = [
             'email' => 'teste@gmail.com',
@@ -41,6 +42,7 @@ class AuthTest extends TestCase
     public function testLogin()
     {
         
+        User::where('email','teste@gmail.com')->delete();
         //Create user
         User::create([
             'email' => 'teste@gmail.com',
