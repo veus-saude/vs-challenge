@@ -11,14 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    return App\User::all();
+Route::get('/', function(){
+	return view('welcome');
 });
 
 Auth::routes();
 
 Route::any('/register',function(){
-	return "O registro foi desabilitado";
+	return view('no');
 });
 
 
