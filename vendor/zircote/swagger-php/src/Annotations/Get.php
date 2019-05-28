@@ -1,25 +1,22 @@
-<?php declare(strict_types=1);
+<?php
 
 /**
  * @license Apache 2.0
  */
 
-namespace OpenApi\Annotations;
+namespace Swagger\Annotations;
 
 /**
  * @Annotation
  */
 class Get extends Operation
 {
-    /**
-     * @inheritdoc
-     */
+
+    /** @inheritdoc */
     public $method = 'get';
 
-    /**
-     * @inheritdoc
-     */
+    /** @inheritdoc */
     public static $_parents = [
-        'OpenApi\Annotations\PathItem'
+        'Swagger\Annotations\Path'
     ];
 }

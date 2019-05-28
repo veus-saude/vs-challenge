@@ -2,20 +2,22 @@
 
 namespace PetstoreIO;
 
-abstract class StoreController
+class StoreController
 {
 
     /**
-     * @OA\Get(path="/store/inventory",
+     * @SWG\Get(path="/store/inventory",
      *   tags={"store"},
      *   summary="Returns pet inventories by status",
      *   description="Returns a map of status codes to quantities",
      *   operationId="getInventory",
+     *   produces={"application/json"},
      *   parameters={},
-     *   @OA\Response(
+     *   @SWG\Response(
      *     response=200,
      *     description="successful operation",
-     *     @OA\Schema(
+     *     @SWG\Schema(
+     *       type="object",
      *       additionalProperties={
      *         "type":"integer",
      *         "format":"int32"
@@ -32,22 +34,25 @@ abstract class StoreController
     }
 
     /**
-     * @OA\Post(path="/store/order",
+     * @SWG\Post(path="/store/order",
      *   tags={"store"},
      *   summary="Place an order for a pet",
      *   description="",
      *   operationId="placeOrder",
-     *   @OA\RequestBody(
-     *       required=true,
-     *       description="order placed for purchasing the pet",
-     *       @OA\JsonContent(ref="#/components/schemas/Order")
+     *   produces={"application/xml", "application/json"},
+     *   @SWG\Parameter(
+     *     in="body",
+     *     name="body",
+     *     description="order placed for purchasing the pet",
+     *     required=false,
+     *     @SWG\Schema(ref="#/definitions/Order")
      *   ),
-     *   @OA\Response(
+     *   @SWG\Response(
      *     response=200,
      *     description="successful operation",
-     *     @OA\Schema(ref="#/components/schemas/Order")
+     *     @SWG\Schema(ref="#/definitions/Order")
      *   ),
-     *   @OA\Response(response=400, description="Invalid Order")
+     *   @SWG\Response(response=400,  description="Invalid Order")
      * )
      */
     public function placeOrder()
@@ -55,30 +60,28 @@ abstract class StoreController
     }
 
     /**
-     * @OA\Get(path="/store/order/{orderId}",
+     * @SWG\Get(path="/store/order/{orderId}",
      *   tags={"store"},
      *   summary="Find purchase order by ID",
-     *   description="For valid response try integer IDs with value >= 1 and <= 10. Other values will generated exceptions",
+     *   description="For valid response try integer IDs with value <= 5 or > 10. Other values will generated exceptions",
      *   operationId="getOrderById",
-     *   @OA\Parameter(
+     *   produces={"application/xml", "application/json"},
+     *   @SWG\Parameter(
      *     name="orderId",
      *     in="path",
      *     description="ID of pet that needs to be fetched",
      *     required=true,
-     *     @OA\Schema(
-     *         type="integer",
-     *         format="int64",
-     *         minimum=1.0,
-     *         maximum=10.0
-     *     )
+     *     type="string"
      *   ),
-     *   @OA\Response(
+     *   @SWG\Response(
      *     response=200,
      *     description="successful operation",
-     *     @OA\Schema(ref="#/components/schemas/Order")
+     *     @SWG\Schema(
+     *       ref="#/definitions/Order"
+     *     )
      *   ),
-     *   @OA\Response(response=400, description="Invalid ID supplied"),
-     *   @OA\Response(response=404, description="Order not found")
+     *   @SWG\Response(response=400, description="Invalid ID supplied"),
+     *   @SWG\Response(response=404, description="Order not found")
      * )
      */
     public function getOrderById()
@@ -86,24 +89,21 @@ abstract class StoreController
     }
 
     /**
-     * @OA\Delete(path="/store/order/{orderId}",
+     * @SWG\Delete(path="/store/order/{orderId}",
      *   tags={"store"},
      *   summary="Delete purchase order by ID",
-     *   description="For valid response try integer IDs with positive integer value. Negative or non-integer values will generate API errors",
+     *   description="For valid response try integer IDs with value < 1000. Anything above 1000 or nonintegers will generate API errors",
      *   operationId="deleteOrder",
-     *   @OA\Parameter(
+     *   produces={"application/xml", "application/json"},
+     *   @SWG\Parameter(
      *     name="orderId",
      *     in="path",
-     *     required=true,
      *     description="ID of the order that needs to be deleted",
-     *     @OA\Schema(
-     *         type="integer",
-     *         format="int64",
-     *         minimum=1.0
-     *     )
+     *     required=true,
+     *     type="string"
      *   ),
-     *   @OA\Response(response=400, description="Invalid ID supplied"),
-     *   @OA\Response(response=404, description="Order not found")
+     *   @SWG\Response(response=400, description="Invalid ID supplied"),
+     *   @SWG\Response(response=404, description="Order not found")
      * )
      */
     public function deleteOrder()

@@ -1,10 +1,10 @@
-<?php declare(strict_types=1);
+<?php
 
 /**
  * @license Apache 2.0
  */
 
-namespace OpenApi;
+namespace Swagger;
 
 use Closure;
 use Exception;
@@ -14,9 +14,9 @@ use Exception;
  */
 class Logger
 {
+
     /**
      * Singleton
-     *
      * @var Logger
      */
     public static $instance;
@@ -52,8 +52,7 @@ class Logger
     }
 
     /**
-     * Log a OpenApi warning.
-     *
+     * Log a Swagger warning.
      * @param Exception|string $entry
      */
     public static function warning($entry)
@@ -62,8 +61,7 @@ class Logger
     }
 
     /**
-     * Log a OpenApi notice.
-     *
+     * Log a Swagger notice.
      * @param Exception|string $entry
      */
     public static function notice($entry)

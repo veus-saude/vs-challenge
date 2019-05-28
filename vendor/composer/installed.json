@@ -5113,39 +5113,36 @@
     },
     {
         "name": "zircote/swagger-php",
-        "version": "3.0.2",
-        "version_normalized": "3.0.2.0",
+        "version": "2.0.0",
+        "version_normalized": "2.0.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/zircote/swagger-php.git",
-            "reference": "f10ab7f81d89dba97653a980cc90cf4b7b73f543"
+            "reference": "9f03cbb49eccf77c0bd5fd303fef3afd1c015878"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/zircote/swagger-php/zipball/f10ab7f81d89dba97653a980cc90cf4b7b73f543",
-            "reference": "f10ab7f81d89dba97653a980cc90cf4b7b73f543",
+            "url": "https://api.github.com/repos/zircote/swagger-php/zipball/9f03cbb49eccf77c0bd5fd303fef3afd1c015878",
+            "reference": "9f03cbb49eccf77c0bd5fd303fef3afd1c015878",
             "shasum": ""
         },
         "require": {
             "doctrine/annotations": "*",
-            "php": ">=7.0",
-            "symfony/finder": ">=2.2",
-            "symfony/yaml": ">=3.3"
+            "php": ">=5.4.0",
+            "symfony/finder": "*"
         },
         "require-dev": {
-            "phpunit/phpunit": ">=6.3",
-            "squizlabs/php_codesniffer": ">=3.3",
-            "zendframework/zend-form": "<2.8"
+            "zendframework/zend-form": "*"
         },
-        "time": "2018-11-16T15:04:29+00:00",
+        "time": "2015-07-04T17:44:27+00:00",
         "bin": [
-            "bin/openapi"
+            "bin/swagger"
         ],
         "type": "library",
         "installation-source": "dist",
         "autoload": {
             "psr-4": {
-                "OpenApi\\": "src"
+                "Swagger\\": "src"
             },
             "files": [
                 "src/functions.php"
@@ -5153,7 +5150,7 @@
         },
         "notification-url": "https://packagist.org/downloads/",
         "license": [
-            "Apache-2.0"
+            "Apache2"
         ],
         "authors": [
             {
@@ -5167,7 +5164,7 @@
                 "homepage": "http://bfanger.nl"
             }
         ],
-        "description": "swagger-php - Generate interactive documentation for your RESTful API using phpdoc annotations",
+        "description": "Swagger-PHP - Generate interactive documentation for your RESTful API using phpdoc annotations",
         "homepage": "https://github.com/zircote/swagger-php/",
         "keywords": [
             "api",

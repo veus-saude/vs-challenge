@@ -1,44 +1,39 @@
-<?php declare(strict_types=1);
+<?php
 
 /**
  * @license Apache 2.0
  */
 
-namespace OpenApiTests;
+namespace SwaggerTests;
 
-class ExamplesTest extends OpenApiTestCase
+class ExamplesTest extends SwaggerTestCase
 {
 
     /**
      * Test the processed Examples against json files in ExamplesOutput.
      *
      * @dataProvider getExamples
-     *
      * @param string $example Example path
-     * @param string $output  Expected output (path to a json file)
+     * @param string $output Expected output (path to a json file)
      */
     public function testExample($example, $output)
     {
-        $openapi = \OpenApi\scan(__DIR__.'/../Examples/'.$example);
-        $this->assertOpenApiEqualsFile(__DIR__.'/ExamplesOutput/'.$output, $openapi);
+        $swagger = \Swagger\scan(__DIR__ . '/../Examples/' . $example);
+//        die((string) $swagger);
+        $this->assertSwaggerEqualsFile(__DIR__ . '/ExamplesOutput/' . $output, $swagger);
     }
 
     /**
      * dataProvider for testExample
-     *
      * @return array
      */
     public function getExamples()
     {
         return [
-            ['misc', 'misc.json'],
-            ['openapi-spec', 'openapi-spec.json'],
             ['petstore.swagger.io', 'petstore.swagger.io.json'],
             ['swagger-spec/petstore', 'petstore.json'],
             ['swagger-spec/petstore-simple', 'petstore-simple.json'],
             ['swagger-spec/petstore-with-external-docs', 'petstore-with-external-docs.json'],
-            ['using-refs', 'using-refs.json'],
-            ['example-object', 'example-object.json'],
         ];
     }
 }

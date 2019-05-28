@@ -1,10 +1,10 @@
-<?php declare(strict_types=1);
+<?php
 
 /**
  * @license Apache 2.0
  */
 
-namespace OpenApi;
+namespace Swagger;
 
 /**
  * Context
@@ -20,32 +20,31 @@ namespace OpenApi;
  *      |- propertyContext
  *      |- methodContext
  *
- * @property string                           $comment  The PHP DocComment
- * @property string                           $filename
- * @property int                              $line
- * @property int                              $character
+ * @property string $comment  The PHP DocComment
+ * @property string $filename
+ * @property int $line
+ * @property int $character
  *
- * @property string                           $namespace
- * @property array                            $uses
- * @property string                           $class
- * @property string                           $extends
- * @property string                           $method
- * @property string                           $property
- * @property string                           $trait
+ * @property string $namespace
+ * @property array $uses
+ * @property string $class
+ * @property string $extends
+ * @property string $method
+ * @property string $property
  * @property Annotations\AbstractAnnotation[] $annotations
  */
 class Context
 {
+
     /**
      * Prototypical inheritance for properties.
-     *
      * @var Context
      */
     private $_parent;
 
     /**
-     * @param array   $properties new properties for this context.
-     * @param Context $parent     The parent context
+     * @param array $properties new properties for this context.
+     * @param Context $parent The parent context
      */
     public function __construct($properties = [], $parent = null)
     {
@@ -59,19 +58,17 @@ class Context
      * Check if a property is set directly on this context and not its parent context.
      *
      * @param string $type Example: $c->is('method') or $c->is('class')
-     *
      * @return bool
      */
     public function is($type)
     {
         return property_exists($this, $type);
     }
-
+    
     /**
      * Check if a property is NOT set directly on this context and but its parent context.
      *
      * @param string $type Example: $c->not('method') or $c->not('class')
-     *
      * @return bool
      */
     public function not($type)
@@ -82,8 +79,8 @@ class Context
     /**
      * Return the context containing the specified property.
      *
-     * @param  string $property
-     * @return boolean|Context
+     * @param string $property
+     * @return boolean|\Swagger\Context
      */
     public function with($property)
     {
@@ -93,19 +90,17 @@ class Context
         if ($this->_parent) {
             return $this->_parent->with($property);
         }
-
         return false;
     }
 
     /**
-     * @return Context
+     * @return \Swagger\Context
      */
     public function getRootContext()
     {
         if ($this->_parent) {
             return $this->_parent->getRootContext();
         }
-
         return $this;
     }
 
@@ -140,7 +135,6 @@ class Context
                 $location .= ':' . $this->character;
             }
         }
-
         return $location;
     }
 
@@ -148,7 +142,6 @@ class Context
      * Traverse the context tree to get the property value.
      *
      * @param string $property
-     *
      * @return mixed
      */
     public function __get($property)
@@ -156,7 +149,6 @@ class Context
         if ($this->_parent) {
             return $this->_parent->$property;
         }
-
         return null;
     }
 
@@ -171,90 +163,34 @@ class Context
     }
 
     /**
-     * A short piece of text, usually one line, providing the basic function of the associated element.
-     *
-     * @return string
+     * @return string|null
      */
-    public function phpdocSummary()
+    public function extractDescription()
     {
-        $content = $this->phpdocContent();
-        if (!$content) {
-            return UNDEFINED;
-        }
-        $lines = preg_split('/(\n|\r\n)/', $content);
-        $summary = '';
+        $lines = explode("\n", $this->comment);
+        unset($lines[0]);
+        $description = '';
         foreach ($lines as $line) {
-            $summary .= $line . "\n";
-            if ($line === '' || substr($line, -1) === '.') {
-                return trim($summary);
-            }
-        }
-        $summary = trim($summary);
-        if ($summary === '') {
-            return UNDEFINED;
-        }
-
-        return $summary;
-    }
-
-    /**
-     * An optional longer piece of text providing more details on the associated element’s function. This is very useful when working with a complex element.
-     *
-     * @return string
-     */
-    public function phpdocDescription()
-    {
-        $summary = $this->phpdocSummary();
-        if (!$summary) {
-            return UNDEFINED;
-        }
-        $description = trim(substr($this->phpdocContent(), strlen($summary)));
-        if ($description === '') {
-            return UNDEFINED;
-        }
-
-        return $description;
-    }
-
-    /**
-     * The text contents of the phpdoc comment (excl. tags)
-     *
-     * @return string
-     */
-    public function phpdocContent()
-    {
-        $comment = preg_split('/(\n|\r\n)/', $this->comment);
-        $comment[0] = preg_replace('/[ \t]*\\/\*\*/', '', $comment[0]); // strip '/**'
-        $i = count($comment) - 1;
-        $comment[$i] = preg_replace('/\*\/[ \t]*$/', '', $comment[$i]); // strip '*/'
-        $lines = [];
-        $append = false;
-        foreach ($comment as $line) {
             $line = ltrim($line, "\t *");
             if (substr($line, 0, 1) === '@') {
                 break;
             }
-            if ($append) {
-                $i = count($lines) - 1;
-                $lines[$i] = substr($lines[$i], 0, -1) . $line;
-            } else {
-                $lines[] = $line;
-            }
-            $append = (substr($line, -1) === '\\');
+            $description .= $line . ' ';
         }
-        $description = trim(implode("\n", $lines));
+        $description = trim($description);
         if ($description === '') {
-            return UNDEFINED;
+            return null;
         }
-
+        if (stripos($description, 'license')) {
+            return null; // Don't use the GPL/MIT license text as the description.
+        }
         return $description;
     }
 
     /**
      * Create a Context based on the debug_backtrace
-     *
-     * @param  int $index
-     * @return Context
+     * @param int $index
+     * @return \Swagger\Context
      */
     public static function detect($index = 0)
     {
@@ -267,7 +203,7 @@ class Context
         if (isset($position['line'])) {
             $context->line = $position['line'];
         }
-        $caller = isset($backtrace[$index + 1]) ? $backtrace[$index + 1] : null;
+        $caller = @$backtrace[$index + 1];
         if (isset($caller['function'])) {
             $context->method = $caller['function'];
             if (isset($caller['type']) && $caller['type'] === '::') {
@@ -281,7 +217,6 @@ class Context
                 $context->namespace = implode('\\', $fqn);
             }
         }
-
         // @todo extract namespaces and use statements
         return $context;
     }
@@ -289,8 +224,7 @@ class Context
     /**
      * Resolve the fully qualified name.
      *
-     * @param string $class The class name
-     *
+     * @param string $class  The class name
      * @return string
      */
     public function fullyQualifiedName($class)
@@ -300,15 +234,6 @@ class Context
         } else {
             $namespace = '\\'; // global namespace
         }
-
-        if ($this->class === null) {
-            $this->class = '';
-        }
-
-        if ($class === null) {
-            return '';
-        }
-
         if (strcasecmp($class, $this->class) === 0) {
             return $namespace . $this->class;
         }
@@ -336,7 +261,6 @@ class Context
                 }
             }
         }
-
         return $namespace . $class;
     }
 }

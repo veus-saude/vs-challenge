@@ -1,50 +1,43 @@
-<?php declare(strict_types=1);
+<?php
 
 /**
  * @license Apache 2.0
  */
 
-namespace OpenApi\Annotations;
+namespace Swagger\Annotations;
 
 /**
  * @Annotation
  * License information for the exposed API.
  *
- * A "License Object": https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.0.md#license-object
+ * A Swagger "License Object": https://github.com/swagger-api/swagger-spec/blob/master/versions/2.0.md#licenseObject
  */
 class License extends AbstractAnnotation
 {
+
     /**
      * The license name used for the API.
-     *
      * @var string
      */
-    public $name = UNDEFINED;
+    public $name;
 
     /**
      * A URL to the license used for the API.
-     *
      * @var string
      */
-    public $url = UNDEFINED;
+    public $url;
 
-    /**
-     * @inheritdoc
-     */
+    /** @inheritdoc */
     public static $_types = [
         'name' => 'string',
         'url' => 'string',
     ];
 
-    /**
-     * @inheritdoc
-     */
+    /** @inheritdoc */
     public static $_required = ['name'];
 
-    /**
-     * @inheritdoc
-     */
+    /** @inheritdoc */
     public static $_parents = [
-        'OpenApi\Annotations\Info'
+        'Swagger\Annotations\Info'
     ];
 }

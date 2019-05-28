@@ -1,26 +1,29 @@
-<?php declare(strict_types=1);
+<?php
 
 /**
  * @license Apache 2.0
  */
 
-namespace OpenApiTests;
+namespace SwaggerTests;
 
-class AnalyserTest extends OpenApiTestCase
+use Swagger\Context;
+use Swagger\Analyser;
+
+class AnalyserTest extends SwaggerTestCase
 {
+
     public function testParseContents()
     {
-        $annotations = $this->parseComment('@OA\Parameter(description="This is my parameter")');
+        $annotations = $this->parseComment('@SWG\Parameter(description="This is my parameter")');
         $this->assertInternalType('array', $annotations);
         $parameter = $annotations[0];
-        $this->assertInstanceOf('OpenApi\Annotations\Parameter', $parameter);
+        $this->assertInstanceOf('Swagger\Annotations\Parameter', $parameter);
         $this->assertSame('This is my parameter', $parameter->description);
     }
 
     public function testDeprecatedAnnotationWarning()
     {
-        $this->countExceptions = 1;
-        $this->assertOpenApiLogEntryStartsWith('The annotation @SWG\Definition() is deprecated.');
-        $this->parseComment('@SWG\Definition()');
+        $this->assertSwaggerLogEntryStartsWith('The annotation @SWG\\Resource() is deprecated.');
+        $annotations = $this->parseComment('@SWG\Resource()');
     }
 }

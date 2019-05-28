@@ -1,24 +1,23 @@
-<?php declare(strict_types=1);
+<?php
 
 /**
  * @license Apache 2.0
  */
 
-namespace OpenApiTests;
+namespace SwaggerTests;
 
 /**
  * Test if the nesting/parent relations are coherent.
  */
-class ValidateRelationsTest extends OpenApiTestCase
+class ValidateRelationsTest extends SwaggerTestCase
 {
 
     /**
      *
-     * @dataProvider getAnnotationClasses
-     *
+     * @dataProvider getAnnotations
      * @param string $class
      */
-    public function testAncestors($class)
+    public function testParents($class)
     {
         foreach ($class::$_parents as $parent) {
             $found = false;
@@ -29,15 +28,14 @@ class ValidateRelationsTest extends OpenApiTestCase
                 }
             }
             if ($found === false) {
-                $this->fail($class.' not found in '.$parent."::\$_nested. Found:\n  ".implode("\n  ", array_keys($parent::$_nested)));
+                $this->fail($class . ' not found in ' . $parent . "::\$_nested. Found:\n  " . implode("\n  ", array_keys($parent::$_nested)));
             }
         }
     }
 
     /**
      *
-     * @dataProvider getAnnotationClasses
-     *
+     * @dataProvider getAnnotations
      * @param string $class
      */
     public function testNested($class)
@@ -51,26 +49,25 @@ class ValidateRelationsTest extends OpenApiTestCase
                 }
             }
             if ($found === false) {
-                $this->fail($class.' not found in '.$nested."::\$parent. Found:\n  ".implode("\n  ", $nested::$_parents));
+                $this->fail($class . ' not found in ' . $nested . "::\$parent. Found:\n  " . implode("\n  ", $nested::$_parents));
             }
         }
     }
 
     /**
      * dataProvider for testExample
-     *
      * @return array
      */
-    public function getAnnotationClasses()
+    public function getAnnotations()
     {
         $classes = [];
-        $dir = new \DirectoryIterator(__DIR__.'/../src/Annotations');
+        $dir = new \DirectoryIterator(__DIR__ . '/../src/Annotations');
         foreach ($dir as $entry) {
             if ($entry->getFilename() === 'AbstractAnnotation.php') {
                 continue;
             }
             if ($entry->getExtension() === 'php') {
-                $classes[] = ['OpenApi\Annotations\\'.substr($entry->getFilename(), 0, -4)];
+                $classes[] = ['Swagger\Annotations\\' . substr($entry->getFilename(), 0, -4)];
             }
         }
         return $classes;

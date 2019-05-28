@@ -3,45 +3,45 @@
 namespace PetstoreIO;
 
 /**
- * @OA\Schema(required={"name", "photoUrls"}, @OA\Xml(name="Pet"))
+ * @SWG\Definition(required={"name", "photoUrls"}, @SWG\Xml(name="Pet"))
  */
 class Pet
 {
 
     /**
-     * @OA\Property(format="int64")
+     * @SWG\Property(format="int64")
      * @var int
      */
     public $id;
 
     /**
-     * @OA\Property(example="doggie")
+     * @SWG\Property(example="doggie")
      * @var string
      */
     public $name;
 
     /**
      * @var Category
-     * @OA\Property()
+     * @SWG\Property()
      */
     public $category;
 
     /**
      * @var string[]
-     * @OA\Property(@OA\Xml(name="photoUrl", wrapped=true))
+     * @SWG\Property(@SWG\Xml(name="photoUrl",wrapped=true))
      */
     public $photoUrls;
-
+    
     /**
      * @var Tag[]
-     * @OA\Property(@OA\Xml(name="tag", wrapped=true))
+     * @SWG\Property(@SWG\Xml(name="tag",wrapped=true))
      */
     public $tags;
 
     /**
      * pet status in the store
      * @var string
-     * @OA\Property(enum={"available", "pending", "sold"})
+     * @SWG\Property(enum={"available", "pending", "sold"})
      */
     public $status;
 }

@@ -2,43 +2,44 @@
 
 namespace PetstoreIO;
 
-final class PetController
+class PetController
 {
 
     /**
-     * @OA\Get(
+     * @SWG\Get(
      *     path="/pet/findByTags",
      *     summary="Finds Pets by tags",
      *     tags={"pet"},
-     *     description="Muliple tags can be provided with comma separated strings. Use tag1, tag2, tag3 for testing.",
+     *     description="Muliple tags can be provided with comma seperated strings. Use tag1, tag2, tag3 for testing.",
      *     operationId="findPetsByTags",
-     *     @OA\Parameter(
+     *     consumes={"application/xml", "application/json"},
+     *     produces={"application/xml", "application/json"},
+     *     @SWG\Parameter(
      *         name="tags",
      *         in="query",
      *         description="Tags to filter by",
-     *         required=true,
-     *         @OA\Schema(
-     *           type="array",
-     *           @OA\Items(type="string"),
-     *         ),
-     *         style="form"
+     *         required=false,
+     *         type="array",
+     *         @SWG\Items(type="string"),
+     *         collectionFormat="multi"
      *     ),
-     *     @OA\Response(
+     *     @SWG\Response(
      *         response=200,
      *         description="successful operation",
-     *         @OA\Schema(
+     *         @SWG\Schema(
      *             type="array",
-     *             @OA\Items(ref="#/components/schemas/Pet")
+     *             @SWG\Items(ref="#/definitions/Pet")
      *         ),
      *     ),
-     *     @OA\Response(
+     *     @SWG\Response(
      *         response="400",
      *         description="Invalid tag value",
      *     ),
      *     security={
-     *         {"petstore_auth": {"write:pets", "read:pets"}}
-     *     },
-     *     deprecated=true
+     *         {
+     *             "petstore_auth": {"write:pets", "read:pets"}
+     *         }
+     *     }
      * )
      */
     public function findByTags()
@@ -46,36 +47,34 @@ final class PetController
     }
 
     /**
-     * @OA\Get(
+     * @SWG\Get(
      *     path="/pet/findByStatus",
      *     summary="Finds Pets by status",
-     *     description="Multiple status values can be provided with comma separated strings",
+     *     description="Multiple status values can be provided with comma seperated strings",
      *     operationId="findPetsByStatus",
+     *     consumes={"application/xml", "application/json"},
+     *     produces={"application/xml", "application/json"},
      *     tags={"pet"},
-     *     @OA\Parameter(
+     *     @SWG\Parameter(
      *         name="status",
      *         in="query",
      *         description="Status values that need to be considered for filter",
-     *         required=true,
-     *         @OA\Schema(
+     *         required=false,
      *         type="array",
-     *           @OA\Items(
-     *               type="string",
-     *               enum={"available", "pending", "sold"},
-     *               default="available"
-     *           ),
-     *         ),
-     *         style="form"
+     *         @SWG\Items(type="string"),
+     *         collectionFormat="multi",
+     *         default="available",
+     *         enum={"available", "pending", "sold"}
      *     ),
-     *     @OA\Response(
+     *     @SWG\Response(
      *         response=200,
      *         description="successful operation",
-     *         @OA\JsonContent(
-     *            type="array",
-     *            @OA\Items(ref="#/components/schemas/Pet")
-     *         )
+     *         @SWG\Schema(
+     *             type="array",
+     *             @SWG\Items(ref="#/definitions/Pet")
+     *         ),
      *     ),
-     *     @OA\Response(
+     *     @SWG\Response(
      *         response="400",
      *         description="Invalid status value",
      *     ),
@@ -89,37 +88,42 @@ final class PetController
     }
 
     /**
-     * @OA\Get(
+     * @SWG\Get(
      *     path="/pet/{petId}",
      *     summary="Find pet by ID",
      *     description="Returns a single pet",
      *     operationId="getPetById",
      *     tags={"pet"},
-     *     @OA\Parameter(
+     *     consumes={
+     *         "application/xml",
+     *         "application/json",
+     *         "application/x-www-form-urlencoded"
+     *     },
+     *     produces={"application/xml", "application/json"},
+     *     @SWG\Parameter(
      *         description="ID of pet to return",
      *         in="path",
      *         name="petId",
      *         required=true,
-     *         @OA\Schema(
-     *           type="integer",
-     *           format="int64"
-     *         )
+     *         type="integer",
+     *         format="int64"
      *     ),
-     *     @OA\Response(
+     *     @SWG\Response(
      *         response=200,
      *         description="successful operation",
-     *         @OA\JsonContent(ref="#/components/schemas/Pet")
+     *         @SWG\Schema(ref="#/definitions/Pet")
      *     ),
-     *     @OA\Response(
+     *     @SWG\Response(
      *         response="400",
      *         description="Invalid ID supplied"
      *     ),
-     *     @OA\Response(
+     *     @SWG\Response(
      *         response="404",
      *         description="Pet not found"
      *     ),
      *     security={
-     *       {"api_key": {}}
+     *       {"api_key": {}},
+     *       {"petstore_auth": {"write:pets", "read:pets"}}
      *     }
      * )
      */
@@ -128,30 +132,22 @@ final class PetController
     }
 
     /**
-     * @OA\Post(
+     * @SWG\Post(
      *     path="/pet",
      *     tags={"pet"},
      *     operationId="addPet",
      *     summary="Add a new pet to the store",
      *     description="",
-     *     @OA\RequestBody(
+     *     consumes={"application/json", "application/xml"},
+     *     produces={"application/xml", "application/json"},
+     *     @SWG\Parameter(
+     *         name="body",
+     *         in="body",
      *         description="Pet object that needs to be added to the store",
-     *         required=true,
-     *         @OA\JsonContent(ref="#/components/schemas/Pet"),
-     *         @OA\MediaType(
-     *             mediaType="application/xml",
-     *             @OA\Schema(ref="#/components/schemas/Pet")
-     *         ),
+     *         required=false,
+     *         @SWG\Schema(ref="#/definitions/Pet"),
      *     ),
-     *     @OA\RequestBody(
-     *         description="Pet object that needs to be added to the store",
-     *         required=true,
-     *         @OA\MediaType(
-     *             mediaType="application/xml",
-     *             @OA\Schema(ref="#/components/schemas/Pet")
-     *         )
-     *     ),
-     *     @OA\Response(
+     *     @SWG\Response(
      *         response=405,
      *         description="Invalid input",
      *     ),
@@ -163,30 +159,30 @@ final class PetController
     }
 
     /**
-     * @OA\Put(
+     * @SWG\Put(
      *     path="/pet",
      *     tags={"pet"},
      *     operationId="updatePet",
      *     summary="Update an existing pet",
      *     description="",
-     *     @OA\RequestBody(
-     *         required=true,
+     *     consumes={"application/json", "application/xml"},
+     *     produces={"application/xml", "application/json"},
+     *     @SWG\Parameter(
+     *         name="body",
+     *         in="body",
      *         description="Pet object that needs to be added to the store",
-     *         @OA\JsonContent(ref="#/components/schemas/Pet"),
-     *         @OA\MediaType(
-     *            mediaType="application/xml",
-     *            @OA\Schema(ref="#/components/schemas/Pet"),
-     *         )
+     *         required=false,
+     *         @SWG\Schema(ref="#/definitions/Pet"),
      *     ),
-     *     @OA\Response(
+     *     @SWG\Response(
      *         response=400,
      *         description="Invalid ID supplied",
      *     ),
-     *     @OA\Response(
+     *     @SWG\Response(
      *         response=404,
      *         description="Pet not found",
      *     ),
-     *     @OA\Response(
+     *     @SWG\Response(
      *         response=405,
      *         description="Validation exception",
      *     ),
@@ -198,37 +194,32 @@ final class PetController
     }
 
     /**
-     * @OA\Delete(
+     * @SWG\Delete(
      *     path="/pet/{petId}",
      *     summary="Deletes a pet",
      *     description="",
      *     operationId="deletePet",
+     *     consumes={"application/xml", "application/json", "multipart/form-data", "application/x-www-form-urlencoded"},
+     *     produces={"application/xml", "application/json"},
      *     tags={"pet"},
-     *     @OA\Parameter(
+     *     @SWG\Parameter(
      *         description="Pet id to delete",
      *         in="path",
      *         name="petId",
      *         required=true,
-     *         @OA\Schema(
-     *             type="integer",
-     *             format="int64"
-     *         )
+     *         type="integer",
+     *         format="int64"
      *     ),
-     *     @OA\Header(
-     *         header="api_key",
-     *         description="Api key header",
+     *     @SWG\Parameter(
+     *         name="api_key",
+     *         in="header",
+     *         description="",
      *         required=false,
-     *         @OA\Schema(
-     *             type="string"
-     *         )
+     *         type="string"
      *     ),
-     *     @OA\Response(
+     *     @SWG\Response(
      *         response=400,
-     *         description="Invalid ID supplied"
-     *     ),
-     *     @OA\Response(
-     *         response=404,
-     *         description="Pet not found"
+     *         description="Invalid pet value"
      *     ),
      *     security={{"petstore_auth":{"write:pets", "read:pets"}}}
      * )
@@ -238,42 +229,36 @@ final class PetController
     }
 
     /**
-     * @OA\Post(
+     * @SWG\Post(
      *   path="/pet/{petId}",
      *   tags={"pet"},
      *   summary="Updates a pet in the store with form data",
      *   description="",
      *   operationId="updatePetWithForm",
-     *   @OA\RequestBody(
-     *       required=false,
-     *       @OA\MediaType(
-     *           mediaType="application/x-www-form-urlencoded",
-     *           @OA\Schema(
-     *               type="object",
-     *               @OA\Property(
-     *                   property="name",
-     *                   description="Updated name of the pet",
-     *                   type="string"
-     *               ),
-     *               @OA\Property(
-     *                   property="status",
-     *                   description="Updated status of the pet",
-     *                   type="string"
-     *               ),
-     *           )
-     *       )
-     *   ),
-     *   @OA\Parameter(
+     *   consumes={"application/x-www-form-urlencoded"},
+     *   produces={"application/xml", "application/json"},
+     *   @SWG\Parameter(
      *     name="petId",
      *     in="path",
      *     description="ID of pet that needs to be updated",
      *     required=true,
-     *     @OA\Schema(
-     *         type="integer",
-     *         format="int64"
-     *     )
+     *     type="string"
      *   ),
-     *   @OA\Response(response="405",description="Invalid input"),
+     *   @SWG\Parameter(
+     *     name="name",
+     *     in="formData",
+     *     description="Updated name of the pet",
+     *     required=false,
+     *     type="string"
+     *   ),
+     *   @SWG\Parameter(
+     *     name="status",
+     *     in="formData",
+     *     description="Updated status of the pet",
+     *     required=false,
+     *     type="string"
+     *   ),
+     *   @SWG\Response(response="405",description="Invalid input"),
      *   security={{
      *     "petstore_auth": {"write:pets", "read:pets"}
      *   }}
@@ -284,45 +269,38 @@ final class PetController
     }
 
     /**
-     * @OA\Post(
+     * @SWG\Post(
      *     path="/pet/{petId}/uploadImage",
+     *     consumes={"multipart/form-data"},
      *     description="",
-     *     summary="uploads an image",
      *     operationId="uploadFile",
-     *     @OA\RequestBody(
-     *         required=true,
-     *         @OA\MediaType(
-     *             mediaType="multipart/form-data",
-     *             @OA\Schema(
-     *                 @OA\Property(
-     *                     description="Additional data to pass to server",
-     *                     property="additionalMetadata",
-     *                     type="string"
-     *                 ),
-     *                 @OA\Property(
-     *                     description="file to upload",
-     *                     property="file",
-     *                     type="string",
-     *                     format="file",
-     *                 ),
-     *                 required={"file"}
-     *             )
-     *         )
+     *     @SWG\Parameter(
+     *         description="Additional data to pass to server",
+     *         in="formData",
+     *         name="additionalMetadata",
+     *         required=false,
+     *         type="string"
      *     ),
-     *     @OA\Parameter(
+     *     @SWG\Parameter(
+     *         description="file to upload",
+     *         in="formData",
+     *         name="file",
+     *         required=false,
+     *         type="file"
+     *     ),
+     *     @SWG\Parameter(
      *         description="ID of pet to update",
+     *         format="int64",
      *         in="path",
      *         name="petId",
      *         required=true,
-     *         @OA\Schema(
-     *             type="integer",
-     *             format="int64"
-     *         ),
+     *         type="integer"
      *     ),
-     *     @OA\Response(
+     *     produces={"application/json"},
+     *     @SWG\Response(
      *         response="200",
      *         description="successful operation",
-     *         @OA\Schema(ref="#/components/schemas/ApiResponse")
+     *         @SWG\Schema(ref="#/definitions/ApiResponse")
      *     ),
      *     security={
      *         {
@@ -332,6 +310,7 @@ final class PetController
      *             }
      *         }
      *     },
+     *     summary="uploads an image",
      *     tags={
      *         "pet"
      *     }

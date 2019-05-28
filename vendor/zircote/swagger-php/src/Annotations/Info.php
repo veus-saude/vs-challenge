@@ -1,88 +1,73 @@
-<?php declare(strict_types=1);
+<?php
 
 /**
  * @license Apache 2.0
  */
 
-namespace OpenApi\Annotations;
+namespace Swagger\Annotations;
 
 /**
  * @Annotation
- * An "Info Object": https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.0.md#info-object
  *
- * The object provides metadata about the API.
- * The metadata may be used by the clients if needed, and may be presented in editing or documentation generation tools for convenience.
+ * A Swagger "Info Object":  https://github.com/swagger-api/swagger-spec/blob/master/versions/2.0.md#infoObject
  */
 class Info extends AbstractAnnotation
 {
+
     /**
      * The title of the application.
-     *
      * @var string
      */
-    public $title = UNDEFINED;
+    public $title;
 
     /**
-     * A short description of the application. CommonMark syntax may be used for rich text representation.
-     *
+     * A short description of the application. GFM syntax can be used for rich text representation.
      * @var string
      */
-    public $description = UNDEFINED;
+    public $description;
 
     /**
-     * A URL to the Terms of Service for the API. must be in the format of a url.
-     *
+     * The Terms of Service for the API.
      * @var string
      */
-    public $termsOfService = UNDEFINED;
+    public $termsOfService;
 
     /**
      * The contact information for the exposed API.
-     *
      * @var Contact
      */
-    public $contact = UNDEFINED;
+    public $contact;
 
     /**
      * The license information for the exposed API.
-     *
      * @var License
      */
-    public $license = UNDEFINED;
+    public $license;
 
     /**
-     * The version of the OpenAPI document (which is distinct from the OpenAPI Specification version or the API implementation version).
-     *
+     * Provides the version of the application API (not to be confused by the specification version).
      * @var string
      */
-    public $version = UNDEFINED;
+    public $version;
 
-    /**
-     * @inheritdoc
-     */
+    /** @inheritdoc */
     public static $_required = ['title', 'version'];
 
-    /**
-     * @inheritdoc
-     */
+    /** @inheritdoc */
     public static $_types = [
         'title' => 'string',
         'description' => 'string',
         'termsOfService' => 'string'
     ];
 
-    /**
-     * @inheritdoc
-     */
+    /** @inheritdoc */
     public static $_nested = [
-        'OpenApi\Annotations\Contact' => 'contact',
-        'OpenApi\Annotations\License' => 'license'
+        'Swagger\Annotations\Contact' => 'contact',
+        'Swagger\Annotations\License' => 'license'
     ];
 
-    /**
-     * @inheritdoc
-     */
+    /** @inheritdoc */
     public static $_parents = [
-        'OpenApi\Annotations\OpenApi'
+        'Swagger\Annotations\Swagger'
     ];
 }

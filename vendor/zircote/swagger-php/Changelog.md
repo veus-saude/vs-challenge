@@ -1,3 +1,6 @@
 # Changelog
 
-The changelog is moved to the [releases page](https://github.com/zircote/swagger-php/releases)
+## 2.0.0
+
+- Generates swagger.json with Swagger Specification v2
+- New simplified architecture (crawl -> analysis -> processors -> validation -> output)

@@ -1,53 +1,47 @@
-<?php declare(strict_types=1);
+<?php
 
 /**
  * @license Apache 2.0
  */
 
-namespace OpenApi\Annotations;
+namespace Swagger\Annotations;
 
 /**
  * @Annotation
- * A "Contact Object": https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.0.md#contact-object
- *
  * Contact information for the exposed API.
+ *
+ * A Swagger "Contact Object": https://github.com/swagger-api/swagger-spec/blob/master/versions/2.0.md#contactObject
  */
 class Contact extends AbstractAnnotation
 {
+
     /**
      * The identifying name of the contact person/organization.
-     *
      * @var string
      */
-    public $name = UNDEFINED;
+    public $name;
 
     /**
      * The URL pointing to the contact information.
-     *
      * @var string
      */
-    public $url = UNDEFINED;
+    public $url;
 
     /**
      * The email address of the contact person/organization.
-     *
      * @var string
      */
-    public $email = UNDEFINED;
+    public $email;
 
-    /**
-     * @inheritdoc
-     */
+    /** @inheritdoc */
     public static $_types = [
         'name' => 'string',
         'url' => 'string',
         'email' => 'string'
     ];
 
-    /**
-     * @inheritdoc
-     */
+    /** @inheritdoc */
     public static $_parents = [
-        'OpenApi\Annotations\Info'
+        'Swagger\Annotations\Info'
     ];
 }

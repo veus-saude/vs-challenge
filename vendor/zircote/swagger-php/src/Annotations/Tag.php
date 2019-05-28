@@ -1,63 +1,53 @@
-<?php declare(strict_types=1);
+<?php
 
 /**
  * @license Apache 2.0
  */
 
-namespace OpenApi\Annotations;
+namespace Swagger\Annotations;
 
 /**
  * @Annotation
  *
- * A "Tag Object":  https://github.com/OAI/OpenAPI-Specification/blob/OpenAPI.next/versions/3.0.md#tagObject
+ * A Swagger "Tag Object":  https://github.com/swagger-api/swagger-spec/blob/master/versions/2.0.md#tagObject
  */
 class Tag extends AbstractAnnotation
 {
+
     /**
      * The name of the tag.
-     *
      * @var string
      */
-    public $name = UNDEFINED;
+    public $name;
 
     /**
      * A short description for the tag. GFM syntax can be used for rich text representation.
-     *
      * @var string
      */
-    public $description = UNDEFINED;
+    public $description;
 
     /**
      * Additional external documentation for this tag.
-     *
      * @var ExternalDocumentation
      */
-    public $externalDocs = UNDEFINED;
+    public $externalDocs;
 
-    /**
-     * @inheritdoc
-     */
+    /** @inheritdoc */
     public static $_required = ['name'];
 
-    /**
-     * @inheritdoc
-     */
+    /** @inheritdoc */
     public static $_types = [
         'name' => 'string',
         'description' => 'string',
     ];
 
-    /**
-     * @inheritdoc
-     */
+    /** @inheritdoc */
     public static $_parents = [
-        'OpenApi\Annotations\OpenApi'
+        'Swagger\Annotations\Swagger'
     ];
 
-    /**
-     * @inheritdoc
-     */
+    /** @inheritdoc */
     public static $_nested = [
-        'OpenApi\Annotations\ExternalDocumentation' => 'externalDocs'
+        'Swagger\Annotations\ExternalDocumentation' => 'externalDocs'
     ];
 }

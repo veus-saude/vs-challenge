@@ -1,35 +1,28 @@
 <?php
 
 /**
- * @OA\Schema(
- *   schema="NewPet",
- *   required={"name"}
+ * @SWG\Definition(
+ *   required={"id","name"},
+ *   @SWG\ExternalDocumentation(
+ *     description="find more info here",
+ *     url="https://swagger.io/about"
+ *   )
  * )
  */
 class Pet
 {
+
+    /**
+     * @SWG\Property(type="integer", format="int64")
+     */
     public $id;
     /**
-     * @OA\Property(type="string")
+     * @SWG\Property(type="string")
      */
     public $name;
 
     /**
-     * @OA\Property(type="string")
+     * @SWG\Property(type="string")
      */
     public $tag;
 }
-
-/**
- *  @OA\Schema(
- *   schema="Pet",
- *   type="object",
- *   allOf={
- *       @OA\Schema(ref="#/components/schemas/NewPet"),
- *       @OA\Schema(
- *           required={"id"},
- *           @OA\Property(property="id", format="int64", type="integer")
- *       )
- *   }
- * )
- */
