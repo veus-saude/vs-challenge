@@ -13,12 +13,12 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::group(['middleware' => 'api', 'prefix' => 'auth'], function () {
+Route::group(['middleware' => 'api', 'prefix' => 'v1/auth'], function () {
 
-    Route::post('authenticate', 'AuthController@authenticate')->name('api.authenticate');
-    Route::post('register', 'AuthController@register')->name('api.register');
+    Route::post('authenticate', 'AuthController@authenticate')->name('api.v1.authenticate');
+    Route::post('register', 'AuthController@register')->name('api.v1.register');
 });
 
-Route::group(['middleware' => ['api','auth'],'prefix' => 'product'],function (){
-    Route::get('search/','SearchProductController@search')->name('product.search');
+Route::group(['middleware' => ['api','auth'],'prefix' => 'v1/product'],function (){
+    Route::get('search/','SearchProductController@search')->name('product.v1.search');
 });
