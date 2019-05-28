@@ -149,7 +149,7 @@ class ProductTest extends TestCase
         //call route and assert response
         $response = $this->withHeaders([
             'Authorization' => 'Bearer '. $token,
-        ])->json('GET',route('product.search'),['price_more_than'=>1,'order_desc'=>'product_id']);
+        ])->json('GET',route('product.v1.search'),['price_more_than'=>1,'order_desc'=>'product_id']);
         $response->assertStatus(200);
     }
 }

@@ -26,7 +26,7 @@ class AuthTest extends TestCase
         ];
 
         //Send post request
-        $response = $this->json('POST',route('api.register'),$data);
+        $response = $this->json('POST',route('api.v1.register'),$data);
         //Assert it was successful
         $response->assertStatus(200);
         //Assert we received a token
@@ -51,7 +51,7 @@ class AuthTest extends TestCase
         ]);
 
         //attempt login
-        $response = $this->json('POST',route('api.authenticate'),[
+        $response = $this->json('POST',route('api.v1.authenticate'),[
             'email' => 'teste@gmail.com',
             'password' => 'teste1234',
         ]);
