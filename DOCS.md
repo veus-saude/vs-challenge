@@ -1,6 +1,6 @@
 ## Documentação de instalação da API
 
-Você pode esta API em funcionamento no painel que desenvolvi em VueJS no link [https://veus.neimeg.com](https://veus.neimeg.com), este painel consome a API que está no endereço [https://veus-api.neimeg.com](https://veus-api.neimeg.com)
+Você pode ver esta API em funcionamento no painel que desenvolvi em VueJS no link [https://veus.neimeg.com](https://veus.neimeg.com), este painel consome a API que está no endereço [https://veus-api.neimeg.com](https://veus-api.neimeg.com)
 
 Para acessar o painel use as seguintes credenciais:
 
