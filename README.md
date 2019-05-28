@@ -88,5 +88,15 @@ Gestão de versionamento de api é feita através do arquivo routes/api.php. Bas
 
 O total de páginas, página atual e outras informações de paginação sao retornadas pelo sistema a cada requisição. Numa primeira busca, não é preciso passar page. Sistema assume 1 como padrão.
 
+## Docker
+
+Para utilizacao do docker, favor utilizar configuracao disponivel aqui: https://github.com/vitorapaiva/docker
+
+## Implementações futuras
+
+* Melhoria na interface
+* Correções na mascara de preço que nao está funcionando na edicao de produto
+* Deploy automatizado no heroku. Atualmente está dando erro mas pode ser acessado através de: http://vs-challenge.herokuapp.com/
+
 
 
