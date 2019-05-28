@@ -92,11 +92,14 @@ O total de páginas, página atual e outras informações de paginação sao ret
 
 Para utilizacao do docker, favor utilizar configuracao disponivel aqui: https://github.com/vitorapaiva/docker
 
+## Live Version
+
+É possivel visualizar o sistema em: http://vs-challenge.herokuapp.com/
+
 ## Implementações futuras
 
 * Melhoria na interface
 * Correções na mascara de preço que nao está funcionando na edicao de produto
-* Deploy automatizado no heroku. Atualmente está dando erro mas pode ser acessado através de: http://vs-challenge.herokuapp.com/
 
 
 
