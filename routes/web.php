@@ -26,4 +26,3 @@ $router->post('brand/edit/{product_id}', 'BrandController@editStore')->name('bra
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
