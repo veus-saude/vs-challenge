@@ -45,7 +45,7 @@ Você será avaliado de acordo com a senioridade da posição a qual está aplic
 * php artisan migrate
 * php artisan serve
 
-##Para acessar a pagina do projeto
+## Para acessar a pagina do projeto
 
 Acesse http://127.0.0.1:8000 (caso tenha utilizado o php artisan serve). Urls disponiveis:
 
@@ -62,9 +62,13 @@ Para executar os testes, basta rodar vendor/bin/phpunit ou phpunit caso tenha el
 
 ## Para consultas na api, utilize: 
 
-* POST | api/auth/authenticate   
-* POST | api/auth/register       
-* GET  | api/product/search   
+* POST | api/v1/auth/authenticate
+* POST | api/v1/auth/register
+* GET  | api/v1/product/search
+
+## Versionamento
+
+Gestão de versionamento de api é feita através do arquivo routes/api.php. Basta adicionar novas rotas com a nova versão, apontando para os respectivos controllers.
 
 ### Parametros de busca aceitos:
 
