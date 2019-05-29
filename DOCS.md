@@ -9,7 +9,7 @@ Para acessar o painel use as seguintes credenciais:
 
 ### Pré requisitos
 - PHP >=7.2
-- mySQL server
+
 
 ### Instalação
 
@@ -22,6 +22,10 @@ Concluída a instalação, você deve copiar o arquivo `.env.example` para `.env
     DB_DATABASE=nome-do-banco
     DB_USERNAME=usuario
     DB_PASSWORD=senha
+
+Para gerar a key da aplicação execute o comando:
+
+    php artisan key:generate
 
 Crie o banco de dados com o mesmo nome inserido na variável `DB_DATABASE` no servidor indicado na variável `DB_HOST`.
 
