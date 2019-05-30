@@ -53,7 +53,7 @@ A autenticação deve ser feita passando as credenciais de usuário (email e sen
 Ex:
 
     axios.post('https://sua-api.com/oauth/token', {
-    	grant_type: 'password',
+    	grant_type: 'client_credentials',
     	client_secret: '8YIAYxMzMBMJ7fOVDgc7iMVV6Qn1g7lnjNYIfiNO',
     	client_id: 2,
     	username:'teste@veus.com.br',
