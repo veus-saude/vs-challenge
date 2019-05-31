@@ -1,0 +1,299 @@
+{
+	"info": {
+		"_postman_id": "4495e5df-e1f9-4f17-a3e8-0ad1c0c6abf0",
+		"name": "vs-challenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Registre-se",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Daniel Augusto Bastos\",\n\t\"email\": \"danbastos@gmail.com\",\n\t\"password\": \"123456\",\n\t\"password_confirmation\": \"123456\"\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/signup",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"signup"
+							]
+						},
+						"description": "Registra um usuário"
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "hkBcFzJeHwmPnbyKETGcp34Vew6a4l627LucxhDX",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"danbastos@gmail.com\",\n\t\"password\": \"123456\"\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/login",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Produtos",
+			"item": [
+				{
+					"name": "Find",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/product?q=desi&filter=brand:BUNZL&limit=2&offset=0&sort=code:desc",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"product"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "desi"
+								},
+								{
+									"key": "filter",
+									"value": "brand:BUNZL"
+								},
+								{
+									"key": "limit",
+									"value": "2"
+								},
+								{
+									"key": "offset",
+									"value": "0"
+								},
+								{
+									"key": "sort",
+									"value": "code:desc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"LAVA LOUÇAS  P/ LAVAGEM MECÂNICA 5\",\n\t\"code\": \"340002\",\n\t\"brand\": \"BUNZL\",\n\t\"measure\": \"5L\",\n\t\"details\": \"Diluição 1:200 a 1:500\"\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/product",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"desinfetant\",\n\t\"code\": \"code2\",\n\t\"brand\": \"BUNZL\",\n\t\"measure\": \"xxx\",\n\t\"details\": \"xxx\"\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/product/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"product",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/product/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"product",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/product/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"product",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjBkMzc4YTdjYzk1YTkzZDc5NTc3Y2Q0MDk0NTU1YTA5ZjI0MmVmMTJmZjZmZjk0ZjFiMGUzMDYwNDQxYmI1ZTAyZjdmNmYzM2JlODgyNWNkIn0.eyJhdWQiOiIxIiwianRpIjoiMGQzNzhhN2NjOTVhOTNkNzk1NzdjZDQwOTQ1NTVhMDlmMjQyZWYxMmZmNmZmOTRmMWIwZTMwNjA0NDFiYjVlMDJmN2Y2ZjMzYmU4ODI1Y2QiLCJpYXQiOjE1NTkyNzY5MzksIm5iZiI6MTU1OTI3NjkzOSwiZXhwIjoxNTkwODk5MzM5LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.DIPOuMxMxY123edVxcZ5ApjTQYYspvTeMuPCF6Oj4VmlMEO7QPq57HWkuVP1mXM7mAiJYg4R8kt6jU-NvHRZJ6H3YiDxiexc2d8IcdnfX12CepS7CIqKagXyLtSATNRg3w5H88J4qiBa5mQZ__L12T7NKxYkyriLwPA7ChwMeiUJnpmbv3SyGDU7HY9rkOvQv3PaG86-qu7gcxEopqkQ6gwEDHnrUaNUPz6VfHSg27G7zAisMFch63JZBUbBip_0oEgaKmKwzW5cMF2xxd9UphByzM1yv6BoF52nsKRkgKtuQK1qlnhgROJ1EZEzhVB7vkWDgaRAcLc5INRA5-0YUSc_4kHEhawl3kQWCw9nojc5s5uifDi7RwniT3mynapk2ynZK21Uahy2dyFx3z6guWmMqt9o39OvpDOxem3AXhydpVplco49jSxLrRKiwgTFWFQfFL_TTleVteUbtZ5wpVmW8zrZ9DvCheIkusiKXqxVEJex6z35HVDc91Y04Zg-4Iv6xKIOyLraoU_HSJTbSo3oSo2LQVJbLftfZRaHd7bZAfbzkUtExBTo0Db5HPegYKrp2hDL5FZAF8ZC8TucAiZF8fCWbmOP1BRaKVXHBdtuXhlh54mAZP2pT_jGlvqwdBIDkNqJMMwf52BYAshV6LT7o2NEbOqyFw_CXymvRZU",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "63de3c20-b114-42cb-8fd6-e9d83a5d260b",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "cbd762a5-afc6-4c3d-b914-fdffda4b35d9",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
