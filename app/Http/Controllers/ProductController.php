@@ -7,9 +7,28 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    public function index()
+    public function index(Request $request, Product $produto)
     {
-        return response()->json(Product::all());
+        $filterName = $request->get('q');
+        $filter = $request->get('filter');
+
+        $where = "";
+        if($filter){
+            $filter = explode(':',$filter);
+
+            $filterBrand = $filter[1];
+
+            $where = [
+                ['name', 'like',"%{$filterName}%"],
+                ['brand', '=',$filterBrand]
+            ];
+        }else{
+            $where = [
+                ['name', 'like',"%{$filterName}%"]
+            ];
+        }
+
+        return response()->json($produto->where($where)->paginate(10));
     }
 
     public function store(Request $request)
