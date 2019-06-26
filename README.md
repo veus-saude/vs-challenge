@@ -1,34 +1,44 @@
-<p align="center">
-    <img src="https://i.imgur.com/2LUR2yy.png">
-</p>
+# veus-project
 
-## Sobre a VEUS
+Projeto da VEUS feito por Rodrigo Marques
 
-Há 25 anos no mercado, a **Veus Technology** é uma empresa brasileira ligada ao segmento de saúde com foco na inovação tecnológica. É responsável por vários projetos pioneiros e estratégicos na área laboratorial, médica e recentemente hospitalar.
+#Instalação
 
-## Desafio VS
+git clone https://marquescoti@bitbucket.org/marquescoti/veus-project.git
+composer install
+renomear .env.example para .env
+rodar o comando php artisan key:generate
 
-Você deve implementar uma API utilizando *PHP* > 7.0. Nós recomendamos que você tente manter o seu códgo o mais simples possível. Se você precisar de qualquer informação adicional ou esclarecimento, você pode nos contatar pelo e-mail: **sistemas@veus.com.br**.
+Alterar as propriedades de conexão com o banco de dados no arquivo .env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=veusdb
+DB_USERNAME=root
+DB_PASSWORD=
 
-Vamos imaginar que a sua empresa possua um e-commerce e venda alguns produtos para laboratórios e hospitais...
+#Configuração
+Criar um novo usuário
+POST: http://localhost/veus-project/public/save
+Parametros
+    name
+    email
+    password
 
-Sua tarefa é desenvolver um **CRUD** de Produtos e implementar um serviço de buscas desses produtos. Um produto possui nome, marca, preço e quantidade em estoque.
-A API deve requerer **autenticação** e permitir __search query__ através do método **GET** e suportar filtros opcionais nos campos do produto.    A API deve requerer **autenticação** e permitir __search query__ através do método **GET** e suportar filtros opcionais nos campos do produto.
+Gerar um token
+GET http://localhost/veus-project/public/token
+Parametros
+    email
+    password
+    
+Enviar o token por HEADER através
+Bearer Token ( Authorization: Bearer {yourtokenhere} )
 
-Por exemplo: Um cliente deve conseguir buscar todas as seringas da marca BUNZL fazendo a seguinte requisição:
+Consultas 
+http://localhost/veus-project/public/api/v1/products?order=preco&filter=marca:POLO
 
-`https://example.com/api/v1/products?q=seringa&filter=brand:BUNZL`
-
-A API também deve suportar __pagination__, __versioning__ e __sorting__.
-
-Sinta-se livre para usar qualquer library ou framework da sua preferência mas a regra de negócio deve estar o mais desaclopada possível deles.
-
-Por favor, **não se esqueça** de providenciar uma pequena documentação de como levantar e testar o seu projeto.
-
-Bônus:
-* Docker
-* Unit Test
-* User Interface
-
----
-Você será avaliado de acordo com a senioridade da posição a qual está aplicando. Ao finalizar o desafio você deve submeter o **Pull Request** com o seu código para a avaliação, após isso nos entrarem em contato com você através do e-mail passando um feedback do seu projeto.
+#Testing
+No do banco de dados: veusdbteste
+php artisan migrate --database=testing
+Rodar teste: 
+./vendor/bin/phpunit
