@@ -1,0 +1,39 @@
+{
+    "name": "nordsoftware/lumen-cors",
+    "description": "CORS module for the Lumen PHP framework.",
+    "keywords": ["lumen", "cors", "cross-origin", "resource", "sharing", "preflight", "http", "request", "headers", "laravel"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Christoffer Niska",
+            "email": "christofferniska@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.1",
+        "illuminate/support": "^5.4"
+    },
+    "require-dev": {
+        "laravel/lumen-framework": "^5.4",
+        "codeception/codeception": "^2.2",
+        "codeception/specify": "^0.4",
+        "codeception/verify": "^0.3",
+        "php-coveralls/php-coveralls": "^2.1",
+        "phpstan/phpstan": "^0.10.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Nord\\Lumen\\Cors\\": "src"
+        }
+    },
+    "scripts": {
+        "test": [
+            "codecept run",
+            "phpstan analyse src/"
+        ],
+        "travis": [
+            "codecept run --coverage --report --coverage-xml",
+            "phpstan analyse src/"
+        ]
+    }
+}
