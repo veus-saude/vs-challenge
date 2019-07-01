@@ -5,28 +5,8 @@ use Laravel\Lumen\Testing\DatabaseMigrations;
 use Laravel\Lumen\Testing\DatabaseTransactions;
 
 class ProductTest extends TestCase
-{
-    #use WithoutMiddleware;
-    public function testIndex()
-    {
-        $this->withoutMiddleware();
-
-        $this->json('GET', 'api/v1/products', ['order' => 'price|desc'])
-             ->seeJson();
-
-        $this->json('GET', 'api/v1/products', ['name' => 'seringa'])
-             ->seeJson();
-    }
-
-    public function testShow()
-    {
-        $this->withoutMiddleware();
-         $data = \App\Models\Product::first();
-            $this->json('GET', 'api/v1/products/'.$data->id)
-             ->seeJson();
-    }
-
-    public function testStore()
+{	
+	public function testStore()
     {
         $this->withoutMiddleware();
         $this->json('POST', 'api/v1/products', [
@@ -35,6 +15,25 @@ class ProductTest extends TestCase
                                                 'price' => '150.00', 
                                                 'quantity' => '80'
                                                 ])
+             ->seeJson();
+    }
+	
+    public function testIndex()
+    {
+        $this->withoutMiddleware();
+
+        $this->json('GET', 'api/v1/products', ['order' => 'price|desc'])
+             ->seeJson();
+
+        $this->json('GET', 'api/v1/products', ['name' => 'Nebulizador'])
+             ->seeJson();
+    }
+
+    public function testShow()
+    {
+        $this->withoutMiddleware();
+         $data = \App\Models\Product::first();
+            $this->json('GET', 'api/v1/products/'.$data->id)
              ->seeJson();
     }
 
