@@ -1,11 +1,10 @@
 <?php
 session_start();
 
-date_default_timezone_set('America/Porto_Velho');
-$server = "localhost";
-$user = "veustecc_banco";
-$pass = "pbnfn9i8"; 
-$db   = "veustecc_banco"; 
+$server = ""; // Servidor MySQL
+$user = ""; // Usuário MySQL
+$pass = "";   // Senha MySQL
+$db   = "";  // Banco de dados MySQL
 
 $sqli = new mysqli($server, $user, $pass, $db);
 
