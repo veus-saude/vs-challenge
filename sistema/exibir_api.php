@@ -1,6 +1,6 @@
 <?php
-include("seguranca.php"); // Inclui o arquivo com o sistema de segurança  
-protegePagina(); // Chama a função que protege a página 
+include("seguranca.php"); // Inclui o arquivo com o sistema de segurança
+protegePagina(); // Chama a função que protege a página
 ?>
 <?php
 include "conexao.php";
@@ -16,8 +16,8 @@ include "conexao.php";
         <link rel="shortcut icon" href="assets/images/favicon_1.ico">
 
         <title>Veus Technology - Área Administrativa</title>
-		
-		<link href="assets/plugins/bootstrap-sweetalert/sweet-alert.css" rel="stylesheet" type="text/css">	
+
+		<link href="assets/plugins/bootstrap-sweetalert/sweet-alert.css" rel="stylesheet" type="text/css">
 
         <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <link href="assets/css/core.css" rel="stylesheet" type="text/css" />
@@ -34,7 +34,7 @@ include "conexao.php";
         <![endif]-->
 
         <script src="assets/js/modernizr.min.js"></script>
-        
+
     </head>
 
 
@@ -43,7 +43,7 @@ include "conexao.php";
         <!-- Begin page -->
         <div id="wrapper">
 
-           
+
 
 
             <?php include 'topo.php'; ?>
@@ -52,22 +52,22 @@ include "conexao.php";
 
             <!-- ============================================================== -->
             <!-- Start right Content here -->
-            <!-- ============================================================== -->                      
+            <!-- ============================================================== -->
             <div class="content-page">
                 <!-- Start content -->
                 <div class="content">
                     <div class="container">
 
                         <!-- Page-Title -->
-                        
+
 
                         <div style="min-height: 1000px;">
-						
-						
-                
+
+
+
 
                             <div class="panel panel-default">
-                                <div class="panel-heading">                                
+                                <div class="panel-heading">
                                     <h3 class="panel-title">Documentação API</h3>
                                 </div>
                                 <div class="panel-body">
@@ -77,8 +77,9 @@ include "conexao.php";
 
 			<div class="col-md-12" style="padding-bottom:25px;">
 			<h2>Documentação API Versão 1</h2>
+      <p>Os dados retornados pela API estão em formato JSON.</p>
 			<p><b>Endereço da API:</b> http://srv98.teste.website/~veusteccom/api/v1/produtos.php </p>
-			</div>	
+			</div>
 
 
 
@@ -103,31 +104,31 @@ include "conexao.php";
 					<td>string</td>
 					<td>Não</td>
 					<td>Parâmetro para pesquisa do produto pelo seu nome.</td>
-				</tr>	
+				</tr>
 				<tr>
 					<td>brand</td>
 					<td>int</td>
 					<td>Não</td>
 					<td>Parâmetro para pesquisa do produto pela marca (Colocar o ID Primário da marca cadastrada).</td>
-				</tr>	
+				</tr>
 				<tr>
 					<td>sort</td>
 					<td>string</td>
 					<td>Não</td>
 					<td>Parâmetro para ordenar os produtos - Opções: nome(Nome do produto), qtd(Quantidade em estoque), preco(Preço do Produto). O Default é a opção nome.</td>
-				</tr>		
+				</tr>
 				<tr>
 					<td>limit</td>
 					<td>int</td>
 					<td>Não</td>
 					<td>Parâmetro para limitar a quantidade de produtos exibidos por página. O Default são 10.</td>
-				</tr>	
+				</tr>
 				<tr>
 					<td>pg</td>
 					<td>int</td>
 					<td>Não</td>
 					<td>Parâmetro para informar a página de produtos a ser exibida. O Default é 1.</td>
-				</tr>					
+				</tr>
 				</tbody>
 			</table>
 
@@ -135,16 +136,16 @@ include "conexao.php";
 			<div class="col-md-12" style="padding-top:25px;">
 			<h3>Exemplo de Consulta Completa</h3>
 			<p>
-			http://srv98.teste.website/~veusteccom/api/v1/produtos.php?token=1de99d8209f1eaf3&q=Teste&brand=2&sort=nome&limit=10&pg=1 
+			http://srv98.teste.website/~veusteccom/api/v1/produtos.php?token=1de99d8209f1eaf3&q=Teste&brand=2&sort=nome&limit=10&pg=1
 			</p>
-			</div>	
-                                        
+			</div>
+
                                     </div>
 
 
 
                                 </div>
-                                
+
                             </div>
 
 
@@ -153,57 +154,57 @@ include "conexao.php";
 
 
 				<div class="panel panel-default">
-                                <div class="panel-heading">                                
+                                <div class="panel-heading">
                                     <h3 class="panel-title">Consultar API</h3>
                                 </div>
                                 <div class="panel-body">
-								
+
              <div class="col-md-12">
               <div class="form-group">
                 <label>Endereço (GET)</label>
-                <input type="text" name="endereco" class="form-control" placeholder="Endereço (GET)" id="endereco" required="required" />         
+                <input type="text" name="endereco" class="form-control" placeholder="Endereço (GET)" id="endereco" required="required" />
               </div>
             </div>
-								
+
 					<div class="col-md-12">
 					   <button type="button" id="cns-api" class="btn btn-warning pull-right"><span class="fa fa-search"></span> Consulta</button>
-				    </div>								
-								
-								
+				    </div>
+
+
                                     <div class="col-md-12" id="resultado_api" style="padding:10px; background:#efefef; border:1px solid #ccc; border-radius:5px; margin-top: 10px; height:300px; overflow-y:auto;">
-                                        
+
                                     </div>
                                 </div>
                             </div>
-						
-						
-						
+
+
+
 						</div>
-                        
+
 
 
                     </div> <!-- container -->
-                               
+
                 </div> <!-- content -->
 
-			
-			
+
+
 			<?php include 'rodape.php'; ?>
 
             </div>
-            
-            
+
+
             <!-- ============================================================== -->
             <!-- End Right content here -->
             <!-- ============================================================== -->
 
 
-            
+
         </div>
         <!-- END wrapper -->
 
 
-    
+
         <script>
             var resizefunc = [];
         </script>
@@ -222,7 +223,7 @@ include "conexao.php";
 
         <script src="assets/js/jquery.core.js"></script>
         <script src="assets/js/jquery.app.js"></script>
-		
+
         <script src="assets/plugins/bootstrap-sweetalert/sweet-alert.min.js"></script>
 
 <script type="text/javascript">
@@ -232,10 +233,10 @@ include "conexao.php";
 		var endereco = $('#endereco').val();
 		if(endereco != '') { $('#resultado_api').load(endereco); }
 	});
-		
-		
+
+
     });
-</script>		
-    
+</script>
+
     </body>
 </html>
