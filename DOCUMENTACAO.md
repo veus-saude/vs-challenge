@@ -1,6 +1,14 @@
 <h2>Documentação do Sistema</h2>
 <p>Para instalação so sistema baixa editar os arquivos <b>conexao.php</b> e <b>seguranca.php</b> que estão dentro da pasta <b>sistema</b> e neles colocar as diretivas do banco de dados.</p>
 
+<p>
+O Sistema está online também no endereço abaixo:<br/>
+Acesso: http://srv98.teste.website/~veusteccom/sistema/
+Usuário: admin
+Senha: admin
+</p>
+
+
 
 <h2>Documentação API Versão 1</h2>
 <p><b>Endereço da API:</b> http://example.com.br/api/v1/produtos.php </p>
