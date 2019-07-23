@@ -1,12 +1,11 @@
 <h2>Documentação do Sistema</h2>
 <p>Para instalação so sistema baixa editar os arquivos <b>conexao.php</b> e <b>seguranca.php</b> que estão dentro da pasta <b>sistema</b> e neles colocar as diretivas do banco de dados.</p>
 
-<p>
-O Sistema está online também no endereço abaixo:<br/>
-Acesso: http://srv98.teste.website/~veusteccom/sistema/
-Usuário: admin
-Senha: admin
-</p>
+<p>O Sistema está online também no endereço abaixo:</p>
+<p>Acesso: http://srv98.teste.website/~veusteccom/sistema/</p>
+<p>Usuário: admin</p>
+<p>Senha: admin</p>
+
 
 
 
