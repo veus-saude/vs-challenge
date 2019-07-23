@@ -1,0 +1,48 @@
+<table id="datatable" class="table table-striped table-bordered">
+          <thead>
+          <tr>
+              <th>Parâmetro</th>
+    <th>Tipo</th>
+    <th>Obrigatório</th>
+    <th>Descrição</th>
+            </tr>
+          </thead>
+          <tbody>
+  <tr>
+    <td>token</td>
+    <td>string</td>
+    <td>Sim</td>
+    <td>Token criado automaticamente ao cadastrar um usuário no sistema, serve para autenticar o usuário da API.</td>
+  </tr>
+  <tr>
+    <td>q</td>
+    <td>string</td>
+    <td>Não</td>
+    <td>Parâmetro para pesquisa do produto pelo seu nome.</td>
+  </tr>
+  <tr>
+    <td>brand</td>
+    <td>int</td>
+    <td>Não</td>
+    <td>Parâmetro para pesquisa do produto pela marca (Colocar o ID Primário da marca cadastrada).</td>
+  </tr>
+  <tr>
+    <td>sort</td>
+    <td>string</td>
+    <td>Não</td>
+    <td>Parâmetro para ordenar os produtos - Opções: nome(Nome do produto), qtd(Quantidade em estoque), preco(Preço do Produto). O Default é a opção nome.</td>
+  </tr>		
+  <tr>
+    <td>limit</td>
+    <td>int</td>
+    <td>Não</td>
+    <td>Parâmetro para limitar a quantidade de produtos exibidos por página. O Default são 10.</td>
+  </tr>
+  <tr>
+    <td>pg</td>
+    <td>int</td>
+    <td>Não</td>
+    <td>Parâmetro para informar a página de produtos a ser exibida. O Default é 1.</td>
+  </tr>					
+  </tbody>
+</table>
