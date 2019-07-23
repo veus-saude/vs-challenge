@@ -10,6 +10,9 @@
 
 
 <h2>Documentação API Versão 1</h2>
+
+<p>Os dados retornados pela API estão em formato JSON.</p>
+
 <p><b>Endereço da API:</b> http://example.com.br/api/v1/produtos.php </p>
 
 
