@@ -1,3 +1,7 @@
+<h2>Documentação API Versão 1</h2>
+<p><b>Endereço da API:</b> http://srv98.teste.website/~veusteccom/api/v1/produtos.php </p>
+
+
 <table id="datatable" class="table table-striped table-bordered">
           <thead>
           <tr>
@@ -46,3 +50,8 @@
   </tr>					
   </tbody>
 </table>
+
+<h3>Exemplo de Consulta Completa</h3>
+<p>
+http://srv98.teste.website/~veusteccom/api/v1/produtos.php?token=1de99d8209f1eaf3&q=Teste&brand=2&sort=nome&limit=10&pg=1
+</p>
