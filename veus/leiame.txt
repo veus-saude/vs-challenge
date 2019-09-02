@@ -1,0 +1,11 @@
+1. Criar DB MySQL
+
+2. Configurar .env com endereço e dados do DB
+
+3. Executar php artisan migrate
+
+4. Executar php artisan db:seed
+
+5. Configurar products/src/api.js com o endereço do server
+
+6. Executar npm start
