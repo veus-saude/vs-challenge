@@ -1,4 +1,5 @@
 <?php
+//Usage: http://SERVIDOR/API?q=seringa&filter=brand:BUNZL
 
 $auth = file_get_contents('access.json');
 //simple auth with json
