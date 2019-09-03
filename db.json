@@ -1,0 +1,47 @@
+{
+  "fabricante":[
+  {
+    "Seringex":[
+        {
+            "produtos":[
+                {"id": 1233, "type": "seringa", "name": "seringa de insulina"},
+                {"id": 1234, "type": "seringa", "name": "seringa 10 ml"},
+                {"id": 124, "type": "seringa", "name": "seringa 20ml"},
+                {"id": 13, "type": "seringa", "name": "seringa 30ml"},
+            ]
+        }
+
+    ],
+    "BBraun":[
+        {
+            "produtos":[
+                {"id": 63543, "type": "seringa", "name": "seringa de insulina"},
+                {"id": 8897, "type": "seringa", "name": "seringa 10 ml"},
+                {"id": 789, "type": "seringa", "name": "seringa 20ml"},
+                {"id": 789, "type": "seringa", "name": "seringa 30ml"},
+            ]
+        }
+    ],
+    "Needles":[
+        {
+            "produtos":[
+                {"id": 637896, "type": "seringa", "type": "seringa", "name": "seringa de insulina"},
+                {"id": 89789, "type": "seringa", "name": "seringa 10 ml"},
+                {"id": 777, "type": "seringa", "name": "seringa 20ml"},
+                {"id": 789789, "type": "seringa", "name": "seringa 30ml"},
+            ]
+        }
+    ],
+    "N33dles":[
+        {
+            "produtos":[
+                {"id": 756, "type": "seringa", "name": "seringa de insulina"},
+                {"id": 5345, "type": "seringa", "name": "seringa 10 ml"},
+                {"id": 678, "type": "seringa", "name": "seringa 20ml"},
+                {"id": 78966, "type": "seringa", "name": "seringa 30ml"},
+            ]
+        }
+    ],
+  }
+  ]
+}

@@ -1,0 +1,5 @@
+/*Simple access , for real APIs use encrypted pass too*/
+{
+    "user": "thiago",
+    "email": "test@nospam.com"
+}
