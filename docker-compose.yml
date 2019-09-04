@@ -1,0 +1,72 @@
+version: '2'
+services:
+
+  # API em Lumen
+  api:
+    image: nginx:latest
+    container_name: api
+    ports:
+      - "80:80"
+    volumes:
+      - .:/code
+      - ./nginx.conf:/etc/nginx/conf.d/000_site.conf
+      - ./logs/nginx:/var/log/nginx
+    depends_on:
+      - php
+    networks:
+      - rede
+
+  # Se houver um Front-end JS
+  #app:
+  #  image: nginx:latest
+  #  container_name: app
+  #  ports:
+  #    - "80:80"
+  #  volumes:
+  #    - ./front/www:/usr/share/nginx/html
+  #  networks:
+  #    - rede
+
+  # PHP com todos as Extensões instaladas
+  php:
+    build: .
+    container_name: php
+    volumes:
+      #- ./php.ini:/usr/local/etc/php/conf.d/php.ini
+      - .:/code
+    links:
+      - db
+      - redis
+    networks:
+      - rede
+
+  # Banco de Dados
+  db:
+    image: mysql:5.7
+    container_name: mysql
+    volumes:
+     - ./data/db/mysql:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: veus
+      MYSQL_DATABASE: veus
+      MYSQL_USER: veus
+      MYSQL_PASSWORD: veus
+    networks:
+      - rede
+
+  # Serviço de Cache Redis
+  redis:
+    image: redis:4.0
+    container_name: redis
+    ports:
+      - "6379:6379"
+    networks:
+      - rede
+
+networks:
+  rede:
+    ipam:
+      driver: default
+
