@@ -1,34 +1,59 @@
-<p align="center">
-    <img src="https://i.imgur.com/2LUR2yy.png">
-</p>
+# Básica API Rest com Laravel
 
-## Sobre a VEUS
+API Rest usando Laravel com authenticação usando JWT
 
-Há 25 anos no mercado, a **Veus Technology** é uma empresa brasileira ligada ao segmento de saúde com foco na inovação tecnológica. É responsável por vários projetos pioneiros e estratégicos na área laboratorial, médica e recentemente hospitalar.
+Luiz Carlos Belem `<belemlc@gmail.com>`
+<small>(21) 97300-8600</small>
+https://hub.docker.com/r/belemlc/api-laravel
 
-## Desafio VS
+## Instalação
+    Usando o Docker
+        1) Baixe a image que se encontra no docker hub
+        2) docker pull belemlc/api-laravel
+        3) docker-compose up --build
+        4) git clone https://github.com/belemlc/api-laravel.git
+        5) Para acompanhar evolução do container levantando [docker logs app -f]
+        6) Porta Api 8000
+        7) Porta Mysql 3308
 
-Você deve implementar uma API utilizando *PHP* > 7.0. Nós recomendamos que você tente manter o seu códgo o mais simples possível. Se você precisar de qualquer informação adicional ou esclarecimento, você pode nos contatar pelo e-mail: **sistemas@veus.com.br**.
+    Usando o Laravel Development Server
+        1) git clone https://github.com/belemlc/api-laravel.git
+        2) cd api-laravel
+        3) php artisan serve
+        4) Porta da Api 8000
+        5) Porta do Mysql 3307
 
-Vamos imaginar que a sua empresa possua um e-commerce e venda alguns produtos para laboratórios e hospitais...
 
-Sua tarefa é desenvolver um **CRUD** de Produtos e implementar um serviço de buscas desses produtos. Um produto possui nome, marca, preço e quantidade em estoque.
-A API deve requerer **autenticação** e permitir __search query__ através do método **GET** e suportar filtros opcionais nos campos do produto.
 
-Por exemplo: Um cliente deve conseguir buscar todas as seringas da marca BUNZL fazendo a seguinte requisição:
+## Gerar Produtos (opcional)
+    Gerar Produtos Fakes com Tinker
+       - Se tiiver usando Docker: docker exec -it app bash
+       - php artisan tinker
+       - factory('App\Models\Product', 50)->create()
 
-`https://example.com/api/v1/products?q=seringa&filter=brand:BUNZL`
+## Usando a API
 
-A API também deve suportar __pagination__, __versioning__ e __sorting__.
+    Filtros
+      - filter=brand:[BRAND_NAME]
+      - sort=[COLUMN_NAME]:[asc|desc]
+      - limit=[NUMBER_LIMIT_PER_PAGE]
+     
+    exemplo: ?filter=brand:marte&sort=name:desc&limit=10
 
-Sinta-se livre para usar qualquer library ou framework da sua preferência mas a regra de negócio deve estar o mais desaclopada possível deles.
+* Endpoint para acessar a api
+    http://localhost:8000/api/v1
 
-Por favor, **não se esqueça** de providenciar uma pequena documentação de como levantar e testar o seu projeto.
+## User Interface
+    Foi criado uma interface básica com as seguintes funcionalidades: 
+     - Listar produtos
+     - Incluir um produto 
+     - Excluir um produto
+    
+    Para acessar a aplicação basta fazer o clone ou fork em:
+    https://github.com/belemlc/veus-challenge-angular.git
 
-Bônus:
-* Docker
-* Unit Test
-* User Interface
+    No arquivo README explica como instalar, o mesmo pode ser instalado usando docker
 
----
-Você será avaliado de acordo com a senioridade da posição a qual está aplicando. Ao finalizar o desafio você deve submeter o **Pull Request** com o seu código para a avaliação, após isso nos entrarem em contato com você através do e-mail passando um feedback do seu projeto.
+## Unit Test
+    * Não foi possível fazer.
+
