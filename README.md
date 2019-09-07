@@ -33,6 +33,76 @@ https://hub.docker.com/r/belemlc/api-laravel
 
 ## Usando a API
 
+    API ENDPOINT
+        - http://localhost:8000/api/v1
+ 
+    Usuário Pre Cadastrado
+        - login: user@veus.com
+        - password: veus
+
+    SIGNUP
+        - [POST] http://localhost:8000/api/v1/signup
+        - CAMPOS
+            - name
+            - email
+            - password
+            - confirm_password
+        
+    SIGNIN PARA GERAR O TOKEN
+        - [POST] http://localhost:8000/api/v1/signin
+        - CAMPOS
+            - email
+            - password
+        - RETORNO
+            - token
+            - type 
+            - expires
+            
+    SIGNOUT
+        - [GET] http://localhost:8000/api/v1/signout
+        - HEADER
+            - Authorization: BEARER {token}
+            - Accept: application/json
+            
+    INFORMACAO DO USUARIO
+        - [GET] http://localhost:8000/api/v1/user
+        - RETORNO
+            - data { userdata }
+            
+    CRIAR PRODUTO
+        - [POST] http://localhost:8000/api/v1/products
+        - HEADER
+            - Authorization: BEARER {token}
+            - Accept: application/json
+        - CAMPOS
+            - name [string]
+            - brand [string]
+            - price [float]
+            - quantity [int]
+            
+    PEGAR PRODUTOS
+        - [GET] http://localhost:8000/api/v1/products
+        - HEADER
+            - Authorization: BEARER {token}
+            - Accept: application/json
+    
+    EDITAR PRODUTO
+        - [PUT] http://localhost:8000/api/v1/product/id
+        - HEADER
+            - Authorization: BEARER {token}
+            - Accept: application/json
+        - CAMPOS
+            - name [string] opcional
+            - brand [string] opcional
+            - price [float] opcional
+            - quantity [int] opcional
+            
+    DELETAR PRODUTO
+        - [DELETE] http://localhost:8000/api/v1/product/id
+        - HEADER
+            - Authorization: BEARER {token}
+            - Accept: application/json
+        
     Filtros
       - filter=brand:[BRAND_NAME]
       - sort=[COLUMN_NAME]:[asc|desc]
@@ -40,8 +110,7 @@ https://hub.docker.com/r/belemlc/api-laravel
      
     exemplo: ?filter=brand:marte&sort=name:desc&limit=10
 
-* Endpoint para acessar a api
-    http://localhost:8000/api/v1
+
 
 ## User Interface
     Foi criado uma interface básica com as seguintes funcionalidades: 
