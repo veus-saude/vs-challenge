@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/xampp/medfarma/src/Locale/pr_BR/default.po</file>
+            <file>file:/C:/xampp/medfarma/src/Controller/UsersController.php</file>
+            <file>file:/C:/xampp/medfarma/src/Template/Users/index.ctp</file>
+            <file>file:/C:/xampp/medfarma/src/Controller/ProductsController.php</file>
+            <file>file:/C:/xampp/medfarma/config/Migrations/20190911234515_CreateProducts.php</file>
+            <file>file:/C:/xampp/medfarma/src/Template/Products/edit.ctp</file>
+            <file>file:/C:/xampp/medfarma/src/Template/Layout/default.ctp</file>
+            <file>file:/C:/xampp/medfarma/config/Migrations/20190912161256_CreateUsers.php</file>
+            <file>file:/C:/xampp/medfarma/src/Template/Users/add.ctp</file>
+            <file>file:/C:/xampp/medfarma/src/Template/Products/index.ctp</file>
+            <file>file:/C:/xampp/medfarma/src/Template/Layout/deslogado.ctp</file>
+        </group>
+    </open-files>
+</project-private>

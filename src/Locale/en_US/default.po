@@ -1,0 +1,8 @@
+msgid "My name is {0}"
+msgstr "Je m'appelle {0}"
+
+msgid "I'm {0,number} years old"
+msgstr "J'ai {0,number} ans"
+
+msgid "Add Person"
+msgstr "Add Person"

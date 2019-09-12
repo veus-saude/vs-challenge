@@ -1,0 +1,161 @@
+msgid "My name is {0}"
+msgstr "Je m'appelle {0}"
+
+msgid "I'm {0,number} years old"
+msgstr "J'ai {0,number} ans"
+
+msgid "Actions"
+msgstr "Ações"
+
+msgid "Happy birthday to you..."
+msgstr "Feliz Aniversário !!"
+
+msgid "Administrative Place"
+msgstr "Administração do Site"
+
+msgid "Configurations Place"
+msgstr "Configurações do Site"
+
+msgid "Page"
+msgstr "Página"
+
+msgid "of"
+msgstr "de"
+ 
+msgid "showing"
+msgstr "Mostrando"
+
+msgid "record(s)"
+msgstr "itens"
+
+msgid "out of"
+msgstr "de"
+
+msgid "total"
+msgstr "total"
+
+// ---------------------------------------------------------------------------
+
+msgid "List Products"
+msgstr "Produtos"
+
+msgid "Add Product"
+msgstr "Inserir Novo Produto"
+
+msgid "Edit Product"
+msgstr "Editar Produto"
+
+msgid "Products"
+msgstr "Produtos"
+
+msgid "Product"
+msgstr "Produto"
+
+msgid "name"
+msgstr "Nome"
+
+msgid "Brand"
+msgstr "Marca"
+
+msgid "Price"
+msgstr "Preço"
+
+msgid "Qtd"
+msgstr "Qtd."
+
+msgid "The product has been saved."
+msgstr "O produto foi criado com sucesso!"
+
+msgid "The product has been updated."
+msgstr "O produto foi atualizado com sucesso!"
+
+msgid "The product has been deleted."
+msgstr "O produto foi deletado com sucesso!"
+
+
+msgid "The product could not be updated. Please, try again."
+msgstr "O produto não foi atualizado com sucesso. Por favor, tente novamente!"
+
+msgid "The product could not be saved. Please, try again."
+msgstr "O produto não foi cadastrado com sucesso. Por favor, tente novamente!"
+
+
+// ---------------------------------------------------------------------------
+
+msgid "List Users"
+msgstr "Usuários"
+
+msgid "Add User"
+msgstr "Inserir Novo Usuário"
+
+msgid "Edit User"
+msgstr "Editar Usuário"
+
+msgid "Users"
+msgstr "Usuários"
+
+msgid "The user has been saved."
+msgstr "O usuário foi criado com sucesso!"
+
+msgid "The user has been updated."
+msgstr "O usuário foi atualizado com sucesso!"
+
+
+msgid "The user could not be saved. Please, try again."
+msgstr "O usuário não foi cadastrado com sucesso. Por favor, tente novamente!"
+
+msgid "You are not authorized to access that location."
+msgstr "Você não está autorizado a acessar esta página sem estar logado !"
+
+
+msgid "password"
+msgstr "Senha"
+
+msgid "Login"
+msgstr "Entrar"
+
+
+
+
+
+// ---------------------------------------------------------------------------
+
+
+msgid "Yes"
+msgstr "Sim"
+
+msgid "No"
+msgstr "Não"
+
+msgid "Edit"
+msgstr "Alterar"
+
+msgid "Delete"
+msgstr "Cancelar"
+
+msgid "BACK"
+msgstr "Voltar"
+
+msgid "PRINT"
+msgstr "IMPRIMIR"
+
+msgid "Models"
+msgstr "Módulos"
+
+msgid "Submit"
+msgstr "Confirmar"
+
+msgid "previous"
+msgstr "Anterior"
+
+msgid "next"
+msgstr "Próximo"
+
+msgid "Page"
+msgstr "Página"
+
+msgid "of"
+msgstr "de"
+
+msgid "showing"
+msgstr "exibindo"

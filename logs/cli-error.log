@@ -1,0 +1,14 @@
+2019-09-12 13:46:24 Error: [RuntimeException] Unknown command `cake _v`. Run `cake --help` to get the list of valid commands. in C:\xampp\medfarma\vendor\cakephp\cakephp\src\Console\CommandRunner.php on line 347
+Stack Trace:
+#0 C:\xampp\medfarma\vendor\cakephp\cakephp\src\Console\CommandRunner.php(157): Cake\Console\CommandRunner->resolveName(Object(Cake\Console\CommandCollection), Object(Cake\Console\ConsoleIo), '_v')
+#1 C:\xampp\medfarma\bin\cake.php(12): Cake\Console\CommandRunner->run(Array)
+#2 {main}
+
+
+2019-09-12 13:46:33 Error: [RuntimeException] Unknown command `cake _version`. Run `cake --help` to get the list of valid commands. in C:\xampp\medfarma\vendor\cakephp\cakephp\src\Console\CommandRunner.php on line 347
+Stack Trace:
+#0 C:\xampp\medfarma\vendor\cakephp\cakephp\src\Console\CommandRunner.php(157): Cake\Console\CommandRunner->resolveName(Object(Cake\Console\CommandCollection), Object(Cake\Console\ConsoleIo), '_version')
+#1 C:\xampp\medfarma\bin\cake.php(12): Cake\Console\CommandRunner->run(Array)
+#2 {main}
+
+
