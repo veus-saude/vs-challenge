@@ -24,4 +24,5 @@ Route::namespace('Api')->prefix('produtos')->group(function(){
     Route::get('/{id}', 'ProdutoController@ListarProdutoPorId');
     Route::post('/', 'ProdutoController@salvar');
     Route::put('/', 'ProdutoController@atualizar');
+    Route::delete('/{id}', 'ProdutoController@deletar');
 });

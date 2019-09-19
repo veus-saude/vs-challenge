@@ -36,8 +36,15 @@ class ProdutoController extends Controller
 
     public function atualizar(Request $request){
         $dados = $request->all();
-        $produto = $this->produto->find($dados['id']);
+        $produto = $this->produto->findOrFail($dados['id']);
         $produto->update($dados);
         return response()->json($produto);
     }
+
+    public function deletar($id){
+        $this->produto->findOrFail($id)->delete();
+        return response()->json(['data' => ['msg' => 'Produto excluido com sucesso!']]);
+    }
+
+
 }
