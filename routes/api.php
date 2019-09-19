@@ -18,10 +18,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 //Rotas de produtos
+Route::group(['prefix' => '1.0'],function(){
 
-Route::namespace('Api')->group(function(){
+    Route::namespace('Api')->group(function(){
 
-    //Produtos
-    Route::resource('/produtos', 'ProdutoController')->middleware('auth.basic');
+        //Produtos
+        Route::resource('/produtos', 'ProdutoController')->middleware('auth.basic');
+
+    });
 
 });

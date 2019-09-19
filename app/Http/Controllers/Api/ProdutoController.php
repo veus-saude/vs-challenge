@@ -26,14 +26,15 @@ class ProdutoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(Request $request, ProdutoRepository $produtos)
     {
 
-        $produtos = new ProdutoRepository();
+        // Caso tenha filtros para busca
         if($request->has('conditions')){
             $produtos::condicoesDeBusca($request);
         }
 
+        // Caso queira selecionar determinados campos
         if($request->has('fields')) {
             $produtos::selecionarCampos($request);
         }
