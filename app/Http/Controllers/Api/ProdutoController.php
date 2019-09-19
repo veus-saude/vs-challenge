@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Produto;
-use App\Repository\ProdutoRepository;
+use App\Repositories\ProdutoRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -29,19 +29,13 @@ class ProdutoController extends Controller
     public function index(Request $request)
     {
 
-//        $produtos = $this->produto;
-//        if($request->has('conditions')){
-//            $separa_condicoes = explode(';',$request->get('conditions'));
-//
-//            foreach ($separa_condicoes as $separa_cond){
-//                $separa_key_valor = explode(':', $separa_cond);
-//                $produtos = $produtos->where($separa_key_valor[0], 'like','%'.$separa_key_valor[1].'%');
-//            }
-//
-//        }
+        $produtos = new ProdutoRepository();
+        if($request->has('conditions')){
+            $produtos::condicoesDeBusca($request);
+        }
 
         if($request->has('fields')) {
-            $produtos = (new ProdutoRepository($this->produto, $request))->selectFilter();
+            $produtos::selecionarCampos($request);
         }
         return response()->json($produtos->paginate(10));
     }
