@@ -17,7 +17,7 @@ class ProdutoRepository  extends Repository
     }
 
     public static function condicoesDeBusca($request){
-        $separa_condicoes = explode(';',$request->get('conditions'));
+        $separa_condicoes = explode(';',$request->get('filter'));
 
 
         foreach ($separa_condicoes as $separa_cond){
@@ -33,4 +33,16 @@ class ProdutoRepository  extends Repository
             static::$model = self::selectRaw($fields);
 
     }
+
+    public static function ordenacao($request){
+
+        $order = $request->get('order');
+        $campos = explode('=', $order);
+        $ordenarComo = explode(':', $campos[0]);
+
+
+        static::$model = self::orderBy($ordenarComo[0],$ordenarComo[1]);
+
+    }
+
 }

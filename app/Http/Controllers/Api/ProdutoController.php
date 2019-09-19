@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Requests\ProdutoRequest;
 use App\Produto;
 use App\Repositories\ProdutoRepository;
 use Illuminate\Http\Request;
@@ -30,8 +31,13 @@ class ProdutoController extends Controller
     {
 
         // Caso tenha filtros para busca
-        if($request->has('conditions')){
+        if($request->has('filter')){
             $produtos::condicoesDeBusca($request);
+        }
+
+        // Caso ordenacao
+        if($request->has('order')){
+            $produtos::ordenacao($request);
         }
 
         // Caso queira selecionar determinados campos
@@ -47,7 +53,7 @@ class ProdutoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProdutoRequest $request)
     {
         $dados = $request->all();
         $produto = $this->produto->create($dados);
@@ -73,7 +79,7 @@ class ProdutoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProdutoRequest $request, $id)
     {
         $dados = $request->all();
         $produto = $this->produto->findOrFail($dados['id']);
