@@ -18,7 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 //Rotas de produtos
-Route::group(['prefix' => '1.0'],function(){
+Route::group(['prefix' => 'v1'],function(){
 
     Route::namespace('Api')->group(function(){
 
