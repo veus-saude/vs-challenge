@@ -22,6 +22,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::namespace('Api')->group(function(){
 
     //Produtos
-    Route::resource('/produtos', 'ProdutoController');
+    Route::resource('/produtos', 'ProdutoController')->middleware('auth.basic');
 
 });
