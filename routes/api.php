@@ -19,10 +19,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 //Rotas de produtos
 
-Route::namespace('Api')->prefix('produtos')->group(function(){
-    Route::get('/', 'ProdutoController@index');
-    Route::get('/{id}', 'ProdutoController@ListarProdutoPorId');
-    Route::post('/', 'ProdutoController@salvar');
-    Route::put('/', 'ProdutoController@atualizar');
-    Route::delete('/{id}', 'ProdutoController@deletar');
+Route::namespace('Api')->group(function(){
+
+    //Produtos
+    Route::resource('/produtos', 'ProdutoController');
+
 });
