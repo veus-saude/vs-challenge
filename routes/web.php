@@ -11,6 +11,5 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'ProdutoController@index');
+Route::get('api/produto', 'ProdutoController@getData');
