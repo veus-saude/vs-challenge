@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Api\ApiMessages;
 use App\Http\Requests\ProdutoRequest;
 use App\Produto;
 use App\Repositories\ProdutoRepository;
@@ -44,7 +45,7 @@ class ProdutoController extends Controller
         if($request->has('fields')) {
             $produtos::selecionarCampos($request);
         }
-        return response()->json($produtos->paginate(10));
+        return response()->json($produtos->paginate(10), 200);
     }
 
     /**
@@ -56,8 +57,22 @@ class ProdutoController extends Controller
     public function store(ProdutoRequest $request)
     {
         $dados = $request->all();
-        $produto = $this->produto->create($dados);
-        return response()->json($produto);
+        try{
+
+            $produto = $this->produto->create($dados);
+
+            return response()->json([
+                'data' => [
+                    'msg' => 'Produto cadastrado com sucesso!'
+                ]
+            ],200);
+
+        }catch (\Exception $e){
+            $message = new ApiMessages($e->getMessage());
+            return response()->json($message->getMessage(), 401);
+        }
+
+
     }
 
     /**
@@ -68,8 +83,20 @@ class ProdutoController extends Controller
      */
     public function show($id)
     {
-        $produto = $this->produto->find($id);
-        return response()->json($produto);
+
+        try{
+
+            $produto = $this->produto->find($id);
+
+            return response()->json([
+                'data' => $produto
+            ],200);
+
+        }catch (\Exception $e){
+            $message = new ApiMessages($e->getMessage());
+            return response()->json($message->getMessage(), 401);
+        }
+
     }
 
     /**
@@ -82,9 +109,23 @@ class ProdutoController extends Controller
     public function update(ProdutoRequest $request, $id)
     {
         $dados = $request->all();
-        $produto = $this->produto->findOrFail($dados['id']);
-        $produto->update($dados);
-        return response()->json($produto);
+
+        try{
+
+            $produto = $this->produto->create($id);
+            $produto->update($dados);
+
+            return response()->json([
+                'data' => [
+                    'msg' => 'Produto atualizado com sucesso!'
+                ]
+            ],200);
+
+        }catch (\Exception $e){
+            $message = new ApiMessages($e->getMessage());
+            return response()->json($message->getMessage(), 401);
+        }
+
     }
 
     /**
@@ -95,7 +136,21 @@ class ProdutoController extends Controller
      */
     public function destroy($id)
     {
-        $this->produto->findOrFail($id)->delete();
-        return response()->json(['data' => ['msg' => 'Produto excluido com sucesso!']]);
+
+       try{
+
+            $this->produto->findOrFail($id)->delete();
+
+            return response()->json([
+                'data' => [
+                    'msg' => 'Produto excluido com sucesso!\''
+                ]
+            ],200);
+
+        }catch (\Exception $e){
+           $message = new ApiMessages($e->getMessage());
+           return response()->json($message->getMessage(), 401);
+        }
+
     }
 }
