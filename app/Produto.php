@@ -12,10 +12,4 @@ class Produto extends Model
       'nome', 'preco', 'marca', 'quantidade'
     ];
 
-    use DataViewer;
-
-    public static $columns = [
-        'id', 'nome', 'marca',
-        'created_at', 'updated_at'
-    ];
 }

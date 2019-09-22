@@ -12,7 +12,7 @@
 <body>
     <div class="container">
         <div id="app">
-            <data-viewer source="/api/produto" title="Produtos Data"/>
+            <crud-completo source="/api/v1/produtos" title="Produtos"/>
         </div>
     </div>
 </body>

@@ -45,7 +45,9 @@ class ProdutoController extends Controller
         if($request->has('fields')) {
             $produtos::selecionarCampos($request);
         }
-        return response()->json($produtos->paginate(10), 200);
+
+        $per_page = $request->has('per_page') ? $request->per_page : 10;
+        return response()->json($produtos->paginate($per_page), 200);
     }
 
     /**

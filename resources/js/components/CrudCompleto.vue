@@ -1,25 +1,32 @@
 <template>
+    <div class="cotainer">
+        <div class="card">
+            <div class="card-header">
+                Produtos
+            </div>
+
     <div class="dv">
         <div class="dv-header">
-            <div class="dv-header-title">
-                {{title}}
-            </div>
-            <div class="dv-header-columns" v-model="query.search_column">
-                <span>Search: </span>
-                <select name="opcoes" id="opcoes" class="dv-header-select">
+
+            <div class="dv-header-columns">
+                <span>Pesquisar:  </span>
+                <select class="dv-header-select" v-model="query.search_column">
                     <option v-for="column in columns" :value="column">{{column}}</option>
                 </select>
             </div>
             <div class="dv-header-operators">
-                <select name="operators" id="operators" class="dv-header-select">
+                <select class="dv-header-select"  v-model="query.search_operator">
                     <option v-for="(value, key) in operators" :value="key">{{value}}</option>
                 </select>
             </div>
             <div class="dv-header-search">
-                <input type="text" class="dv-header-input" placeholder="Search">
+                <input type="text" class="dv-header-input" placeholder="Pesquisar"
+                       v-model="query.search_input"
+                       @keyup.enter="fetchIndexData()"
+                >
             </div>
             <div class="dv-header-submit">
-                <button class="dv-header-btn">Filter</button>
+                <button class="dv-header-btn" @click="fetchIndexData()">Filtrar</button>
             </div>
 
         </div>
@@ -39,30 +46,50 @@
                     </tr>
                  </thead>
                 <tbody>
-                    <tr v-for="row in model.data">
-                        <td v-for="(value, key) in row">{{value}}</td>
+                    <tr v-for="(row, index) in model.data" :key="row.id">
+                        <td>{{row.id}}</td>
+                        <td>{{row.nome}}</td>
+                        <td>{{row.marca}}</td>
+                        <td>{{row.preco}}</td>
+                        <td>{{row.quantidade}}</td>
+                        <td>
+                            <button class="btn btn-info btn-sm">
+                                Editar
+                            </button>
+                            <button class="btn btn-danger btn-sm">
+                                Excluir
+                            </button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
-        </div>
-        <div class="dv-footer">
-            <div class="dv-footer-item">
-                <span>Displaying {{model.from}} - {{model.to}} of {{model.total}} rows</span>
             </div>
-            <div class="dv-footer-item">
-                <div class="dv-footer-sub">
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="dv-footer">
+                <div class="dv-footer-item">
+                    <span>Exibindo {{model.from}} - {{model.to}} de {{model.total}} registros</span>
+                </div>
+                <div class="dv-footer-item">
+                    <div class="dv-footer-sub">
                     <span>
-                        <span>Rows per page</span>
+                        <span>Registros por página</span>
                         <input type="text" v-model="query.per_page" class="dv-footer-input"
-                        @keyup.enter="fetchIndexData()">
+                               @keyup.enter="fetchIndexData()">
                     </span>
-                </div>
-                <div class="dv-footer-sub">
-                    <button class="dv-footer-btn" @click="prev()">&laquo</button>
-                    <button class="dv-footer-btn" @click="next()">&raquo</button>
+                    </div>
+                    <div class="dv-footer-sub">
+                        <button class="dv-footer-btn" @click="prev()">&laquo</button>
+                        <input type="text" v-model="query.page" class="dv-footer-input"
+                               @keyup.enter="fetchIndexData()">
+                        <button class="dv-footer-btn" @click="next()">&raquo</button>
+                    </div>
                 </div>
             </div>
         </div>
+        <vue-progress-bar></vue-progress-bar>
+        <vue-snotify></vue-snotify>
     </div>
 </template>
 
@@ -73,7 +100,14 @@
         data() {
             return {
                 model: {},
-                columns: {},
+                columns: {
+                    id:'id',
+                    nome:'nome',
+                    marca:'marca',
+                    preco:'preco',
+                    quantidade:'quantidade',
+                    acao:'acao'
+                },
                 query: {
                     page: 1,
                     column: 'id',
@@ -89,7 +123,9 @@
                     less_than: '<',
                     greater_than: '>',
                     less_than_or_equal_to: '<=',
-                    greater_than_or_equal_to: '>='
+                    greater_than_or_equal_to: '>=',
+                    in:'IN',
+                    like:'LIKE'
                }
             }
         },
@@ -128,13 +164,15 @@
             },
             fetchIndexData() {
                 var vm = this
-                axios.get(`${this.source}?column=${this.query.column}&direction=${this.query.direction}&page=${this.query.page}&per_page=${this.query.per_page}&search_colum=${this.query.search_column}&search_operator=${this.query.search_operator}&search_input=${this.query.search_input}`)
+                this.$Progress.start()
+                axios.get(`${this.source}?order=${this.query.column}:${this.query.direction}&page=${this.query.page}&per_page=${this.query.per_page}&filter=${this.query.search_column}:${this.query.search_operator}:${this.query.search_input}`)
                     .then(function(response) {
-                        Vue.set(vm.$data, 'model', response.data.model)
-                        Vue.set(vm.$data, 'columns', response.data.columns)
+                        Vue.set(vm.$data, 'model', response.data)
+                        this.$Progress.finish()
+
                     })
                     .catch(function(response) {
-
+                        //this.$Progress.fail()
                     })
 
             }

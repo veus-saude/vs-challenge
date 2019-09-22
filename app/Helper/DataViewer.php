@@ -11,7 +11,9 @@
             'less_than' => '<',
             'greater_than' => '>',
             'less_than_or_equal_to' => '<=',
-            'greater_than_or_equal_to' => '>='
+            'greater_than_or_equal_to' => '>=',
+            'in' => 'IN',
+            'like' => 'LIKE'
         ];
         public function scopeSearchPaginateAndOrder($query)
         {
@@ -36,6 +38,19 @@
 
             return $query
                 ->orderby($request->column, $request->direction)
+                ->where(function($query) use ($request) {
+                    if($request->has('search_input') && $request->search_input != ''){
+                       if($request->search_operator == 'in'){
+                           $query->whereIn($request->search_column, explode(',',$request->search_input));
+                       }else if($request->search_operator == 'like'){
+                           $query->where($request->search_column, 'LIKE', '%'.$request->search_input.'%');
+
+                       }else{
+
+                           $query->where($request->search_column, $this->operators[$request->search_operator], $request->search_input);
+                       }
+                    }
+                })
                 ->paginate($request->per_page);
         }
 

@@ -23,7 +23,7 @@ Route::group(['prefix' => 'v1'],function(){
     Route::namespace('Api')->group(function(){
 
         //Produtos
-        Route::resource('/produtos', 'ProdutoController')->middleware('auth.basic');
+        Route::resource('/produtos', 'ProdutoController'); //->middleware('auth.basic');
 
     });
 
