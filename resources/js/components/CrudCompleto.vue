@@ -151,6 +151,7 @@
         props: ['source', 'title'],
         data() {
             return {
+                token:localStorage.getItem('token'),
                 modoEdicao: false,
                 model: {},
                 columns: {
@@ -186,7 +187,8 @@
                     marca:   '',
                     quantidade:  '',
                     preco:  '',
-                })
+                }),
+
             }
         },
 
@@ -225,7 +227,12 @@
             fetchIndexData() {
                 var vm = this
                 this.$Progress.start()
-                axios.get(`${this.source}?order=${this.query.column}:${this.query.direction}&page=${this.query.page}&per_page=${this.query.per_page}&filter=${this.query.search_column}:${this.query.search_operator}:${this.query.search_input}`)
+                const USER_TOKEN = localStorage.getItem('token')
+                const AuthStr = 'Bearer '.concat(USER_TOKEN)
+                if(!USER_TOKEN){
+                    window.location = '/login';
+                }
+                axios.get(`${this.source}?order=${this.query.column}:${this.query.direction}&page=${this.query.page}&per_page=${this.query.per_page}&filter=${this.query.search_column}:${this.query.search_operator}:${this.query.search_input}`,{ headers: { Authorization: AuthStr } })
                     .then(function(response) {
                         Vue.set(vm.$data, 'model', response.data)
                         this.$Progress.finish()
@@ -277,7 +284,6 @@
                 this.form.busy = true
                 this.form.put('/api/v1/produtos/' + this.form.id)
                     .then(response => {
-                        console.log('ok');
                         this.fetchIndexData()
                         $('#produtoModalLong').modal('hide')
                         if(this.form.successful)

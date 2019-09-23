@@ -12,4 +12,4 @@
 */
 
 Route::get('/', 'ProdutoController@index');
-Route::get('api/produto', 'ProdutoController@getData');
+Route::get('login', 'ProdutoController@login');

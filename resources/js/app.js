@@ -14,6 +14,14 @@ window.Form = Form
 import VueProgressBar from 'vue-progressbar'
 import Snotify, { SnotifyPosition } from 'vue-snotify'
 
+import axios from 'axios'
+axios.interceptors.request.use(function (config) {
+    const token = localStorage.token;
+    config.headers.Authorization = 'Bearer ' + localStorage.token;
+
+    return config;
+});
+
 const SnotifyOptions = {
     toast: {
         position: SnotifyPosition.rightTop
@@ -42,6 +50,7 @@ Vue.use(VueProgressBar, VueProgressBarOptions);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 import CrudCompleto from "./components/CrudCompleto.vue";
+import LoginComponent from "./components/LoginComponent.vue";
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -55,7 +64,8 @@ Vue.component(AlertError.name, AlertError)
 const app = new Vue({
     el: '#app',
     components:{
-        CrudCompleto
+        CrudCompleto,
+        LoginComponent
     }
 
 });
