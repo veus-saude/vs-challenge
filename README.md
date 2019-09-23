@@ -32,3 +32,18 @@ Bônus:
 
 ---
 Você será avaliado de acordo com a senioridade da posição a qual está aplicando. Ao finalizar o desafio você deve submeter o **Pull Request** com o seu código para a avaliação, após isso nos entrarem em contato com você através do e-mail passando um feedback do seu projeto.
+
+
+Para subir o ambiente 
+
+Copie o arquivo .env.example para .env e altere as configurações de banco de dados 
+
+Certifique-se que tenha o composer instalado, banco de dados mysql ou postgresql e
+versão do php igual ou superior a 7.2;
+
+1 - Versao do > php 7.2
+2 - clone do repositorio no github
+3 - execute: composer install
+4 - execute: npm install 
+5 - execute: php artisan migrate --seed
+5 - execute: php artisan jwt:generate
