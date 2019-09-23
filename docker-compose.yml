@@ -1,0 +1,34 @@
+# v2 syntax
+version: '2'
+
+# Named volumes
+volumes:
+  # MySQL Data
+  <veus-saude>-mysql-data:
+    driver: local
+
+services:
+  # MySQL (5.7)
+  mysql:
+    image: ambientum/mysql:5.7
+    container_name: <veus-saude>-mysql
+    volumes:
+      - <veus-saude>-mysql-data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=<veus-saude>
+      - MYSQL_DATABASE=<veus-saude>
+      - MYSQL_USER=<veus-saude>
+      - MYSQL_PASSWORD=<veus-saude>
+
+  # PHP (with Caddy)
+  app:
+    image: ambientum/php:7.2-caddy
+    container_name: <veus-saude>-app
+    volumes:
+      - .:/var/www/app
+    ports:
+      - "80:8080"
+    links:
+      - mysql
