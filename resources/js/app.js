@@ -9,8 +9,8 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
-import {Form, HasError, AlertError } from 'vform'
-windows.Form = Form
+import { Form, HasError, AlertError } from 'vform'
+window.Form = Form
 import VueProgressBar from 'vue-progressbar'
 import Snotify, { SnotifyPosition } from 'vue-snotify'
 

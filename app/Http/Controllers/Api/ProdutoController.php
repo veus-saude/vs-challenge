@@ -114,7 +114,7 @@ class ProdutoController extends Controller
 
         try{
 
-            $produto = $this->produto->create($id);
+            $produto = $this->produto->find($id);
             $produto->update($dados);
 
             return response()->json([

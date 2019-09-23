@@ -1957,11 +1957,64 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['source', 'title'],
   data: function data() {
     return {
+      modoEdicao: false,
       model: {},
       columns: {
         id: 'id',
@@ -1989,7 +2042,14 @@ __webpack_require__.r(__webpack_exports__);
         greater_than_or_equal_to: '>=',
         "in": 'IN',
         like: 'LIKE'
-      }
+      },
+      form: new Form({
+        id: '',
+        nome: '',
+        marca: '',
+        quantidade: '',
+        preco: ''
+      })
     };
   },
   created: function created() {
@@ -2030,6 +2090,110 @@ __webpack_require__.r(__webpack_exports__);
         Vue.set(vm.$data, 'model', response.data);
         this.$Progress.finish();
       })["catch"](function (response) {//this.$Progress.fail()
+      });
+    },
+    novo: function novo() {
+      this.modoEdicao = false;
+      this.form.reset();
+      this.form.clear();
+      $('#produtoModalLong').modal('show');
+    },
+    store: function store() {
+      var _this = this;
+
+      this.$Progress.start();
+      this.form.busy = true;
+      this.form.post('/api/v1/produtos').then(function (response) {
+        console.log('ok');
+
+        _this.fetchIndexData();
+
+        $('#produtoModalLong').modal('hide');
+
+        if (_this.form.successful) {
+          _this.$Progress.finish();
+
+          _this.$snotify.success('Produto cadastrado com sucesso!', 'Sucesso');
+        } else {
+          _this.$Progress.fail();
+
+          _this.$snotify.error('Ocorru um erro ao salvar, tente novamente', 'Erro');
+        }
+      })["catch"](function (e) {
+        _this.$Progress.fail();
+
+        console.log(e);
+      });
+    },
+    editar: function editar(row) {
+      this.modoEdicao = true;
+      this.form.reset();
+      this.form.clear();
+      this.form.fill(row);
+      $('#produtoModalLong').modal('show');
+    },
+    update: function update() {
+      var _this2 = this;
+
+      this.$Progress.start();
+      this.form.busy = true;
+      this.form.put('/api/v1/produtos/' + this.form.id).then(function (response) {
+        console.log('ok');
+
+        _this2.fetchIndexData();
+
+        $('#produtoModalLong').modal('hide');
+
+        if (_this2.form.successful) {
+          _this2.$Progress.finish();
+
+          _this2.$snotify.success('Produto atualizado com sucesso!', 'Sucesso');
+        } else {
+          _this2.$Progress.fail();
+
+          _this2.$snotify.error('Ocorru um erro ao atualizar, tente novamente', 'Erro');
+        }
+      })["catch"](function (e) {
+        _this2.$Progress.fail();
+
+        console.log(e);
+      });
+    },
+    destroy: function destroy(row) {
+      var _this3 = this;
+
+      this.$snotify.clear();
+      this.$snotify.confirm("Você não poderá recuperar esses dados!", "Você tem certeza?", {
+        showProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        buttons: [{
+          text: "Sim",
+          action: function action(toast) {
+            _this3.$snotify.remove(toast.id);
+
+            _this3.$Progress.start();
+
+            axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/v1/produtos/" + row.id).then(function (response) {
+              _this3.fetchIndexData();
+
+              _this3.$Progress.finish();
+
+              _this3.$snotify.success("Produto excluido com sucesso!", "Sucesso");
+            })["catch"](function (e) {
+              _this3.$Progress.fail();
+
+              console.log(e);
+            });
+          },
+          bold: true
+        }, {
+          text: "Não",
+          action: function action(toast) {
+            _this3.$snotify.remove(toast.id);
+          },
+          bold: true
+        }]
       });
     }
   }
@@ -38337,7 +38501,29 @@ var render = function() {
     [
       _c("div", { staticClass: "card" }, [
         _c("div", { staticClass: "card-header" }, [
-          _vm._v("\n            Produtos\n        ")
+          _c("h4", { staticClass: "card-title" }, [_vm._v("Produtos")]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "card-tools",
+              staticStyle: { position: "absolute", right: "1rem", top: ".5rem" }
+            },
+            [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-info",
+                  on: {
+                    click: function($event) {
+                      return _vm.novo()
+                    }
+                  }
+                },
+                [_vm._v("Novo")]
+              )
+            ]
+          )
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "dv" }, [
@@ -38529,7 +38715,41 @@ var render = function() {
                     _vm._v(" "),
                     _c("td", [_vm._v(_vm._s(row.quantidade))]),
                     _vm._v(" "),
-                    _vm._m(0, true)
+                    _c("td", [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-info btn-sm",
+                          on: {
+                            click: function($event) {
+                              return _vm.editar(row)
+                            }
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                            Editar\n                        "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-danger btn-sm",
+                          on: {
+                            click: function($event) {
+                              return _vm.destroy(row)
+                            }
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                            Excluir\n                        "
+                          )
+                        ]
+                      )
+                    ])
                   ])
                 }),
                 0
@@ -38655,6 +38875,260 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "modal fade",
+          attrs: {
+            id: "produtoModalLong",
+            tabindex: "-1",
+            role: "dialog",
+            "aria-labelledby": "produtoModalLongTitle",
+            "aria-hidden": "true"
+          }
+        },
+        [
+          _c(
+            "div",
+            { staticClass: "modal-dialog", attrs: { role: "document" } },
+            [
+              _c("div", { staticClass: "modal-content" }, [
+                _c("div", { staticClass: "modal-header" }, [
+                  _c(
+                    "h5",
+                    {
+                      staticClass: "modal-title",
+                      attrs: { id: "produtoModalLongTitle" }
+                    },
+                    [
+                      _vm._v(
+                        _vm._s(_vm.modoEdicao ? "Editar" : "Adicionar Novo") +
+                          " Produto"
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _vm._m(0)
+                ]),
+                _vm._v(" "),
+                _c(
+                  "form",
+                  {
+                    on: {
+                      submit: function($event) {
+                        $event.preventDefault()
+                        _vm.modoEdicao ? _vm.update() : _vm.store()
+                      },
+                      keydown: function($event) {
+                        return _vm.form.onKeydown($event)
+                      }
+                    }
+                  },
+                  [
+                    _c(
+                      "div",
+                      { staticClass: "modal-body" },
+                      [
+                        _c("alert-error", { attrs: { form: _vm.form } }),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "form-group" },
+                          [
+                            _c("label", [_vm._v("Nome")]),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.form.nome,
+                                  expression: "form.nome"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              class: {
+                                "is-invalid": _vm.form.errors.has("nome")
+                              },
+                              attrs: { type: "text", name: "nome" },
+                              domProps: { value: _vm.form.nome },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.form,
+                                    "nome",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("has-error", {
+                              attrs: { form: _vm.form, field: "nome" }
+                            })
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "form-group" },
+                          [
+                            _c("label", [_vm._v("marca")]),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.form.marca,
+                                  expression: "form.marca"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              class: {
+                                "is-invalid": _vm.form.errors.has("marca")
+                              },
+                              attrs: { type: "text", name: "marca" },
+                              domProps: { value: _vm.form.marca },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.form,
+                                    "marca",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("has-error", {
+                              attrs: { form: _vm.form, field: "marca" }
+                            })
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "form-group" },
+                          [
+                            _c("label", [_vm._v("Quantidade")]),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.form.quantidade,
+                                  expression: "form.quantidade"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              class: {
+                                "is-invalid": _vm.form.errors.has("quantidade")
+                              },
+                              attrs: { type: "number", name: "quantidade" },
+                              domProps: { value: _vm.form.quantidade },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.form,
+                                    "quantidade",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("has-error", {
+                              attrs: { form: _vm.form, field: "quantidade" }
+                            })
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "form-group" },
+                          [
+                            _c("label", [_vm._v("Preço")]),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.form.preco,
+                                  expression: "form.preco"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              class: {
+                                "is-invalid": _vm.form.errors.has("preco")
+                              },
+                              attrs: { type: "number", name: "preco" },
+                              domProps: { value: _vm.form.preco },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.form,
+                                    "preco",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("has-error", {
+                              attrs: { form: _vm.form, field: "preco" }
+                            })
+                          ],
+                          1
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "modal-footer" }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-secondary",
+                          attrs: { type: "button", "data-dismiss": "modal" }
+                        },
+                        [_vm._v("Fechar")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary",
+                          attrs: { disabled: _vm.form.busy, type: "submit" }
+                        },
+                        [_vm._v("Salvar")]
+                      )
+                    ])
+                  ]
+                )
+              ])
+            ]
+          )
+        ]
+      ),
+      _vm._v(" "),
       _c("vue-progress-bar"),
       _vm._v(" "),
       _c("vue-snotify")
@@ -38667,17 +39141,18 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("button", { staticClass: "btn btn-info btn-sm" }, [
-        _vm._v("\n                            Editar\n                        ")
-      ]),
-      _vm._v(" "),
-      _c("button", { staticClass: "btn btn-danger btn-sm" }, [
-        _vm._v(
-          "\n                            Excluir\n                        "
-        )
-      ])
-    ])
+    return _c(
+      "button",
+      {
+        staticClass: "close",
+        attrs: {
+          type: "button",
+          "data-dismiss": "modal",
+          "aria-label": "Close"
+        }
+      },
+      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+    )
   }
 ]
 render._withStripped = true
@@ -52298,7 +52773,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 
-windows.Form = vform__WEBPACK_IMPORTED_MODULE_0__["Form"];
+window.Form = vform__WEBPACK_IMPORTED_MODULE_0__["Form"];
 
 
 var SnotifyOptions = {
