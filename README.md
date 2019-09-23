@@ -42,8 +42,13 @@ Certifique-se que tenha o composer instalado, banco de dados mysql ou postgresql
 versão do php igual ou superior a 7.2;
 
 1 - Versao do > php 7.2
+
 2 - clone do repositorio no github
+
 3 - execute: composer install
+
 4 - execute: npm install 
+
 5 - execute: php artisan migrate --seed
+
 5 - execute: php artisan jwt:generate
