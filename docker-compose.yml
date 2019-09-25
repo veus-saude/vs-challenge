@@ -1,0 +1,48 @@
+version: "3.1"
+
+services:
+
+    mysql:
+        image: mysql:5.7
+        container_name: mysql
+        restart: unless-stopped
+        working_dir: /application
+        volumes:
+            - .:/application
+        environment:
+            - MYSQL_ROOT_PASSWORD=root_laravelpsw
+            - MYSQL_DATABASE=laraveldb
+            - MYSQL_USER=root
+            - MYSQL_PASSWORD=laravelpsw
+        ports:
+            - "3306:3306"
+        networks:
+            - laravel-network
+
+    nginx:
+        image: nginx:alpine
+        container_name: nginx
+        restart: unless-stopped
+        working_dir: /application
+        volumes:
+            - ./src:/application
+            - ./phpdocker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+        ports:
+            - "8888:80"
+        networks:
+            - laravel-network
+
+
+    php-fpm:
+        build: phpdocker/php-fpm
+        container_name: php-fpm
+        restart: unless-stopped
+        working_dir: /application
+        volumes:
+            - ./src:/application
+        networks:
+            - laravel-network
+  
+networks:
+    laravel-network:
+
