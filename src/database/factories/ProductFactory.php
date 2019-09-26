@@ -14,7 +14,7 @@ $factory->define(Product::class, function (Faker $faker) {
         'price' => $faker->randomFloat(2),
         'quantity' => $faker->randomNumber,
         'brand_id' => function () {
-            return factory(Brand::class)->make()->id;
+            return factory(Brand::class)->create()->id;
         },
         'created_at' => Carbon::now()
     ];

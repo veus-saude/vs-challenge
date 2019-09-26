@@ -9,6 +9,8 @@ class Brand extends Model
 {
     protected $table = 'brand';
 
+    public $timestamps = false;
+
     protected $guarded = [];
 
     public function products()
