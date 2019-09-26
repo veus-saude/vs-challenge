@@ -18,17 +18,17 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 // API v1 routes
-Route::group(['prefix' => 'api/v1'], function () {
+Route::group(['prefix' => 'v1', 'namespace' => '\App\Http\Controllers\v1'], function () {
 
     //Resource Route for API CRUD
-    Route::apiResource('products', 'ProductsController');
+    Route::apiResource('products', 'ProductController');
 
 });
 
 // API v2 routes
-Route::group(['prefix' => 'api/v2'], function () {
+Route::group(['prefix' => 'v2', 'namespace' => '\App\Http\Controllers\v2'], function () {
 
     //Resource Route for API CRUD
-    Route::apiResource('products', 'ProductsController');
+    Route::apiResource('products', 'ProductController');
 
 });
