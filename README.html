@@ -9,6 +9,7 @@
             padding          : 2px 5px;
             font-family      : monospace;
             font-size        : 16px;
+            line-height      : 3;
         }
     </style>
 </head>
@@ -26,6 +27,7 @@
     
     <ul>
       <li>Para que o projeto tenha um exemplo de relacionamento, foi criada uma tabela <i>brands</i> e usa respectiva seed para guardar a marca dos produtos</li>
+      <li>Como foram utilizados somente 2 models, optei por mantê-los no padrão do Laravel, ou seja, na raiz da pasta app. Para projetos reais eu prefiro pastas por domínio e dentro destas pastas seus respectivos Models, Controllers, etc...</li>
     </ul>
 
     
@@ -35,14 +37,18 @@
     
     <h2>Sobre o projeto</h2>
     
-    <p>
-      <strong>Idioma</strong>: será usado o inglês nos códigos
-    </p>
+    <h3>Idioma</h 3>
+    
+    <p>Inglês, por ser provavelmente requisito para a vaga</p>
 
+    <h3>Versionamento</h3>
+    
     <p>
-      <strong>Versionamento</strong>: Por <i>URI Path</i>, ex.: <code>GET https://app.com/api/v1/produtos</code>. 
+      Por <i>URI Path</i>, ex.: <code>GET https://app.com/api/v1/produtos</code>. 
       <br>
       Pela simplicidade solicitada no desafio, serão utilizados 2 <i>Route Groups</i> na aplicação, um para cada versão do projeto.
+      <br>
+      Para cada versão do CRUD, foi executado o comando do artisan para gerar os respectivos controllers <code>make:controller v1/ProductController --api</code> e <code>make:controller v2/ProductController --api</code></li>
       <br>
       Em um projeto real talvez seja interessante tratar o versionamento com <i>middlewares</i> ou algum <i>package</i> da comunidade.
     </p>
