@@ -18,7 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 // API v1 routes
-Route::group(['prefix' => 'v1'], function () {
+Route::group(['prefix' => 'api/v1'], function () {
 
     //Resource Route for API CRUD
     Route::apiResource('products', 'ProductsController');
@@ -26,7 +26,7 @@ Route::group(['prefix' => 'v1'], function () {
 });
 
 // API v2 routes
-Route::group(['prefix' => 'v2'], function () {
+Route::group(['prefix' => 'api/v2'], function () {
 
     //Resource Route for API CRUD
     Route::apiResource('products', 'ProductsController');

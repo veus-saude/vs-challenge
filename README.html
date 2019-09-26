@@ -37,7 +37,7 @@
     
     <h2>Sobre o projeto</h2>
     
-    <h3>Idioma</h 3>
+    <h3>Idioma</h3>
     
     <p>Inglês, por ser provavelmente requisito para a vaga</p>
 
@@ -51,6 +51,16 @@
       Para cada versão do CRUD, foi executado o comando do artisan para gerar os respectivos controllers <code>make:controller v1/ProductController --api</code> e <code>make:controller v2/ProductController --api</code></li>
       <br>
       Em um projeto real talvez seja interessante tratar o versionamento com <i>middlewares</i> ou algum <i>package</i> da comunidade.
+    </p>
+
+    <h3>Testes</h3>
+
+    <p>
+      Os testes estão dentro da pasta padrão de testes do Laravel.
+      <br>
+      Foram criados 4 testes do CRUD, 1 teste para acesso nao autorizado, 1 teste verificando se um produto tem uma marca vinculada
+      <br>
+      Executados diretamente pelo phpunit da pasta vendor, com o comando <code>./vendor/bin/phpunit caminho/do/teste.php</code>
     </p>
 
     <h2>Sobre o ambiente</h2>
