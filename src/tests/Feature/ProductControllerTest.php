@@ -1,16 +1,18 @@
 <?php
 
-namespace Tests\Unit;
+namespace Tests\Feature;
 
+use App\User;
 use App\Brand;
+use App\Product;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class ProductControllerTest extends TestCase
 {
-    use WithFaker, DatabaseMigrations;
+    use WithFaker;
 
     /**
      * @test
@@ -23,14 +25,16 @@ class ProductControllerTest extends TestCase
             $user = factory(User::class)->make();
 
         // when
+
+            $data = [
+                'name'      => 'Skywalker',
+                'brand_id'  => factory(Brand::class)->create()->id,
+                'price'     => $this->faker->randomFloat(2),
+                'quantity'  => $this->faker->randomNumber
+            ];
+
             // post request
-            $response = $this->actingAs($user, 'api')
-                             ->json('POST', 'api/v2/products', [
-                                'name' => 'Skywalker',
-                                'brand_id' => factory(Brand::class)->make()->id,
-                                'price' => $this->faker->randomFloat(2),
-                                'quantity' => $this->faker->randomNumber
-                            ]);
+            $response = $this->actingAs($user, 'api')->json('POST', 'api/v2/products', $data);
 
         // then
             // product must exist
@@ -46,10 +50,12 @@ class ProductControllerTest extends TestCase
             // user is authenticated
             $user = factory(User::class)->make();
 
+            // product exists
+            $product = factory(Product::class)->create();
+
         // when
             // get request
-            $response = $this->actingAs($user, 'api')
-                             ->json('PUT', 'api/v2/products/' . $product->id);
+            $response = $this->actingAs($user, 'api')->json('GET', 'api/v2/products/' . $product->id);
 
         // then
             // product must be returned
@@ -65,17 +71,20 @@ class ProductControllerTest extends TestCase
             // user is authenticated
             $user = factory(User::class)->make();
 
-        // when
-            // put request
-            $product = factory(Product::class)->make();
+            // product exists
+            $product = factory(Product::class)->create();
 
-            $response = $this->actingAs($user, 'api')
-                            ->json('PUT', 'api/v2/products/' . $product->id, [
-                                'name' => 'Skywalker',
-                                'brand_id' => factory(Brand::class)->make()->id,
-                                'price' => $this->faker->randomFloat(2),
-                                'quantity' => $this->faker->randomNumber
-                            ]);
+        // when
+            $data = [
+                'name'      => 'Skywalker',
+                'brand_id'  => factory(Brand::class)->create()->id,
+                'price'     => $this->faker->randomFloat(2),
+                'quantity'  => $this->faker->randomNumber
+            ];
+
+            // put request
+            $response = $this->actingAs($user, 'api')->json('PUT', 'api/v2/products/' . $product->id, $data);
+
         // then
             // product must be updated
             $response->assertOk();
@@ -90,15 +99,15 @@ class ProductControllerTest extends TestCase
             // user is authenticated
             $user = factory(User::class)->make();
 
+            // product exists
+            $product = factory(Product::class)->create();
+
         // when
             // delete request
-            $product = factory(Product::class)->make();
+            $deleteresponse = $this->actingAs($user, 'api')->json('DELETE', 'api/v2/products/' . $product->id);
 
-            $deleteresponse = $this->actingAs($user, 'api')
-                                    ->json('DELETE', 'api/v2/products/' . $product->id);
-
-            $productresponse = $this->actingAs($user, 'api')
-                                    ->json('GET', 'api/v2/products/' . $product->id);
+            // get product
+            $productresponse = $this->actingAs($user, 'api')->json('GET', 'api/v2/products/' . $product->id);
 
         // then
             // request must be OK
