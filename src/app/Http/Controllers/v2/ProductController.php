@@ -20,9 +20,17 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
+        $products = Product::paginate(
+            Request()->query('q'),
+            Request()->query('filter'),
+            Request()->query('per_page')
+        );
 
-        return response()->json(["data" => compact('products')], 200);
+        if ($products) {
+            return response()->json(compact('products'), 200);
+        }
+
+        return response()->json(["message" => "Search returned 0 results"], 200);
     }
 
     /**

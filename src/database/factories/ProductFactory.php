@@ -11,8 +11,8 @@ use Faker\Generator as Faker;
 $factory->define(Product::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
-        'price' => $faker->randomFloat(2),
-        'quantity' => $faker->randomNumber,
+        'price' => $faker->randomFloat(2, 1, 1000),
+        'quantity' => $faker->randomNumber(3),
         'brand_id' => function () {
             return factory(Brand::class)->create()->id;
         },
