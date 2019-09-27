@@ -28,7 +28,7 @@ class ProductController extends Controller
         );
 
         if ($products) {
-            return response()->json(compact('products'), 200);
+            return response()->json($products, 200);
         }
 
         return response()->json(["message" => "Search returned 0 results"], 200);
@@ -55,7 +55,7 @@ class ProductController extends Controller
 
             $product->save();
 
-            return response()->json(["data" => compact('product')], 200);
+            return response()->json($product, 200);
 
         } catch (\Exception $e) {
 
@@ -74,7 +74,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        return response()->json(["data" => compact($product)], 200);
+        return response()->json($product, 200);
     }
 
     /**
@@ -93,13 +93,13 @@ class ProductController extends Controller
                 $request->name ? $product->name = $request->name : '';
                 $request->price ? $product->price = $request->price : '';
                 $request->quantity ? $product->quantity = $request->quantity : '';
-                $request->quantity ? $product->brand()->associate( Brand::find($request->brand_id) ) : '';
+                $request->brand_id ? $product->brand_id: '';
 
                 $product->save();
 
             }
 
-            return response()->json(["data" => compact('product')], 200);
+            return response()->json($product, 200);
 
         } catch (\Exception $e) {
 
