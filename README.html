@@ -54,13 +54,22 @@
     </p>
 
     <h3>Testes</h3>
-
+    
     <p>
       Os testes estão dentro da pasta padrão de testes do Laravel.
       <br>
       Foram criados 4 testes do CRUD, 1 teste para acesso nao autorizado, 1 teste verificando se um produto tem uma marca vinculada
       <br>
       Executados diretamente pelo phpunit da pasta vendor, com o comando <code>./vendor/bin/phpunit caminho/do/teste.php</code>
+    </p>
+    
+    <h3>Autenticação</h3>
+
+    <p>Utilizado o Passport
+      <br>
+      Optei por remover as keys do .gitinore para permitir carregar as keys no repositório, para manter as coisas simples para o desafio
+      <br>
+      Em um projeto real, optaria pela geração das keys no fluxo do docker
     </p>
 
     <h2>Sobre o ambiente</h2>
@@ -113,6 +122,10 @@
       <li>login: usuario@veusapi.com.br</li>
       <li>senha: password</li>
     </ul>
+
+    <p>
+      no repositório, também está um arquivo com a collection do Postman, já com todas as configurações necessários para testes da API
+    </p>
 
     </div>
 </div>
