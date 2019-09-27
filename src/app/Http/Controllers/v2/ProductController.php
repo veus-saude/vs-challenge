@@ -23,6 +23,7 @@ class ProductController extends Controller
         $products = Product::paginate(
             Request()->query('q'),
             Request()->query('filter'),
+            Request()->query('sort'),
             Request()->query('per_page')
         );
 

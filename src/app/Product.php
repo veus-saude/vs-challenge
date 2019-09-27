@@ -4,7 +4,6 @@ namespace App;
 
 use App\Brand;
 use Illuminate\Database\Eloquent\Model;
-use Symfony\Component\Translation\Exception\NotFoundResourceException;
 
 class Product extends Model
 {
@@ -12,17 +11,36 @@ class Product extends Model
 
     protected $guarded = [];
 
+
+    /**
+     * Brand belongs to Product.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function brand()
     {
         return $this->belongsTo(Brand::class);
     }
 
+     /**
+     * Accessor to get the brand's name.
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public function getBrandAttribute($value)
+    {
+        return Brand::find($value)->name;
+    }
+
     /**
-     * Custom search with pagination
+     * Products list with pagination, ordering and search features
      * @param String search
      * @param String filter
+     * @param String sort
+     * @param Integer per_page
      */
-    static function paginate($search = null, $filter = null, $per_page = 15)
+    static function paginate($search = null, $filter = null, $sort = null, $per_page = 15)
     {
         // get brand category, if exists
         if (strpos($filter, 'brand') !== false) {
@@ -34,20 +52,39 @@ class Product extends Model
                 return false;
             }
 
-            $filter = Brand::where('name', $filter)->first()->id;
+            $filter = Brand::where('name', $filter)->first()->name;
 
         }
 
-        // if user requested valid brand category, use it on eloquent condition
-        if ($filter) {
-
-            return Product::where('brand_id', $filter)
-                            ->where('name', 'like', '%' . $search . '%' )
-                            ->paginate($per_page);
+        // orderBy with switch, because the few ordernation possibilities
+        switch ($sort) {
+            case 'name':
+                $sort = 'product.name ASC';
+                break;
+            case '-name':
+                $sort = 'product.name DESC';
+                break;
+            case 'brand':
+                $sort = 'brand.name ASC';
+                break;
+            case '-brand':
+                $sort = 'brand.name DESC';
+                break;
+            case '-created_at':
+                $sort = 'product.created_at DESC';
+                break;
+            default:
+                $sort = 'product.created_at ASC';
+                break;
         }
 
-        return Product::where('name', 'like', '%' . $search . '%' )
-                            ->paginate($per_page);
+        // using eloquent awesome features to return results from the list requirements: ordering, searching and pagination
+        return Product::select('product.id', 'product.name', 'product.brand_id as brand', 'product.price', 'product.created_at')
+                    ->join('brand', 'brand.id', 'product.brand_id')
+                    ->where('brand.name', 'like', '%' . $filter . '%' )
+                    ->where('product.name', 'like', '%' . $search . '%' )
+                    ->orderByRaw($sort)
+                    ->paginate($per_page);
 
     }
 
