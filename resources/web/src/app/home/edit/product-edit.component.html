@@ -1,0 +1,59 @@
+<div class="row">
+    <div class="col-md-6  offset-md-3 col-sm-10 offset-sm-1 register-product">
+        <!-- form card register -->
+        <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+            <div class="card card-outline-secondary">
+                <div class="card-header">
+                    <h3 class="mb-0">Editar Produto</h3>
+                </div>
+                <div class="card-body">
+
+                    <div class="form-group">
+                        <label for="inputNome">Nome</label>
+                        <input id="inputNome" class="form-control" type="text" formControlName="name" [ngClass]="{ 'is-invalid': submitted && myForm.name.errors }" >
+                        <div class="invalid-feedback" *ngIf="submitted && myForm.name.errors?.required">
+                            Nome é obrigatório.
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputBrand">Marca</label>
+                        <input id="inputBrand" class="form-control" type="text" formControlName="brand" [ngClass]="{ 'is-invalid': submitted && myForm.brand.errors }" >
+                        <!-- error -->
+                        <div class="invalid-feedback" *ngIf="submitted && myForm.brand.errors?.required">
+                            Marca é obrigatória.
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputPrice">Preço</label>
+                        <input id="inputPrice" class="form-control" type="text" formControlName="price" [ngClass]="{ 'is-invalid': submitted && myForm.price.errors }" >
+                        <!-- error -->
+                        <div class="invalid-feedback" *ngIf="submitted && myForm.price.errors?.required">
+                            Preço é obrigatório.
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputQuantity">Quantidade</label>
+                        <input id="inputQuantity" class="form-control" type="text" formControlName="quantity" [ngClass]="{ 'is-invalid': submitted && myForm.quantity.errors }" >
+                        <!-- error -->
+                        <div class="invalid-feedback" *ngIf="submitted && myForm.quantity.errors?.required">
+                            Quantidade é obrigatória.
+                        </div>
+                    </div>
+
+
+                    <div class="card-footer text-right">
+                        <button [disabled]="loading" class="btn btn-default" type="button" routerLink="/">Cancelar</button>
+                        <button class="btn btn-primary" type="submit">
+                            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                            Confirmar
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </form><!-- form  -->
+    </div>
+</div>

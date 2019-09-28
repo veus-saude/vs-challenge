@@ -1,34 +1,31 @@
-<p align="center">
-    <img src="https://i.imgur.com/2LUR2yy.png">
-</p>
+## PHP Laravel API com CRUD em Angular 8
 
-## Sobre a VEUS
+Exemplo de aplicação PHP utilizando API Restfull, autenticação JWT e framework Laravel, base de dados em mysql no backend, frontend em Angular 8,
+testes unitários e ambiente docker.
 
-Há 25 anos no mercado, a **Veus Technology** é uma empresa brasileira ligada ao segmento de saúde com foco na inovação tecnológica. É responsável por vários projetos pioneiros e estratégicos na área laboratorial, médica e recentemente hospitalar.
+## Instalação
 
-## Desafio VS
+1. Entre na pasta rais dos arquivos e execute `docker-compose up -d` para configurar os containers Docker;
+2. Execute o comando `docker exec app_veus bash -c "/var/www/html/scripts/configure.sh"` para instalar as dependencias, migrations e efetuar o deploy da aplicação.
+3. Identifique o ip do container com o comando `docker inspect app_veus"` para instalar as dependencias, migrations, seeders e efetuar o deploy da aplicação angular.
+4. Acesse o ip do container web no navegador.
 
-Você deve implementar uma API utilizando *PHP* > 7.0. Nós recomendamos que você tente manter o seu códgo o mais simples possível. Se você precisar de qualquer informação adicional ou esclarecimento, você pode nos contatar pelo e-mail: **sistemas@veus.com.br**.
+## Como usar
 
-Vamos imaginar que a sua empresa possua um e-commerce e venda alguns produtos para laboratórios e hospitais...
+A aplicação já terá vários produtos de simulação cadastrados e também um usuário padrão de login `veus@veus.com.br` e senha `123456`, contudo é possível se cadastrar novamente na interface do usuário.
 
-Sua tarefa é desenvolver um **CRUD** de Produtos e implementar um serviço de buscas desses produtos. Um produto possui nome, marca, preço e quantidade em estoque.
-A API deve requerer **autenticação** e permitir __search query__ através do método **GET** e suportar filtros opcionais nos campos do produto.
+Os testes poderão ser executados através do seguinte comando: `docker exec -it app_veus bash -c "/var/www/html/vendor/bin/phpunit --configuration /var/www/html/phpunit.xml"`.
 
-Por exemplo: Um cliente deve conseguir buscar todas as seringas da marca BUNZL fazendo a seguinte requisição:
+Exemplos de utilização da API:
 
-`https://example.com/api/v1/products?q=seringa&filter=brand:BUNZL`
+1. `api/products?filter=name:bisturi&filter=brand:ultramed`;
+2. `api/products?sort=name:asc&filter=brand:ultramed`;
+3. `api/products?sort=name:asc&per_page=10&page=2`;
+4. `api/products?q=bisturi&sort=quantity:desc`.
 
-A API também deve suportar __pagination__, __versioning__ e __sorting__.
+A versão da api pode ser trocada utilizando o parâmetro Accept do cabeçalho HTTP HEADERS das seguintes formas:
 
-Sinta-se livre para usar qualquer library ou framework da sua preferência mas a regra de negócio deve estar o mais desaclopada possível deles.
+1. `Accept: application/x.veus.v2+json`;
+2. `Accept: application/x.veus.v1+json`;
 
-Por favor, **não se esqueça** de providenciar uma pequena documentação de como levantar e testar o seu projeto.
-
-Bônus:
-* Docker
-* Unit Test
-* User Interface
-
----
-Você será avaliado de acordo com a senioridade da posição a qual está aplicando. Ao finalizar o desafio você deve submeter o **Pull Request** com o seu código para a avaliação, após isso nos entrarem em contato com você através do e-mail passando um feedback do seu projeto.
+Para testar acesse a URL api/version;

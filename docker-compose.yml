@@ -1,0 +1,33 @@
+version: "2"
+
+volumes:
+  veus-mysql-data:
+    driver: local
+
+services:
+  mysql:
+    image: mysql:5.7
+    container_name: db_veus
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=veus
+      - MYSQL_DATABASE=veus
+      - MYSQL_USER=veus
+      - MYSQL_PASSWORD=veus
+      - MYSQL_ROOT_HOST=%
+    ports:
+      - "3306:3306"
+
+  apache:
+    image: webdevops/php-apache-dev:7.2
+    container_name: app_veus
+    restart: always
+    volumes:
+      - ./:/var/www/html:cached
+    environment:
+      - WEB_DOCUMENT_ROOT=/var/www/html/public
+    ports:
+      - 80:80
+    links:
+      - mysql:mysql
+

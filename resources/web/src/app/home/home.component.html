@@ -1,0 +1,90 @@
+﻿<h1>Olá {{currentUser.name}}!</h1>
+<p>Você está logado na Veus Saúde!!</p>
+
+<div class="row">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light col-md-12">
+        <h5 class="my-0 mr-md-auto font-weight-normal">Consulta de Produtos</h5>
+        <a class="btn btn-outline-primary" routerLinkActive="active" routerLink="/products/create">Adcionar Produto</a>
+    </nav>
+    <p-table #dt [value]="products" [paginator]="true" [loading]="loading" [rows]="10" sortMode="multiple" [lazy]="true" (onLazyLoad)="loadData($event)"
+             [rowsPerPageOptions]="[5,10,20,50]" [totalRecords]="totalRecords" [responsive]="true" sortField="id">
+        <ng-template pTemplate="caption">
+            <div style="text-align: right">
+                <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+                <input type="text" pInputText size="50" placeholder="Pesquisa" (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th pSortableColumn="id" [style]="{'width':'40px'}">
+                    ID
+                    <p-sortIcon field="id"></p-sortIcon>
+                </th>
+                <th pSortableColumn="name" [style]="{'width':'140px'}">
+                    Nome
+                    <p-sortIcon field="name"></p-sortIcon>
+                </th>
+                <th pSortableColumn="brand" [style]="{'width':'100px'}">
+                    Marca
+                    <p-sortIcon field="brand"></p-sortIcon>
+                </th>
+                <th pSortableColumn="price" [style]="{'width':'100px'}">
+                    Preço
+                    <p-sortIcon field="price"></p-sortIcon>
+                </th>
+                <th pSortableColumn="quantity" [style]="{'width':'100px'}">
+                    Quantidade
+                    <p-sortIcon field="quantity"></p-sortIcon>
+                </th>
+                <th [style]="{'width':'100px'}" rowspan="2" class="text-center">
+                    Opções
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <input pInputText type="text" (input)="dt.filter($event.target.value, 'id', filterMatchMode='equals')">
+                </th>
+                <th>
+                    <input pInputText type="name" (input)="dt.filter($event.target.value, 'name', filterMatchMode='contains')">
+                </th>
+                <th>
+                    <input pInputText type="brand" (input)="dt.filter($event.target.value, 'brand', filterMatchMode='contains')">
+                </th>
+                <th>
+                    <input pInputText type="price" (input)="dt.filter($event.target.value, 'price', filterMatchMode='contains')">
+                </th>
+                <th>
+                    <input pInputText type="quantity" (input)="dt.filter($event.target.value, 'quantity', filterMatchMode='contains')">
+                </th>
+            </tr>
+        </ng-template>
+
+        <ng-template pTemplate="body" let-rowProd>
+            <tr>
+                <td>
+                    {{rowProd["id"]}}
+                </td>
+                <td>
+                    {{rowProd["name"]}}
+                </td>
+                <td>
+                    {{rowProd["brand"]}}
+                </td>
+                <td>
+                    {{rowProd["price"]}}
+                </td>
+                <td>
+                    {{rowProd["quantity"]}}
+                </td>
+                <td class="text-center edit-block">
+                    <span class="edit" [routerLink]="['/products/edit/', rowProd['id']]">
+                        <button type="button" class="btn btn-success btn-sm">Editar</button>
+                    </span>
+                    <span class="delete" (click)="deleteProduct(rowProd['id'])">
+                        <button type="button" class="btn btn-danger btn-sm">Excluir</button>
+                    </span>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
