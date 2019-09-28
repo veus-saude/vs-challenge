@@ -7,7 +7,7 @@ testes unitários e ambiente docker.
 
 1. Entre na pasta rais dos arquivos e execute `docker-compose up -d` para configurar os containers Docker;
 2. Execute o comando `docker exec app_veus bash -c "/var/www/html/scripts/configure.sh"` para instalar as dependencias, migrations e efetuar o deploy da aplicação.
-3. Identifique o ip do container com o comando `docker inspect app_veus"` para instalar as dependencias, migrations, seeders e efetuar o deploy da aplicação angular.
+3. Identifique o ip do container com o comando `docker inspect app_veus"`;
 4. Acesse o ip do container web no navegador.
 
 ## Como usar
