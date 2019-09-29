@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\User;
 use App\enums\Roles;
+use DB;
 
 class AuthController extends Controller
 {
@@ -19,7 +20,7 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['register', 'login']]);
+        $this->middleware('jwt', ['except' => ['register', 'login']]);
     }
 
     /**
@@ -29,22 +30,34 @@ class AuthController extends Controller
      */
     public function register(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:6', 'confirmed'],
-        ]);
+        try {
+            throw new \Exception('Teste');
+            $validator = Validator::make($request->all(), [
+                'name' => ['required', 'string', 'max:255'],
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'password' => ['required', 'string', 'min:6', 'confirmed'],
+            ]);
 
-        if ($validator->fails()) {
-            return response()->json($validator->errors());
+            if ($validator->fails()) {
+                return response()->json($validator->errors());
+            }
+
+            $user = DB::transaction(function () use ($request) {
+                return User::create([
+                    'name' => $request->name,
+                    'email' => $request->email,
+                    'password' => Hash::make($request->password),
+                    'role' => Roles::CLIENT,
+                ]);
+            });
+
+            return response()->json([
+                'message' => 'User created',
+                'user' => $user,
+            ], 201);
+        } catch (Exception $e) {
+            throw $e;
         }
-
-        return User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'role' => Roles::CLIENT,
-        ]);
     }
 
     /**
