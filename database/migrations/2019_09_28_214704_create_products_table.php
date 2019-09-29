@@ -20,6 +20,8 @@ class CreateProductsTable extends Migration
             $table->float('price');
             $table->integer('stock_quantity');
             $table->timestamps();
+
+            $table->unique(['name', 'brand']);
         });
     }
 

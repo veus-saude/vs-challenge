@@ -11,10 +11,6 @@ class ClientsSeeder extends Seeder
      */
     public function run()
     {
-        $this->command->info('Calling clients database seeder.');
-
         factory(App\User::class, 100)->create();
-        
-        $this->command->info('Clients database seeder ended.');
     }
 }

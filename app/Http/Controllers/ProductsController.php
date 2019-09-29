@@ -4,9 +4,21 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Product;
+use Validator;
+use Illuminate\Validation\ValidationException;
 
 class ProductsController extends Controller
 {
+    /**
+     * Create a new ProductsController instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('jwt');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -36,7 +48,14 @@ class ProductsController extends Controller
             return response()->json($validator->errors());
         }
 
-        return Product::create($request->all());
+        $this->validateUniqueNameAndBrand($request);
+
+        $product = Product::create($request->all());
+
+        return response()->json([
+            'message' => 'Product created.',
+            'product' => $product
+        ], 201);
     }
 
     /**
@@ -47,7 +66,7 @@ class ProductsController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        return response()->json($product);
     }
 
     /**
@@ -59,7 +78,25 @@ class ProductsController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'name' => ['string', 'max:255'],
+            'brand' => ['string', 'max:255'],
+            'price' => ['numeric'],
+            'stock_quantity' => ['integer'],
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors());
+        }
+
+        $this->validateUniqueNameAndBrand($request, $product);
+
+        $product->update($request->all());
+
+        return response()->json([
+            'message' => 'Product updated.',
+            'product' => $product
+        ]);
     }
 
     /**
@@ -70,6 +107,36 @@ class ProductsController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+
+        return response()->json([
+            'message' => 'Product deleted.',
+            'deletedProduct' => $product,
+        ]);
+    }
+
+    /**
+     * Validate product name and brand uniqueness.
+     *
+     * @return void
+     */
+    private function validateUniqueNameAndBrand($request, $product = null)
+    {
+        $name = $request->name ?? $product->name;
+        $brand = $request->brand ?? $product->brand;
+
+        $matches = Product::when($product, function($query) use ($product) {
+                $query->where('id', '!=', $product->id);
+            })
+            ->where('name', $name)
+            ->where('brand', $brand)
+            ->count();
+        
+        if ($matches > 0) {
+            throw ValidationException::withMessages([
+                'name' => ['Product with specified name and brand already exists.'],
+                'brand' => ['Product with specified name and brand already exists.'],
+            ]);
+        }
     }
 }

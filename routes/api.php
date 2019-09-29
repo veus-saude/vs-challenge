@@ -9,7 +9,6 @@ Route::get('health', function (Request $request) {
 });
 
 Route::group([
-    'middleware' => 'api',
     'prefix' => 'auth'
 ], function () {
     Route::post('login', 'AuthController@login');
@@ -20,7 +19,6 @@ Route::group([
 });
 
 Route::group([
-    'middleware' => 'api',
     'prefix' => 'products'
 ], function () {
     Route::get('', 'ProductsController@index');
