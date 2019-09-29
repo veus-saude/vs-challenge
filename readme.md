@@ -25,6 +25,16 @@ Siga os passos:
 
 > Por padrão a aplicação e banco de dados serão criados nas portas 8007 e 3007 respectivamente. Você pode especificar outra porta no arquivo `docker-compose.yml` na seção `ports` dos serviços `app` e `db`. Alterar também a porta na variável `APP_URL` do arquivo `.env`.
 
+2. Crie um usuário tipo `administrador`. O usuário criado possui nome `Admin`, e-mail `admin@example.com` e senha `secret`. 
+
+* `php artisan app:create-admin -D`
+
+> É possível customizar os dados do usuário omitindo a opção `-D`. Deverá ser informado um nome, e-mail e senha válidos.
+
+3. Gere clientes e produtos fictícios (**OPCIONAL**).
+   
+* `php artisan db:seed`
+
 ## Funcionamento
 
 ## Endpoints
