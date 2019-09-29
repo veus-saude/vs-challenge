@@ -18,7 +18,7 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->string('brand');
             $table->float('price');
-            $table->integer('stock_quantity');
+            $table->integer('stock');
             $table->timestamps();
 
             $table->unique(['name', 'brand']);

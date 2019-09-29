@@ -7,8 +7,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\ValidationException;
 use App\User;
-use App\enums\Roles;
+use App\Enums\Roles;
 use DB;
 
 class AuthController extends Controller
@@ -39,7 +40,7 @@ class AuthController extends Controller
             ]);
 
             if ($validator->fails()) {
-                return response()->json($validator->errors());
+                throw ValidationException::withMessages($validator->errors()->all());
             }
 
             $user = DB::transaction(function () use ($request) {
@@ -73,7 +74,7 @@ class AuthController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response()->json($validator->errors());
+            throw ValidationException::withMessages($validator->errors()->all());
         }
 
         $credentials = $request->only('email', 'password');

@@ -3,7 +3,7 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 use App\User;
 use Faker\Generator as Faker;
-use App\enums\Roles;
+use App\Enums\Roles;
 
 $factory->define(User::class, function (Faker $faker) {
     return [

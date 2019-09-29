@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Product;
 use Validator;
 use Illuminate\Validation\ValidationException;
+use App\Filters\ProductFilters;
+use App\Rules\Sortable;
 
 class ProductsController extends Controller
 {
@@ -24,9 +26,32 @@ class ProductsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request, ProductFilters $filters)
     {
-        return response()->json(Product::all());
+        if (count($request->except('page')) > 0) {
+            $validator = Validator::make($request->all(), [
+                'name' => 'string|max:255',
+                'brand' => 'string|max:255',
+                'fromPrice' => 'numeric|min:0',
+                'toPrice' => 'numeric|min:0',
+                'fromStock' => 'integer|min:0',
+                'toStock' => 'integer|min:0',
+                'sort' => [new Sortable(['name', 'brand', 'price', 'stock'])],
+                'perPage' => 'integer|min:1',
+            ]);
+
+            if ($validator->fails()) {
+                throw ValidationException::withMessages($validator->errors()->all());
+            }
+
+            $perPage = $request->perPage ?? 20;
+
+            $products = Product::filter($filters)->paginate($perPage);
+        } else {
+            $products = Product::paginate($perPage);
+        }
+
+        return response()->json($products);
     }
 
     /**
@@ -38,14 +63,14 @@ class ProductsController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => ['required', 'string', 'max:255'],
-            'brand' => ['required', 'string', 'max:255'],
-            'price' => ['required', 'numeric'],
-            'stock_quantity' => ['required', 'integer'],
+            'name' => 'required|string|max:255',
+            'brand' => 'required|string|max:255',
+            'price' => 'required|numeric|min:0',
+            'stock' => 'required|integer|min:0',
         ]);
 
         if ($validator->fails()) {
-            return response()->json($validator->errors());
+            throw ValidationException::withMessages($validator->errors()->all());
         }
 
         $this->validateUniqueNameAndBrand($request);
@@ -79,14 +104,14 @@ class ProductsController extends Controller
     public function update(Request $request, Product $product)
     {
         $validator = Validator::make($request->all(), [
-            'name' => ['string', 'max:255'],
-            'brand' => ['string', 'max:255'],
-            'price' => ['numeric'],
-            'stock_quantity' => ['integer'],
+            'name' => 'string|max:255',
+            'brand' => 'string|max:255',
+            'price' => 'numeric|min:0',
+            'stock' => 'integer|min:0',
         ]);
 
         if ($validator->fails()) {
-            return response()->json($validator->errors());
+            throw ValidationException::withMessages($validator->errors()->all());
         }
 
         $this->validateUniqueNameAndBrand($request, $product);
