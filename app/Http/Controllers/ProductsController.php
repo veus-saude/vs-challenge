@@ -8,6 +8,7 @@ use Validator;
 use Illuminate\Validation\ValidationException;
 use App\Filters\ProductFilters;
 use App\Rules\Sortable;
+use Log;
 
 class ProductsController extends Controller
 {
@@ -18,7 +19,7 @@ class ProductsController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('jwt');
+        $this->middleware('jwt.auth');
     }
 
     /**
@@ -28,6 +29,8 @@ class ProductsController extends Controller
      */
     public function index(Request $request, ProductFilters $filters)
     {
+        // Log::info("Requisição para listar produtos");
+
         if (count($request->except('page')) > 0) {
             $validator = Validator::make($request->all(), [
                 'name' => 'string|max:255',

@@ -6,6 +6,7 @@ use Illuminate\Console\Command;
 use App\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\Enums\Roles;
 
 class CreateAdmin extends Command
 {
@@ -62,6 +63,7 @@ class CreateAdmin extends Command
                     'name' => $name,
                     'email' => $email,
                     'password' => Hash::make($password),
+                    'role' => Roles::ADMINISTRATOR,
                 ]);
 
                 $this->info('Admin user created.');
@@ -99,6 +101,7 @@ class CreateAdmin extends Command
                     'name' => $name,
                     'email' => $email,
                     'password' => Hash::make($password),
+                    'role' => Roles::ADMINISTRATOR,
                 ]);
 
                 $this->info('Admin user created.');

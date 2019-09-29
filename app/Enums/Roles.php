@@ -4,6 +4,6 @@ namespace App\Enums;
 
 abstract class Roles
 {
-    const ADMIN = 'admin';
+    const ADMINISTRATOR = 'administrator';
     const CLIENT = 'client';
 }

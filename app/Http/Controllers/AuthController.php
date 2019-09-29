@@ -21,7 +21,7 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('jwt', ['except' => ['register', 'login']]);
+        $this->middleware('jwt.auth', ['except' => ['register', 'login']]);
     }
 
     /**
@@ -32,7 +32,6 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         try {
-            throw new \Exception('Teste');
             $validator = Validator::make($request->all(), [
                 'name' => ['required', 'string', 'max:255'],
                 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],

@@ -19,6 +19,19 @@ services:
       - TZ=America/Sao_Paulo
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=veus-challenge
+  db-testing:
+    image: mysql:5.7
+    ports:
+      - 3008:3306
+    volumes:
+      - mysqldata-testing:/var/lib/mysql
+    working_dir: /home/db
+    environment:
+      - TZ=America/Sao_Paulo
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=veus-challenge-testing
 volumes:
   mysqldata:
+    driver: local
+  mysqldata-testing:
     driver: local
