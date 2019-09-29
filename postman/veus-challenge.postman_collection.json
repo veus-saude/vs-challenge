@@ -145,7 +145,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"name\": \"Product1\",\n\t\"brand\": \"Brand1\",\n\t\"price\": 1.50,\n\t\"stock_quantity\": 10\n}"
+							"raw": "{\n\t\"name\": \"Product1\",\n\t\"brand\": \"Brand1\",\n\t\"price\": 1.50,\n\t\"stock\": 10\n}"
 						},
 						"url": {
 							"raw": "{{baseUrl}}/products",
@@ -185,12 +185,26 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{baseUrl}}/products",
+							"raw": "{{baseUrl}}/products?toPrice=500&sort=price:desc&perPage=10",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"products"
+							],
+							"query": [
+								{
+									"key": "toPrice",
+									"value": "500"
+								},
+								{
+									"key": "sort",
+									"value": "price:desc"
+								},
+								{
+									"key": "perPage",
+									"value": "10"
+								}
 							]
 						},
 						"description": "List products."
