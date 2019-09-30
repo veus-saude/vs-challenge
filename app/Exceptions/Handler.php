@@ -38,7 +38,9 @@ class Handler extends ExceptionHandler
     {
         parent::report($exception);
 
-        Log::error('Erro. Classe: ' . get_class($exception) . '; Mensagem: ' . $exception->getMessage());
+        if (config('logging.enabled')) {
+            Log::error('Erro. Classe: ' . get_class($exception) . '; Mensagem: ' . $exception->getMessage());
+        }
     }
 
     /**

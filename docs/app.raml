@@ -60,6 +60,13 @@ types:
                 description: Mensagem de retorno
                 required: true
                 type: string
+    Response403:
+        type: object
+        properties:
+            message:
+                description: Mensagem de retorno
+                required: true
+                type: string
     LoginRequest:
         type: object
         properties:
@@ -233,6 +240,17 @@ traits:
                             {
                                 "message": "Not found"
                             }
+    has403:
+        responses:
+            403:
+                description: Não autorizado. O usuário logado não possui permissão para acessar este recurso
+                body:
+                    application/json:
+                        type: Response403
+                        example: |
+                            {
+                                "message": "This action is unauthorized."
+                            }
 
 /auth/login:
     post:
@@ -378,7 +396,7 @@ traits:
                             }
     post:
         securedBy: [jwtAuth]
-        is: [ has422 ]
+        is: [ has422, has403 ]
         description: Requisição para criar um novo produto
         body:
             application/json:
@@ -433,7 +451,7 @@ traits:
                             }
     put:
         securedBy: [jwtAuth]
-        is: [ has422, has404 ]
+        is: [ has422, has404, has403 ]
         description: Requisição para atualizar produto
         responses:
             200:
@@ -447,7 +465,7 @@ traits:
                             }
     delete:
         securedBy: [jwtAuth]
-        is: [ has404 ]
+        is: [ has404, has403 ]
         description: Requisição para remover produto
         responses:
             200:

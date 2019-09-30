@@ -43,9 +43,9 @@ Siga os passos:
    
 * `php artisan db:seed`
 
-## Funcionamento
+## Documentação
 
-## Endpoints
+Para acessar a documentação abra o arquivo `docs/app.html` no navegador. Este arquivo foi desenvolvido com a linguagem [RAML](https://raml.org/).
 
 ## Postman
 

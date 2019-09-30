@@ -18,6 +18,8 @@ return [
 
     'default' => env('LOG_CHANNEL', 'stack'),
 
+    'enabled' => env('LOGGING_ENABLED', true),
+
     /*
     |--------------------------------------------------------------------------
     | Log Channels
@@ -43,7 +45,7 @@ return [
         'single' => [
             'driver' => 'single',
             'path' => storage_path('logs/laravel.log'),
-            'level' => 'debug',
+            'level' => 'emergency',
         ],
 
         'daily' => [
