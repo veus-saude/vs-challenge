@@ -22,8 +22,6 @@ class ProductsController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('jwt.auth');
-
         $this->user = Auth::user();
     }
 

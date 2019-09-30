@@ -8,8 +8,13 @@ use Illuminate\Support\Facades\Artisan;
 
 class ProductTest extends TestCase
 {
-    private $loginCredentials = [
+    private $adminLoginCredentials = [
         'email' => 'admin@example.com',
+        'password' => 'secret'
+    ];
+    
+    private $clientLoginCredentials = [
+        'email' => 'client1@example.com',
         'password' => 'secret'
     ];
 
@@ -36,19 +41,6 @@ class ProductTest extends TestCase
     private $updatedProductData = [
         'stock' => 5
     ];
-
-    /**
-     * Test authentication
-     *
-     * @return void
-     */
-    /** @test */
-    public function authentication()
-    {
-        $response = $this->json('POST', '/api/'. config('app.api_version') . '/products', $this->product);
-
-        $response->assertStatus(401);
-    }
 
     /**
      * Test product list
@@ -83,6 +75,37 @@ class ProductTest extends TestCase
         $response = $this->json('POST', '/api/'. config('app.api_version') . '/products', $this->product);
 
         $response->assertStatus(201);
+    }
+
+    /**
+     * Test create authentication
+     *
+     * @return void
+     */
+    /** @test */
+    public function createAuthentication()
+    {
+        $response = $this->json('POST', '/api/'. config('app.api_version') . '/products', $this->product);
+
+        $response->assertStatus(401);
+    }
+
+    /**
+     * Test create authorizarion
+     *
+     * @return void
+     */
+    /** @test */
+    public function createAuthorization()
+    {
+        $jwtToken = $this->getJwtToken('client');
+
+        $response = $this->withHeaders([
+                'Authorization' => 'Bearer ' . $jwtToken,
+            ])
+            ->json('POST', '/api/'. config('app.api_version') . '/products', $this->product);
+
+        $response->assertStatus(403);
     }
 
     /**
@@ -209,9 +232,11 @@ class ProductTest extends TestCase
             ->assertStatus(404);
     }
 
-    private function getJwtToken()
+    private function getJwtToken($role = 'admin')
     {
-        $response = $this->json('POST', '/api/'. config('app.api_version') . '/auth/login', $this->loginCredentials)
+        $loginCredentials = $role === 'admin' ? $this->adminLoginCredentials : $this->clientLoginCredentials;
+
+        $response = $this->json('POST', '/api/'. config('app.api_version') . '/auth/login', $loginCredentials)
             ->getData();
 
         return $response->access_token;
