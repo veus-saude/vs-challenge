@@ -1,0 +1,454 @@
+#%RAML 1.0
+---
+title: Veus Challange API
+version: v1
+baseUri: http://localhost:3007.com/api/{version}
+mediaType: application/json
+
+securitySchemes:
+    jwtAuth:
+        type: JWT Authentication
+        description: JWT token based authentication
+        describedBy:
+            headers:
+                Authorization:
+                    type: string
+                    description: The JWT token, e.g. 'bearer ad4839cf-3adfafz-JJDND'
+            responses:
+                401:
+                    description: Invalid, expired or absent token
+                    body:
+                        application/json:
+                            type: Response401Auth
+                            example: |
+                                {
+                                    "message": "Token not provided"
+                                }
+
+types:
+    Response401Auth:
+        type: object
+        properties:
+            message:
+                description: Mensagem de retorno
+                required: true
+                type: string
+    Response422:
+        type: object
+        properties:
+            message:
+                description: Mensagem de retorno
+                required: true
+                type: string
+            errors:
+                description: Erros de validação
+                required: true
+                type: Error[]
+    Error:
+        type: string[]
+    Response401:
+        type: object
+        properties:
+            error:
+                description: Mensagem de retorno
+                required: true
+                type: string
+    Response404:
+        type: object
+        properties:
+            message:
+                description: Mensagem de retorno
+                required: true
+                type: string
+    LoginRequest:
+        type: object
+        properties:
+            email:
+                description: E-mail válido
+                required: true
+                type: string
+            password:
+                description: Senha (mínimo 6 caracteres)
+                required: true
+                type: string
+    LoginResponse200:
+        type: object
+        properties:
+            access_token:
+                description: Token de acesso para requisições subsequentes a recursos protegidos
+                required: true
+                type: string
+            token_type:
+                description: Tipo de token
+                required: true
+                type: string
+            expires_in:
+                description: Tempo de expiração do token em segundos
+                required: true
+                type: number
+    RegisterRequest:
+        type: object
+        properties:
+            name:
+                description: Nome do usuário
+                required: true
+                type: string
+            email:
+                description: E-mail do usuário
+                required: true
+                type: string
+            password:
+                description: Senha do usuário
+                required: true
+                type: string
+            password_confirmation:
+                description: Confirmação da senha do usuário
+                required: true
+                type: string
+    RegisterResponse201
+        type: object
+        properties:
+            message:
+                description: Mensagem de retorno
+                required: true
+                type: string
+            user:
+                required: true
+                type: User
+    User
+        type: object
+        properties:
+            id:
+                description: ID do usuário
+                required: false
+                type: number
+            name:
+                description: Nome do usuário
+                required: true
+                type: string
+            email:
+                description: E-mail do usuário
+                required: true
+                type: string
+            role:
+                description: Nome do usuário
+                required: true
+                enum: [administrator, client]
+            created_at:
+                description: Data de criação
+                required: false
+                type: string
+            updated_at:
+                description: Data da última atualização
+                required: false
+                type: string
+    Product
+        type: object
+        properties:
+            name:
+                description: Nome do produto
+                required: true
+                type: string
+            brand:
+                description: Marca do produto
+                required: true
+                type: string
+            price:
+                description: Preço do produto
+                required: true
+                type: number
+            stock:
+                description: Quantidade em estoque do produto
+                required: true
+                type: number
+            created_at:
+                description: Data de criação
+                required: false
+                type: string
+            updated_at:
+                description: Data da última atualização
+                required: false
+                type: string
+    ListProductsResponse200
+        type: object
+        properties:
+            current_page: number
+            data: Product[]
+            first_page_url: string
+            from: number
+            last_page: number
+            last_page_url: string
+            next_page_url: string
+            path: string
+            per_page: string
+            prev_page_url?: string
+            to: number
+            total: number
+    CreateProductResponse201
+        properties:
+            message:
+                description: Mensagem de retorno
+                required: true
+                type: string
+            product:
+                required: true
+                type: Product
+            
+traits:
+    has422:
+        responses:
+            422:
+                description: Erro de validação
+                body:
+                    application/json:
+                        type: Response422
+                        example: |
+                            {
+                                "message": "The given data was invalid.",
+                                "errors": [
+                                    [
+                                        "The email must be a valid email address."
+                                    ]
+                                ]
+                            }
+    has401:
+        responses:
+            401:
+                description: Não autorizado
+                body:
+                    application/json:
+                        type: Response401
+                        example: |
+                            {
+                                "error": "Unauthorized"
+                            }
+    has404:
+        responses:
+            404:
+                description: Não encontrado
+                body:
+                    application/json:
+                        type: Response404
+                        example: |
+                            {
+                                "message": "Not found"
+                            }
+
+/auth/login:
+    post:
+        is: [ has401, has422 ]
+        description: Requisição para logar usuário
+        body:
+            application/json:
+                type: LoginRequest
+                example: |
+                    {
+                        "email": "admin@example.com",
+                        "password" : "secret"
+                    }
+        responses:
+            200:
+                description: Usuário logado com sucesso
+                body:
+                    application/json:
+                        type: LoginResponse200
+                        example: |
+                            {
+                                "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwN1wvYXBpXC92MVwvYXV0aFwvbG9naW4iLCJpYXQiOjE1Njk4MjI4MjYsImV4cCI6MTU2OTgyNjQyNiwibmJmIjoxNTY5ODIyODI2LCJqdGkiOiJ3WE45V29VTjM0UXp3enZCIiwic3ViIjoxLCJwcnYiOiI4N2UwYWYxZWY5ZmQxNTgxMmZkZWM5NzE1M2ExNGUwYjA0NzU0NmFhIn0.qTRSF4VWkurQ0u0Q1GEg-z5ZSbMbv1N8nyYJlX7Se20",
+                                "token_type": "bearer",
+                                "expires_in": 3600
+                            }
+
+/auth/register:
+    post:
+        is: [ has422 ]
+        description: Requisição para cadastrar novo usuário (cliente)
+        body:
+            application/json:
+                type: RegisterRequest
+                example: |
+                    {
+                        "name": "Client 1",
+                        "email": "client1@example.com",
+                        "password": "secret",
+                        "password_confirmation": "secret"
+                    }
+        responses:
+            201:
+                description: Usuário registrado com sucesso
+                body:
+                    application/json:
+                        type: RegisterResponse201
+                        example: |
+                            {
+                                "message": "User created",
+                                "user": {
+                                    "name": "Client 1",
+                                    "email": "client1@example.com",
+                                    "role": "client",
+                                    "updated_at": "2019-09-30 06:26:11",
+                                    "created_at": "2019-09-30 06:26:11",
+                                    "id": 4
+                                }
+                            }
+
+/products:
+    get:
+        securedBy: [jwtAuth]
+        is: [ has422 ]
+        description: Requisição para listar produtos
+        queryParameters:
+            name:
+                description: Nome do produto
+                required: false
+                type: string
+                example: seringa
+            brand:
+                description: Marca do produto
+                required: false
+                type: string
+                example: BUNZL
+            fromPrice:
+                description: Preço mínimo do produto
+                required: false
+                type: number
+                example: 19.90
+            toPrice:
+                description: Preço máximo do produto
+                required: false
+                type: number
+                example: 100.00
+            fromStock:
+                description: Estoque mínimo do produto
+                required: false
+                type: number
+                example: 0
+            toStock:
+                description: Estoque máximo do produto
+                required: false
+                type: number
+                example: 10
+            sort:
+                description: Ordenação da lista. Parâmetro a ser utilizado e sentido (ascendente - asc ou descendente - desc) separados por dois pontos (:)
+                required: false
+                type: string
+                example: price:desc
+            perPage:
+                description: Quantidade de itens exibidos por página
+                required: false
+                type: number
+                defaul: 20
+                example: 50
+            page:
+                description: Página atual da listagem
+                required: false
+                type: number
+                default: 1
+                example: 2
+        responses:
+            200:
+                description: Listagem de produtos
+                body:
+                    application/json:
+                        type: ListProductsResponse200
+                        example: |
+                            {
+                                "current_page": 1,
+                                "data": [
+                                    {
+                                        "id": 25,
+                                        "name": "qui",
+                                        "brand": "et",
+                                        "price": 439.86,
+                                        "stock": 690,
+                                        "created_at": "2019-09-30 07:13:21",
+                                        "updated_at": "2019-09-30 07:13:21"
+                                    }
+                                ],
+                                "first_page_url": "http://localhost:8007/api/v1/products?page=1",
+                                "from": 1,
+                                "last_page": 28,
+                                "last_page_url": "http://localhost:8007/api/v1/products?page=28",
+                                "next_page_url": "http://localhost:8007/api/v1/products?page=2",
+                                "path": "http://localhost:8007/api/v1/products",
+                                "per_page": "1",
+                                "prev_page_url": null,
+                                "to": 1,
+                                "total": 28
+                            }
+    post:
+        securedBy: [jwtAuth]
+        is: [ has422 ]
+        description: Requisição para criar um novo produto
+        body:
+            application/json:
+                type: Product
+                example: |
+                    {
+                        "name": "Product 1",
+                        "brand": "Brand 1",
+                        "price": 1.50,
+                        "stock": 10
+                    }
+        responses:
+            201:
+                description: Produto criado com sucesso
+                body:
+                    application/json:
+                        type: CreateProductResponse201
+                        example: |
+                            {
+                                "message": "Product created.",
+                                "product": {
+                                    "name": "Product 1",
+                                    "brand": "Brand 1",
+                                    "price": 1.5,
+                                    "stock": 10,
+                                    "updated_at": "2019-09-30 07:29:46",
+                                    "created_at": "2019-09-30 07:29:46",
+                                    "id": 116
+                                }
+                            }
+
+/products/{productId}:
+    get:
+        securedBy: [jwtAuth]
+        is: [ has404 ]
+        description: Requisição para exibir produto
+        responses:
+            200:
+                description: Produto criado com sucesso
+                body:
+                    application/json:
+                        type: Product
+                        example: |
+                            {
+                                "id": 1,
+                                "name": "eius",
+                                "brand": "aut",
+                                "price": 991.97,
+                                "stock": 687,
+                                "created_at": "2019-09-30 07:13:20",
+                                "updated_at": "2019-09-30 07:13:20"
+                            }
+    put:
+        securedBy: [jwtAuth]
+        is: [ has422, has404 ]
+        description: Requisição para atualizar produto
+        responses:
+            200:
+                description: Produto atualizado com sucesso
+                body:
+                    application/json:
+                        type: Product
+                        example: |
+                            {
+                                "stock": 1,
+                            }
+    delete:
+        securedBy: [jwtAuth]
+        is: [ has404 ]
+        description: Requisição para remover produto
+        responses:
+            200:
+                description: Produto removido com sucesso
