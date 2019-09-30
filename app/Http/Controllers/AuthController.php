@@ -10,20 +10,10 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
 use App\User;
 use App\Enums\Roles;
-use DB;
+use Log;
 
 class AuthController extends Controller
 {
-    /**
-     * Create a new AuthController instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('jwt.auth', ['except' => ['register', 'login']]);
-    }
-
     /**
      * Register a new user.
      *
@@ -31,33 +21,31 @@ class AuthController extends Controller
      */
     public function register(Request $request)
     {
-        try {
-            $validator = Validator::make($request->all(), [
-                'name' => ['required', 'string', 'max:255'],
-                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-                'password' => ['required', 'string', 'min:6', 'confirmed'],
-            ]);
+        Log::info('Requisição para registrar usuário. Requisição: ' . json_encode($request->except(['password', 'password_confirmation'])) . '.');
 
-            if ($validator->fails()) {
-                throw ValidationException::withMessages($validator->errors()->all());
-            }
+        $validator = Validator::make($request->all(), [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:6', 'confirmed'],
+        ]);
 
-            $user = DB::transaction(function () use ($request) {
-                return User::create([
-                    'name' => $request->name,
-                    'email' => $request->email,
-                    'password' => Hash::make($request->password),
-                    'role' => Roles::CLIENT,
-                ]);
-            });
-
-            return response()->json([
-                'message' => 'User created',
-                'user' => $user,
-            ], 201);
-        } catch (Exception $e) {
-            throw $e;
+        if ($validator->fails()) {
+            throw ValidationException::withMessages($validator->errors()->all());
         }
+
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'role' => Roles::CLIENT,
+        ]);
+
+        Log::info('Usuário registrado. Usuário: ' . json_encode($user) . '.');
+
+        return response()->json([
+            'message' => 'User created',
+            'user' => $user,
+        ], 201);
     }
 
     /**
@@ -67,6 +55,8 @@ class AuthController extends Controller
      */
     public function login(Request $request)
     {
+        Log::info('Requisição para logar usuário. Usuário: ' . json_encode($request->except('password')) . '.');
+
         $validator = Validator::make($request->all(), [
             'email' => ['required', 'string', 'email', 'max:255'],
             'password' => ['required', 'string', 'min:6'],
@@ -81,6 +71,8 @@ class AuthController extends Controller
         if (! $token = auth()->attempt($credentials)) {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
+
+        Log::info('Usuário logado. Usuário: ' . Auth::user()->id . '.');
 
         return $this->respondWithToken($token);
     }
@@ -102,7 +94,13 @@ class AuthController extends Controller
      */
     public function logout()
     {
+        $user = Auth::user();
+
+        Log::info('Requisição para deslogar usuário. Usuário: ' . $user->id . '.');
+
         auth()->logout();
+
+        Log::info('Usuário deslogado. Usuário: ' . $user->id . '.');
 
         return response()->json(['message' => 'Successfully logged out']);
     }

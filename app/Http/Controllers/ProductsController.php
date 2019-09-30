@@ -9,9 +9,12 @@ use Illuminate\Validation\ValidationException;
 use App\Filters\ProductFilters;
 use App\Rules\Sortable;
 use Log;
+use Auth;
 
 class ProductsController extends Controller
 {
+    private $user;
+
     /**
      * Create a new ProductsController instance.
      *
@@ -20,6 +23,8 @@ class ProductsController extends Controller
     public function __construct()
     {
         $this->middleware('jwt.auth');
+
+        $this->user = Auth::user();
     }
 
     /**
@@ -29,8 +34,6 @@ class ProductsController extends Controller
      */
     public function index(Request $request, ProductFilters $filters)
     {
-        // Log::info("Requisição para listar produtos");
-
         $perPage = $request->perPage ?? 20;
 
         if (count($request->except('page')) > 0) {
@@ -65,6 +68,8 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
+        Log::info('Requisição para criar produto. Usuário: ' . $this->user->id . '; Requisição: ' . json_encode($request->all()) . '.');
+
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'brand' => 'required|string|max:255',
@@ -79,6 +84,8 @@ class ProductsController extends Controller
         $this->validateUniqueNameAndBrand($request);
 
         $product = Product::create($request->all());
+
+        Log::info('Produto criado. Usuário: ' . $this->user->id . '; Produto: ' . json_encode($product) . '.');
 
         return response()->json([
             'message' => 'Product created.',
@@ -106,6 +113,8 @@ class ProductsController extends Controller
      */
     public function update(Request $request, Product $product)
     {
+        Log::info('Requisição para atualizar produto. Usuário: ' . $this->user->id . '; Produto: ' . $product->id . '; Requisição: ' . json_encode($request->all()) . '.');
+
         $validator = Validator::make($request->all(), [
             'name' => 'string|max:255',
             'brand' => 'string|max:255',
@@ -121,6 +130,8 @@ class ProductsController extends Controller
 
         $product->update($request->all());
 
+        Log::info('Produto atualizado. Usuário: ' . $this->user->id . '; Produto: ' . json_encode($product) . '.');
+
         return response()->json([
             'message' => 'Product updated.',
             'product' => $product
@@ -135,7 +146,11 @@ class ProductsController extends Controller
      */
     public function destroy(Product $product)
     {
+        Log::info('Requisição para remover produto. Usuário: ' . $this->user->id . '; Produto: ' . $product->id . '.');
+
         $product->delete();
+
+        Log::info('Produto removido. Usuário: ' . $this->user->id . '; Produto: ' . json_encode($product) . '.');
 
         return response()->json([
             'message' => 'Product deleted.',
