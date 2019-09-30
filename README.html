@@ -2,14 +2,15 @@
 <head>
     <title>Daniel Martiniano</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
-
     <style>
         code {
             background-color : #ddd;
             padding          : 2px 5px;
             font-family      : monospace;
             font-size        : 16px;
-            line-height      : 3;
+        }
+        h2 {
+          color:darkred;
         }
     </style>
 </head>
@@ -23,24 +24,12 @@
 
     <h1>Desafio Veus - Daniel Martiniano</h1>
 
-    <h2>Backend - API</h2>
-    
-    <ul>
-      <li>Para que o projeto tenha um exemplo de relacionamento, foi criada uma tabela <i>brands</i> e usa respectiva seed para guardar a marca dos produtos</li>
-      <li>Como foram utilizados somente 2 models, optei por mantê-los no padrão do Laravel, ou seja, na raiz da pasta app. Para projetos reais eu prefiro pastas por domínio e dentro destas pastas seus respectivos Models, Controllers, etc...</li>
-    </ul>
-
-    
-    <h2>Frontend</h2>
-    
-    [ TODO: detalhes sobre o frontend ]
-    
     <h2>Sobre o projeto</h2>
     
-    <h3>Idioma</h3>
-    
-    <p>Inglês, por ser provavelmente requisito para a vaga</p>
-
+      - Para que o projeto tenha um exemplo de relacionamento, foi criada uma tabela <i>brands</i> e sua respectiva <i>seed</i> para guardar a marca dos produtos
+      <br>
+      - Como foram utilizados somente 2 models, optei por mantê-los no padrão do Laravel, ou seja, na raiz da pasta app. Para projetos reais eu prefiro pastas por domínio e dentro destas pastas seus respectivos Models, Controllers, etc...
+   
     <h3>Versionamento</h3>
     
     <p>
@@ -58,18 +47,20 @@
     <p>
       Os testes estão dentro da pasta padrão de testes do Laravel.
       <br>
-      Foram criados 4 testes do CRUD, 1 teste para acesso nao autorizado, 1 teste verificando se um produto tem uma marca vinculada
+      Foram criados 4 testes do CRUD, 1 teste para acesso nao autorizado, 1 teste verificando se um produto tem uma marca vinculada.
       <br>
       Executados diretamente pelo phpunit da pasta vendor, com o comando <code>./vendor/bin/phpunit caminho/do/teste.php</code>
     </p>
     
     <h3>Autenticação</h3>
 
-    <p>Utilizado o Passport
+    <p>Utilizado o <a href="https://laravel.com/docs/6.x/passport" target="_blank"> Passport</a>
       <br>
-      Optei por remover as keys do .gitinore para permitir carregar as keys no repositório, para manter as coisas simples para o desafio
+      Optei por utilizar as keys direto no arquivo .env, para permitir carregar as keys no repositório, mantendo as coisas simples para o desafio.
       <br>
-      Em um projeto real, optaria pela geração das keys no fluxo do docker
+      Foi utilizada uma <i>seed</i> para gerar o client da API, facilitando testar a aplicação.
+      <br>
+      Em um projeto real, optaria pela geração das keys no fluxo do docker.
     </p>
 
     <h2>Sobre o ambiente</h2>
@@ -88,53 +79,46 @@
       <li>Adicionei uma network para comunicação entre os serviços</li>
     </ul>
 
-    <p>Permissões:</p>
-
+    <h2>Subindo a aplicação</h2>
+    
+    <p>
+      <code>cd</code> na pasta do projeto e execute o comando <code>docker-compose up -d</code> para iniciar os containers e mantê-los executando em background (detached)
+    </p>
+    
+    <p>
+      1. Execute os comandos abaixo para executar pelo bash do container, acessado por
+      <code>docker exec -it php-fpm /bin/bash</code> ou <code>docker exec -it php-fpm bash</code>
+    </p>
+    
     <ul>
-      <li>Para conseguir atualizar os arquivos da fonte do projeto, usei o comando <code>sudo chown meuUsuario:meuUsuario -R .</code></li>
-      <li>para dar permissão ao meu usuario local e <code>sudo chmod -R 777</code> para liberar acesso a todas as pastas (777 pois não estamos em produção)</li>
+      <li>composer install</li>
+      <li>php artisan migrate:refresh</li>
     </ul>
-
-    <p>
-      Para executar as migrations e comandos artisan, os comandos foram efetuados direto pelo <i>bash</i> do container, com <code>docker exec -it php-fpm /bin/bash</code>
-    </p>
-
-    <h2>e finalmente... subindo a aplicação</h2>
     
     <p>
-      <code>cd</code> na pasta do projeto e execute o comando <code>docker-compose up -d</code>
-    </p>
-    
-    <p>
-      Este comando irá iniciar os containers e mantê-los executando em background (detached)
-    </p>
-    
-    <p>
-      Acessem a aplicação via <i>localhost</i>, pelos enderecos definidos abaixo
+      2. Acesse a aplicação via <i>localhost</i>, pelos enderecos definidos abaixo (caso esteja em ambiente windows, talvez seja necessário usar o comando <code>docker-machine ip</code> para
+      verificar o IP que sua VM utiliza para o docker, substitua o ip encontrado pelo 'localhost' do exemplo acima)
     </p>
 
     <ul>
       <li>nginx: localhost:8888</li>
-      <li>mysql: localhost:3306</li>
-    </ul>
-
-    <ul style="margin-bottom: 100px">
-      <li>login: usuario@veusapi.com.br</li>
-      <li>senha: password</li>
+      <li>mysql: localhost:3306 (dados de acesso no dockerfile)</li>
     </ul>
 
     <p>
-      no repositório, também está um arquivo com a collection do Postman, já com todas as configurações necessários para testes da API
+      3. No repositório, está o arquivo "collectionVeusApi.json" do <a href="https://www.getpostman.com/">Postman</a>, já com todas as configurações e rotas necessárias para
+      testes da API, inclusive dados de acesso do usuário teste.
+      <ul>
+        <li><strong>Utilize o Postman ou outra ferramenta de sua preferência para consumir a API</strong></li>
+        <li><strong>Utilize as rotas da segunda versão v2, já que a primeira foi usada somente como exemplo de versionamento. <a href="">Veja aqui a documentação!</a></strong></li>
+      </ul>
+      
+      <br>
+      
     </p>
-
+    
     </div>
 </div>
 
-<script>
-    var tables = document.getElementsByTagName('table');
-    for (var i = 0; i < tables.length; i++) {
-        tables[i].className = "pure-table";
-    }
-</script>
 </body>
 </html>
