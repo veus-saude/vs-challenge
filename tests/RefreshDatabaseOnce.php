@@ -29,4 +29,6 @@ trait RefreshDatabaseOnce
             static::$setUpHasRunOnce = true;
         }
     }
+
+    // TODO: TearDown
 }

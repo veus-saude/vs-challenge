@@ -25,13 +25,21 @@ Siga os passos:
 
 > Por padrão a aplicação e banco de dados serão criados nas portas 8007 e 3007 respectivamente. Você pode especificar outra porta no arquivo `docker-compose.yml` na seção `ports` dos serviços `app` e `db`. Alterar também a porta na variável `APP_URL` do arquivo `.env`.
 
-2. Crie um usuário tipo `administrador`. O usuário criado possui nome `Admin`, e-mail `admin@example.com` e senha `secret`. 
+2. Entre no container do serviço `app`.
+
+* `docker-compose exec app bash`
+
+3. Crie as tabelas do banco de dados.
+
+* `php artisan migrate`
+
+4. Crie um usuário tipo `administrador`. O usuário criado possui nome `Admin`, e-mail `admin@example.com` e senha `secret`. 
 
 * `php artisan app:create-admin -D`
 
 > É possível customizar os dados do usuário omitindo a opção `-D`. Deverá ser informado um nome, e-mail e senha válidos.
 
-3. Gere clientes e produtos fictícios (**OPCIONAL**).
+5. Gere clientes e produtos fictícios (**OPCIONAL**).
    
 * `php artisan db:seed`
 
@@ -45,6 +53,6 @@ Na pasta `postman` estão compartilhados os arquivos com a collection (veus-chal
 
 ## Testes
 
-Para executar os testes unitários rode o comando abaixo:
+Para executar os testes unitários rode o comando abaixo dentro do container `app` na raiz do projeto:
 
 * vendor/bin/phpunit

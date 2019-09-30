@@ -31,6 +31,8 @@ class ProductsController extends Controller
     {
         // Log::info("Requisição para listar produtos");
 
+        $perPage = $request->perPage ?? 20;
+
         if (count($request->except('page')) > 0) {
             $validator = Validator::make($request->all(), [
                 'name' => 'string|max:255',
@@ -46,8 +48,6 @@ class ProductsController extends Controller
             if ($validator->fails()) {
                 throw ValidationException::withMessages($validator->errors()->all());
             }
-
-            $perPage = $request->perPage ?? 20;
 
             $products = Product::filter($filters)->paginate($perPage);
         } else {
