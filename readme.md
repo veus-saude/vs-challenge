@@ -29,17 +29,21 @@ Siga os passos:
 
 * `docker-compose exec app bash`
 
-3. Crie as tabelas do banco de dados.
+3. Instale as dependências
+
+* `composer install`
+
+4. Crie as tabelas do banco de dados.
 
 * `php artisan migrate`
 
-4. Crie um usuário tipo `administrador`. O usuário criado possui nome `Admin`, e-mail `admin@example.com` e senha `secret`. 
+5. Crie um usuário tipo `administrador`. O usuário criado possui nome `Admin`, e-mail `admin@example.com` e senha `secret`. 
 
 * `php artisan app:create-admin -D`
 
 > É possível customizar os dados do usuário omitindo a opção `-D`. Deverá ser informado um nome, e-mail e senha válidos.
 
-5. Gere clientes e produtos fictícios (**OPCIONAL**).
+6. Gere clientes e produtos fictícios (**OPCIONAL**).
    
 * `php artisan db:seed`
 
