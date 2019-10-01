@@ -6,16 +6,12 @@ use Laravel\Lumen\Testing\DatabaseTransactions;
 class ProductsEndpointTest extends TestCase
 {
     /**
-     * A basic test example.
-     *
-     * @return void
+     * /products [GET]
      */
     public function testGet()
     {
-        $this->get('/');
+        $this->get('/api/v1/products');
+        $this->seeStatusCode(200);
 
-        $this->assertEquals(
-            $this->app->version(), $this->response->getContent()
-        );
     }
 }

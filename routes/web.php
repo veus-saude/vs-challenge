@@ -14,3 +14,11 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+Route::group(['prefix' => 'api/v1'], function() {
+    Route::get('products', 'ProductsController@list');
+    Route::get('products/{id}', 'ProductsController@detail');
+    Route::put('products/{id}', 'ProductsController@update');
+    Route::post('products', 'ProductsController@create');
+    Route::delete('products/{id}', 'ProductsController@delete');
+});
