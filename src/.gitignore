@@ -2,7 +2,6 @@
 /public/hot
 /public/storage
 /vendor
-.env
 .env.backup
 .phpunit.result.cache
 Homestead.json
