@@ -79,7 +79,7 @@ class Product extends Model
         }
 
         // using eloquent awesome features to return results from the list requirements: ordering, searching and pagination
-        return Product::select('product.id', 'product.name', 'product.brand_id as brand', 'product.price', 'product.created_at')
+        return Product::select('product.id', 'product.name', 'product.brand_id as brand', 'product.price', 'product.quantity', 'product.created_at')
                     ->join('brand', 'brand.id', 'product.brand_id')
                     ->where('brand.name', 'like', '%' . $filter . '%' )
                     ->where('product.name', 'like', '%' . $search . '%' )

@@ -23,6 +23,8 @@ Route::group(['middleware' => 'auth:api', 'prefix' => 'v1', 'namespace' => '\App
     //Resource Route for API CRUD
     Route::apiResource('products', 'ProductController');
 
+    Route::get('/brands', 'BrandController@index');
+
 });
 
 // API v2 routes
@@ -30,5 +32,7 @@ Route::group(['middleware' => 'auth:api', 'prefix' => 'v2', 'namespace' => '\App
 
     //Resource Route for API CRUD
     Route::apiResource('products', 'ProductController');
+
+    Route::get('/brands', 'BrandController@index');
 
 });
