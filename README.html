@@ -86,18 +86,17 @@
     </p>
     
     <p>
-      1. Execute os comandos abaixo para executar pelo bash do container, acessado por
-      <code>docker exec -it php-fpm /bin/bash</code> ou <code>docker exec -it php-fpm bash</code>
+      1. Execute os comandos abaixo para executar pelo bash do container, acessado por <code>docker exec -it php-fpm bash</code>
     </p>
     
     <ul>
       <li>composer install</li>
-      <li>php artisan migrate:refresh</li>
+      <li>php artisan migrate:refresh --seed</li>
     </ul>
     
     <p>
       2. Acesse a aplicação via <i>localhost</i>, pelos enderecos definidos abaixo (caso esteja em ambiente windows, talvez seja necessário usar o comando <code>docker-machine ip</code> para
-      verificar o IP que sua VM utiliza para o docker, substitua o ip encontrado pelo 'localhost' do exemplo acima)
+      verificar o IP que sua VM utiliza para o docker, substitua o ip encontrado pelo 'localhost' do exemplo abaixo)
     </p>
 
     <ul>
@@ -106,11 +105,11 @@
     </ul>
 
     <p>
-      3. No repositório, está o arquivo "collectionVeusApi.json" do <a href="https://www.getpostman.com/">Postman</a>, já com todas as configurações e rotas necessárias para
+      3. No repositório, está o arquivo "veus-api.postman_collection.json" do <a href="https://www.getpostman.com/">Postman</a>, já com todas as configurações e rotas necessárias para
       testes da API, inclusive dados de acesso do usuário teste.
       <ul>
         <li><strong>Utilize o Postman ou outra ferramenta de sua preferência para consumir a API</strong></li>
-        <li><strong>Utilize as rotas da segunda versão v2, já que a primeira foi usada somente como exemplo de versionamento. <a href="">Veja aqui a documentação!</a></strong></li>
+        <li><strong>Utilize as rotas da segunda versão v2, já que a primeira foi usada somente como exemplo de versionamento. <a href="https://documenter.getpostman.com/view/4398933/SVtPWqEx?version=latest">Veja aqui a documentação!</a></strong></li>
       </ul>
       
       <br>
