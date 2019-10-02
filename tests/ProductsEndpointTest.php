@@ -48,9 +48,27 @@ class ProductsEndpointTest extends TestCase
     }
 
     /**
-     * api/v1/products/
+     * api/v1/products?query=word&brand=TEST
      */
+    public function testShouldReturnOneFilteredProductResponse()
+    {
+        $this->get('api/v1/products?query=lorem&brand=BUNZL');
+        $this->seeStatusCode(200);
+        $this->seeJsonStructure([
+            'data' => [
+                '*' => [
+                    'name',
+                    'description',
+                    'sku',
+                    'brand',
+                    'created_at',
+                    'updated_at',
+                    'links'
+                ]
 
+            ],
+        ]);
+    }
 
     /**
      * api/v1/products/1 [GET]

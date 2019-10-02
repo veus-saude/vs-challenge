@@ -78,6 +78,10 @@ $app->routeMiddleware([
 
 $app->register(App\Providers\AuthServiceProvider::class);
 
+
+$app->configure('eloquent-builder');
+$app->register(\Fouladgar\EloquentBuilder\LumenServiceProvider::class);
+
 /*
 |--------------------------------------------------------------------------
 | Load The Application Routes

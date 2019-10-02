@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 
 use App\Product;
 use App\Transformers\ProductTransformer;
+use EloquentBuilder;
 
 class ProductsController extends Controller
 {
@@ -30,9 +31,10 @@ class ProductsController extends Controller
     }
 
     //
-    public function list()
+    public function list(Request $request)
     {
-        $paginator = Product::paginate();
+        
+        $paginator = EloquentBuilder::to(Product::class, $request->all())->paginate();
         $products = $paginator->getCollection();
         $resource = new Collection($products, new ProductTransformer);
         $resource->setPaginator(new IlluminatePaginatorAdapter($paginator));
