@@ -3,9 +3,17 @@
 use Laravel\Lumen\Testing\DatabaseMigrations;
 use Laravel\Lumen\Testing\DatabaseTransactions;
 
+use Illuminate\Support\Facades\Artisan;
+
 class ProductsEndpointTest extends TestCase
 {
-    // public function setUp(){}
+    protected function setUp(): void
+    {
+        parent::setUp();
+        Artisan::call('db:wipe');
+        Artisan::call('migrate');
+        Artisan::call('db:seed');
+    }
     /**
      * api/v1/products [GET]
      */
@@ -38,6 +46,10 @@ class ProductsEndpointTest extends TestCase
         ]);
         $this->seeStatusCode(200);
     }
+
+    /**
+     * api/v1/products/
+     */
 
 
     /**
