@@ -2,11 +2,14 @@
 
 use Laravel\Lumen\Testing\DatabaseMigrations;
 use Laravel\Lumen\Testing\DatabaseTransactions;
-
 use Illuminate\Support\Facades\Artisan;
+use App\User;
+
+use Illuminate\Support\Facades\Hash;
 
 class ProductsEndpointTest extends TestCase
 {
+    private $userToken = 'DoYvonEze6WXMdBTEQRis2VxZufSxEFuDvJDouiPnJrwKEzKT3k8FJ2biATW';
     protected function setUp(): void
     {
         parent::setUp();
@@ -103,7 +106,7 @@ class ProductsEndpointTest extends TestCase
             'brand' => 'BUZNL'
         ];
 
-        $this->post('api/v1/products', $payload);
+        $this->post('api/v1/products', $payload, ['Authorization' => "Token {$this->userToken}"]);
         $this->seeJsonStructure([
             'data' => [
                 'id',
@@ -128,7 +131,7 @@ class ProductsEndpointTest extends TestCase
             'name' => 'Update product',
             'description' => 'Update product description',
         ];
-        $this->put("api/v1/products/4", $parameters, []);
+        $this->put("api/v1/products/4", $parameters, ['Authorization' => "Token {$this->userToken}"]);
         $this->seeStatusCode(200);
         $this->seeJsonStructure(
             [
@@ -151,7 +154,7 @@ class ProductsEndpointTest extends TestCase
     public function testShouldDeleteProduct()
     {
 
-        $this->delete("api/v1/products/1", [], []);
+        $this->delete("api/v1/products/1", [], ['Authorization' => "Token {$this->userToken}"]);
         $this->seeStatusCode(410);
         $this->seeJsonStructure([
             'status',
