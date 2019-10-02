@@ -26,7 +26,14 @@ class ProductsController extends Controller
      * @return void
      */
     public function __construct()
-    {
+    { 
+        $this->middleware('auth', [
+            'only' =>   [
+                'create',
+                'update',
+                'delete'
+            ]
+        ]);
         $this->fractal = new Manager();
     }
 

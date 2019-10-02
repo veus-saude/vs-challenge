@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
+
+use App\User;
 
 class DatabaseSeeder extends Seeder
 {
@@ -11,6 +15,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Product::class, 10)->create();
+        DB::table('users')->delete();
+
+        $users = array([
+            'name' => 'Veus', 'email' => 'veus@example.com', 'password' => Hash::make('secret'), 'api_token' => Str::random(60)
+        ]);
+
+        foreach ($users as $user) {
+            User::create($user);
+        }
     }
 }
