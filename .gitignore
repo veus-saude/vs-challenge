@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 /vendor
 /.idea
 Homestead.json
 Homestead.yaml
 .env
 .phpunit.result.cache
+=======
+.idea/
+>>>>>>> 1f381376fc867889e3c6f094beeab66b65ee8671
