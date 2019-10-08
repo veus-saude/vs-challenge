@@ -35,6 +35,7 @@ JSON
         "brand": {marca},
         "price": {preço},
         "amount": {quantidade}
+        "token": {token}
     }
 ```
 Para apagar um registro de produto específico pela id:
@@ -56,6 +57,8 @@ PUT/PATCH http://localhost:3000/api/v1/products/update
         "brand": {marca},
         "price": {preço},
         "amount": {quantidade}
+        "token": {token}
+
     }
 ```
 
