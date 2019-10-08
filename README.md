@@ -1,102 +1,34 @@
-# CRUD API - Desafio Veus Technology
+<p align="center">
+    <img src="https://i.imgur.com/2LUR2yy.png">
+</p>
 
-## Sem frameworks. Utiliza PHP, SQLite e JWT. 
+## Sobre a VEUS
 
-(Por motivo de falta de tempo, ainda existem alguns bugs e diversos error handlings a serem implementados. Porém, a API funciona como esperado.)
+Há 25 anos no mercado, a **Veus Technology** é uma empresa brasileira ligada ao segmento de saúde com foco na inovação tecnológica. É responsável por vários projetos pioneiros e estratégicos na área laboratorial, médica e recentemente hospitalar.
 
-## Iniciando o servidor
-Execute "start_server.bat". A API será servida em "localhost:3000".
+## Desafio VS
 
-## Autenticação:
-Para gerar um token de autenticação:
-```
-POST http://localhost:3000/auth
-JSON
-    {
-        "user_name": "demo",
-        "password": "demo"
-    }
-```
-## Interagindo com a API
-Para consultar todos os registros de produtos:
-```
-http://localhost:3000/api/v1/products
-```
-Para consultar um registro de produto específico pela id:
-```
-GET http://localhost:3000/api/v1/products?product_id={id}
-```
-Para criar um novo registro de produto:
-```
-POST http://localhost:3000/api/v1/products/create
-JSON
-    {
-        "product_name": {nome},
-        "brand": {marca},
-        "price": {preço},
-        "amount": {quantidade}
-    }
-```
-Para apagar um registro de produto específico pela id:
-```
-DELETE http://localhost:3000/api/v1/products/delete
-JSON
-    {
-    	"product_id": {id}
-        "token": {token}
-    }
-```
+Você deve implementar uma API utilizando *PHP* > 7.0. Nós recomendamos que você tente manter o seu códgo o mais simples possível. Se você precisar de qualquer informação adicional ou esclarecimento, você pode nos contatar pelo e-mail: **sistemas@veus.com.br**.
 
-Para atualizar um registro de produto específico pela id:
-```
-PUT/PATCH http://localhost:3000/api/v1/products/update
-    {
-        "product_id": {id},
-        "product_name": {nome},
-        "brand": {marca},
-        "price": {preço},
-        "amount": {quantidade}
-    }
-```
+Vamos imaginar que a sua empresa possua um e-commerce e venda alguns produtos para laboratórios e hospitais...
 
-### Filtros de busca:
+Sua tarefa é desenvolver um **CRUD** de Produtos e implementar um serviço de buscas desses produtos. Um produto possui nome, marca, preço e quantidade em estoque.
+A API deve requerer **autenticação** e permitir __search query__ através do método **GET** e suportar filtros opcionais nos campos do produto.
 
-Para aplicar filtros de busca, deve-se utilizar os seguintes parâmetros na query string:
-* "q": Filtra por nome.
-* "brand": Filtra por marca.
-* "price": Filtra por preço.
-* "amount": Filtra por quantidade.
-```
-Exemplo: http://localhost:3000/api/v1/products?q=caixa&filter=brand:Healthgard
-```
-Também poder ser aplicados os seguintes operadores:
- * "[gte]": Maior ou igual
- * "[lte]": Menor ou igual
- * "[eq]": Igual
- * "[gt]": Maior
- * "[lt]": Menor
-```
-Exemplo: http://localhost:3000/api/v1/products?price[gte]:200&amount[lt]:20
-```
+Por exemplo: Um cliente deve conseguir buscar todas as seringas da marca BUNZL fazendo a seguinte requisição:
 
-### Ordenação:
+`https://example.com/api/v1/products?q=seringa&filter=brand:BUNZL`
 
-Para aplicar modificadores de ordenação, deve-se utilizar os seguintes parâmetros na query string:
-* "q": Ordena por nome.
-* "brand": Ordena por marca.
-* "price": Ordena por preço.
-* "amount": Ordena por quantidade.
-```
-Exemplo: http://localhost:3000/api/v1/products?order=price
-```
-Para ordenar de maneira decrescente, deve-se utilizar o modificador "[desc]:
-```
-Exemplo: http://localhost:3000/api/v1/products?order=amount[desc]
-```
+A API também deve suportar __pagination__, __versioning__ e __sorting__.
 
-### Paginação:
+Sinta-se livre para usar qualquer library ou framework da sua preferência mas a regra de negócio deve estar o mais desaclopada possível deles.
 
-Para aplicar modificadores de paginação, deve-se utilizar os parâmetros "offset" e "limit" na query string:
-```
-Exemplo: http://localhost:3000/api/v1/products?limit=20&offset=5
-```
+Por favor, **não se esqueça** de providenciar uma pequena documentação de como levantar e testar o seu projeto.
+
+Bônus:
+* Docker
+* Unit Test
+* User Interface
+
+---
+Você será avaliado de acordo com a senioridade da posição a qual está aplicando. Ao finalizar o desafio você deve submeter o **Pull Request** com o seu código para a avaliação, após isso nos entrarem em contato com você através do e-mail passando um feedback do seu projeto.
