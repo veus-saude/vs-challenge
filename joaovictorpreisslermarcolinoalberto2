@@ -14,8 +14,6 @@ $conn = mysqli_connect($servidor, $usuario, $senha, $dbname);
 $pesquisar = $_POST['pesquisar'];
 $result_produtos = "SELECT * FROM bunzl WHERE nome LIKE '%$pesquisar%' Limit 5";
 $resultado_produtos = mysqli_query($conn, $result_produtos);
-$filtro = $_POST['Marca'];
-$result_marca = "SELECT * FROM bunzl WHERE marca LIKE '%$Marca%' ";
 while($rows_produtos = mysqli_fetch_array($resultado_produtos))
 {
   echo "<strong>Nome do Produto: </strong>".$rows_produtos['nome']."<br>";
