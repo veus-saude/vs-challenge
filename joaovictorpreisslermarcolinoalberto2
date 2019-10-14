@@ -17,6 +17,20 @@ $resultado_filtro = "SELECT * FROM vs WHERE marca = '$marca' and nome LIKE '%".$
 $resultadoquery = mysqli_query($conn, $resultado_filtro);
 $row = mysqli_num_rows($resultadoquery);
 
+if($marca == null)
+{
+  echo "<center>Por favor selecione uma Marca.</center>";
+  echo "<br/>";
+  echo "<a href='site.php'>Voltar</a>";
+  exit();
+}
+if($pesquisar == null)
+{
+  echo "<center>Por favor digite um produto.</center>";
+  echo "<br/>";
+  echo "<a href='site.php'>Voltar</a>";
+  exit();
+}
 if($row > 0)
 {
   while($resultadosfiltroline = mysqli_fetch_array($resultadoquery))
