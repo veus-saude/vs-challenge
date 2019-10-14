@@ -36,7 +36,7 @@ echo "<p>Parabéns, você está logado!</p>";
 <h1>Pesquisar Produto:</h1>
 
 <form name="search_form" method="POST" action="pesquisar.php">
-Pesquisar:<input type="text" name="pesquisar" placeholder="Digite o nome do produto"/>   <br>
+Pesquisar:<input type="text" name="pesquisar" placeholder="Digite o nome do produto"/>   
 <select name="marca">
 <option value="">Marcas </option>
 <?php
@@ -44,7 +44,7 @@ $result_marca = "SELECT * FROM vs WHERE marca_id";
 $resultado_marca = mysqli_query($conn, $result_marca);
 while ($rows_marca = mysqli_fetch_array($resultado_marca)) {
      $marca = $rows_marca['marca'];
-     $marca_id = $rows_marca['marca_id'];
+     $marca_id = $rows_marca['marca'];
    echo "<option value='$marca_id'>$marca</option>";
 }
 ?>
@@ -53,4 +53,3 @@ while ($rows_marca = mysqli_fetch_array($resultado_marca)) {
 </form>
 </body>
 </html>
-
