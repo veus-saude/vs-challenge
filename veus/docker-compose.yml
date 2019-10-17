@@ -1,0 +1,35 @@
+version: "3"
+services:
+
+  # Container do apache
+  veus-apache:
+    image: veus-apache
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: veus-apache
+    volumes:
+      - ./veus:/var/www/html/
+    expose:
+      - 80
+    depends_on:
+      - "veus-mysql"
+    networks:
+      - rede-veus
+    env_file:
+      - ./.env
+
+  # Container do mysql
+  veus-mysql:
+    image: mysql:8.0
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      # Le o password direto do .env
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+    networks:
+      - rede-veus
+
+networks:
+  rede-veus:
+    driver: bridge
