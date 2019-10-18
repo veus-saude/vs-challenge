@@ -14,6 +14,10 @@ class ProductRepository {
     function __construct() {
     }
 
+    public function find($id) {
+        return Product::find($id);
+    }
+
     /**
      * List of products
      *

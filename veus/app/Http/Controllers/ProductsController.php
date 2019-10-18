@@ -54,26 +54,31 @@ class ProductsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Product  $product
+     * @param  int $productId
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show($productId)
     {
-        return response()->json($product);
+        $product = $this->service->find($productId);
+        if (!empty($product)) {
+            return response()->json($product);
+        } else {
+            return response()->json(['error' => 'Product not found'], 404);
+        }
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Product  $product
+     * @param  int  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, $productId)
     {
         try {
             $data       = json_decode($request->getContent(), true);
-            $data['id'] = $product->id;
+            $data['id'] = $productId;
             $response = $this->service->update($data);
             return response()->json(['success' => $response]);
         } catch (\Exception $e) {

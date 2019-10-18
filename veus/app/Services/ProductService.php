@@ -22,6 +22,10 @@ class ProductService {
         $this->products = $products;
     }
 
+    public function find($id) {
+        return $this->products->find($id);
+    }
+
     /**
      * Return the list of products
      *
