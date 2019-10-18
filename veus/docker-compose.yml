@@ -10,14 +10,30 @@ services:
     container_name: veus-apache
     volumes:
       - ./:/var/www/html/
-    ports:
-      - 80:80
+    expose:
+      - 80
     depends_on:
       - "veus-mysql"
     networks:
       - rede-veus
     env_file:
       - ./.env
+
+  # Container do nginx
+  veus-nginx:
+    image: nginx:1.17.0
+    container_name: veus-nginx
+    command: /bin/sh -c "exec nginx -g 'daemon off;'"
+    expose:
+      - 80
+    ports:
+      - 80:80
+    networks:
+      - rede-veus
+    volumes:
+      - ./docker/nginx-gateway.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - "veus-apache"
 
   # Container do mysql
   veus-mysql:
