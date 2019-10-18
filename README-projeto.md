@@ -18,6 +18,10 @@ Ao levantar os serviços, o apache vai instalar as dependencias do projeto via c
 
 Então a principio o projeto só estará 100% levantado quando terminar os processos no container do apache ( isso depende da sua conexão com a internet ).
 
+Você pode acompanhar os logs do apache rodando o comando abaixo:
+
+`$ docker logs -f veus-apache`
+
 ## Requisitos
 
 ### Versionamento
