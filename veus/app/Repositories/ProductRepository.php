@@ -37,15 +37,27 @@ class ProductRepository {
         }
 
         # Pagination
-        $page = Arr::get($params, 'page', 1);
+        $page    = Arr::get($params, 'page', 1);
         $perPage = Arr::get($params, 'perPage', 2);
+        $start   = ($page - 1) * $perPage;
 
-        $start = ($page - 1) * $perPage;
 
-        $result = Product::where($where)
+        $qry = Product::where($where)
                     ->limit($perPage)
-                    ->offset($start)
-                    ->get();
+                    ->offset($start);
+
+        # Sorting
+        $sortableFields = ['name', 'brand', 'price', 'stock', 'created_at', 'updated_at'];
+
+        if (
+            Arr::has($params, 'sort.field') && !empty($params['sort']['field']) && in_array($params['sort']['field'], $sortableFields) &&
+            Arr::has($params, 'sort.order') && !empty($params['sort']['order'])
+        ) {
+            $qry->orderBy($params['sort']['field'], $params['sort']['order']);
+        }
+
+
+        $result = $qry->get();
 
         return $result;
     }

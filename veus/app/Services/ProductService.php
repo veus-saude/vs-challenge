@@ -41,6 +41,17 @@ class ProductService {
             Arr::forget($params, 'filter');
         }
 
+        // If it has sorting and matches the search pattern..
+        if (Arr::has($params, 'sort') && !empty($params['sort']) && preg_match('/([a-zA-Z]{1,10})\:(ASC|DESC)?/', $params['sort'])) {
+            list($field, $order) = explode(':', $params['sort']);
+            $params['sort'] = [
+                'field' => $field,
+                'order' => $order
+            ];
+        } else {
+            Arr::forget($params, 'sort');
+        }
+
         if (Arr::has($params, 'page') && (!is_numeric($params['page']) || $params['page'] <= 0)) {
             $params['page'] = 1;
         }

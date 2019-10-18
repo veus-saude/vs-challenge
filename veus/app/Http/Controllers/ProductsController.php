@@ -27,7 +27,7 @@ class ProductsController extends Controller
      */
     public function index(Request $request)
     {
-        $params = $request->only(['q', 'filter', 'page', 'perPage']);
+        $params = $request->only(['q', 'filter', 'page', 'perPage', 'sort']);
 
         $products = $this->service->list($params);
 
