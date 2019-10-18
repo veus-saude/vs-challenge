@@ -30,6 +30,7 @@ services:
     environment:
       # Le o password direto do .env
       MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: ${DB_DATABASE}
     networks:
       - rede-veus
 
