@@ -51,4 +51,13 @@ class ProductService {
 
         return $this->products->list($params);
     }
+
+    /**
+     * Saves a product
+     *
+     * @return bool
+     */
+    public function save($product) {
+        return $this->products->save($product);
+    }
 }

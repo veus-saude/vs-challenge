@@ -19,5 +19,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::middleware('auth:api')->group(function() {
     Route::get('/products', 'ProductsController@index');
+    Route::post('/products', 'ProductsController@store');
     Route::get('/products/{product}', 'ProductsController@show');
 });

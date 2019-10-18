@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Validator;
 use App\Product;
 
 /**
@@ -47,5 +48,29 @@ class ProductRepository {
                     ->get();
 
         return $result;
+    }
+
+    /**
+     * Saves a product
+     *
+     * @return Product
+     */
+    public function save($product) {
+
+        $validator = Validator::make(
+            $product,
+            [
+                'name' => 'required|string|max:255',
+                'stock' => 'required|numeric',
+                'price' => 'required|numeric',
+                'brand' => 'required|string|max:60',
+            ]
+        );
+        // Se tiver erro de validação
+        if ($validator->fails()) {
+            throw new \Exception($validator->errors()->all()[0]);
+        }
+
+        return Product::insert($product);
     }
 }

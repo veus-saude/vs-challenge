@@ -42,7 +42,14 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $product = json_decode($request->getContent(), true);
+            $response = $this->service->save($product);
+
+            return response()->json(['success' => true]);
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 400);
+        }
     }
 
     /**
