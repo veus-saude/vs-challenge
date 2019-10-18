@@ -1,0 +1,267 @@
+{
+	"info": {
+		"_postman_id": "0509e02f-3f66-4388-a218-6233398f9eed",
+		"name": "Veus",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Current User",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer RNRwNIuyaWseR5Pdgo5idhAk87ef8XME2KoUr8XoSHviSGha7DxRIZ6ZbbVHeBEErjh0UufgBFxhB2AK",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost/api/user",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Products",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer RNRwNIuyaWseR5Pdgo5idhAk87ef8XME2KoUr8XoSHviSGha7DxRIZ6ZbbVHeBEErjh0UufgBFxhB2AK",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost/api/v1/products?",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"v1",
+						"products"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "perPage",
+							"value": "200",
+							"disabled": true
+						},
+						{
+							"key": "q",
+							"value": "5ml",
+							"disabled": true
+						},
+						{
+							"key": "filter",
+							"value": "price:135.2",
+							"description": "brand:BUNZL",
+							"disabled": true
+						},
+						{
+							"key": "sort",
+							"value": "price:DESC",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Product",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer RNRwNIuyaWseR5Pdgo5idhAk87ef8XME2KoUr8XoSHviSGha7DxRIZ6ZbbVHeBEErjh0UufgBFxhB2AK",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost/api/v1/products/20",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"v1",
+						"products",
+						"20"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Insert Product",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer RNRwNIuyaWseR5Pdgo5idhAk87ef8XME2KoUr8XoSHviSGha7DxRIZ6ZbbVHeBEErjh0UufgBFxhB2AK",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Novo produto 23\",\n\t\"price\": 10.50,\n\t\"brand\": \"Google\",\n\t\"stock\": 10\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost/api/products",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Product",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer RNRwNIuyaWseR5Pdgo5idhAk87ef8XME2KoUr8XoSHviSGha7DxRIZ6ZbbVHeBEErjh0UufgBFxhB2AK",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Amazon Alexa\",\n\t\"price\": 1395.50,\n\t\"brand\": \"Amazon\",\n\t\"stock\": 2\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost/api/v1/products/27",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"v1",
+						"products",
+						"27"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Product",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer RNRwNIuyaWseR5Pdgo5idhAk87ef8XME2KoUr8XoSHviSGha7DxRIZ6ZbbVHeBEErjh0UufgBFxhB2AK",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost/api/v1/products/1",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"v1",
+						"products",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
