@@ -35,6 +35,9 @@ Para facilitar os testes manuais do projeto foi adicionada uma `collection do po
 
 Você pode importar essa collection e testar a API.
 
+### Regra de negócio desacoplada do framework
+Para este requisito foram usados `services` e `repositories` para abstrair o acesso ao model e granularizar as camadas
+
 ### Testes unitários
 Também foram incluídos testes unitários para as rotas do controller fazendo validações nas funcionalidades.
 
