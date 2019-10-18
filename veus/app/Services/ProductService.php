@@ -60,4 +60,13 @@ class ProductService {
     public function save($product) {
         return $this->products->save($product);
     }
+
+    /**
+     * Updates a product
+     *
+     * @return bool
+     */
+    public function update($product) {
+        return $this->products->update($product);
+    }
 }

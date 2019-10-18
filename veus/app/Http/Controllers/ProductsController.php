@@ -45,8 +45,7 @@ class ProductsController extends Controller
         try {
             $product = json_decode($request->getContent(), true);
             $response = $this->service->save($product);
-
-            return response()->json(['success' => true]);
+            return response()->json(['success' => $response]);
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()], 400);
         }
@@ -64,17 +63,6 @@ class ProductsController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Product  $product
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Product $product)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -83,7 +71,14 @@ class ProductsController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        try {
+            $data       = json_decode($request->getContent(), true);
+            $data['id'] = $product->id;
+            $response = $this->service->update($data);
+            return response()->json(['success' => $response]);
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 400);
+        }
     }
 
     /**

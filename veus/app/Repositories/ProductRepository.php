@@ -66,11 +66,39 @@ class ProductRepository {
                 'brand' => 'required|string|max:60',
             ]
         );
-        // Se tiver erro de validação
+        // If there are validation errors
         if ($validator->fails()) {
             throw new \Exception($validator->errors()->all()[0]);
         }
 
-        return Product::insert($product);
+        $p = new Product($product);
+        return $p->save();
+    }
+
+    /**
+     * Updates a product
+     *
+     * @return bool
+     */
+    public function update($product) {
+        $validator = Validator::make(
+            $product,
+            [
+                'id' => 'required|numeric',
+                'name' => 'required|string|max:255',
+                'stock' => 'required|numeric',
+                'price' => 'required|numeric',
+                'brand' => 'required|string|max:60',
+            ]
+        );
+        // If there are validation errors
+        if ($validator->fails()) {
+            throw new \Exception($validator->errors()->all()[0]);
+        }
+
+        $p = Product::find($product['id']);
+        // Fill in the fields
+        $p->fill(Arr::except($product, ['id']));
+        return $p->save();
     }
 }
