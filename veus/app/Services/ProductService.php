@@ -22,6 +22,22 @@ class ProductService {
         $this->products = $products;
     }
 
+    /**
+     * Deletes a product by id
+     *
+     * @param int $id
+     * @return bool
+     */
+    public function delete($id) {
+        return $this->products->delete($id);
+    }
+
+    /**
+     * Find a product by id
+     *
+     * @param int $id
+     * @return Product
+     */
     public function find($id) {
         return $this->products->find($id);
     }

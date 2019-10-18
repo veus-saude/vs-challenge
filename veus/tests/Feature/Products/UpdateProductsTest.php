@@ -15,11 +15,11 @@ class UpdateProductsTest extends TestCase
     use WithoutMiddleware;
 
     /**
-     * Inserction of Products.
+     * Update of Products.
      *
      * @return void
      */
-    public function testInsertProductsTest()
+    public function testUpdateProductsTest()
     {
         $path = '/api/products/10';
 
@@ -36,7 +36,7 @@ class UpdateProductsTest extends TestCase
                     'success' => true
                 ]);
 
-        $responseGetProduct = $this->call('GET', $path, [], ['Accept' => 'application/json']);
+        $responseGetProduct = $this->json('GET', $path);
         $updatedProduct = json_decode($responseGetProduct->content(), true);
 
         $this->assertEquals($updatedProduct['name'], $product['name']);

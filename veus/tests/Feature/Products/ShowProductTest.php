@@ -6,7 +6,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Tests\TestCase;
 
-class ListProductsTest extends TestCase
+class ShowProductTest extends TestCase
 {
     /**
      * Defino que não quero que os middlewares sejam invocados
@@ -15,18 +15,18 @@ class ListProductsTest extends TestCase
     use WithoutMiddleware;
 
     /**
-     * List of Products.
+     * Show Product
      *
      * @return void
      */
-    public function testListProductsTest()
+    public function testShowProductTest()
     {
-        $path = '/api/products';
+        $path = '/api/products/10';
 
         $response = $this->json('GET', $path);
         $response->assertStatus(200)
                 ->assertJsonStructure([
-                    [ 'name', 'brand', 'price', 'stock', 'created_at', 'updated_at' ]
+                    'name', 'brand', 'price', 'stock', 'created_at', 'updated_at'
                 ]);
     }
 }

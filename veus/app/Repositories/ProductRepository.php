@@ -14,6 +14,23 @@ class ProductRepository {
     function __construct() {
     }
 
+    /**
+     * Deletes a product by id
+     *
+     * @param int $id
+     * @return bool
+     */
+    public function delete($id) {
+        $product = Product::find($id);
+        return $product->delete();
+    }
+
+    /**
+     * Find a product by id
+     *
+     * @param int $id
+     * @return Product
+     */
     public function find($id) {
         return Product::find($id);
     }

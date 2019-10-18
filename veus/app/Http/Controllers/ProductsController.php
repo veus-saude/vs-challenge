@@ -89,11 +89,22 @@ class ProductsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Product  $product
+     * @param  int $productId
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy($productId)
     {
-        //
+        try {
+            $product = $this->service->find($productId);
+
+            if (!empty($product)) {
+                $response = $this->service->delete($productId);
+                return response()->json(['success' => $response]);
+            } else {
+                return response()->json(['error' => 'Product not found'], 404);
+            }
+        } catch(\Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 400);
+        }
     }
 }
