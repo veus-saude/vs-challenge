@@ -6,7 +6,10 @@
 `$ git clone https://github.com/heliortf/vs-challenge.git`
 
 **Entre na pasta do Projeto**
-`$ cd vs-challenge`
+`$ cd vs-challenge/veus`
+
+**Copie o arquivo de configuração do projeto**
+`$ cp -p .env.example .env`
 
 **Levante os serviços**
 `$ docker-compose up -d --build`
