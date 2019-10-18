@@ -21,7 +21,7 @@ class UpdateProductsTest extends TestCase
      */
     public function testUpdateProductsTest()
     {
-        $path = '/api/products/10';
+        $path = '/api/products/6';
 
         $product = [
             'name' => 'Updated Product Testing',

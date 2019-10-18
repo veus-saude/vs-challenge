@@ -21,7 +21,7 @@ class ShowProductTest extends TestCase
      */
     public function testShowProductTest()
     {
-        $path = '/api/products/10';
+        $path = '/api/products/8';
 
         $response = $this->json('GET', $path);
         $response->assertStatus(200)
