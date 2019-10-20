@@ -27,7 +27,7 @@ function getToken() {
 }
 
 function getProducts() {
-	$.get('api/v1/products', function(response) {
+	$.get('api/v1/products?filter=amount:<10', function(response) {
 		$('body').html(JSON.stringify(response));
 	}, 'json');
 }
