@@ -31,10 +31,7 @@ return array(
 			'allowAutoLogin'=>true,
 		),
 
-		'JWT' => array(
-			'class' => 'ext.jwt.JWT',
-			'key' => 'HERE-INPUT-YOUR-SECRET-KEY',
-		),
+		'JWT' => require(dirname(__FILE__) . '/jwt.php'),
 
 		'urlManager'=>array(
 			'urlFormat'=>'path',
