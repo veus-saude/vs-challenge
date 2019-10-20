@@ -17,6 +17,9 @@
  */
 class Product extends CActiveRecord
 {
+
+	public $brand;
+
 	/**
 	 * @return string the associated database table name
 	 */
@@ -37,6 +40,15 @@ class Product extends CActiveRecord
 			array('updated', 'safe'),
 			array('id, idBrand, name, price, amount, created, updated', 'safe', 'on'=>'search'),
 		);
+	}
+
+	public function afterFind()
+	{
+		$this->brand = Yii::app()->db->createCommand('
+			SELECT name FROM brand WHERE id = :id
+		')->queryScalar([':id'=>$this->idBrand]);
+
+		return parent::afterFind();
 	}
 
 	/**

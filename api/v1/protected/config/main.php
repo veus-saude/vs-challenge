@@ -31,6 +31,11 @@ return array(
 			'allowAutoLogin'=>true,
 		),
 
+		'JWT' => array(
+			'class' => 'ext.jwt.JWT',
+			'key' => 'HERE-INPUT-YOUR-SECRET-KEY',
+		),
+
 		'urlManager'=>array(
 			'urlFormat'=>'path',
 			'showScriptName'=>false,
