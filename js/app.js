@@ -25,7 +25,12 @@ function getToken() {
 		// getProducts();
 		// insertProduct();
 		// updateProduct();
-		deleteProduct();
+		// deleteProduct();
+
+		// getBrands();
+		// insertBrand();
+		// updateBrand();
+		deleteBrand();
 	}, 'json');
 }
 
@@ -78,6 +83,60 @@ function deleteProduct() {
 		contentType: 'application/json',
 		data: {
 			"id": "12",
+		},
+		success: function(response) {
+			$('body').html(JSON.stringify(response));
+		}
+	});
+}
+
+function getBrands() {
+	$.get('api/v1/brands?filter=name:marte', function(response) {
+		$('body').html(JSON.stringify(response));
+	}, 'json');
+}
+
+function insertBrand() {
+	$.post(
+		'api/v1/brands',
+		{
+			"Brand": {
+				"name": "Teste",
+			}
+		},
+		function(response) {
+			$('body').html(JSON.stringify(response));
+		},
+		'json'
+	);
+}
+
+function updateBrand() {
+	$.ajax({
+		url: 'api/v1/brands',
+		type: 'PUT',
+		dataType: 'json',
+		contentType: 'application/json',
+		data: {
+			"id": "7",
+			"Brand": {
+				"name": "Teste Editado",
+			}
+		},
+		success: function(response) {
+			$('body').html(JSON.stringify(response));
+		}
+	});
+}
+
+function deleteBrand() {
+	$.ajax({
+		url: 'api/v1/brands',
+		type: 'DELETE',
+		dataType: 'json',
+		contentType: 'application/json',
+		data: {
+			"id": "8",
 		},
 		success: function(response) {
 			$('body').html(JSON.stringify(response));

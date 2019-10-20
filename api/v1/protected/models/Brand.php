@@ -31,6 +31,7 @@ class Brand extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('name', 'required'),
+			array('name', 'unique'),
 			array('name', 'length', 'max'=>50),
 			array('updated', 'safe'),
 			// The following rule is used by search().
