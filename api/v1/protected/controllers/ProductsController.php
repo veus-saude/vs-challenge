@@ -5,6 +5,20 @@ class ProductsController extends ApiController
 
 	protected function get()
 	{
+		$products = Product::model()->findAll($this->getCriteria());
+		$data = [];
+		/** @var Product $product */
+		foreach($products as $product) {
+			$row = $product->getAttributes();
+			$row['brand'] = $product->brand;
+
+			$data[] = $row;
+		}
+		
+		$this->returnSuccess($data);
+	}
+
+	protected function getCriteria() {
 		$criteria = new CDbCriteria();
 		
 		if (isset($_GET['q'])) {
@@ -29,31 +43,87 @@ class ProductsController extends ApiController
 			}
 		}
 
-		$products = Product::model()->findAll($criteria);
-		$data = [];
-		/** @var Product $product */
-		foreach($products as $product) {
-			$row = $product->getAttributes();
-			$row['brand'] = $product->brand;
-
-			$data[] = $row;
-		}
-		echo CJSON::encode($data);
+		return $criteria;
 	}
 
 	protected function post()
 	{
+		if (!isset($_POST['Product'])) {
+			$this->returnError('Nenhum atributo do Produto foi recebido');
+		}
 
+		$model = new Product();
+		$model->setAttributes($_POST['Product']);
+
+		try {
+			if ($model->save()) {
+				$this->returnSuccess($model->id, 'Produto cadastrado com sucesso!');
+			}
+			else {
+				$this->returnError($model->getErrors());
+			}
+		}
+		catch(Exception $e) {
+			$this->returnError('Erro ao cadastrar produto: ' . $e->getMessage());
+		}
 	}
 
 	protected function put()
 	{
+		parse_str(file_get_contents("php://input"), $requestParams);
 
+		if (!isset($requestParams['id'])) {
+			$this->returnError('Parâmetro "id" é obrigatório');
+		}
+
+		if (!isset($requestParams['Product'])) {
+			$this->returnError('Nenhum atributo do Produto foi recebido');
+		}
+
+		$model = Product::model()->findByPk($requestParams['id']);
+		if (empty($model)) {
+			$this->returnError('Não foi encontrado nenhum produto com o id ' . $requestParams['id']);
+		}
+
+		$model->setAttributes($requestParams['Product']);
+
+		try {
+			if ($model->save()) {
+				$this->returnSuccess(null, 'Produto editado com sucesso!');
+			}
+			else {
+				$this->returnError($model->getErrors());
+			}
+		}
+		catch(Exception $e) {
+			$this->returnError('Erro ao editar produto: ' . $e->getMessage());
+		}
 	}
 
 	protected function delete()
 	{
+		parse_str(file_get_contents("php://input"), $requestParams);
 
+		if (!isset($requestParams['id'])) {
+			$this->returnError('O parâmetro "id" é obrigatório');
+		}
+
+		$model = Product::model()->findByPk($requestParams['id']);
+		if (empty($model)) {
+			$this->returnError('Não foi encontrado nenhum produto com o id ' . $requestParams['id']);
+		}
+
+		try {
+			if ($model->delete()) {
+				$this->returnSuccess('Produto removido com sucesso');
+			}
+			else {
+				$this->returnError('Não foi possível remover o produto');
+			}
+		}
+		catch(Exception $e) {
+			$this->returnError('Erro ao remover produto: ' . $e->getMessage());
+		}
 	}
 	
 }

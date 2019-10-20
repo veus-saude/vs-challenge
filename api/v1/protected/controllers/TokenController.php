@@ -21,7 +21,7 @@ class TokenController extends ApiController
 				],
 			]);
 
-			$this->returnSuccess('Autenticado com sucesso', ['token'=>$token]);
+			$this->returnSuccess(['token'=>$token]);
 		}
 		
 		$this->returnError('Credenciais inválidas');

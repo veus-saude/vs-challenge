@@ -18,6 +18,7 @@
 class Product extends CActiveRecord
 {
 
+	public $oldAttributes;
 	public $brand;
 
 	/**
@@ -35,6 +36,7 @@ class Product extends CActiveRecord
 	{
 		return array(
 			array('idBrand, name, price, amount', 'required'),
+			array('name', 'validateName'),
 			array('idBrand, amount', 'numerical', 'integerOnly'=>true),
 			array('name', 'length', 'max'=>70),
 			array('updated', 'safe'),
@@ -42,13 +44,44 @@ class Product extends CActiveRecord
 		);
 	}
 
+	/**
+	 * Valida se já existe um produto cadastrado com mesmo nome e marca
+	 * 
+	 * @return void
+	 */
+	public function validateName() {
+		if ($this->name == $this->oldAttributes['name'] && $this->idBrand == $this->oldAttributes['idBrand']) {
+			// Se não houve nenhuma alteração de nome ou marca, então não precisa validar
+			return;
+		}
+
+		$alreadyExists = Product::model()->exists(
+			'name = :name AND idBrand = :idBrand',
+			[':name'=>$this->name, ':idBrand'=>$this->idBrand]
+		);
+		if ($alreadyExists) {
+			$this->addError('name', 'Já existe um Produto dessa marca com o mesmo nome');
+		}
+	}
+
 	public function afterFind()
 	{
+		$this->oldAttributes = $this->getAttributes();
+
 		$this->brand = Yii::app()->db->createCommand('
 			SELECT name FROM brand WHERE id = :id
 		')->queryScalar([':id'=>$this->idBrand]);
 
 		return parent::afterFind();
+	}
+
+	public function beforeSave()
+	{
+		if (!$this->isNewRecord) {
+			$this->updated = date('Y-m-d H:i:s');
+		}
+
+		return parent::beforeSave();
 	}
 
 	/**

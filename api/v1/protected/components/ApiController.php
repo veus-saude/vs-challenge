@@ -5,6 +5,9 @@ use Firebase\JWT\ExpiredException;
 abstract class ApiController extends Controller
 {
 
+	const HTTP_CODE_SUCCESS = 200;
+	const HTTP_CODE_ERROR = 400;
+
 	protected $requireToken = true;
 
 	public function actionIndex()
@@ -81,7 +84,7 @@ abstract class ApiController extends Controller
 		}
 	}
 
-	protected function returnError($messages, $code = 400)
+	protected function returnError($messages, $code = self::HTTP_CODE_ERROR)
 	{
 		$messages = is_array($messages) ? $messages : [$messages];
 
@@ -93,7 +96,7 @@ abstract class ApiController extends Controller
 		Yii::app()->end();
 	}
 
-	protected function returnSuccess($messages, $result, $code = 200)
+	protected function returnSuccess($result, $messages = [], $code = self::HTTP_CODE_SUCCESS)
 	{
 		$messages = is_array($messages) ? $messages : [$messages];
 
