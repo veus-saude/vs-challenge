@@ -112,9 +112,4 @@ class Brand extends CActiveRecord
 	{
 		return parent::model($className);
 	}
-
-	public function saveModel($attributes, $validate = true) {
-		$this->setAttributes($attributes);
-		return $this->save($validate);
-	}
 }
