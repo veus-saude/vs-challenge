@@ -1,0 +1,66 @@
+version: '3'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: app
+    ports:
+      - "80:80"
+    restart: unless-stopped
+    tty: true
+    environment:
+      SERVICE_NAME: app
+      SERVICE_TAGS: dev
+    working_dir: /var/www/html
+    volumes:
+      - ./:/var/www/html
+    depends_on:
+      - composer
+      - db
+  
+  db:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: 'desafio'
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+
+  composer:
+    restart: 'no'
+    image: composer:latest
+    command: install
+    volumes:
+      - ./:/app
+
+  migrate:
+    restart: 'no'
+    image: desafio_app
+    command: php artisan migrate
+    working_dir: /var/www/html
+    volumes:
+      - ./:/var/www/html
+    depends_on:
+      - db
+      - composer
+      - app
+  
+  node:
+    image: "node:alpine"
+    user: "node"
+    command: npm install
+    working_dir: /usr/src/app
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - ./:/usr/src/app
+    depends_on:
+      - app
+    
