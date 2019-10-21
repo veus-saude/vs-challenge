@@ -50,13 +50,13 @@ class ProductsService {
             $products = $products->where('nome','ilike', '%'.$params['q'] .'%');
         }
 
-        if(isset($params['sort'])){
-            $queries['sort'] = $params['sort'];
-            $products = $products->orderBy($params['sort']);
+        if(isset($params['sort']['field'])){
+            $queries['sort'] = $params['sort']['field'];
+            $order = isset($params['sort']['order']) ? $params['sort']['order'] : 'asc';
+            $products = $products->orderBy($params['sort']['field'], $order);
         }
         
-        $per_page = isset($params['per_page']) ? $params['per_page'] : 3;
-        return $products->paginate($per_page)->appends($queries);
+        return $products->paginate($params['per_page'])->appends($queries);
 
     }
 

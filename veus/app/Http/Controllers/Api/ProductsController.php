@@ -41,7 +41,7 @@ class ProductsController extends Controller
         if($request->has('q')){
             $params['q'] = $request->q;
         }
-        $params['per_page'] = $request->has('per_page') ? $request->per_page : null;
+        $params['per_page'] = $request->has('per_page') ? $request->per_page : 3;
         
         $response = $this->productsService->findAll($params);
         
