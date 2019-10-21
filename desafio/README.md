@@ -29,3 +29,18 @@ Popule o banco utilizando o comando
 docker-compose run --rm app php artisan db:seed
 ```
 
+## Testando APIs
+### Listagem de Produtos
+```
+http://localhost/api/v1/products
+```
+
+### Listagem de Produtos ordenada pelo campo e buscando genericamente no campo Nome e Marca
+```
+http://localhost/api/v1/products?sort[field]=name&sort[order]=asc&q=de
+```
+
+### Listagem de Produtos ordenada pelo campo e buscando no campo Nome e Marca usando paginação
+```
+http://localhost/api/v1/products?sort[field]=name&sort[order]=asc&q=de&page=2
+```
