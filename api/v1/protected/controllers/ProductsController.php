@@ -22,7 +22,7 @@ class ProductsController extends ApiController
 		$criteria = new CDbCriteria();
 		
 		if (isset($_GET['q'])) {
-			$criteria->compare('name', $_GET['q'], true);
+			$criteria->compare('t.name', $_GET['q'], true);
 		}
 		if (isset($_GET['filter'])) {
 			$filters = is_array($_GET['filter']) ? $_GET['filter'] : [$_GET['filter']];
@@ -38,8 +38,20 @@ class ProductsController extends ApiController
 					$criteria->params[':brandName'] = $filterValue;
 				}
 				else {
-					$criteria->compare($attributeName, $filterValue);
+					$criteria->compare('t.' . $attributeName, $filterValue);
 				}
+			}
+		}
+		if (isset($_GET['sort_by'])) {
+			$criteria->order = $_GET['sort_by'];
+		}
+		if (isset($_GET['limit'])) {
+			$criteria->limit = $_GET['limit'];
+		}
+		if (isset($_GET['page_size'])) {
+			$criteria->limit = $_GET['page_size'];
+			if (isset($_GET['page_number'])) {
+				$criteria->offset = ($_GET['page_number'] - 1) * $criteria->limit;
 			}
 		}
 

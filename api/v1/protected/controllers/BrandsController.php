@@ -27,6 +27,19 @@ class BrandsController extends ApiController
 			}
 		}
 
+		if (isset($_GET['sort_by'])) {
+			$criteria->order = $_GET['sort_by'];
+		}
+		if (isset($_GET['limit'])) {
+			$criteria->limit = $_GET['limit'];
+		}
+		if (isset($_GET['page_size'])) {
+			$criteria->limit = $_GET['page_size'];
+			if (isset($_GET['page_number'])) {
+				$criteria->offset = ($_GET['page_number'] - 1) * $criteria->limit;
+			}
+		}
+
 		return $criteria;
 	}
 
