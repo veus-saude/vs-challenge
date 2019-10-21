@@ -49,9 +49,9 @@ $.ajax({
 	data: {
 		"q":"destilador",
 		"filter":["brand:marte","amount:>10","price:>=1000"],
-        "sort_by":"name DESC",
-        "page_size":"5",
-        "page_number":"2",
+		"sort_by":"name DESC",
+		"page_size":"5",
+		"page_number":"2",
 	},
 	success: function(response) {
 		$('#output').val(JSON.stringify(response, null, 2));
@@ -71,11 +71,11 @@ $.ajax({
 	dataType: 'json',
 	data: {
 		"Product": {
-            "name": "Teste",
-            "idBrand": "1",
-            "price": "10.40",
-            "amount": "100",
-	    }
+		    "name": "Teste",
+		    "idBrand": "1",
+		    "price": "10.40",
+		    "amount": "100",
+	    	}
 	},
 	success: function(response) {
 		$('#output').val(JSON.stringify(response, null, 2));
