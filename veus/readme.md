@@ -22,7 +22,7 @@ Client ID: 3
 Client secret: zdZAA8FLM3NC0CZCAKTz40NJF4bOQE4yKxhH6Qca
 
 3. Gerando o token: Neste passo, para gerar o token precisaremos realizar uma requisição para a rota __localhost:8000/oauth/token__ informando o client id e o client secret gerados anteriormente, como por exemplo:
-`curl localhost:8000/oauth/token -H "Content-Type: application/json" -d ': "password","client_id": 3,"client_secret" : "zdZAA8FLM3NC0CZCAKTz40NJF4bOQE4yKxhH6Qca","username" : "ab@ab.com","password" : "12345678"}'`
+`curl localhost:8000/oauth/token -H "Content-Type: application/json" -d '{"grant_type":"password","client_id": 3,"client_secret" : "zdZAA8FLM3NC0CZCAKTz40NJF4bOQE4yKxhH6Qca","username" : "ab@ab.com","password" : "12345678"}'`
 
 E a resposta deve ser algo como:
 
