@@ -92,6 +92,7 @@ abstract class ApiController extends Controller
 			'status' => 'error',
 			'code' => $code,
 			'messages' => $messages,
+			'result' => []
 		]);
 		Yii::app()->end();
 	}
