@@ -1,0 +1,229 @@
+{
+	"info": {
+		"_postman_id": "59259af4-0d0e-4a48-ba96-82f0b3ec22d4",
+		"name": "Veus Challenge",
+		"description": "Desafio da Veus",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Lista Produtos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost/api/v1/products",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"v1",
+						"products"
+					]
+				},
+				"description": "\t"
+			},
+			"response": []
+		},
+		{
+			"name": "Busca Generica nos campos Nome e Marca com Paginação",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost/api/v1/products?q=de",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"v1",
+						"products"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "de"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Busca por Marca com ordenação por preço",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost/api/v1/products?filter[brand]=Descarpack&sort[field]=price&sort[order]=asc",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"v1",
+						"products"
+					],
+					"query": [
+						{
+							"key": "filter[brand]",
+							"value": "Descarpack"
+						},
+						{
+							"key": "sort[field]",
+							"value": "price"
+						},
+						{
+							"key": "sort[order]",
+							"value": "asc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Criação de Produto",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\":\"Test\",\n\t\"brand\":\"Testing\",\n\t\"price\": 123.90,\n\t\"stock\": 20\n}"
+				},
+				"url": {
+					"raw": "localhost/api/v1/products",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"v1",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Exclusão de Produto",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost/api/v1/products/7",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"v1",
+						"products",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edição de Produto",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\":\"Test\",\n\t\"brand\": \"Testing\",\n\t\"stock\": 1,\n\t\"price\": 9.99\n}"
+				},
+				"url": {
+					"raw": "localhost/api/v1/products/6",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"v1",
+						"products",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Criação de token",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"grant_type\":\"password\",\n\t\"client_id\": 1,\n\t\"client_secret\" : \"ZvBQAZGg0EncAcL1Iv2ddEWCcV1rsKhJnhh22jOd\",\n\t\"username\" : \"wilsantosdev@gmail.com\",\n\t\"password\" : \"123456789\"\n\t\n}"
+				},
+				"url": {
+					"raw": "localhost/oauth/token",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"oauth",
+						"token"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
