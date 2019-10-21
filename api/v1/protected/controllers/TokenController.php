@@ -14,7 +14,7 @@ class TokenController extends ApiController
 	{
 		if (isset($_POST['login'], $_POST['password']) && $this->isValidCredential($_POST['login'], $_POST['password'])) {
 			$token = Yii::app()->JWT->encode([
-				'exp'=>time() + 5,
+				'exp'=>time() + 120,
 				'iss'=>'http://localhost',
 				'data'=>[
 					'login'=>$_POST['login'],
