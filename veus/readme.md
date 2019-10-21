@@ -64,3 +64,7 @@ Os filtros so feitos informando o parametro __filter__ no formato __[campo]=valo
 | /api/v1/products/{id} | PUT    | Realiza o Update do produto referente ao {id} informado através de um JSON.                                                           |   |   |
 | /api/v1/products/{id} | DELETE | Apaga o produto referente ao {id} informado.                                                                                          |   |   |
 
+
+## Testes
+
+Para realizar os testes automáticos basta executar o comando `vendor/bin/phpunit`
