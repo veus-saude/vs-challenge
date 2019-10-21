@@ -1,74 +1,66 @@
-<p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
+# Instalação
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+## Aplicação
 
-## About Laravel
+Necessário possuir composer e npm instalados.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+1. Clone o projeto executando: `git clone https://github.com/dcatein/vs-challenge.git`
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+2. Navegue até a pasta criada contendo o projeto, execute `./run.sh` isso fará com que as dependências sejam instaladas (composer e npm).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+3. Para iniciar a aplicação execute `php artisan serve`
 
-## Learning Laravel
+## API
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Após os passos acima citados, para que as API's sejam acessadas é necessário alguns passos para autenticação.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+1. Gerando as chaves: `php artisan passport:keys`
 
-## Laravel Sponsors
+2. Gerando o client secret: `php artisan passport:client --password`  pressione Enter para que a opção Default seja selecionada.
+Isso deve gerar uma saída como essa:
+Client ID: 3
+Client secret: zdZAA8FLM3NC0CZCAKTz40NJF4bOQE4yKxhH6Qca
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+3. Gerando o token: Neste passo, para gerar o token precisaremos realizar uma requisição para a rota __localhost:8000/oauth/token__ informando o client id e o client secret gerados anteriormente, como por exemplo:
+`curl localhost:8000/oauth/token -H "Content-Type: application/json" -d ': "password","client_id": 3,"client_secret" : "zdZAA8FLM3NC0CZCAKTz40NJF4bOQE4yKxhH6Qca","username" : "ab@ab.com","password" : "12345678"}'`
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
-- [Appoly](https://www.appoly.co.uk)
-- [OP.GG](https://op.gg)
+E a resposta deve ser algo como:
 
-## Contributing
+{
+  "token_type": "Bearer",
+  "expires_in": 31622400,
+  "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImFlYWE3ZjQ5MDY0ZjE4ODlhYmM0ZDllY2IxMTkxYTk2ZWI4NjM4MmI3NThiNjFmZTgxMmI1NGI0NjJiODNjOWNhYjdlMjMyY2M4MTg2NWQ1In0.eyJhdWQiOiIzIiwianRpIjoiYWVhYTdmNDkwNjRmMTg4OWFiYzRkOWVjYjExOTFhOTZlYjg2MzgyYjc1OGI2MWZlODEyYjU0YjQ2MmI4M2M5Y2FiN2UyMzJjYzgxODY1ZDUiLCJpYXQiOjE1NzE2Mzc2NjUsIm5iZiI6MTU3MTYzNzY2NSwiZXhwIjoxNjAzMjYwMDY1LCJzdWIiOiIzIiwic2NvcGVzIjpbXX0.UTSRQulXR6V49jPhKiRvlMQlvA2oNs2rfH5EpnOXBovYmnuooZhGo7-t2iGen4NjOceGRhq91BO1a6XG6Y3F99NIke9vV-rKnOxqh1jKzT3kBOfb-6zCLmGfmRF81xXByB7fOrD1tJ-EreLHf1vQ0ZfpPZuaG_8UfZuqkY-TstCCjhHWJgznCrtKiYKhQHlzMBviZMEm7pfExi6Tmv3SYW46lJqNCNOp_trWvvGACJVNYB_5Ll9RdWdClrAMBHw9Bf4nC2Bqxcm1rV5bAf8NfAsNnjoU8nM8Fwck33BTnBgsWnHfd3DZwDX0dfH_GuHuTHsvt4_FL8rW3sxhNxAsB_U-scIpigwhWjeaon2oG2hLbjkGsSsTGF8bRLCFRVS1fgAKSkHpMBM-dWRSXhwVIHMz0G8wPCdFmPG7O7yw0WOOJu8AeVCaVcmKfyVGGXMJ4e0VODwQAzQIqiYqL3ZY3AnN3_jHJienLfe2ekaeExlo1qbS9WdM1m6RS2nSg_-Gr3dLk2wa152FOfZZEsT_6mQ55qZArAgUp-Bi5M0t6ZwMFBe-vzX5dxPWdvWs_-fTyJsioI1UAfjm1c2NtLktjJAwia4fFuyQ5jxO66M-QU20t7o90ZP1NQh38r2k1ZYQjj-xCsDt3D3Y3fomzbQNofYBzbF3M0qoIlPi0Fyb6TE",
+  "refresh_token": "def5020016bc568398cfcaa51ab3974bc5b84b234fda15a779617f3d74627022328481b0c60f30e745c8eb36b09dbb9b857a6d6db0f53fffab27c7a04deefc52958801740304189072e422d61e3df2ef430f48f0698e822829171bd2ed0953b70eadb192d5665938ac66afe44fba4f3fd114fed2495bab34073fdd47112ed114aec0a8fa6a2b84a347089dee608b07585cc494ba3050145bc1fb3491f8a7cee759a038ec1ecef0bc8d13ed6a70fcdd2d3a6d5ed169bee578f1f37066dd65e8c8a64b65af2853b9d6fa2b67a4aee710a51c3c3d7989d9c54d9f60727741641c761953df31bf802e22bed6b6847cd5a84606ffec53ad711346b822e08a2ed5189cc994e3b89f4c059ac73010fd1e043b8dd0dfc4c7a5cb46c7ad8c5171f4af1fad4028ee8e5972787ce5ef2bfa6da9e1c9d1e4b1c29e658cc6e695993db23df9eed8304f409e12badaee273457a71a4b8ec12ec47bf73e1b95565561ff3c6468c2f3"
+}
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Obs.: O username ab@ab.com informado no exemplo é funcional, porém caso queira criar um novo usuário, acesse a aplicação é selecione Register no menu superior.
 
-## Security Vulnerabilities
+4. Após completar os passos até aqui, já é possível realizar as requisições para as API's da aplicação substituindo o header Authorization pelo acess_token gerado anteriormente, no seguinte formato:
+curl localhost:8000/api/v1/products -H "Accept: application/json"Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjBiYjY1Y2Y1ZDgwYmY0ZDU4ZDliMjg0YjI5MDcyYjNmZjQ2N2Q1NWJkYzQ0OTRmNzg4NzU4YTEzZDUyZTFkNzY3NTA1MTc4YzQzMWQyZTVlIn0.eyJhdWQiOiIzIiwianRpIjoiMGJiNjVjZjVkODBiZjRkNThkOWIyODRiMjkwNzJiM2ZmNDY3ZDU1YmRjNDQ5NGY3ODg3NThhMTNkNTJlMWQ3Njc1MDUxNzhjNDMxZDJlNWUiLCJpYXQiOjE1NzE2MzU4ODUsIm5iZiI6MTU3MTYzNTg4NSwiZXhwIjoxNjAzMjU4Mjg1LCJzdWIiOiIzIiwic2NvcGVzIjpbXX0.i9FqMSv61l6CVp-Rh_SF__v6n_bWR151K8EaIwxpjRxRa4WyI-0LPKMQ8TV419lgZ09ujvqbwD5YyBjNyjZFDcv3QijBtynwamug68M5Il92a6rCtbOOQHnYB0gLMefdB-C-0CkgpQYuqcXnNZdXZruKyTI4Qa6v3ORrqhVntBUmhmUZ5qiSIQYWl9A5kTqJz1JUFAwcop30z3PtsSL5SuoG_RqJXrD1MTuj3Cegd_hPDks-7wEpPCNoYBFUhfqnAzBlSi9FsmJmKhR_NqetE1Wa1XkVco2lVmuA_P6nPcCvXcmMy6_epdUWQ29mgWPJIEBa5ShJuACZfAjw69id8roBzRPyk8PlLFFt25_G2xg-YbiCBBXVLejHrULpYA99wcFU6V6Sx3vF5JdmOa_t5ZmWLmkXhoyqe8rOplZsfEHeiNxQN7iKNiiQm7UVFeK-Jv4DNbWHm68abDv2dTqIiG9DBWPCPLQQKUG7snZKvevpJrGAkKotFO80yy-CjqF80u6aPF8t81wk_YRihcvKE9o86-Zw9vxRxzfx1ClLpdknIURXh_ykRbg_9YpL4cHYtEQ3eT62kOVArKw-fu8s2U7J6vCzsJUmJLA7RikYb1uI_lCA8S7ek2YnT8FrWER-HwaRjM778cHGXTzcPF0hwmilLpWx_3UIZBdPQsCOL-w"
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-## License
+### Search
+Para realizar search basta informar o parametro __q__, por exemplo: `/api/v1/products?q=ser`
 
-The Laravel framework is open-source software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### Pagination
+A paginação é feita por Default com 3 itens por página, o parametro __per_page__ controla isso, por exemplo: `/api/v1/products?per_page=4`.
+Para acessar as páginas seguintes da lista, basta informar o parametro __page__, exemplo: `/api/v1/products?page=2`
+
+### Sort
+Para realizar a ordenação dos resultados informe o parametro __sort__ com os subitens __[field]__ e __[order]__, exemplo: `/api/v1/products?sort[field]=marca&sort[order]=asc`, o campo __[order]__ é opcional, seu valor default é "asc".
+Os valores possíveis para o campo __[field]__ são "marca","nome","preco" e "quantidade".
+
+### Filter
+Os filtros so feitos informando o parametro __filter__ no formato __[campo]=valor__, por exemplo: `/api/v1/products?filter[marca]=B`
+
+
+### API's disponiveis
+
+| Rota                  | Method | Resultado                                                                                                                             |   |   |
+|-----------------------|--------|---------------------------------------------------------------------------------------------------------------------------------------|---|---|
+| /api/v1/products      | GET    | Retorna todos os produtos cadastrados.                                                                                                |   |   |
+| /api/v1/products      | POST   | Aceita um JSON com os parametros para registrar um produto, exemplo: {"nome" : "aa",	 "marca" : "BB", "preco" : 100, "quantidade" : 2} |   |   |
+| /api/v1/products/{id} | GET    | Retorna o produto referente ao {id} informado.                                                                                        |   |   |
+| /api/v1/products/{id} | PUT    | Realiza o Update do produto referente ao {id} informado através de um JSON.                                                           |   |   |
+| /api/v1/products/{id} | DELETE | Apaga o produto referente ao {id} informado.                                                                                          |   |   |
+
