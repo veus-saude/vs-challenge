@@ -1,0 +1,14 @@
+##Leia-me###
+
+
+
+Prezados, este é um projeto em PHP simples. Basta executá-lo em um servidor, pondo os arqivos na raiz de leitura do servidor.
+
+Segue dentro do pacote um aquivo de nome 'veus.sql' que contém a cópia da base de dados utilizada nos testes.
+
+caso necessite mudar nome de usuário e senha da base, o arquivo 'conect.php' é o responsável pela conexão com o banco no projeto.
+
+
+
+
+o usuário para acessar ao sistema é 'veus' tendo senha igual ao login

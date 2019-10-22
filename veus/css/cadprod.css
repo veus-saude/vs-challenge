@@ -1,0 +1,82 @@
+@font-face{
+	font-family: roboto;
+	src: url('Roboto-Regular.ttf');
+	font-weight:normal;
+	font-style:normal;
+}
+*{
+	padding:0px;
+	margin:0px;
+}
+
+section{
+	width:80%;
+	position:relative;
+	float:left;
+	background-color:#FFF;
+	font-family:Roboto;
+	text-align:center;
+	height:auto;
+	margin-left:10%;
+	border:solid;
+	height:60%;
+	margin-top:0%;
+}
+section label{
+	font-size:20px;
+}
+section h1{
+	font-family:Calibri;
+	color:#333;
+	margin:10px;
+	font-size:30px;
+}
+
+form input[type='text'],div form input[type='password']{
+	width:45%;
+	height:35px;
+	padding-left:20px;
+	margin-bottom:10px;
+	font-size:20px;
+	color:#333;
+	font-family:Roboto;
+}
+section button{
+	padding:5px 20px 5px 20px;
+	border:none;
+	background-color:#333;
+	color:#FFF;
+	margin:20px;
+	font-size:18px;
+	font-family:Adobe Garamond Pro Bold;
+}
+section button:hover{
+	cursor:pointer;
+	background-color:#777;
+}
+#icon_search{
+	width:250px;
+	height:80px;
+	box-shadow:1px 1px 2px 2px #777;
+	position:relative;
+	float:right;
+	margin-top:5%;
+	line-height:2;
+	text-align:center;
+	font-size:20px;
+}
+#icon_search img{
+	width:40px;
+	height:auto;
+	margin-left:10px;
+	margin-top:10px;
+}
+
+#icon_search:hover{
+	cursor:pointer;
+	background-color:#999;
+}
+
+
+
+

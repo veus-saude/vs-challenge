@@ -1,0 +1,65 @@
+@font-face{
+	font-family:roboto;
+	src: url('Roboto-Regular.ttf');
+	font-weight:normal;
+	font-style:normal;
+}
+*{
+	padding:0px;
+	margin:0px;
+}
+body{
+	
+background: -moz-linear-gradient(top,  #006699 0%, #0099ff 100%);
+background: -webkit-linear-gradient(top,  #006699 0%,#0099ff 100%); 
+background: linear-gradient(to bottom,  #006699 0%,#0099ff 100%); 
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#006699', endColorstr='#0099ff',GradientType=0 ); 
+
+}
+div{
+	width:50%;
+	height:auto;
+	color:#000;
+	font-family:roboto;
+	margin:10% 0 0 25%;
+	text-align:center;
+}
+
+div form input[type='text'],div form input[type='password']{
+	width:45%;
+	height:35px;
+	padding-left:20px;
+	margin-bottom:10px;
+	font-size:20px;
+	color:#333;
+	font-family:Roboto;
+}
+div button{
+	padding:5px 20px 5px 20px;
+	border:none;
+	background-color:#333;
+	color:#FFF;
+	margin:20px;
+	font-size:18px;
+	font-family:Roboto;
+}
+div button:hover{
+	cursor:pointer;
+	background-color:#777;
+}
+div h1{
+	color:#FFF;
+	font-family:Calibri;
+	
+	max-width:70%;
+	margin-left:15%;
+	margin-bottom:40px;
+	font-size:40px;
+}
+
+div a {
+	text-decoration:none;
+	color:#FFF;
+	text-align:left;
+	width:100%;
+}

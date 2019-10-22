@@ -1,0 +1,132 @@
+@font-face{
+	font-family:roboto;
+	src: url('Roboto-Regular.ttf');
+	font-weight:normal;
+	font-style:normal;
+}
+*{
+	padding:left;
+	margin:left;
+}
+table{
+	width:90%;
+	height:auto;
+	max-height:80%;
+	position:relative;
+	float:left;
+	margin-top:100px;
+	margin-left:5%;
+}
+.top{
+	height:30px;
+	margin-top:120px;
+	width:89%;
+}
+table tr{
+	height:30px;
+}
+table tr td{
+	text-align:center;
+	border-bottom:solid 0.3px #333;
+	border-right:solid 0.3px #333;
+	font-family:roboto;
+	font-size:14px;
+	height:30px;
+}
+table .tdnome{
+	width:50%;
+}
+
+table .tdmarca{
+	width:25%;
+}
+table .tdpreco{
+	width:5%;
+}
+table .tdqtest{
+	width:10%;
+}
+table .tdedit, table .tddelete{
+	width:5%;
+}
+
+#search{
+	width:94%;
+	position:fixed;
+	height:60px;
+	margin-top:50px;
+	margin-left:2%;
+	box-shadow:1px 1px 2px 2px #444;
+	text-align:center;
+	line-height:4;
+	font-family:Roboto;
+}
+#search input{
+	width:25%;
+	height:30px;
+	padding-left:20px;
+	margin-bottom:10px;
+	font-size:20px;
+	color:#333;
+	font-family:Roboto;
+}
+#search select,#search option{
+	width:20%;
+	height:30px;
+	padding-left:20px;
+	margin-bottom:10px;
+	font-size:17px;
+	color:#333;
+	font-family:Roboto;
+}
+.listprod{
+	margin-top:0px;
+}
+.pagination{
+	display :none;
+	height:350px;
+	width:100%;
+	overflow-y:auto;
+}
+.pagination:first-child{
+	display:block;
+}
+#pagination{
+	width:20%;
+	margin-left:40%;
+	margin-top:10px;
+}
+#pagination td:hover{
+	cursor:pointer;
+	background-color:#CCC;
+}
+.tredit{
+	height:70px;
+	left:5%;
+	background-color:#FFF;
+	top:40px;
+	box-shadow:1px 1px 2px 2px #555;
+}
+table tr div input{
+	margin-top:10px;
+}
+.search_icon{
+	position:relative;
+	float:left;
+	float:left;
+	width:40px;
+	height:auto;
+	margin:10px 0px 0px 10px;
+}
+.addprod:hover{
+	cursor:pointer;
+}
+.addprod{
+	position:absolute;
+	float:right;
+	float:left;
+	width:40px;
+	height:auto;
+	right:10;
+	margin:10px 10px 0px 0px;
+}
