@@ -1,34 +1,9 @@
-<p align="center">
-    <img src="https://i.imgur.com/2LUR2yy.png">
-</p>
+## Como usar
 
-## Sobre a VEUS
+username = teste@email.com
 
-Há 25 anos no mercado, a **Veus Technology** é uma empresa brasileira ligada ao segmento de saúde com foco na inovação tecnológica. É responsável por vários projetos pioneiros e estratégicos na área laboratorial, médica e recentemente hospitalar.
+password = teste
 
-## Desafio VS
+O token é para acesso via json
 
-Você deve implementar uma API utilizando *PHP* > 7.0. Nós recomendamos que você tente manter o seu códgo o mais simples possível. Se você precisar de qualquer informação adicional ou esclarecimento, você pode nos contatar pelo e-mail: **sistemas@veus.com.br**.
-
-Vamos imaginar que a sua empresa possua um e-commerce e venda alguns produtos para laboratórios e hospitais...
-
-Sua tarefa é desenvolver um **CRUD** de Produtos e implementar um serviço de buscas desses produtos. Um produto possui nome, marca, preço e quantidade em estoque.
-A API deve requerer **autenticação** e permitir __search query__ através do método **GET** e suportar filtros opcionais nos campos do produto.
-
-Por exemplo: Um cliente deve conseguir buscar todas as seringas da marca BUNZL fazendo a seguinte requisição:
-
-`https://example.com/api/v1/products?q=seringa&filter=brand:BUNZL`
-
-A API também deve suportar __pagination__, __versioning__ e __sorting__.
-
-Sinta-se livre para usar qualquer library ou framework da sua preferência mas a regra de negócio deve estar o mais desaclopada possível deles.
-
-Por favor, **não se esqueça** de providenciar uma pequena documentação de como levantar e testar o seu projeto.
-
-Bônus:
-* Docker
-* Unit Test
-* User Interface
-
----
-Você será avaliado de acordo com a senioridade da posição a qual está aplicando. Ao finalizar o desafio você deve submeter o **Pull Request** com o seu código para a avaliação, após isso nos entrarem em contato com você através do e-mail passando um feedback do seu projeto.
+token = Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjVkYTg3MTFjOTcyYjg0MzJjZDFiZWRjYWVhY2E0MTRhZjNhMmE2YWMwMjBhYWZiNTlmNzc1MTZjMzViMjdmMzRhOGY3MzI1ZjdjOWYwZTA0In0.eyJhdWQiOiIyIiwianRpIjoiNWRhODcxMWM5NzJiODQzMmNkMWJlZGNhZWFjYTQxNGFmM2EyYTZhYzAyMGFhZmI1OWY3NzUxNmMzNWIyN2YzNGE4ZjczMjVmN2M5ZjBlMDQiLCJpYXQiOjE1NzIyNzMyNzIsIm5iZiI6MTU3MjI3MzI3MiwiZXhwIjoxNjAzODk1NjcyLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.M1KDCsmsFJVFG03EgxF5-Upe1BxkwkqCq8XrqsUaLYvA3gs_jAEJg-edzJ2SWafg6oy_G6dAVJWFogb8hF5H2NULJkAH21HsUsAbYoxlXP7Kfr7LBlpFUofDA6Mh2y_yHTT1oQbF4ec5AVvP42CtFRdci2Lv7QCfEPaUfpLFn82x3rRmNuVB8lkm18lV3nFOQmKpNLQ0WEX547m9pvw-9672kTxywzBpkXjkn1PJ17bJydHqjPuia7agbQz92tRn7YdQITeTnvxLGXl5rvhrB_orBrzTjYA8IxxFyz4PfXeY5nASqSF7m1Q4ihsQouH4qhymknva3H-_WGLi8U2jV5-BcC7yjPxv7uAxagbCJFpMUWTCKCqKl95N5mAIH8o2mt1I3iPjMrPvTqrNhKvPg8Qb2T1_MsGs6ucWv2ddr0ftjNAPvrYUgjoTVox6U0UeoYDW8xChwu3fw16QiOw-xgDmPBLaOu57lxDGrPV8Gh9ywbHljEkX2Zu1d_YcCCdBn4yhyyEDJcrYwvwZXo5-yTtucC7ZBTaC2A5prqloTDXV7A1DSRawHgWAThnRgfXFy-gXt1X-tv9a63x5KCgV9aGMytGquWmVLrtaWj56xU61GoJzOcc-EyQF4CvfBIFGbrzvKk_I8sLj5fUhCI_rwxf8aOVl8N9Zg0bucWnsmW8
