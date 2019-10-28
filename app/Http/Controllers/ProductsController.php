@@ -30,7 +30,7 @@ class ProductsController extends Controller
             $products = Product::latest()->paginate($perPage);
         }
 
-        return view('products.index', compact('products'));
+        return view('products.index', compact('products',$products));
     }
 
     /**

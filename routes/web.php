@@ -11,8 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+/*Route::get('/', function () {
+    return view('products/index');
+});*/
 
-Route::resource('products', 'ProductsController');
+Route::get('/products/index', 'ProductsController@index')->middleware('auth');
+
+Route::resource('products', 'ProductsController')->middleware('auth');
+Auth::routes();
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
+Route::get('/', 'ProductsController@index')->middleware('auth');
