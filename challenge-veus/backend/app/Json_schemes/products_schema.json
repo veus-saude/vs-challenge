@@ -1,0 +1,32 @@
+{
+    "type": "object",
+    "properties": {
+        "name": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 60
+        },
+        "brand": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 60
+        },
+        "price": {
+            "type": "number",
+            "minimum": 1,
+            "maximum": 100000000
+        },
+        "stock": {
+            "type": "number",
+            "minimum": 1,
+            "maximum": 100000000,
+            "exclusiveMaximum": true
+        }
+    },
+    "required": [
+        "name",
+        "brand",
+        "price",
+        "stock"
+    ]
+}

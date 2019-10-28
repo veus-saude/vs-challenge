@@ -1,0 +1,1 @@
+const BASE_URL_API  = "http://localhost/challenge-veus/public/api/";
