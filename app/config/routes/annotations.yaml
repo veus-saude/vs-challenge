@@ -1,0 +1,18 @@
+
+rest_controller:
+    resource: ../../src/Controller/Rest
+    type: annotation
+    prefix: /api/{version}
+    requirements:
+        version: '%api_versions%'
+
+security_controller:
+    resource: ../../src/Controller/Security
+    type: annotation
+
+api:
+    resource: "../src/Resource/config/api_routing.yaml"
+    type: rest
+    prefix: /api/{version}
+    requirements:
+        version: '%api_versions%'
