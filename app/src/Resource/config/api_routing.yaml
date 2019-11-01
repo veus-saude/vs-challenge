@@ -1,3 +1,0 @@
-api_user_controller:
-    type: rest
-    resource: App\Controller\Rest\UserController
