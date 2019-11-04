@@ -1,19 +1,36 @@
 @extends('layout.app')
 @section('body')
-    <form>
-        <div class="form-group">
-            <label for="exampleInputEmail1">Endereço de email</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Seu email">
-            <small id="emailHelp" class="form-text text-muted">Nunca vamos compartilhar seu email, com ninguém.</small>
+    <div class="container">
+        <div class="card">
+            <div class="text-center mt-3">
+                <h2>Cadastro de Produtos</h2>
+            </div>
+            <div class="card-body">
+                <form action="/products" method="post">
+                    <div class="form-row">
+                        <div class="form-group col-md-8">
+                            <label for="name">Nome</label>
+                            <input class="form-control" type="text" name="name" id="name">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="brand">Marca</label>
+                            <input class="form-control" type="text" name="brand" id="brand">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="price">Preço</label>
+                            <input type="number" step="0.00" class="form-control" name="price" id="price">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="stock">Estoque</label>
+                            <input type="number" class="form-control" name="stock" id="stock">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Salvar</button>
+                </form>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="exampleInputPassword1">Senha</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha">
-        </div>
-        <div class="form-group form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Clique em mim</label>
-        </div>
-        <button type="submit" class="btn btn-primary">Enviar</button>
-    </form>
+    </div>
 @endsection

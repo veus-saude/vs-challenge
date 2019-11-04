@@ -14,12 +14,14 @@ use Illuminate\Http\Request;
 */
 
 
-Route::get('login',function (){
-    return "Pagina de Login";
-})->name('login');
+//Route::get('login',function (){
+//    return "Pagina de Login";
+//})->name('login');
+
 
 
 Route::prefix('v1')->group(function (){
+    Route::get('/products/new','ProductController@create');
     Route::post('login', 'Auth\LoginController@login');
     Route::post('register', 'Auth\RegisterController@register');
 
