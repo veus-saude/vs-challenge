@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -39,7 +40,12 @@ class ProductController extends Controller
 
         $product = $product->paginate(15);
 
-        return response()->json($product);
+        //return response()->json($product);
+        return response()
+            ->view('productList',compact('product'))
+            ->header(
+            'Authorization' , 'Bearer '. Auth::guard('api')->user()->api_token
+            );
     }
 
     /**
@@ -49,6 +55,7 @@ class ProductController extends Controller
      */
     public function create()
     {
+
         return view('product');
     }
 
@@ -60,12 +67,14 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $validation = $request->validate([
             'name' => 'required|max:255',
             'brand' => 'required|max:255',
             'price' => 'required',
             'stock' => 'required|integer'
         ]);
+
+        //echo $validation->errors();
 
         try {
             $product = Product::create($request->all());
@@ -96,9 +105,18 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, Product $product)
     {
-        //
+
+        $product = Product::findOrFail($product->id);
+
+        $errors[] = '';
+
+        return response()
+            ->view('product',compact('product','errors'))
+            ->header(
+                'Authorization' , 'Bearer '. Auth::guard('api')->user()->api_token
+            );
     }
 
     /**

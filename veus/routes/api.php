@@ -14,27 +14,27 @@ use Illuminate\Http\Request;
 */
 
 
-//Route::get('login',function (){
-//    return "Pagina de Login";
-//})->name('login');
-
-
-
 Route::prefix('v1')->group(function (){
-    Route::get('/products/new','ProductController@create');
+    Route::get('/login',function (){
+        return view('login');
+    })->name('login');
+
+    Route::get('products/new','ProductController@create');
     Route::post('login', 'Auth\LoginController@login');
     Route::post('register', 'Auth\RegisterController@register');
 
 
     Route::group(['middleware' => 'auth:api'],function (){
 
+        Route::get('products','ProductController@index');
+        Route::get('products/edit/{product}','ProductController@edit');
         Route::put('products/{product}','ProductController@update');
         Route::delete('products/{product}','ProductController@destroy');
         Route::post('products','ProductController@store');
         Route::get('products/{product}','ProductController@show');
         Route::get('logout', 'Auth\LoginController@logout');
-        Route::get('products','ProductController@index');
     });
+
 
 });
 
