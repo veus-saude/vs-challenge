@@ -20,7 +20,6 @@ class CreateProductTable extends Migration
             $table->string('brand',255);
             $table->decimal('price',10,2);
             $table->integer('stock',false);
-            $table->softDeletes();
         });
     }
 

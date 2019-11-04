@@ -12,9 +12,32 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $product = Product::paginate(15);
+        $input = $request->all();
+        $product = new Product();
+
+        if (isset($input['q'])){
+            $product = $product->where('name','like','%'.$input['q'].'%');
+        }
+
+        if (isset($input['filter'])){
+            $filter = explode(':',$input['filter']);
+            $product = $product->where($filter[0],$filter[1]);
+        }
+
+        if (isset($input['price'])){
+            $price = explode(':',$input['price']);
+
+        }
+
+        if(isset($input['sort'])){
+            $product = $product->orderBy($input['sort']);
+        } else {
+            $product = $product->orderBy('name');
+        }
+
+        $product = $product->paginate(15);
 
         return response()->json($product);
     }
@@ -47,10 +70,7 @@ class ProductController extends Controller
         try {
             $product = Product::create($request->all());
 
-            return response()->json([
-                'message' => 'Great success! New product created',
-                'task' => $product
-            ], 200);
+            return response()->json($product, 201);
         } catch (\Exception $exception){
             return response()->json([
                 'message' => 'Error on new product',
@@ -97,21 +117,8 @@ class ProductController extends Controller
             'price' => 'required',
             'stock' => 'required|integer'
         ]);
-
-        try {
             $product->update($request->all());
-            return response()->json([
-                'message' => 'Great success! Product updated',
-                'task' => $product
-            ], 200);
-        } catch (\Exception $exception){
-            return response()->json([
-                'message' => 'Error on update product',
-                'error' => $exception
-            ],500);
-        }
-
-
+            return response()->json($product,200);
     }
 
     /**
@@ -133,9 +140,5 @@ class ProductController extends Controller
                 'error' => $exception
             ],500);
         }
-    }
-
-    public function search(){
-
     }
 }
