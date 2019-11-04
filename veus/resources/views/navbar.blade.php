@@ -19,13 +19,9 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="#">Ação</a>
                     <a class="dropdown-item" href="#">Outra ação</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Algo mais aqui</a>
                 </div>
             </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#">Desativado</a>
-            </li>
+
         </ul>
     </div>
 </nav>

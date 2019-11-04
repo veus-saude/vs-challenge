@@ -40,12 +40,16 @@ class ProductController extends Controller
 
         $product = $product->paginate(15);
 
-        //return response()->json($product);
-        return response()
-            ->view('productList',compact('product'))
-            ->header(
-            'Authorization' , 'Bearer '. Auth::guard('api')->user()->api_token
-            );
+        return response()->json($product);
+
+        /**
+         * Código para utilização com as views (interfaces de usuário)
+         */
+//                return response()
+//            ->view('productList',compact('product'))
+//            ->header(
+//            'Authorization' , 'Bearer '. Auth::guard('api')->user()->api_token
+//            );
     }
 
     /**
@@ -67,14 +71,13 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $validation = $request->validate([
+        $request->validate([
             'name' => 'required|max:255',
             'brand' => 'required|max:255',
             'price' => 'required',
             'stock' => 'required|integer'
         ]);
 
-        //echo $validation->errors();
 
         try {
             $product = Product::create($request->all());
@@ -108,15 +111,15 @@ class ProductController extends Controller
     public function edit(Request $request, Product $product)
     {
 
-        $product = Product::findOrFail($product->id);
 
-        $errors[] = '';
-
-        return response()
-            ->view('product',compact('product','errors'))
-            ->header(
-                'Authorization' , 'Bearer '. Auth::guard('api')->user()->api_token
-            );
+        /**
+         * Código para utilização com as views (interfaces de usuário)
+         */
+        //        return response()
+//            ->view('product',compact('product'))
+//            ->header(
+//                'Authorization' , 'Bearer '. Auth::guard('api')->user()->api_token
+//            );
     }
 
     /**
@@ -135,8 +138,15 @@ class ProductController extends Controller
             'price' => 'required',
             'stock' => 'required|integer'
         ]);
+        try{
             $product->update($request->all());
             return response()->json($product,200);
+        } catch (\Exception $exception){
+            return response()->json([
+                'message' => 'Error on update product',
+                'error' => $exception
+            ],500);
+        }
     }
 
     /**
