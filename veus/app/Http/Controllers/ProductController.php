@@ -27,11 +27,6 @@ class ProductController extends Controller
             $product = $product->where($filter[0],$filter[1]);
         }
 
-        if (isset($input['price'])){
-            $price = explode(':',$input['price']);
-
-        }
-
         if(isset($input['sort'])){
             $product = $product->orderBy($input['sort']);
         } else {
@@ -77,7 +72,6 @@ class ProductController extends Controller
             'price' => 'required',
             'stock' => 'required|integer'
         ]);
-
 
         try {
             $product = Product::create($request->all());

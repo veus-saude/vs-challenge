@@ -27,7 +27,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/products';
+    protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
@@ -47,10 +47,13 @@ class LoginController extends Controller
             $user = $this->guard()->user();
             $user->generateToken();
 
-//            return response()->json([
-//                'data' => $user->toArray(),
-//            ]);
-            return redirect('/api/v1/products?api_token='.Auth::user()->api_token);
+            return response()->json([
+                'data' => $user->toArray(),
+            ]);
+            /**
+             * Redirecionamento para a view produtos
+             */
+//            return redirect('/api/v1/products?api_token='.Auth::user()->api_token);
         }
 
         return $this->sendFailedLoginResponse($request);

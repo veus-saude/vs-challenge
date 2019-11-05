@@ -28,7 +28,7 @@ Route::prefix('v1')->group(function (){
         Route::delete('products/{product}','ProductController@destroy');
         Route::post('products','ProductController@store');
         Route::get('products/{product}','ProductController@show');
-        Route::get('logout', 'Auth\LoginController@logout');
+        Route::post('logout', 'Auth\LoginController@logout');
 
     });
 });
