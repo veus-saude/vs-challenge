@@ -1,4 +1,4 @@
-<p align="center">
+﻿<p align="center">
     <img src="https://i.imgur.com/2LUR2yy.png">
 </p>
 
@@ -32,3 +32,10 @@ Bônus:
 
 ---
 Você será avaliado de acordo com a senioridade da posição a qual está aplicando. Ao finalizar o desafio você deve submeter o **Pull Request** com o seu código para a avaliação, após isso nos entrarem em contato com você através do e-mail passando um feedback do seu projeto.
+
+---
+## Resposta
+
+Meu teste está dentro da pasta "testevs", deixei um bkp do BD que criei para facilitar(nome do BD é testevs), para poder acessar o administrador do sistema usar: Login - teste e senha - 1234.
+
+Não fiz uso de framework, pois como comentei com a Sra Lígia, a última vez que mexi com Laravel foi em 2016, fiz em PHP puro, bem simples de entender, usando conexão via PDO e mysql.
