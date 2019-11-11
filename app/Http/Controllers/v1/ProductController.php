@@ -13,9 +13,17 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return Product::all();
+        $query = (new Product)->newQuery();
+
+        if($request->has('q')){
+            $query
+                ->orWhere('name', '~*', $request->input('q'))
+                ->orWhere('brand', '~*', $request->input('q'));
+        }
+
+        return $query->get();
     }
 
     /**
