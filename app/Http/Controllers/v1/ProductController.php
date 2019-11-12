@@ -19,9 +19,15 @@ class ProductController extends Controller
 
         if($request->has('q')){
             $query
-                ->orWhere('name', '~*', $request->input('q'))
-                ->orWhere('brand', '~*', $request->input('q'));
+                ->where('name', '~*', $request->input('q'));
         }
+
+        if($request->has('filter')){
+            $filter = explode(':', $request->input('filter'));
+            $query->where($filter[0], $filter[1]);
+        }
+
+        // return $query->toSql()  ;
 
         return $query->get();
     }
