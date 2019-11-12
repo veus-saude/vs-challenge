@@ -19,15 +19,24 @@ class ProductController extends Controller
 
         if($request->has('q')){
             $query
-                ->where('name', '~*', $request->input('q'));
+                ->where('name', '~*', $request->query('q'));
         }
 
         if($request->has('filter')){
-            $filter = explode(':', $request->input('filter'));
-            $query->where($filter[0], $filter[1]);
+            $filter = explode(':', $request->query('filter'));
+            $query->where($filter[0], '~*', $filter[1]);
         }
 
-        // return $query->toSql()  ;
+        if($request->has('order')){
+            $order = explode(':', $request->query('order'));
+            $query->orderBy($order[0], $order[1]);
+        }
+
+        if($request->has('page') && $request->has('size')){
+            $page = $request->query('page') < 0 ? 0 : $request->query('page') - 1;
+            $pageSize = $request->query('size') <= 0 ? 1 : $request->query('size');
+            $query->offset($page * $pageSize)->limit($pageSize);
+        }
 
         return $query->get();
     }
