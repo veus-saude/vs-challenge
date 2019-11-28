@@ -1,0 +1,62 @@
+.content {
+    width: 100%;
+    padding: 3rem;
+    text-align: left;
+}
+
+.topic {
+    text-align: left;
+}
+
+.module {
+    text-align: left;
+    color: #fff;
+}
+
+.mytitle, .method {
+    color: #FFB800;
+}
+
+.method {
+    font-weight: bold;
+}
+
+.route {
+    color: #ffe299;
+}
+
+.article {
+    color: #eee;
+    padding-left: 2rem;
+    border-left: 2px solid #ffe299;
+}
+
+.links {
+    z-index: 2;
+}
+
+.links a {
+    z-index: 3;
+}
+
+@media screen and (min-width: 1000px) {
+    .content {
+        width: 100%;
+        padding: 3rem;
+        text-align: left;
+        position: absolute;
+        top: -3rem;
+        left: -1rem;
+    }
+    .logodocs {
+        position: relative;
+        top: 6px;
+    }
+    
+    pre {
+        padding-left: 2rem;
+        border-left: 2px solid #ffe299;
+        margin-top: -16px;
+        color: #ccc;
+    }
+}
