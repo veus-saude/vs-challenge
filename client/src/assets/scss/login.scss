@@ -1,0 +1,46 @@
+@import "./buttons/btn-veus.scss";
+@import "./alerts.scss";
+
+// Estilos referente ao Login Card
+.login-card {
+    -webkit-box-shadow: 3px 6px 7px -3px rgba(0, 0, 0, 0.178); 
+    box-shadow: 3px 6px 7px -3px rgba(0, 0, 0, 0.178);
+}
+
+.login-card .form-control {
+    color: #636363;
+    background-color: #ebebeb;
+    padding-left: 15px;
+    padding-right: 15px;
+    border: none;
+    border-radius: 4px;
+}
+
+.login-card .form-control:focus {
+    background-color: #f7f3f3;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.login-card .form-control::placeholder {
+    color: #a3a3a3;
+}
+
+.login-card label {
+    color: #636363;
+    font-weight: bold;
+    font-size: 11pt;
+}
+
+.login-card .active {
+    color: #ffa600ee;
+}
+
+.text-signout {
+    font-size: 10pt;
+}
+
+.text-signout .link-signout {
+    text-decoration: none;
+    font-weight: bold;
+}

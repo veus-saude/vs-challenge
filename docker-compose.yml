@@ -1,0 +1,28 @@
+version: "3.7"
+services:
+  app:
+    image: damiaojuniorterto/veus-challenge-laravel:php-7.4
+    container_name: laravel
+    volumes:
+      - ./backend:/var/www/html
+    links:
+      - postgres
+    ports:
+      - "80:80"
+    networks:
+      - laravel-net
+
+  postgres:
+    image: postgres:9.6.17
+    container_name: postgres
+    environment:
+      - POSTGRES_PASSWORD=pgsql
+      - POSTGRES_DB=veusdb
+    networks:
+      - laravel-net
+    ports:
+      - "5432:5432"
+
+networks:
+  laravel-net:
+    driver: bridge
