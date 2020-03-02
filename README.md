@@ -2,33 +2,24 @@
     <img src="https://i.imgur.com/2LUR2yy.png">
 </p>
 
-## Sobre a VEUS
+## Sobre o Desafio
 
-Há 25 anos no mercado, a **Veus Technology** é uma empresa brasileira ligada ao segmento de saúde com foco na inovação tecnológica. É responsável por vários projetos pioneiros e estratégicos na área laboratorial, médica e recentemente hospitalar.
+ O desafio foi feito com o framework **Laravel** não foi utilizado banco de dados, toda a massa de dados foi mocada em um formato NOSQL(JSON), apos fazer o download do projeto digite os seguites comandos: `php composer install`  esse comando irá instalar todas as dependencias do projeto, após isso suba o projeto com o comando: `php artisan serve`. agora e so debugar!
 
-## Desafio VS
+## Estrutura do projeto
 
-Você deve implementar uma API utilizando *PHP* > 7.0. Nós recomendamos que você tente manter o seu códgo o mais simples possível utilizando os frameworks *Laravel, Lumen ou Synfony*. Se você precisar de qualquer informação adicional ou esclarecimento, você pode nos contatar pelo e-mail: **sistemas@veus.com.br**.
+A estrutura foi montada em cima do padrão MVC do laravel.
+<br>
+    **Controller:**
+        Foram criados três metodos **index**, **ValidarParametro** e **busca**. Index esse metodo tem por finalidade gerenciar todo o processo desde a entrada dos dados ate o retorno do mesmo.
+        <br>
+        ValidarParametro esse metodo valida toda a entrada de parametros, caso um parametro venha em um formato não conforme com o padrão do sistema ele retornará um erro com o codigo 412!
+        <br>
+        **busca:** filtra os dados que vem da model passando os parametros e exibindo os resultados. 
+        **Model:** a camada model ela filtra ela passa os parametros e exibe o resultado em uma array e verifica se os dados e os parametros estao corretos.
+        **View:** esta pegando os dados e exibindo em um tabela os resuldatos consumindo atraves do javascript.
+        **Middleware:** responsavel por checar as rotas e da permissao de acesso e retorna um erro 401 quando nao tem permissao no header de acesso **observação:** a view é a unica rota que passa pelo middleware sem checar o token.
 
-Vamos imaginar que a sua empresa possua um e-commerce e venda alguns produtos para laboratórios e hospitais...
-
-Sua tarefa é desenvolver um **CRUD** de Produtos e implementar um serviço de buscas desses produtos. Um produto possui nome, marca, preço e quantidade em estoque.
-A API deve requerer **autenticação** e permitir __search query__ através do método **GET** e suportar filtros opcionais nos campos do produto.
-
-Por exemplo: Um cliente deve conseguir buscar todas as seringas da marca BUNZL fazendo a seguinte requisição:
-
-`https://example.com/api/v1/products?q=seringa&filter=brand:BUNZL`
-
-A API também deve suportar __pagination__, __versioning__ e __sorting__.
-
-Sinta-se livre para usar qualquer library ou framework da sua preferência mas a regra de negócio deve estar o mais desaclopada possível deles.
-
-Por favor, **não se esqueça** de providenciar uma pequena documentação de como levantar e testar o seu projeto.
-
-Bônus:
-* Docker
-* Unit Test
-* User Interface
 
 ---
-Você será avaliado de acordo com a senioridade da posição a qual está aplicando. Ao finalizar o desafio você deve submeter o **Pull Request** com o seu código para a avaliação, após isso nos entrarem em contato com você através do e-mail passando um feedback do seu projeto.
+
