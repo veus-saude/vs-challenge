@@ -1,34 +1,116 @@
-<p align="center">
-    <img src="https://i.imgur.com/2LUR2yy.png">
-</p>
 
-## Sobre a VEUS
+# Documentação Desafio Veus (Yago Henrique)
 
-Há 25 anos no mercado, a **Veus Technology** é uma empresa brasileira ligada ao segmento de saúde com foco na inovação tecnológica. É responsável por vários projetos pioneiros e estratégicos na área laboratorial, médica e recentemente hospitalar.
+Instalação:
 
-## Desafio VS
+1 - git clone https://github.com/yagodevweb/vs-challenge.git
 
-Você deve implementar uma API utilizando *PHP* > 7.0. Nós recomendamos que você tente manter o seu códgo o mais simples possível utilizando os frameworks *Laravel, Lumen ou Synfony*. Se você precisar de qualquer informação adicional ou esclarecimento, você pode nos contatar pelo e-mail: **sistemas@veus.com.br**.
+2 - composer install
 
-Vamos imaginar que a sua empresa possua um e-commerce e venda alguns produtos para laboratórios e hospitais...
+3 - Crie um banco de dados com o nome veus (HeidiSQL, PhpMyAdmin, Sequelpro), 
+está definido root e sem password o acesso ao banco de dados no arquivo .env
 
-Sua tarefa é desenvolver um **CRUD** de Produtos e implementar um serviço de buscas desses produtos. Um produto possui nome, marca, preço e quantidade em estoque.
-A API deve requerer **autenticação** e permitir __search query__ através do método **GET** e suportar filtros opcionais nos campos do produto.
+4 - php artisan migrate --seed
 
-Por exemplo: Um cliente deve conseguir buscar todas as seringas da marca BUNZL fazendo a seguinte requisição:
+5 - login para acesso: admin@veus.com | senha: secret
 
-`https://example.com/api/v1/products?q=seringa&filter=brand:BUNZL`
 
-A API também deve suportar __pagination__, __versioning__ e __sorting__.
+## User Interface Veus
 
-Sinta-se livre para usar qualquer library ou framework da sua preferência mas a regra de negócio deve estar o mais desaclopada possível deles.
+Página de login
 
-Por favor, **não se esqueça** de providenciar uma pequena documentação de como levantar e testar o seu projeto.
+    Contém toda a parte de autenticação do Laravel
 
-Bônus:
-* Docker
-* Unit Test
-* User Interface
+Página Home
 
----
-Você será avaliado de acordo com a senioridade da posição a qual está aplicando. Ao finalizar o desafio você deve submeter o **Pull Request** com o seu código para a avaliação, após isso nos entrarem em contato com você através do e-mail passando um feedback do seu projeto.
+    Contém o total de produtos
+    Contém a aquisição (created_at) de produtos por mês (Gráfico dinâmico detalhando)
+
+    OBS: Por padrão quando você rodar a migrate será criado produtos do mês anterior 
+    e o atual para alimentar o gráfico
+
+Página de Produtos
+
+    Cadastro do Produto
+    Edição do Produto
+    Exclusão do Produto (em duas formas, única e múltipla)
+    Pesquisa
+    Ordenação
+    Paginação
+
+    OBS: todas as páginas está com com a navegação (cabeçalho) a disposição do usuário,
+    e também com flash messages para o feedback do usuário.
+
+
+## Api Veus (Utilizei o Postman, mas fique a vontade para usar qual preferir)
+
+Autenticação da Api feita com Jwt-Auth
+    
+    Utilize o método POST para geração do token passando o body (email e password)
+    email: admin@veus.com | password: secret
+
+    http://localhost/vs-challenge/public/api/v1/auth/login
+
+Para Acessar as rotas utilize o token gerado acima para Authorization (Bearer Token)
+
+    Listagem de produtos (Método GET)
+
+    Exemplos:
+
+    http://localhost/vs-challenge/public/api/v1/products
+
+    Listagem de produtos com filtro (Método GET)
+
+    Exemplos:
+
+    http://localhost/vs-challenge/public/api/v1/products?q=name&filter=brand:marca
+
+    OR
+
+    Filtros suportados (=, >, <, <>, >=, <=)
+
+    http://localhost/vs-challenge/public/api/v1/products?q=name&filter=quantity:>:10
+
+
+Paginação de produtos
+
+    Exemplos:
+
+    (Por padrão o total de resultados por página é 10)
+    http://localhost/vs-challenge/public/api/v1/products?paginate=true
+
+    OR 
+
+    (Definindo quantos registros quer trabalhar por página)
+    http://localhost/vs-challenge/public/api/v1/products?paginate=true&per_page=5
+
+
+Ordenação de Produtos
+
+    (Você pode definir por qual campo quer ordenar e também (ASC OR DESC))
+    http://localhost/vs-challenge/public/api/v1/products?sort_by=name:asc
+
+
+Observação
+
+    O desenvolvedor tem toda a liberdade para ir encadeando os métodos acima em 
+    uma única consulta
+
+
+- CRUD da Api
+
+Exemplos:
+
+    Leitura (GET)
+    http://localhost/vs-challenge/public/api/v1/products/1
+
+    Cadastro (POST)
+    http://localhost/vs-challenge/public/api/v1/products
+    Campos obrigatórios: (name, brand, price, quantity)
+
+    Edição (PUT)
+    http://localhost/vs-challenge/public/api/v1/products/1
+    Campos obrigatórios: (name, brand, price, quantity)
+
+    Exclusão (DELETE)
+    http://localhost/vs-challenge/public/api/v1/products/1
