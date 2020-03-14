@@ -9,15 +9,22 @@ class ProductRepository implements ProductRepositoryInterface
 {
     public function get($product_id)
     {
-        return Product::findOrFail($product_id);
+        return Product::fields()->with('brand')->firstOrFail($product_id);
     }
     public function all()
     {
         return QueryBuilder::for(Product::class)
+            ->fields()
+            ->with('brand')
             ->join('brand', 'brand.brand_id', 'product.brand_id')
             ->allowedFilters([
-                AllowedFilter::partial('name'),
-                AllowedFilter::partial('brand.name','brand')
+                AllowedFilter::partial('product.name'),
+                AllowedFilter::partial('brand.name')
+            ])
+            ->allowedSorts([
+                'product.product_id',
+                'product.name',
+                'brand.name'
             ])
             ->get();
     }

@@ -14,4 +14,15 @@ class Product extends Model
     {
         return $this->hasOne('Model\Brand\Brand','brand_id','brand_id');
     }
+
+    public function scopeFields($query)
+    {
+        return $query->select(
+            'product.product_id',
+            'product.name',
+            'product.price',
+            'product.quantity',
+            'product.brand_id'
+        );
+    }
 }

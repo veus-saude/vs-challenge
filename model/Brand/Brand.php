@@ -5,9 +5,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Brand extends Model
 {
-    protected $table = 'product';
-    protected $primaryKey = 'product_id';
+    protected $table = 'brand';
+    protected $primaryKey = 'brand_id';
     public $timestamps = false;
-    protected $guarded = ['product_id'];
+    protected $guarded = ['brand_id'];
 
 }
