@@ -1,10 +1,10 @@
 ## Instruções para implementação
 
-#### Dependências
+### Dependências
 
 Docker e docker-compose instalados.
 
-#### Iniciar os containers do docker através do docker-compose
+### Iniciar os containers do docker através do docker-compose
 
 Para permitir persitência de dados do mysql ao subir e derrubar os container é necessário criar uma pasta vazia.
 
@@ -14,24 +14,24 @@ Em seguida, também na raíz do projeto executar:
 
 **docker-compose up --build**
 
-#### Realizar o composer install para receber todas as dependências de pacotes
+### Realizar o composer install para receber todas as dependências de pacotes
 
 Nao raiz do projeto executar **php artisan composer install**
 
-#### Copiar configurações
+### Copiar configurações
 
 Copiar arquivo **.env.example** para **.env**
 
-#### Executar comando para criar banco de dados
+### Executar comando para criar banco de dados
 
 Existe um comando customizado para criar o banco de dados inicial:
 **php artisan db:create** que pega as informações do .env e cria o banco.
 
-#### Executar migrations e seeds para criar o banco de dados
+### Executar migrations e seeds para criar o banco de dados
 
 Executar **php artisan migrate:fresh --seed**
 
-#### Corrigir permissões de pastas iniciais
+### Corrigir permissões de pastas iniciais
 
 Executar na raíz do projeto:
 
@@ -41,7 +41,7 @@ Executar na raíz do projeto:
 
 Referência: https://laracasts.com/discuss/channels/general-discussion/laravel-framework-file-permission-security
 
-#### Setup do Passport
+### Setup do Passport
 
 Para autenticação foi utilizado o [Passport](https://laravel.com/docs/5.8/passport) , biblioteca mantida pela equipe do laravel.
 
@@ -53,13 +53,13 @@ Onde a saída irá gerar duas chaves, que deverão ser guardadas e usadas na req
 
 **client_id** e **client_secret**
 
-#### Collection do Postman
+### Collection do Postman
 
 Para facilitar o comsumo da API , existe um arquivo de collections do Postman na pasta **postman** do projeto.
 
 Referência: https://learning.postman.com/docs/postman/collection-runs/working-with-data-files/
 
-#### Usuário inicial
+### Usuário inicial
 
 A API permite criar usuários , mas já contém 1 padrão para testes.
 
