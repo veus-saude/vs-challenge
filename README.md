@@ -1,3 +1,30 @@
+## Instruções para implementação
+
+### Iniciar os containers do docker através do docker-compose
+
+Para permitir persitência de dados do mysql ao subir e derrubar os containers, obrigatoriamente, crie o diretório **mysql-data** na raíz do projeto.
+
+Em seguida, também na raíz do projeto executar:
+**docker-compose up --build**
+
+### Realizar o composer install para receber todas as dependências de pacotes
+
+Nao raiz do projeto executar **php artisan composer install**
+
+### Copiar configurações
+
+Copiar arquivo **.env.example** para **.env**
+
+### Executar comando para criar banco de dados
+
+Existe um comando customizado para criar o banco de dados inicial:
+**php artisan db:create** que pega as informações do .env e cria o banco.
+
+### Executar migrations e seeds para criar o banco de dados
+
+### Corrigir permissões de pastas iniciais
+
+
 <p align="center">
     <img src="https://i.imgur.com/2LUR2yy.png">
 </p>
