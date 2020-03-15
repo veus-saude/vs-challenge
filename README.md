@@ -51,7 +51,29 @@ Nas migrations suas tabelas base serão criadas. Após isso basta executar:
 
 Onde a saída irá gerar duas chaves, que deverão ser guardadas e usadas na requisição de autenticação.
 
-**client_id** e **client_secret**
+**client_id** e **client_secret** do item Password grant
+
+
+Exexplo:
+
+`
+php artisan passport:install
+
+Encryption keys generated successfully.
+
+Personal access client created successfully.
+
+Client ID: 1
+
+Client secret: sT7ordadNmPz34pc5XQBygmP9oPkHYHSONNTZAKG
+
+Password grant client created successfully.
+
+Client ID: 2
+
+Client secret: xyhLnUVx9kBUCH4sZ0tqNk2OxEjx0DPUTB8yFKld
+`
+
 
 ### Collection do Postman
 
@@ -66,6 +88,11 @@ A API permite criar usuários , mas já contém 1 padrão para testes.
 username: loxas@loxas.com.br
 
 password: 123mudar!@
+
+### Teste de acesso e url
+
+http://localhost:8080/ deve mostrar a página de instalação do laravel se tudo ocorreu corretamente.
+
 
 ## Bibliotecas usadas
 
