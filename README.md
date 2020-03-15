@@ -16,7 +16,7 @@ Em seguida, também na raíz do projeto executar:
 
 ### Realizar o composer install para receber todas as dependências de pacotes
 
-Nao raiz do projeto executar **php artisan composer install**
+Nao raiz do projeto executar **composer install**
 
 ### Copiar configurações
 
