@@ -2,15 +2,27 @@
 
 namespace Model\Brand;
 
+use Spatie\QueryBuilder\AllowedFilter;
+use Spatie\QueryBuilder\QueryBuilder;
+
 class BrandRepository implements BrandRepositoryInterface
 {
     public function get($brand_id)
     {
-        return Brand::findOrFail($post_id);
+        return Brand::fields()->findOrFail($brand_id);
     }
     public function all()
     {
-        return Brand::all();
+        return QueryBuilder::for(Brand::class)
+            ->fields()
+            ->allowedFilters([
+                AllowedFilter::partial('brand.name'),
+            ])
+            ->allowedSorts([
+                'brand.brand_id',
+                'brand.name'
+            ])
+            ->jsonPaginate();
     }
     public function delete($brand_id)
     {
@@ -18,8 +30,16 @@ class BrandRepository implements BrandRepositoryInterface
     }
     public function update($brand_id, array $brand_data)
     {
-        $post = Brand::findOrFail($brand_id);
-        $post->update($brand_data);
-        return $post;
+        $brand = Brand::findOrFail($brand_id);
+        $brand->update($brand_data);
+        return $brand;
+    }
+
+    public function create($brand_data)
+    {
+        $brand = new Brand();
+        $brand->name = $brand_data['name'];
+        $brand->save();
+        return $brand;
     }
 }

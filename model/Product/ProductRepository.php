@@ -9,7 +9,7 @@ class ProductRepository implements ProductRepositoryInterface
 {
     public function get($product_id)
     {
-        return Product::fields()->with('brand')->firstOrFail($product_id);
+        return Product::fields()->with('brand')->findOrFail($product_id);
     }
     public function all()
     {
@@ -26,7 +26,7 @@ class ProductRepository implements ProductRepositoryInterface
                 'product.name',
                 'brand.name'
             ])
-            ->get();
+            ->jsonPaginate();
     }
     public function delete($product_id)
     {
@@ -36,6 +36,17 @@ class ProductRepository implements ProductRepositoryInterface
     {
         $product = Product::findOrFail($product_id);
         $product->update($product_data);
+        return $product;
+    }
+
+    public function create($product_data)
+    {
+        $product = new Product();
+        $product->name = $product_data['name'];
+        $product->price = $product_data['price'];
+        $product->quantity = $product_data['quantity'];
+        $product->brand_id = $product_data['brand_id'];
+        $product->save();
         return $product;
     }
 }

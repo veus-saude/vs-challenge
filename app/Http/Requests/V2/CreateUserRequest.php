@@ -1,9 +1,9 @@
 <?php
-namespace App\Http\Requests\V1;
+namespace App\Http\Requests\V2;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class EditProductRequest extends FormRequest
+class CreateUserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,12 +22,9 @@ class EditProductRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'          => 'sometimes|min:3',
-            'price'         => 'sometimes|numeric',
-            'quantity'      => 'sometimes|integer',
-            'brand_id'      => 'sometimes|exists:mysql.vs.brand,brand_id',
-            '_method'       => 'required|in:PUT,PATCH'
-
+            'name'          => 'required|min:3',
+            'email'         => 'required|email|unique:mysql.vs.user,email',
+            'password'      => 'required|min:8'
         ];
     }
 }

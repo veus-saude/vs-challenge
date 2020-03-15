@@ -10,4 +10,12 @@ class Brand extends Model
     public $timestamps = false;
     protected $guarded = ['brand_id'];
 
+    public function scopeFields($query)
+    {
+        return $query->select(
+            'brand.brand_id',
+            'brand.name'
+        );
+    }
+
 }

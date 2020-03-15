@@ -8,4 +8,5 @@ interface BrandRepositoryInterface
     public function all();
     public function delete($brand_id);
     public function update($brand_id, array $brand_data);
+    public function create(array $brand_data);
 }

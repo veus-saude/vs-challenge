@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Api\V2;
 
+use App\Http\Requests\V2\EditProductRequest;
+use App\Http\Requests\V2\CreateProductRequest;
 use Illuminate\Http\Request;
 use Model\Product\ProductRepositoryInterface;
 use App\Http\Controllers\Controller;
 
 class ProductController extends Controller
 {
-
     private $productRepository;
 
     public function __construct(ProductRepositoryInterface $productRepository)
@@ -16,57 +17,28 @@ class ProductController extends Controller
         $this->productRepository = $productRepository;
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         return $this->successResponse($this->productRepository->all());
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function store(CreateProductRequest $request)
     {
-        //
+        return $this->successResponse($this->productRepository->create($request->all()));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($product_id)
     {
         return $this->successResponse($this->productRepository->get($product_id));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function update(EditProductRequest $request, $product_id)
     {
-        //
+        return $this->successResponse($this->productRepository->update($product_id,$request->all()));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    public function destroy($product_id)
     {
-        //
+        return $this->successResponse((bool) $this->productRepository->delete($product_id));
     }
 }
