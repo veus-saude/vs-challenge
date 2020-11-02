@@ -59,7 +59,7 @@ Esta sendo criado o usuário **fernando@gmail.com** com a senha **123456**
 
 Executar **php artisan serve** -> para subir o servidor no http://localhost:8000
 
-foi utilizado o insominia para os testes e dentro da pasta do projeto tem o export.
+foi utilizado o insominia para os testes e dentro da pasta do projeto tem o export com o nome **Insomnia_fernando.json**
 
 é preciso se autenticar para obter o token e usar nas requisições.
 
