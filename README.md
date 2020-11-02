@@ -34,3 +34,35 @@ Bônus:
 ---
 
 Você será avaliado de acordo com a senioridade da posição a qual está aplicando. Ao finalizar o desafio você deve submeter o **Pull Request** com o seu código para a avaliação, após isso nos entrarem em contato com você através do e-mail passando um feedback do seu projeto.
+
+**Abaixo dados da instalação do projeto**
+
+Depois de baixar o projeto dentro da pasta executar os comandos abaixo.
+
+Executar **composer install**
+
+Executar o **cp .env.example .env**
+
+Editar o **.env** e alterarar o banco para **veus_test**, colocar a senha **root**
+
+Executar o **php artisan jwt:secret**
+
+executar o **docker-compose up** Obs.: O banco de dados esta usando a porta 3306, caso precise alterar a porta editar o arquivo **docker-compose.yml** e alterar para a porta desejada, não esquecer de alterar também dentro do **.env**
+
+Executar **php artisan migrate**
+
+Executar **php artisan db:seed** para criar o usuário.
+
+Esta sendo criado o usuário **fernando@gmail.com** com a senha **123456**
+
+Executar **php artisan serve** -> para subir o servidor no http://localhost:8000
+
+foi utilizado o insominia para os testes e dentro da pasta do projeto tem o export.
+
+é preciso se autenticar para obter o token e usar nas requisições.
+
+para isso acessando pelo insominia executar o endpoint **Auth - authenticate**
+
+irá fazer o login com os dados de usuário já cadastrado.
+
+obtendo o token somente incluir nos endpoints criados no insominia na aba **Bearer**
