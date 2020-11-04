@@ -30,19 +30,19 @@
                             <div class="form-group">
                                 @csrf
                                 <label>Nome</label>
-                                <input type="text" class="form-control" name="name" id="name">
+                                <input type="text" class="form-control" name="name" id="name" value="{{ old('name') }}">
                             </div>
                             <div class="form-group">
                                 <label>Marca</label>
-                                <input type="text" class="form-control" name="brand" id="brand">
+                                <input type="text" class="form-control" name="brand" id="brand" value="{{ old('brand') }}">
                             </div>
                             <div class="form-group">
                                 <label>Preço</label>
-                                <input type="text" class="form-control" name="price" id="price">
+                                <input type="text" class="form-control" name="price" id="price" value="{{ old('price') }}">
                             </div>
                             <div class="form-group">
                                 <label>Quantidade</label>
-                                <input type="number" class="form-control" name="amount" id="amount">
+                                <input type="number" class="form-control" name="amount" id="amount" value="{{ old('amount') }}">
                             </div>
                             <button type="submit" class="btn btn-primary">Salvar</button>
                             <a type="button" class="btn btn-warning" href="{{ route('products.index') }}">Cancelar</a>

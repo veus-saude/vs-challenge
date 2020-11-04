@@ -9,7 +9,7 @@
 
         <title>Veus Technology</title>
 
-        <link rel="shortcut icon" href="{{ asset('img/favicon.png') }}">
+        <link rel="shortcut icon" href="{{ asset('img/favicon.ico') }}">
         <!-- Bootstrap Core CSS -->
         <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
         <!-- Custom CSS -->

@@ -26,9 +26,10 @@
             <div class="panel-body">
                 <div class="row">
                     <div class="col-lg-6">
-                        <form role="form" method="post" action="{{ route('products.store') }}">
+                        <form role="form" method="post" action="{{ route('products.update', $product->id) }}">
                             <div class="form-group">
                                 @csrf
+                                @method('PATCH')
                                 <label>Nome</label>
                                 <input type="text" class="form-control" name="name" id="name" value="{{ $product->name }}">
                             </div>

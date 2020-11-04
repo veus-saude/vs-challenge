@@ -20,15 +20,13 @@ class ProductController extends Controller
 
             $products = Product::where('name', 'like', $productName.'%')
                                ->orWhere('brand', 'like', $productBrand.'%')
-                               ->select('name', 'brand', 'price', 'amount')
                                ->orderBy($orderBy[0], $orderBy[1])
                                ->jsonPaginate();
 
             return response()->json($products, 200);
         }
 
-        $products = Product::select('name', 'brand', 'price', 'amount')
-                           ->orderBy($orderBy[0], $orderBy[1])
+        $products = Product::orderBy($orderBy[0], $orderBy[1])
                            ->jsonPaginate();
 
         return response()->json($products, 200);

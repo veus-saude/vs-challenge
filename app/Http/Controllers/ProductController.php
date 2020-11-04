@@ -2,11 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProductRequest;
 use App\Product;
+use App\Repositories\Interfaces\ProductRepositoryInterface;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+    private $repository;
+
+    public function __construct(ProductRepositoryInterface $repository)
+    {
+        $this->repository = $repository;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +22,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
+        $products = $this->repository->all();
 
         return view('products.index_product', compact('products'));
     }
@@ -35,11 +43,12 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
-        $product = Product::create($request->all());
-        
-        return redirect('products');
+
+        $this->repository->store($request->all());
+
+        return redirect('products')->with('success', 'Produto cadastrado com sucesso');
     }
 
     /**
@@ -50,7 +59,7 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        $product = Product::find($id);
+        $product = $this->repository->edit($id);
 
         return view('products.edit_product', compact('product'));
     }
@@ -62,11 +71,11 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProductRequest $request, $id)
     {
-        $updateProduct = Product::where('id', $id)->update($request->all());
+        $this->repository->update($request->all(), $id);
 
-        return redirect('products');
+        return redirect('products')->with('success', 'Produto alterado com sucesso');
     }
 
     /**
@@ -77,8 +86,8 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        $product = Product::where('id', $id)->delete();
+        $this->repository->destroy($id);
 
-        return redirect('products');
+        return redirect('products')->with('success', 'Produto excluído com sucesso');
     }
 }

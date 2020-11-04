@@ -12,20 +12,13 @@
             </div>
         </div>
         <div class="col-lg-12">
-            @if(session('status') != null)
-                <div class="panel-body">
-                    @if (session('status') == 'success')
-                        <div class="alert alert-success alert-dismissible">
-                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                            {{session('msg')}}.
-                        </div>
-                    @else
-                        <div class="alert alert-danger alert-dismissible">
-                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                            {{session('msg')}}.
-                        </div>
-                    @endif
+            @if (Session::has('success') == 'success')
+            <div class="panel-body">
+                <div class="alert alert-success alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    {{ Session::get('success') }}
                 </div>
+            </div>
             @endif
         </div>
         <div class="col-lg-12">
@@ -56,7 +49,7 @@
                                         </a>
                                         <form class="form-horizontal" action="{{ route('products.destroy', $product->id) }}" method="post" style="display: inline-block;">
                                             {!! csrf_field() !!}
-                                            <input type="hidden" name="_method" value="DELETE">
+                                            @method('DELETE')
                                             <button type="submit" class="btn btn-danger btn-xs">
                                             <span class="glyphicon glyphicon-trash"></span>
                                             </button>
