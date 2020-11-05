@@ -2,33 +2,76 @@
     <img src="https://i.imgur.com/2LUR2yy.png">
 </p>
 
-## Sobre a VEUS
+## Introdução
+API para cadastrar e consultar os produtos de um e-commerce
 
-Há 25 anos no mercado, a **Veus Technology** é uma empresa brasileira ligada ao segmento de saúde com foco na inovação tecnológica. É responsável por vários projetos pioneiros e estratégicos na área laboratorial, médica e recentemente hospitalar.
+## Tecnologias utilizadas
+Laravel
+MySQL
+Obs: Necessária a instalação do composer - https://getcomposer.org/
 
-## Desafio VS
+## Instalação
+ * Rodar o comando composer install para instalar as dependêcnias da aplicação
+ * Criar um arquivo .env igual ao arquivo .env.example que já vem na pasta raíz da aplicação e configurar:
+    * Nome da base de dados(DB_DATABASE)
+    * Endereço(DB_HOST)
+    * Usuário e senha(DB_USERNAME / DB_PASSWORD)
+ * Rodar o comando php artisan key:generate
+ * Rodar o comando php artisan migrate para criar as tabelas no banco de dados
+ * Rodar o comando php artisan db:seed para criar produtos fakes no banco de dados e criar o usuário para testar a API(Email: veus.technology@gmail.com / Senha: Veus@123)
+ * Rodar o comando php artisan jwt:secret para gerar a chave que irá assinar os tokens
+ * Para testar localmente, rodar o comando php artisan serve para subir um servidor para a aplicação
+ 
 
-Você deve implementar uma API utilizando *PHP* > 7.0. Nós recomendamos que você tente manter o seu códgo o mais simples possível utilizando os frameworks *Laravel, Lumen ou Synfony*. Se você precisar de qualquer informação adicional ou esclarecimento, você pode nos contatar pelo e-mail: **sistemas@veus.com.br**.
+## Autenticação
+Para realizar o login e gerar o token de acesso, deve ser feita uma requisição POST para **http://localhost:8000/api/v1/auth/login** conforme imagem abaixo
+<p align="center">
+    <img src="https://imgur.com/Uph6Fxb.png">
+</p>
 
-Vamos imaginar que a sua empresa possua um e-commerce e venda alguns produtos para laboratórios e hospitais...
+Se necessário, o logout deve ser feito informando o token recebido no login, em uma requisição POST para **http://localhost:8000/api/v1/auth/logout** conforme imagem abaixo
+<p align="center">
+    <img src="https://imgur.com/KNWzKoM.png">
+</p>
 
-Sua tarefa é desenvolver um **CRUD** de Produtos e implementar um serviço de buscas desses produtos. Um produto possui nome, marca, preço e quantidade em estoque.
-A API deve requerer **autenticação** e permitir __search query__ através do método **GET** e suportar filtros opcionais nos campos do produto.
+_________________________
 
-Por exemplo: Um cliente deve conseguir buscar todas as seringas da marca BUNZL fazendo a seguinte requisição:
+## Endpoints
+**Lista todos os produtos cadastrados**
+**GET** - **http://localhost:8000/api/v1/products**
+**Filtros de pesquisa e ordenação** - Possibilidade de filtrar por nome e marca do produto e ordenar por qualquer campo(ID, name, brand, price ou amount). Nas imagens abaixo temos exemplos de filtros por nome e marca, somente nome, somente marca e a ordenação está sendo feita pelo id do produto de forma crescente.
+URL completa: **http://localhost:8000/api/v1/products?q=DOL&filter=BRAND:SCHUMM&sort=id,asc**
+Obs: Se nenhum parâmetro de ordenação for informado, a ordenação será feita pelo campo "name" de forma crescente(asc)
+<p align="center">
+    <img src="https://imgur.com/3J26mPM.png">
+</p>
+<p align="center">
+    <img src="https://imgur.com/K4NPjwY.png">
+</p>
+<p align="center">
+    <img src="https://imgur.com/S6CWwN3.png">
+</p>
 
-`https://example.com/api/v1/products?q=seringa&filter=brand:BUNZL`
+**Recupera as informações de um produto específico**
+**GET** - **http://localhost:8000/api/v1/products/id_produto**
 
-A API também deve suportar __pagination__, __versioning__ e __sorting__.
+**Cadastra um novo produto**
+**POST** - **http://localhost:8000/api/v1/products**
+<p align="center">
+    <img src="https://imgur.com/aYyAFh2.png">
+</p>
 
-Sinta-se livre para usar qualquer library ou framework da sua preferência mas a regra de negócio deve estar o mais desaclopada possível deles.
+**Altera um produto**
+**PATCH** - **http://localhost:8000/api/v1/products/id_produto**
+<p align="center">
+    <img src="https://imgur.com/xIr14xm.png">
+</p>
 
-Por favor, **não se esqueça** de providenciar uma pequena documentação de como levantar e testar o seu projeto.
+**Remove um produto**
+**DELETE** - **http://localhost:8000/api/v1/products/id_produto**
+<p align="center">
+    <img src="https://imgur.com/VAahTOA.png">
+</p>
 
-Bônus:
-* Docker
-* Unit Test
-* User Interface
+_________________________
 
----
-Você será avaliado de acordo com a senioridade da posição a qual está aplicando. Ao finalizar o desafio você deve submeter o **Pull Request** com o seu código para a avaliação, após isso nos entrarem em contato com você através do e-mail passando um feedback do seu projeto.

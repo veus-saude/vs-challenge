@@ -4,9 +4,9 @@ namespace App\Repositories\Interfaces;
 
 interface ProductRepositoryInterface {
 
-    public function all();
+    public function get($data);
+    public function getId($id);
     public function store($data);
-    public function edit($id);
     public function update($data, $id);
     public function destroy($id);
 }

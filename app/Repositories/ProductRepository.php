@@ -7,28 +7,46 @@ use App\Repositories\Interfaces\ProductRepositoryInterface;
 
 class ProductRepository implements ProductRepositoryInterface {
 
-    public function all()
+    public function get($data)
     {
-        return Product::all();
+        $productBrand = '';
+        $sort = $data->has('sort') ? $data->sort : 'name,asc';
+        $productName = $data->has('q') ? $data->q : '';
+        $filterBrand = $data->has('filter') ? $data->filter : '';
+        $orderBy = explode(',', $sort);
+        
+        if (!empty($filterBrand)) {
+            $productBrand = explode(':', $filterBrand);
+            $productBrand = $productBrand[1];
+        }
+
+        $products = Product::where('name', 'like', $productName.'%')
+                           ->where('brand', 'like', $productBrand.'%')
+                           ->orderBy($orderBy[0], $orderBy[1])
+                           ->jsonPaginate();
+        
+        return $products;
+    }
+
+    public function getId($id)
+    {
+        return Product::findOrFail($id);
     }
 
     public function store($data)
     {
-        return Product::create($data);
-    }
+        $product = Product::create($data);
 
-    public function edit($id)
-    {
-        return Product::find($id);
+        return $product->id;
     }
 
     public function update($data, $id)
     {
-        return Product::find($id)->update($data);
+        return Product::findOrFail($id)->update($data);
     }
 
     public function destroy($id)
     {
-        return Product::find($id)->delete();
+        return Product::findOrFail($id)->delete();
     }
 }

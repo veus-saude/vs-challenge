@@ -4,9 +4,11 @@ namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
+use App\Exceptions\ApiExeceptionTrait;
 
 class Handler extends ExceptionHandler
 {
+    use ApiExeceptionTrait;
     /**
      * A list of the exception types that are not reported.
      *
@@ -50,6 +52,8 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
+        return $this->apiExeception($request, $exception);
+
         return parent::render($request, $exception);
     }
 }

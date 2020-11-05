@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\Api\FormRequest;
 
 class ProductRequest extends FormRequest
 {
@@ -24,27 +24,10 @@ class ProductRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-            'brand' => 'required',
-            'price' => 'required',
-            'amount' => 'required'
-        ];
-    }
-
-    public function attributes()
-    {
-        return [
-            'name' => 'nome',
-            'brand' => 'marca',
-            'price' => 'preço',
-            'amount' => 'quantidade',
-        ];
-    }
-
-    public function messages()
-    {
-        return [
-            'required' => 'O campo :attribute é obrigatório',
+            'name' => 'required|max:50',
+            'brand' => 'required|max:50',
+            'price' => 'required|numeric',
+            'amount' => 'required|integer'
         ];
     }
 }
