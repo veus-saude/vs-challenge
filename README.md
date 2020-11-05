@@ -13,6 +13,7 @@ Obs: Necessária a instalação do composer - https://getcomposer.org/
 ## Instalação
  * Rodar o comando composer install para instalar as dependêcnias da aplicação
  * Criar um arquivo .env igual ao arquivo .env.example que já vem na pasta raíz da aplicação e configurar:
+    * Porta de acesso(DB_PORT)
     * Nome da base de dados(DB_DATABASE)
     * Endereço(DB_HOST)
     * Usuário e senha(DB_USERNAME / DB_PASSWORD)
@@ -38,7 +39,9 @@ _________________________
 
 ## Endpoints
 **Lista todos os produtos cadastrados**
+
 **GET** - **http://localhost:8000/api/v1/products**
+
 **Filtros de pesquisa e ordenação** - Possibilidade de filtrar por nome e marca do produto e ordenar por qualquer campo(ID, name, brand, price ou amount). Nas imagens abaixo temos exemplos de filtros por nome e marca, somente nome, somente marca e a ordenação está sendo feita pelo id do produto de forma crescente.
 URL completa: **http://localhost:8000/api/v1/products?q=DOL&filter=BRAND:SCHUMM&sort=id,asc**
 Obs: Se nenhum parâmetro de ordenação for informado, a ordenação será feita pelo campo "name" de forma crescente(asc)
@@ -53,25 +56,28 @@ Obs: Se nenhum parâmetro de ordenação for informado, a ordenação será feit
 </p>
 
 **Recupera as informações de um produto específico**
+
 **GET** - **http://localhost:8000/api/v1/products/id_produto**
 
 **Cadastra um novo produto**
+
 **POST** - **http://localhost:8000/api/v1/products**
 <p align="center">
     <img src="https://imgur.com/aYyAFh2.png">
 </p>
 
 **Altera um produto**
+
 **PATCH** - **http://localhost:8000/api/v1/products/id_produto**
 <p align="center">
     <img src="https://imgur.com/xIr14xm.png">
 </p>
 
 **Remove um produto**
+
 **DELETE** - **http://localhost:8000/api/v1/products/id_produto**
 <p align="center">
     <img src="https://imgur.com/VAahTOA.png">
 </p>
 
-_________________________
 
