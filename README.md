@@ -32,3 +32,31 @@ Bônus:
 
 ---
 Você será avaliado de acordo com a senioridade da posição a qual está aplicando. Ao finalizar o desafio você deve submeter o **Pull Request** com o seu código para a avaliação, após isso nos entrarem em contato com você através do e-mail passando um feedback do seu projeto.
+
+---
+
+**INSTRUÇÕES**
+
+Executar **composer install**
+Executar o **cp .env.example .env**
+Editar o **.env** e alterarar o banco para **veus** e colocar a senha **root**
+**php artisan migrate:refresh --seed**
+
+**CREDÊNCIAIS**
+USUÁRIO: admin@veus.com.br
+SENHA: 123456
+API TOKEN INICIAL: PMAxBMu4PwEMUCHm2DgItFfozk3l4kBqSGf1suKgvUMof4M2GqrIwqbLIzlv
+
+**API ENDPOINTS**
+
+POST: /api/v1/auth
+AUTH: Auth Basic
+Gera um novo TOKEN de acesso passando as credências usuário e senha
+
+GET: /api/v1/products?q=porto&filter=brand:BUNZL&sort=name,asc&page[size]=10&page[number]=1
+AUTH: Bearer
+Retorna os produtos baseado nos filtros
+
+GET: /api/v1/brands
+AUTH: Bearer
+Retorna todas a marcas
