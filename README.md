@@ -43,6 +43,10 @@ Executar o **cp .env.example .env**
 
 Editar o **.env** e alterarar o banco para **veus** e colocar a senha **root**
 
+Rodar os seguintes comandos:
+
+**php artisan key:generate**
+
 **php artisan migrate:refresh --seed**
 
 **CREDÊNCIAIS**
@@ -51,7 +55,7 @@ Usuário: admin@veus.com.br
 
 Senha: 123456
 
-Api TOken Inicial: PMAxBMu4PwEMUCHm2DgItFfozk3l4kBqSGf1suKgvUMof4M2GqrIwqbLIzlv
+Api Token Inicial: PMAxBMu4PwEMUCHm2DgItFfozk3l4kBqSGf1suKgvUMof4M2GqrIwqbLIzlv
 
 **API ENDPOINTS**
 
