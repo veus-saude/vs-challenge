@@ -1,34 +1,59 @@
-<p align="center">
-    <img src="https://i.imgur.com/2LUR2yy.png">
-</p>
+# Desafio Veus - BACKEND
 
-## Sobre a VEUS
+### Instalação
 
-Há 25 anos no mercado, a **Veus Technology** é uma empresa brasileira ligada ao segmento de saúde com foco na inovação tecnológica. É responsável por vários projetos pioneiros e estratégicos na área laboratorial, médica e recentemente hospitalar.
+O backend utilizado é o [Laravel 7](https://laravel.com/docs/7.x/installation) e requer PHP 7.2.5+ para ser executado.\
+Frontend é feito usando o blade(laravel), bootstrap 4.5.
 
-## Desafio VS
+Crie o banco de dados
+CREATE DATABASE veus_ecommerce CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
-Você deve implementar uma API utilizando *PHP* > 7.0. Nós recomendamos que você tente manter o seu códgo o mais simples possível utilizando os frameworks *Laravel, Lumen ou Synfony*. Se você precisar de qualquer informação adicional ou esclarecimento, você pode nos contatar pelo e-mail: **sistemas@veus.com.br**.
+Instale as dependências após clonar o repositório
 
-Vamos imaginar que a sua empresa possua um e-commerce e venda alguns produtos para laboratórios e hospitais...
+- BACKEND
+```sh
+$ cd veus_ecommerce
+$ composer install
+$ php artisan key:generate
+$ php artisan migrate:fresh --seed;
+$ php artisan passport:install --force
+$ php artisan serve
+```
+- Credenciais
+USUÁRIO: bruno.dn.fernandes@gmail.com
+SENHA: 123456789
 
-Sua tarefa é desenvolver um **CRUD** de Produtos e implementar um serviço de buscas desses produtos. Um produto possui nome, marca, preço e quantidade em estoque.
-A API deve requerer **autenticação** e permitir __search query__ através do método **GET** e suportar filtros opcionais nos campos do produto.
+Link API
+http://localhost:8000/api/v1/products
+http://localhost:8000/api/v1/products?sort=preco:asc&q=agulha&filter=brand:BUNZL
 
-Por exemplo: Um cliente deve conseguir buscar todas as seringas da marca BUNZL fazendo a seguinte requisição:
+AUTH: Bearer
 
-`https://example.com/api/v1/products?q=seringa&filter=brand:BUNZL`
+Login
+http://localhost:8000/api/auth/login
 
-A API também deve suportar __pagination__, __versioning__ e __sorting__.
+Views criadas
+http://localhost:8000/login
+http://localhost:8000/admin/listagem
+http://localhost:8000/admin/cadastro_produtos
+http://localhost:8000/site
 
-Sinta-se livre para usar qualquer library ou framework da sua preferência mas a regra de negócio deve estar o mais desaclopada possível deles.
+Testes
+test/Feature/ProductTest.php
+test/Feature/UserTest.php
 
-Por favor, **não se esqueça** de providenciar uma pequena documentação de como levantar e testar o seu projeto.
+### Dependências e Libraries Backend
 
-Bônus:
-* Docker
-* Unit Test
-* User Interface
+| Plugin | README |
+| ------ | ------ |
+| Laravel Passport | https://github.com/laravel/passport/blob/9.x/README.md |
 
----
-Você será avaliado de acordo com a senioridade da posição a qual está aplicando. Ao finalizar o desafio você deve submeter o **Pull Request** com o seu código para a avaliação, após isso nos entrarem em contato com você através do e-mail passando um feedback do seu projeto.
+### Dependências e Libraries Frontend
+
+| Plugin | README |
+| ------ | ------ |
+| axios | https://github.com/axios/axios#readme |
+| bootstrap | https://github.com/twbs/bootstrap#readme |
+| jquery | https://github.com/jquery/jquery#readme |
+
+

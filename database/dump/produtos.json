@@ -1,0 +1,52 @@
+[
+    {
+        "id": "1",
+        "nome": "ABAIXADOR DE LINGUA ESPATULA DE MADEIRA DESCARTAVEL",
+        "preco": "10.5",
+        "qtd_estoque": "70",
+        "brand": "BUNZL",
+        "created_at": "2020-12-14 01:07:08",
+        "updated_at": "2020-12-14 01:07:13",
+        "deleted_at": ""
+    },
+    {
+        "id": "2",
+        "nome": "ADAPTADOR DE FRASCO DE SORO",
+        "preco": "99.56",
+        "qtd_estoque": "45",
+        "brand": "teste",
+        "created_at": "2020-12-14 01:07:08",
+        "updated_at": "2020-12-14 01:07:42",
+        "deleted_at": ""
+    },
+    {
+        "id": "3",
+        "nome": "AGUA DESTILADA PARA AUTOCLAVE 5L",
+        "preco": "10.5",
+        "qtd_estoque": "45",
+        "brand": "BUNZL",
+        "created_at": "2020-12-14 01:07:08",
+        "updated_at": "2020-12-14 01:07:08",
+        "deleted_at": ""
+    },
+    {
+        "id": "4",
+        "nome": "AGULHA HIPODERMICA COM SISTEMA DE SEGURANCA 20X5,5",
+        "preco": "140.5",
+        "qtd_estoque": "105",
+        "brand": "Marca 3",
+        "created_at": "2020-12-14 01:07:08",
+        "updated_at": "2020-12-14 01:07:35",
+        "deleted_at": ""
+    },
+    {
+        "id": "5",
+        "nome": "AGULHA HIPODERMICA COM SISTEMA DE SEGURANCA 25X7",
+        "preco": "12.99",
+        "qtd_estoque": "45",
+        "brand": "BUNZL",
+        "created_at": "2020-12-14 01:07:08",
+        "updated_at": "2020-12-14 01:07:50",
+        "deleted_at": ""
+    }
+]
