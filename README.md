@@ -23,24 +23,32 @@ $ php artisan serve
 USUÁRIO: bruno.dn.fernandes@gmail.com
 SENHA: 123456789
 
-Link API
-http://localhost:8000/api/v1/products
-http://localhost:8000/api/v1/products?sort=preco:asc&q=agulha&filter=brand:BUNZL
+- Link API
+
+`http://localhost:8000/api/v1/products`
+
+`http://localhost:8000/api/v1/products?sort=preco:asc&q=agulha&filter=brand:BUNZL`
 
 AUTH: Bearer
 
-Login
-http://localhost:8000/api/auth/login
+- Login
 
-Views criadas
-http://localhost:8000/login
-http://localhost:8000/admin/listagem
-http://localhost:8000/admin/cadastro_produtos
-http://localhost:8000/site
+`http://localhost:8000/api/auth/login`
 
-Testes
-test/Feature/ProductTest.php
-test/Feature/UserTest.php
+- Views criadas
+
+`http://localhost:8000/login`
+
+`http://localhost:8000/admin/listagem`
+
+`http://localhost:8000/admin/cadastro_produtos`
+
+`http://localhost:8000/site`
+- Testes
+
+`test/Feature/ProductTest.php`
+
+`test/Feature/UserTest.php`
 
 ### Dependências e Libraries Backend
 
