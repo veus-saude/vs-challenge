@@ -1,6 +1,7 @@
 <?php
 
-use Illuminate\Support\Facades\Auth;
+    use App\Http\Controllers\Panel\ProductController;
+    use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\Panel\MainController;
 use \App\Http\Controllers\Panel\UserController;
@@ -282,6 +283,59 @@ Route::middleware("ACL Permissões")->group(function (){
                         "label"        =>"Ação de Exclusão de ",
                         "group"        =>"Permissões",
                         "roles_ids"    =>"null",
+                    ]);
+
+            });
+
+            // Grupo de Rotas do Controller "Products"
+            Route::prefix('product/')->name('product.')->group(function (){
+
+                Route::get('index', [ ProductController::class, "index" ])
+                    ->name('index')
+                    ->setWheres([
+                        "label"        =>"Visualizar página ",
+                        "group"        =>"Produtos",
+                        "roles_ids"    =>"2",
+                    ]);
+
+                Route::get('create', [ ProductController::class, "create" ])
+                    ->name('create')
+                    ->setWheres([
+                        "label"        =>"Página de Criação de ",
+                        "group"        =>"Produtos",
+                        "roles_ids"    =>"2",
+                    ]);
+
+                Route::post('store', [ ProductController::class, "store" ])
+                    ->name('store')
+                    ->setWheres([
+                        "label"        =>"Ação de Criação de ",
+                        "group"        =>"Produtos",
+                        "roles_ids"    =>"2",
+                    ]);
+
+                Route::get('edit/{id?}', [ ProductController::class, "edit" ])
+                    ->name('edit')
+                    ->setWheres([
+                        "label"        =>"Página de Edição de ",
+                        "group"        =>"Produtos",
+                        "roles_ids"    =>"2",
+                    ]);
+
+                Route::post('update', [ ProductController::class, "update" ])
+                    ->name('update')
+                    ->setWheres([
+                        "label"        =>"Ação de Edição de ",
+                        "group"        =>"Produtos",
+                        "roles_ids"    =>"2",
+                    ]);
+
+                Route::get('delete/{id?}', [ ProductController::class, "delete" ])
+                    ->name('delete')
+                    ->setWheres([
+                        "label"        =>"Ação de Exclusão de ",
+                        "group"        =>"Produtos",
+                        "roles_ids"    =>"2",
                     ]);
 
             });
