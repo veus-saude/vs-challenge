@@ -1,0 +1,186 @@
+
+$colorMain: #fcbd10;
+$colorMainText: #000;
+
+
+$colorHeader: #000;
+$colorHeaderBar: #fcbd10;
+$colorMenu: #000;
+
+
+.btn-theme, .swal2-confirm{
+    background: $colorMain !important;
+    border-color: $colorMain !important;
+    color: $colorMainText;
+    font-weight: 500
+}
+
+.btn-theme-danger{
+    background: $colorHeader !important;
+    border-color: $colorHeader !important;
+    color: #FFF;
+}
+
+body{
+
+    &.skin-default .topbar {
+        background: $colorHeaderBar
+    }
+
+    .loader__figure,
+    .loader__label{
+        border-color: $colorMain;
+        color: $colorMain; 
+        font-weight: 500;
+        font-size: 1.25rem;
+    }
+    
+    .topbar .top-navbar{ 
+        .navbar-nav > .nav-item > .nav-link{ 
+            font-size:1.35rem; 
+            color:#000
+        }
+        
+        .navbar-header{ 
+            line-height: 46px;
+
+            .navbar-brand{
+                display: table;
+                margin: 0 auto;
+                padding: 10px
+            }
+        }
+    }
+
+    .left-sidebar{
+        background: $colorHeader;
+
+        .user-profile{
+            margin:0;
+            padding:20px 0 10px;
+            background: #FFF
+        }
+    }
+
+    &.mini-sidebar{
+        .user-profile{
+            display: none;
+        }
+    }
+
+    
+    .nav-main-title{ font-size:1.5rem; color:#000}
+
+    .dt-buttons .dt-button{
+        @extend .btn-theme;
+
+        &:hover{ 
+            @extend .btn-theme;
+
+            color:#FFF;
+        }
+    }
+
+
+    .page-item.active .page-link{
+        @extend .btn-theme;
+    }
+
+    .sidebar-nav ul li a.active, 
+    .sidebar-nav ul li a.active i, 
+    .sidebar-nav ul li a:hover, 
+    .sidebar-nav ul li a:hover i,
+    .sidebar-nav > ul > li.active > a,
+    .sidebar-nav > ul > li.active > a i,
+    a.link:focus, 
+    a.link:hover{
+        color: $colorMain;
+        border-color: $colorMain
+    }
+
+
+    .dropdown-item.active, 
+    .dropdown-item:active,
+    .dropdown-item:focus,
+    .dropdown-item:hover{
+        background-color: $colorMain;
+        color: #FFF
+    }
+
+
+    .left-sidebar {
+		.dropdown-divider {
+			display: none;
+		}
+		hr {
+			margin: 0;
+		}
+    }
+    
+    .user-pro-body {
+        a.dropdown-toggle {
+            font-weight: 500;
+        }
+    }
+
+    .custom-control-input:checked~.custom-control-label::before{
+        background-color: $colorMain !important;
+        border-color: $colorMain !important
+    }
+
+    .customtab li a.nav-link.active, 
+    .profile-tab li a.nav-link.active{
+        color: #000;
+        border-color: $colorMain;
+        font-weight: 500;
+    }
+
+    .text-video-description{
+        display: block;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    #video-detail hr:first-child{ display: none}
+    .video-actions{ display: none}
+    
+    
+    .swal2-icon.swal2-warning{
+        border-color: $colorMain;
+        color: $colorMain;
+    }
+
+
+    .custom-file-label,
+    .custom-file-label::after {
+        height: initial
+    }
+    .custom-file{
+        cursor: pointer
+    }
+    .custom-file-label::after{
+        content:"Selecione";
+        background: #dee2e6;
+        border-color: #dee2e6
+    }
+
+    .modal-title{
+        font-weight: 500;
+    }
+    .modal-content{
+        text-align:left !important
+    }
+
+
+    .btn-theme-home{ 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        cursor: pointer;
+        text-transform: uppercase;
+        font-weight:700;
+    }
+}

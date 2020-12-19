@@ -1,0 +1,26 @@
+.is-invalid{
+    border-bottom: 1px dashed red !important;
+}
+
+@media only screen and (max-width: 600px) {
+    .card-columns {
+        column-count: 1;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    .card-columns {
+        column-count: 4;
+    }
+}
+
+.invalid-feedback{
+    color: red !important;
+    display: block !important;
+}
+
+.is-invalid-checkbox{
+    border: 1px dashed red !important;
+    color: red !important;
+}
+

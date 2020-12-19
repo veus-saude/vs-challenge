@@ -1,0 +1,45 @@
+html, body{ height: 100%}
+
+body #wrapper{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+body .login-register{
+    position: static;
+    background:none !important
+}
+
+body .loader__figure,
+body .loader__label{
+    border-color: #fcbd10;
+    color: #fcbd10; 
+    font-weight: 500;
+    font-size: 1.25rem;
+}
+
+body .custom-control-input:checked~.custom-control-label::before{
+    background-color: #fcbd10;
+    border-color: #fcbd10
+}
+
+
+body .btn-info{
+    background-color: #fcbd10;
+    border-color: #fcbd10
+}
+body .btn-info:hover{
+    background-color: #fcbd10;
+    border-color: #fcbd10;
+    opacity: .9;
+}
+
+body .btn-theme{
+    background-color: #fcbd10 !important;
+    border-color: #fcbd10 !important;
+    color:#000;
+    font-weight: 500;
+}
