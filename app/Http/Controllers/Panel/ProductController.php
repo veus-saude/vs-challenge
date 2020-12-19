@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Panel;
 
-use App\Helpers\Models\SyncRelations;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Response\Error;
@@ -112,6 +111,10 @@ class ProductController extends Controller
     }
 
 
+    /**
+     * @param $id
+     * @return bool|\Illuminate\Http\RedirectResponse|void
+     */
     public function delete($id)
     {
         $delete = $this->model->destroy($id);
