@@ -88,7 +88,7 @@ Observações:
 
 - Existe um usuário administrador criado com os seguintes dados de acesso: usuário: administrador@administrador.com.br - senha: admin123;
 - Também foram incluídos alguns dados de exemplo para teste;
-- Todos os cadastros realizados a partir do site, cadastrará apenas usuários comuns (não administradores). Estes usuários (comuns) não poderão cadastrar nenhum
+- Todos os cadastros realizados a partir do site, cadastrarão apenas usuários comuns (não administradores). Estes usuários (comuns) não poderão cadastrar nenhum
 produto novo, não poderá alterá-lo, nem fazer lançamento no estoque. Somente o usuário administrador@administrador.com.br, já cadastrado poderá realizar tais
 operações.
 
