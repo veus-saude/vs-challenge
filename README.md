@@ -32,3 +32,58 @@ Bônus:
 
 ---
 Você será avaliado de acordo com a senioridade da posição a qual está aplicando. Ao finalizar o desafio você deve submeter o **Pull Request** com o seu código para a avaliação, após isso nos entrarem em contato com você através do e-mail passando um feedback do seu projeto.
+
+Instruções para build (Miguel W D Machado):
+
+configuração do apache:
+
+copiar os arquivos em anexo para a pasta /etc/apache2/sites-available
+a2ensite apibatalha.conf
+a2ensite clientbatalha.conf
+service apache2 force-reload
+
+incluir no arquivo /etc/hosts as seguintes linhas:
+
+127.0.1.2 api_veus api_veus.com.br
+
+comandos para preparação dos sistemas:
+
+banco de dados:
+
+mysql:
+
+acessar o mysql;
+use mysql;
+CREATE DATABASE desafio_veus CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+CREATE USER 'veus'@'localhost' identified with mysql_native_password by 'bdadm@123';
+GRANT ALL PRIVILEGES ON desafio_veus.* TO 'veus'@'localhost';
+FLUSH PRIVILEGES;
+
+ou
+
+mariadb:
+
+acessar o mysql;
+use mysql;
+CREATE DATABASE desafio_veus CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+CREATE USER 'veus'@'localhost' identified by 'bdadm@123';
+GRANT ALL PRIVILEGES ON desafio_veus.* TO 'veus'@'localhost';
+FLUSH PRIVILEGES;
+
+aplicação:
+
+- abrir uma sessão de terminal;
+- cd /var/www/
+-
+- após a clonagem do repositório, entrar na respectiva pasta e executar os seguintes comandos:
+
+sudo chmod 777 storage/framework/sessions/ -fR
+sudo chmod 777 storage/logs/ -fR
+composer install
+php artisan migrate
+php artisan db:seed
+php artisan cache:clear && php artisan route:clear && php artisan config:clear && php artisan view:clear
+
+Atenciosamente,
+
+Miguel W D Machado
