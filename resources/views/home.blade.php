@@ -21,12 +21,6 @@
     </div>
   </div>
   <!-- <form action="{{route('busca')}}" method="POST" id="frm_busca"> -->
-  <!-- .espver0 { margin-top: 0px; margin-bottom: 0px }
-  .espver { margin-top: 10px; }
-  .espver2 { margin-top: 30px; }
-  .espver3 { margin-bottom: 30px; }
-  .espver4 { margin-bottom: 60px; } -->
-
     @csrf
     <div class="row">
       <div class="col-12">
@@ -66,91 +60,73 @@
       @endguest
     </div>
     <!-- </form> -->
-    <div id="tabela">
-    <hr class="espver0" />
-    <div class="row espver0 fbold TextoAzul" style="font-size: 14px">
-      <div class="col-1 col-sm col-md-1 col-lg-1 text-center">Código</div>
-      <div class="col-3 col-sm col-md-3 col-lg-3 text-center">Nome</div>
-      <div class="col-2 col-sm col-md-2 col-lg-2 text-center">Fornecedor</div>
-      <div class="col-1 col-sm col-md-1 col-lg-1 text-center">Lote</div>
-      <div class="col-1 col-sm col-md-1 col-lg-1 text-center">Fabricação</div>
-      <div class="col-1 col-sm col-md-1 col-lg-1 text-center text-nowrap">Validade</div>
-      <div class="col-1 col-sm col-md-1 col-lg-1 text-center text-nowrap">Quantidade</div>
-      <div class="col-1 col-sm col-md-1 col-lg-1 text-center text-nowrap">Valor</div>
-      @guest
-      @else
-      @if(Auth::user()->isAdmin())
-      <div class="col-1 col-sm col-md-1 col-lg-1 text-center text-nowrap">Ações</div>
-      @endif
-      @endguest
-    </div>
-    <hr class="espver0" />
-    <?php $i = 0; ?>
-    @foreach($produtos as $produto)
-    <div class="row espver0 TextoAzul" style="font-size: 13px">
-      <div id="diid{{$i}}" class="col-1 col-sm col-md-1 col-lg-1 text-center">
-        {{$produto->id}}
-      </div>
-      <div id="dinome{{$i}}" class="col-3 col-sm col-md-3 col-lg-3 text-left">
-        {{$produto->nome}}
-      </div>
-      <div id="difornecedor{{$i}}" class="col-2 col-sm col-md-2 col-lg-2 text-left">
-        {{$produto->fornecedor}}
-      </div>
-      <div id="dilote{{$i}}" class="col-1 col-sm col-md-1 col-lg-1 text-center">
-        {{$produto->lote}}
-      </div>
-      <div id="difabricacao{{$i}}" class="col-1 col-sm col-md-1 col-lg-1 text-center">
-        {{date('m/Y',strtotime($produto->fabricacao))}}
-      </div>
-      <div id="divalidade{{$i}}" class="col-1 col-sm col-md-1 col-lg-1 text-center text-nowrap">
-        {{date('m/Y',strtotime($produto->validade))}}
-      </div>
-      <div id="diquantidade{{$i}}" class="col-1 col-sm col-md-1 col-lg-1 text-center text-nowrap">
-        {{$produto->quantidade}}
-      </div>
-      <div id="divalor{{$i}}" class="col-1 col-sm col-md-1 col-lg-1 text-right text-nowrap">
-        {{'R$ '.number_format($produto->valor, 2, ',', '.')}}
-      </div>
-      @guest
-      @else
-      @if(Auth::user()->isAdmin())
-      <div class="col-1 col-sm col-md-1 col-lg-1 text-center text-nowrap">
-        <a class="text-center" style="margin-left: 6px; margin-right: 6px; font-size: 16px; align-self: baseline;" onclick="edit({{ $produto->id }})"><i class="fas fa-edit" style="cursor: pointer" title="Alterar produto"></i></a>
-        <a class="text-center" style="margin-left: 6px; margin-right: 6px; font-size: 16px; align-self: baseline;" data-toggle="modal" data-target="#deleteModal" onclick="del({{ $produto->id }})"><i class="fas fa-trash-alt" style="cursor: pointer" title="Excluir produto"></i></a>
-      </div>
-      @endif
-      @endguest
-      <?php $i++; ?>
-    </div>
-    <hr class="espver0" />
-    @endforeach
-    <div class="row espver2 fbold TextoAzul" style="font-size: 14px">
-      <div id="plinks" class="col-12 d-flex justify-content-center">{{$produtos->links()}}</div>
-    </div>
-    <hr class="espver0" />
-  </div>
+    <table id="example" class="display stripe border nowrap" style="width:100%">
+      <thead>
+        <tr>
+          <th class="text-center text-nowrap">Código</th>
+          <th class="text-center text-nowrap">Nome</th>
+          <th class="text-center text-nowrap">Fornecedor</th>
+          <th class="text-center text-nowrap">Lote</th>
+          <th class="text-center text-nowrap">Fabricação</th>
+          <th class="text-center text-nowrap">Validade</th>
+          <th class="text-center text-nowrap">Quantidade</th>
+          <th class="text-center text-nowrap">Valor</th>
+          @guest
+          @else
+          @if(Auth::user()->isAdmin())
+          <th class="text-center text-nowrap">Editar</th>
+          <th class="text-center text-nowrap">Excluir</th>
+          @endif
+          @endguest
+        </tr>
+      </thead>
+      <tbody>
+        @foreach($produtos as $produto)
+        <tr>
+          <td class="text-center text-nowrap">{{$produto->id}}</td>
+          <td>{{$produto->nome}}</td>
+          <td>{{$produto->fornecedor}}</td>
+          <td class="text-center text-nowrap">{{$produto->lote}}</td>
+          <td class="text-center text-nowrap">{{date('m/Y',strtotime($produto->fabricacao))}}</td>
+          <td class="text-center text-nowrap">{{date('m/Y',strtotime($produto->validade))}}</td>
+          <td class="text-center text-nowrap">{{$produto->quantidade}}</td>
+          <td class="text-right text-nowrap">{{'R$ '.number_format($produto->valor, 2, ',', '.')}}</td>
+          @guest
+          @else
+          @if(Auth::user()->isAdmin())
+          <td class="text-center text-nowrap"><a class="text-center" style="margin-top: 0px; padding-top: 0px; font-size: 16px; align-self: baseline;" onclick="edit({{ $produto->id }})"><i class="fas fa-edit" style="cursor: pointer" title="Alterar produto"></i></a></td>
+            <td class="text-center text-nowrap"><a class="text-center" style="margin-top: 0px; padding-top: 0px; font-size: 16px; align-self: baseline;" data-toggle="modal" data-target="#deleteModal" onclick="del({{ $produto->id }})"><i class="fas fa-trash-alt" style="cursor: pointer" title="Excluir produto"></i></a></td>
+          @endif
+          @endguest
+            </tr>
+          @endforeach
+          </tbody>
+          <tfoot>
+            <tr>
+              <th class="text-center text-nowrap">Código</th>
+              <th class="text-center text-nowrap">Nome</th>
+              <th class="text-center text-nowrap">Fornecedor</th>
+              <th class="text-center text-nowrap">Lote</th>
+              <th class="text-center text-nowrap">Fabricação</th>
+              <th class="text-center text-nowrap">Validade</th>
+              <th class="text-center text-nowrap">Quantidade</th>
+              <th class="text-center text-nowrap">Valor</th>
+              @guest
+              @else
+              @if(Auth::user()->isAdmin())
+              <th class="text-center text-nowrap">Editar</th>
+              <th class="text-center text-nowrap">Excluir</th>
+              @endif
+              @endguest
+            </tr>
+          </tfoot>
+        </table>
       <form action="{{route('altera_produto')}}" method="GET" id="edit_form">
         @csrf
         <input type="hidden" name="id" value="" id="ed" />
       </form>
 
     </div>
-    <?php
-    function limpa_valores($i) {
-      for ($j = 0; $j < $i; $j++){
-        echo 'document.getElementById("diid'.$j.'").innerHTML = "";';
-        echo 'document.getElementById("dinome'.$j.'").innerHTML = "";';
-        echo 'document.getElementById("difornecedor'.$j.'").innerHTML = "";';
-        echo 'document.getElementById("dilote'.$j.'").innerHTML = "";';
-        echo 'document.getElementById("difabricacao'.$j.'").innerHTML = "";';
-        echo 'document.getElementById("divalidade'.$j.'").innerHTML = "";';
-        echo 'document.getElementById("diquantidade'.$j.'").innerHTML = "";';
-        echo 'document.getElementById("divalor'.$j.'").innerHTML = "";';
-        echo 'document.getElementById("plinks").innerHTML = "";';
-      };
-    }
-    ?>
 
     @endsection
 
@@ -160,15 +136,18 @@
 
     @section('script')
     <script src="{{asset('js/jquery.dataTables.min.js')}}"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+    <script src="//cdn.datatables.net/plug-ins/1.10.12/sorting/datetime-moment.js"></script>
+
 
     <script>
     document.addEventListener("DOMContentLoaded", function(event) {
-      // $('#example').DataTable({
-      //   language: {
-      //     url: 'pt_br.json'
-      //   },
-      //   responsive: true,
-      // } );
+      $('#example').DataTable({
+        language: {
+          url: 'pt_br.json'
+        },
+        responsive: true,
+      } );
       $('#btn_confirma').click(function (e) {
        e.preventDefault();
        //$('#frm_busca').submit();
@@ -249,7 +228,6 @@
       if (nome == undefined && fornecedor == undefined && lote == undefined && fabricacao != undefined && validade == undefined) {
         linha = nome+fornecedor+fabricacao;
       }
-
       $.ajax({
       type: "GET",
       dataType: "json",
@@ -257,28 +235,26 @@
       url: "/api/v1/"+linha,
       success: function(data) {
         console.log(data);
-        <?php limpa_valores($i);?>
-        for (var i = 0; i < data.data.data.length; i++) {
-          document.getElementById('diid'+i).innerHTML = data.data.data[i].id;
-          document.getElementById('dinome'+i).innerHTML = data.data.data[i].nome;
-          document.getElementById('difornecedor'+i).innerHTML = data.data.data[i].fornecedor;
-          document.getElementById('dilote'+i).innerHTML = data.data.data[i].lote;
-          document.getElementById('difabricacao'+i).innerHTML = data.data.data[i].fabricacao;
-          document.getElementById('divalidade'+i).innerHTML = data.data.data[i].validade;
-          document.getElementById('diquantidade'+i).innerHTML = data.data.data[i].quantidade;
-          document.getElementById('divalor'+i).innerHTML = data.data.data[i].valor.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
-        };
-        for (var j = data.data.data.length+1; j < {{$i}}; j++) {
-          document.getElementById('diid'+j).remove();
-          document.getElementById('dinome'+j).remove();
-          document.getElementById('difornecedor'+j).remove();
-          document.getElementById('dilote'+j).remove();
-          document.getElementById('difabricacao'+j).remove();
-          document.getElementById('divalidade'+j).remove();
-          document.getElementById('diquantidade'+j).remove();
-          document.getElementById('divalor'+j).remove();
-        };
-
+        $('#example').DataTable().destroy();
+        $('#example').DataTable({
+          language: {
+            url: 'pt_br.json'
+          },
+          responsive: true,
+          data: data.data.data,
+          columns: [
+              { title: "Código" , data: 'id', className: 'dt-body-center' },
+              { title: "Nome" , data: 'nome' },
+              { title: "Fornecedor" , data: 'fornecedor' },
+              { title: "Lote" , data: 'lote', className: 'dt-body-center' },
+              { title: "Fabricação" , data: 'fabricacao', className: 'dt-body-center' },
+              { title: "Validade" , data: 'validade', className: 'dt-body-center' },
+              { title: "Quantidade" , data: 'quantidade', className: 'dt-body-center' },
+              { title: "Valor" , data: 'valor', render: $.fn.dataTable.render.number( ',', '.', 2, 'R$ ' ), className: 'dt-body-right' },
+              { title: "Editar" , data: 'editar', className: 'dt-body-center' },
+              { title: "Excluir" , data: 'excluir', className: 'dt-body-center' },
+          ]
+        } );
       },
       error: function(error) {
         console.log(error.msg);

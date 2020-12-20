@@ -38,7 +38,7 @@ class BuscaController extends Controller {
     // }
 
     //"q=atenolol&filter=brand:biosintetica&filter=lote:1913802"
-    //msg: http://localhost:8000/api/v1/products?filter=lote%3A1913802&q=atenolol
+    //msg: http://api_veus.com.br/api/v1/products?filter=lote%3A1913802&q=atenolol
     //nome, fornecedor, lote, fabricacao, validade
 
      if ($version == 'v1') {
@@ -184,6 +184,12 @@ class BuscaController extends Controller {
           ->paginate(15);
         }
 
+        foreach ($produtos as $produto) {
+          $produto->editar = '<a class="text-center" style="margin-top: 0px; padding-top: 0px; font-size: 16px; align-self: baseline;" onclick="edit('.$produto->id.')"><i class="fas fa-edit" style="cursor: pointer" title="Alterar produto"></i></a>';
+          $produto->excluir = '<a class="text-center" style="margin-top: 0px; padding-top: 0px; font-size: 16px; align-self: baseline;" data-toggle="modal" data-target="#deleteModal" onclick="del('.$produto->id.')"><i class="fas fa-trash-alt" style="cursor: pointer" title="Excluir produto"></i></a>';
+          $produto->fabricacao = date('m/Y',strtotime($produto->fabricacao));
+          $produto->validade = date('m/Y',strtotime($produto->validade));
+        }
         // $filtered = true;
         //
         // return view('home')

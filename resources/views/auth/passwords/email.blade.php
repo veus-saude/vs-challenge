@@ -59,7 +59,7 @@
         <script>
         function verificar_email() {
             alert("Verifique seu email para redefinir a senha.");
-            window.location.href("http://localhost:8000/login");
+            window.location.href("http://api_veus.com.br/login");
           }
         </script>
     @endif

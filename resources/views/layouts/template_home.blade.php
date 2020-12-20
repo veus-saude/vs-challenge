@@ -24,8 +24,8 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=Raleway:200,300,400,700,800,500" rel="stylesheet">
 
-        <link rel="canonical" href="http://localhost:8000/" />
-        <link rel="publisher" href="http://localhost:8000/" />
+        <link rel="canonical" href="http://api_veus.com.br/" />
+        <link rel="publisher" href="http://api_veus.com.br/" />
 
     </head>
 

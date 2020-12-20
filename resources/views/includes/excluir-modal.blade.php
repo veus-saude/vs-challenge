@@ -9,7 +9,8 @@
         </button>
       </div>
       <div class="modal-body">
-        Para continuar com a exclusão, clique no botão [Confirmar Exclusão]
+        Para continuar com a exclusão, clique no botão [Confirmar Exclusão].
+        Lembre-se de que o estoque deste produto também será excluído.
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
