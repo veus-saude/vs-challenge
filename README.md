@@ -43,7 +43,7 @@ executar no terminal:
 
 a2ensite api_veus.conf <enter>
 
-service apache2 force-reload <enter> (para sistemas baseados em debian/ubuntu)
+service apache2 force-reload <enter> (para sistemas baseados em debian/ubuntu) 
 
 incluir no arquivo /etc/hosts as seguintes linhas:
 
@@ -77,15 +77,15 @@ aplicação:
 
 - abrir uma sessão de terminal;
 - cd /var/www/ <enter>
-- git clone
+- git clone https://github.com/miguelwdmachado/vs-challenge.git <enter>
 - após a clonagem do repositório, entrar na respectiva pasta e executar os seguintes comandos:
 
-sudo chmod 777 storage/framework/sessions/ -fR
-sudo chmod 777 storage/logs/ -fR
-composer install
-php artisan migrate
-php artisan db:seed
-php artisan cache:clear && php artisan route:clear && php artisan config:clear && php artisan view:clear
+sudo chmod 777 storage/framework/sessions/ -fR  <enter>
+sudo chmod 777 storage/logs/ -fR  <enter>
+composer install  <enter>
+php artisan migrate  <enter>
+php artisan db:seed  <enter>
+php artisan cache:clear && php artisan route:clear && php artisan config:clear && php artisan view:clear  <enter>
 
 Observações:
 
