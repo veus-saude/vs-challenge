@@ -37,10 +37,13 @@ Instruções para build (Miguel W D Machado):
 
 configuração do apache:
 
-copiar os arquivos em anexo para a pasta /etc/apache2/sites-available
-a2ensite apibatalha.conf
-a2ensite clientbatalha.conf
-service apache2 force-reload
+copiar o arquivo em anexo para a pasta /etc/apache2/sites-available
+
+executar no terminal:
+
+a2ensite api_veus.conf <enter>
+
+service apache2 force-reload <enter> (para sistemas baseados em debian/ubuntu)
 
 incluir no arquivo /etc/hosts as seguintes linhas:
 
@@ -73,8 +76,8 @@ FLUSH PRIVILEGES;
 aplicação:
 
 - abrir uma sessão de terminal;
-- cd /var/www/
--
+- cd /var/www/ <enter>
+- git clone
 - após a clonagem do repositório, entrar na respectiva pasta e executar os seguintes comandos:
 
 sudo chmod 777 storage/framework/sessions/ -fR
