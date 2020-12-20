@@ -84,6 +84,17 @@ php artisan migrate
 php artisan db:seed
 php artisan cache:clear && php artisan route:clear && php artisan config:clear && php artisan view:clear
 
+Observações:
+
+- Existe um usuário administrador criado com os seguintes dados de acesso: usuário: administrador@administrador.com.br - senha: admin123;
+- Também foram incluídos alguns dados de exemplo para teste;
+- Todos os cadastros realizados a partir do site, cadastrará apenas usuários comuns (não administradores). Estes usuários (comuns) não poderão cadastrar nenhum
+produto novo, não poderá alterá-lo, nem fazer lançamento no estoque. Somente o usuário administrador@administrador.com.br, já cadastrado poderá realizar tais
+operações.
+
+Estas instruções foram enviadas para o email sistemas@veus.com.br com o arquivo de configuração do servidor apache.
+
+
 Atenciosamente,
 
 Miguel W D Machado
