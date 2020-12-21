@@ -29,6 +29,11 @@
                         <i class="fa fa-code"></i><span class="hide-menu">API Doc</span>
                     </a>
                 </li>
+                <li>
+                    <a class="waves-effect waves-dark" href="{{ route("panel.product.index") }}">
+                        <i class="fa fa-boxes"></i><span class="hide-menu">Produtos</span>
+                    </a>
+                </li>
             </ul>
         </nav>
     </div>

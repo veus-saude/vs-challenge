@@ -29,6 +29,11 @@
                 <a>Cadastro de Usuários</a>
             </li>
             <hr>
+            <h3 style="padding-left: 20px;">Rotas para Produtos</h3>
+            <li class="scroll-to-link" data-target="product-index">
+                <a>Busca de Produtos</a>
+            </li>
+            <hr>
             <li class="scroll-to-link" data-target="returns-errors">
                 <a>Retornos de Erros</a>
             </li>

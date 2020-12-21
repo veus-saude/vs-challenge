@@ -295,7 +295,7 @@ Route::middleware("ACL Permissões")->group(function (){
                     ->setWheres([
                         "label"        =>"Visualizar página ",
                         "group"        =>"Produtos",
-                        "roles_ids"    =>"2",
+                        "roles_ids"    =>"all",
                     ]);
 
                 Route::get('create', [ ProductController::class, "create" ])
@@ -303,7 +303,7 @@ Route::middleware("ACL Permissões")->group(function (){
                     ->setWheres([
                         "label"        =>"Página de Criação de ",
                         "group"        =>"Produtos",
-                        "roles_ids"    =>"2",
+                        "roles_ids"    =>"all",
                     ]);
 
                 Route::post('store', [ ProductController::class, "store" ])
@@ -311,15 +311,15 @@ Route::middleware("ACL Permissões")->group(function (){
                     ->setWheres([
                         "label"        =>"Ação de Criação de ",
                         "group"        =>"Produtos",
-                        "roles_ids"    =>"2",
+                        "roles_ids"    =>"all",
                     ]);
 
-                Route::get('edit/{id?}', [ ProductController::class, "edit" ])
+                Route::get('edit/{product_id?}', [ ProductController::class, "edit" ])
                     ->name('edit')
                     ->setWheres([
                         "label"        =>"Página de Edição de ",
                         "group"        =>"Produtos",
-                        "roles_ids"    =>"2",
+                        "roles_ids"    =>"all",
                     ]);
 
                 Route::post('update', [ ProductController::class, "update" ])
@@ -327,15 +327,15 @@ Route::middleware("ACL Permissões")->group(function (){
                     ->setWheres([
                         "label"        =>"Ação de Edição de ",
                         "group"        =>"Produtos",
-                        "roles_ids"    =>"2",
+                        "roles_ids"    =>"all",
                     ]);
 
-                Route::get('delete/{id?}', [ ProductController::class, "delete" ])
+                Route::get('delete/{product_id?}', [ ProductController::class, "delete" ])
                     ->name('delete')
                     ->setWheres([
                         "label"        =>"Ação de Exclusão de ",
                         "group"        =>"Produtos",
-                        "roles_ids"    =>"2",
+                        "roles_ids"    =>"all",
                     ]);
 
             });

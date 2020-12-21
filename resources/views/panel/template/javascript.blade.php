@@ -35,4 +35,103 @@
     });
 </script>
 
+<script>
+    function formSubmit(element)
+    {
+        event.preventDefault();
+        // Inputs--------------------------------------------------------------------------
+        $(element).find("input").parent("div").removeClass("has-danger");
+        $(element).find("input").parent("div").addClass("has-success");
+        $(element).find("input").parent("div").find("small").text("Validação Passou!");
+        // Textarea------------------------------------------------------------------------
+        $(element).find("textarea").parent("div").removeClass("has-danger");
+        $(element).find("textarea").parent("div").addClass("has-success");
+        $(element).find("textarea").parent("div").find("small").text("Validação Passou!");
+        // Select--------------------------------------------------------------------------
+        $(element).find("select").parent("div").removeClass("has-danger");
+        $(element).find("select").parent("div").addClass("has-success");
+        $(element).find("select").parent("div").find("small").text("Validação Passou!");
+        $.ajax({
+            url          : $(element).attr("action"),
+            type         : $(element).attr("method"),
+            dataType     : "JSON",
+            data         : new FormData(element),
+            processData  : false,
+            contentType  : false,
+            success : function (response) {
+                if(response.status==="success")
+                {
+                    Swal.fire({
+                        title : "Sucesso!",
+                        text  : response.message,
+                        type  : "success",
+                        timer : 2000,
+                        showConfirmButton: false
+                    });
+                    location.href = "{{ route("panel.product.index") }}";
+                }
+                else
+                {
+                    Swal.fire({
+                        title : "Error!",
+                        text  : response.message,
+                        type  : "error",
+                        timer : false,
+                        showConfirmButton: true
+                    });
+                }
+            },
+            error : function (response) {
+                if(response.responseJSON)
+                {
+                    console.log(response.responseJSON.data);
+                    Swal.fire({
+                        title : "Error!",
+                        text  : response.responseJSON.message,
+                        type  : "error",
+                        timer : false,
+                        showConfirmButton: true
+                    });
+                    $.each(response.responseJSON.data, function (index, value) {
+                        // Inputs
+                        var input = $(element).find("input[id="+index+"]");
+                        if(input)
+                        {
+                            input.parent("div").addClass("has-danger");
+                            input.parent("div").find("small").empty();
+                            input.parent("div").find("small").text(value);
+                        }
+                        // Textarea
+                        var textarea = $(element).find("textarea[id="+index+"]");
+                        if(textarea)
+                        {
+                            textarea.parent("div").addClass("has-danger");
+                            textarea.parent("div").find("small").empty();
+                            textarea.parent("div").find("small").text(value);
+                        }
+                        // Select
+                        var select = $(element).find("select[id="+index+"]");
+                        if(select)
+                        {
+                            select.parent("div").addClass("has-danger");
+                            select.parent("div").find("small").empty();
+                            select.parent("div").find("small").text(value);
+                        }
+                    });
+                }
+                else
+                {
+                    Swal.fire({
+                        title : "Error!",
+                        text  : response,
+                        type  : "error",
+                        timer : false,
+                        showConfirmButton: true
+                    });
+                }
+            },
+        });
+    }
+</script>
+
 @stack('scripts')

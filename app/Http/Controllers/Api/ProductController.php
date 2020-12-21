@@ -41,20 +41,49 @@ class ProductController extends Controller
     }
 
     /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return bool|\Illuminate\Http\RedirectResponse|void
      */
-    public function index()
+    public function index($name=null, $query_filter=null)
     {
-        $list = $this->model->all();
-        return view($this->request->route()->getName(), compact('list'));
-    }
+        $search = explode(":", $query_filter)[1];
+        if ($name!=null && strpos($query_filter, 'brand') !== false)
+        {
+            $list = $this->model
+                ->where("name", "like", "%".$name."%")
+                ->where("brand", "like", "%".$search."%")
+                ->paginate(3);
+        }
+        elseif ($name!=null && strpos($query_filter, 'price') !== false)
+        {
+            $list = $this->model
+                ->where("name", "like", "%".$name."%")
+                ->where("price", "like", "%".$search."%")
+                ->paginate(3);
+        }
+        elseif ($name!=null && strpos($query_filter, 'stock') !== false)
+        {
+            $list = $this->model
+                ->where("name", "like", "%".$name."%")
+                ->where("stock", "like", "%".$search."%")
+                ->paginate(3);
+        }
+        else
+        {
+            $list = $this->model->paginate(3);
+        }
+        if($list)
+            return Success::generic(
+                $list,
+                messageSuccess(20004, "Produtos"),
+                $this->request["routeType"],
+                route("panel.product.index")
+            );
 
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function create()
-    {
-        return view($this->request->route()->getName());
+        return Error::generic(
+            null,
+            messageErrors(4003, "Erro ao mostrar Lista de Produtos"),
+            "web"
+        );
     }
 
     /**
@@ -76,16 +105,6 @@ class ProductController extends Controller
             messageErrors(1000, "Produtos"),
             "web"
         );
-    }
-
-    /**
-     * @param $id
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function edit($id)
-    {
-        $item = $this->model->find($id);
-        return view($this->request->route()->getName(), compact('item'));
     }
 
     /**

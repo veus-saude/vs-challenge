@@ -49,54 +49,13 @@ Route::middleware(["apiJWT", "ACL Permissões"])->group(function(){
     // Grupo de Rotas do Controller "Products"
     Route::prefix('product/')->name('product.')->group(function (){
 
-        Route::get('index', [ ProductController::class, "index" ])
+        Route::get('{name?}/{query_filter?}', [ ProductController::class, "index" ])
             ->name('index')
             ->setWheres([
-                "label"        =>"Visualizar página ",
+                "label"        =>"Busca de ",
                 "group"        =>"Produtos",
-                "roles_ids"    =>"3",
+                "roles_ids"    =>"all",
             ]);
-
-        Route::get('create', [ ProductController::class, "create" ])
-            ->name('create')
-            ->setWheres([
-                "label"        =>"Página de Criação de ",
-                "group"        =>"Produtos",
-                "roles_ids"    =>"3",
-            ]);
-
-        Route::post('store', [ ProductController::class, "store" ])
-            ->name('store')
-            ->setWheres([
-                "label"        =>"Ação de Criação de ",
-                "group"        =>"Produtos",
-                "roles_ids"    =>"3",
-            ]);
-
-        Route::get('edit/{id?}', [ ProductController::class, "edit" ])
-            ->name('edit')
-            ->setWheres([
-                "label"        =>"Página de Edição de ",
-                "group"        =>"Produtos",
-                "roles_ids"    =>"2",
-            ]);
-
-        Route::post('update', [ ProductController::class, "update" ])
-            ->name('update')
-            ->setWheres([
-                "label"        =>"Ação de Edição de ",
-                "group"        =>"Produtos",
-                "roles_ids"    =>"3",
-            ]);
-
-        Route::get('delete/{id?}', [ ProductController::class, "delete" ])
-            ->name('delete')
-            ->setWheres([
-                "label"        =>"Ação de Exclusão de ",
-                "group"        =>"Produtos",
-                "roles_ids"    =>"3",
-            ]);
-
     });
 
 });

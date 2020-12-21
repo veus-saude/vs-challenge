@@ -6,4 +6,5 @@
     @includeIf("apiDocumentation.auth.refresh")
     @includeIf("apiDocumentation.user.index")
     @includeIf("apiDocumentation.user.store")
+    @includeIf("apiDocumentation.product.index")
 @endsection

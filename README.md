@@ -79,6 +79,7 @@ route_visit_api_logout();
 route_visit_api_refresh_token();
 route_visit_api_list_users();
 route_visit_api_store_users();
+route_search_products();
 ```
 
 
