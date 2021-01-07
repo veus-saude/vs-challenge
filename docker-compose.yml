@@ -1,0 +1,77 @@
+version: "3.7"
+services:
+  web:
+    image: nginx:latest
+    ports:
+    - "80:80"
+    - "443:443"
+    volumes:
+      - ./www:/usr/share/nginx/html
+      - ./config/nginx:/etc/nginx/conf.d
+      - ./data/logs:/var/log/nginx
+      - ./config/cert:/usr/local/nginx/ssl
+    links:
+      - php7-2
+    networks:
+        - container_net
+  php7-4:
+    #image: php:7.2-fpm
+    build: './config/php-fpm/7.4'
+    tty: true
+    volumes:
+      - ./www:/usr/share/nginx/html
+    networks:
+      - container_net
+    depends_on:
+      - mysql
+  php7-2:
+    #image: php:7.2-fpm
+    build: './config/php-fpm/7.2'
+    tty: true
+    volumes:
+      - ./www:/usr/share/nginx/html
+    networks:
+      - container_net
+    depends_on:
+      - mysql
+  mysql:
+    image: mysql:5.7.20
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=123.456
+    volumes:
+      - ./data/database_mysql:/var/lib/mysql
+    networks:
+      - container_net
+
+  mongo-express:
+    image: mongo-express
+    ports:
+      - 8081:8081
+    environment:
+      ME_CONFIG_BASICAUTH_USERNAME: username
+      ME_CONFIG_BASICAUTH_PASSWORD: 123.456
+      ME_CONFIG_MONGODB_PORT: 27017
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: 123.456
+    links:
+      - mongo
+    networks:
+      - container_net
+  mongo:
+    image: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: 123.456
+    ports:
+      - "27017:27017"
+    volumes:
+      -  ./data/database_mongo:/data/db
+    networks:
+      - container_net
+networks:
+  container_net:
+    external: true
+
+
