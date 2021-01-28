@@ -34,4 +34,4 @@ Por favor, **não se esqueça** de providenciar uma pequena documentação de co
 * Modelagem de Dados
 
 ---
-Você será avaliado de acordo com a senioridade da posição a qual está aplicando. Ao finalizar o desafio você deve submeter o **Pull Request** com o seu código para a avaliação, após isso nos entrarem em contato com você através do e-mail passando um feedback do seu projeto.
+Você será avaliado de acordo com a senioridade da posição a qual está aplicando. Ao finalizar o desafio você deve submeter o **Pull Request** com o seu código para a avaliação, após isso nos entraremos em contato com você através do e-mail passando um feedback do seu projeto.
